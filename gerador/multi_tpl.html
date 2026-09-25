@@ -1,0 +1,407 @@
+<title>Fluxo de Caixa das Obras</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&display=swap">
+<style>
+:root{--bg:#f2f4f6;--panel:#ffffff;--fg:#1c2127;--mut:#5f6b76;--grid:#dde2e7;--hd:#eaeef2;--acc:#1f4e78;--tab:#ffffff;
+--in:#1f3fd1;--link:#127a32;--neg:#c00000;--yel:#fff36b;--tot:#d9e1f2;--inbg:#fff2cc;--red:#fce4d6;--ok:#e2efda;--hdr:#1f4e78;--hdrfg:#ffffff;--org:#c65911;--oncolor:#1c2127}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#14181c;--panel:#1b2025;--fg:#e6eaee;--mut:#98a4ae;--grid:#2c333a;--hd:#222930;--acc:#7fb2e5;--tab:#1b2025;
+--in:#8ab0ff;--link:#6fd18c;--neg:#ff7a7a;--yel:#5c5410;--tot:#27344a;--inbg:#3a331c;--red:#4a2a22;--ok:#23392a;--hdr:#1f4e78;--hdrfg:#ffffff;--org:#a14a0e;--oncolor:#e6eaee}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#14181c;--panel:#1b2025;--fg:#e6eaee;--mut:#98a4ae;--grid:#2c333a;--hd:#222930;--acc:#7fb2e5;--tab:#1b2025;
+--in:#8ab0ff;--link:#6fd18c;--neg:#ff7a7a;--yel:#5c5410;--tot:#27344a;--inbg:#3a331c;--red:#4a2a22;--ok:#23392a;--hdr:#1f4e78;--hdrfg:#ffffff;--org:#a14a0e;--oncolor:#e6eaee}
+*{box-sizing:border-box}html,body{height:100%}
+body{background:var(--bg);color:var(--fg);font:13px Arial,Helvetica,sans-serif;display:flex;flex-direction:column;padding-inline:16px;font-variant-numeric:tabular-nums;overflow-x:hidden}#wrap{max-width:100%;min-width:0}
+header{padding-block:10px;margin-inline:-16px;padding-inline:16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;background:var(--panel);border-bottom:1px solid var(--grid)}
+header h1{font-size:15px;margin:0}header .mut{color:var(--mut);font-size:12px}
+#cell{flex:1;min-width:0;max-width:100%;font:12px ui-monospace,Menlo,Consolas,monospace;background:var(--bg);border:1px solid var(--grid);border-radius:6px;padding:6px 8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#wrap{flex:1;overflow:auto;border:1px solid var(--grid);border-radius:6px;margin-block:8px;background:var(--panel);position:relative}
+table{border-collapse:separate;border-spacing:0;table-layout:fixed}
+td,th{border-right:1px solid var(--grid);border-bottom:1px solid var(--grid);padding:2px 5px;height:20px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;max-width:0}
+th{background:var(--hd);color:var(--mut);font-weight:400;position:sticky;top:0;z-index:2;text-align:center}
+td.rh{background:var(--hd);color:var(--mut);position:sticky;left:0;z-index:1;text-align:center;width:38px}
+th.c0{left:0;z-index:3}
+td.n{text-align:right}td.neg{color:var(--neg)!important}
+td.f{cursor:pointer}td.sel{outline:2px solid var(--acc);outline-offset:-2px}
+nav{margin-inline:-16px;padding-bottom:env(safe-area-inset-bottom,0px);display:flex;gap:2px;overflow-x:auto;background:var(--hd);border-top:1px solid var(--grid);padding:0 6px;flex-shrink:0}
+nav button:focus-visible,select:focus-visible{outline:2px solid var(--acc)}nav button{border:0;background:transparent;color:var(--fg);padding:8px 10px;font:12px Arial;white-space:nowrap;cursor:pointer;border-bottom:3px solid transparent}
+nav button.on{background:var(--tab);border-bottom-color:var(--acc);font-weight:700}
+nav button.in{color:var(--org)}
+select{font:12px Arial;padding:5px;border-radius:6px;border:1px solid var(--grid);background:var(--panel);color:var(--fg)}
+.note{padding:6px 16px;color:var(--mut);font-size:12px;background:var(--panel)}
+.leg{display:flex;gap:10px;font-size:11px;color:var(--mut);flex-wrap:wrap}.leg b{font-weight:400}
+@media (max-width:600px){header h1{font-size:14px}#cell{order:3;flex-basis:100%}}
+.dz{--d-bg:#f4f7fa;--d-card:#ffffff;--d-ink:#15202b;--d-ink2:#4f5b67;--d-mut:#7a8591;--d-line:#dfe6ec;--d-navy:#1f4e78;--d-teal:#e6f4f6;--d-tealh:#cdeaef;--d-hl:#dbeaf8;
+--s1:#2a78d6;--s2:#eb6834;--ok:#2e7d32;--bad:#c62828;--okbg:#e8f3e9;--badbg:#fdecea;
+font-family:"IBM Plex Sans",Arial,Helvetica,sans-serif;color:var(--d-ink);background:var(--d-bg);padding:20px 16px 28px;display:grid;grid-template-columns:minmax(0,1fr);gap:18px;font-variant-numeric:tabular-nums;min-width:0;max-width:100%}
+.dz>*,.dz-row>*{min-width:0}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .dz{--d-bg:#12171c;--d-card:#1a2128;--d-ink:#e8edf2;--d-ink2:#b4bec8;--d-mut:#8b96a1;--d-line:#2c353e;--d-navy:#7fb2e5;--d-teal:#1c2a30;--d-tealh:#21363d;--d-hl:#1f3348;
+--s1:#3987e5;--s2:#d95926;--ok:#6fcf7a;--bad:#ff7b72;--okbg:#1d3322;--badbg:#3a1f1d}}
+:root[data-theme="dark"] .dz{--d-bg:#12171c;--d-card:#1a2128;--d-ink:#e8edf2;--d-ink2:#b4bec8;--d-mut:#8b96a1;--d-line:#2c353e;--d-navy:#7fb2e5;--d-teal:#1c2a30;--d-tealh:#21363d;--d-hl:#1f3348;
+--s1:#3987e5;--s2:#d95926;--ok:#6fcf7a;--bad:#ff7b72;--okbg:#1d3322;--badbg:#3a1f1d}
+.dz h2{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--d-navy);margin:0 0 10px;font-weight:600}
+.dz-head{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:baseline;justify-content:space-between}
+.dz-head h1{font-size:clamp(20px,3vw,28px);margin:0;color:var(--d-navy);text-wrap:balance;font-weight:700}
+.dz-head p{margin:0;color:var(--d-ink2);font-size:13px}
+.dz-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.dz-kpi{background:var(--d-card);border:1px solid var(--d-line);border-top:3px solid var(--d-navy);border-radius:8px;padding:12px 14px;display:grid;gap:4px}
+.dz-kpi .l{font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--d-mut);font-weight:600}
+.dz-kpi .v{font-size:clamp(18px,2.2vw,24px);font-weight:700;color:var(--d-ink)}
+.dz-kpi .n{font-size:12px;color:var(--d-ink2)}
+.dz-kpi.st .v{font-size:17px}.dz-kpi.st.ok{border-top-color:var(--ok);background:var(--okbg)}.dz-kpi.st.bad{border-top-color:var(--bad);background:var(--badbg)}
+.dz-kpi.st.ok .v{color:var(--ok)}.dz-kpi.st.bad .v{color:var(--bad)}
+.dz-bar{height:6px;border-radius:3px;background:var(--d-line);overflow:hidden;margin-top:4px}.dz-bar i{display:block;height:100%;background:var(--s1);border-radius:3px}
+.dz-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:18px}
+@media (max-width:900px){.dz-row{grid-template-columns:1fr}}
+.dz-card{background:var(--d-card);border:1px solid var(--d-line);border-radius:10px;padding:16px;min-width:0}
+.dz-tw{overflow-x:auto}
+.dz table{border-collapse:collapse;width:100%;font-size:13px;min-width:560px;table-layout:auto}
+.dz th,.dz td{padding:7px 10px;text-align:right;white-space:nowrap;border-bottom:1px solid var(--d-line);border-right:0;max-width:none;overflow:visible;text-overflow:clip;height:auto;position:static}
+.dz th:first-child,.dz td:first-child{text-align:left}
+.dz thead .cap th{background:var(--d-tealh);color:var(--d-navy);text-align:center;font-size:14px;border:0;padding:8px}
+.dz thead .cap2 th{background:var(--d-tealh);color:var(--d-navy);text-align:center;font-size:12px;font-weight:600;padding:0 8px 8px}
+.dz thead .hd th{background:var(--d-navy);color:#fff;font-weight:600;font-size:12px}
+:root[data-theme="dark"] .dz thead .hd th{color:#0f1720}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .dz thead .hd th{color:#0f1720}}
+.dz tbody tr:nth-child(odd) td{background:var(--d-teal)}
+.dz tbody tr.hl td{background:var(--d-hl);font-weight:700;color:var(--d-navy);border-top:2px solid var(--d-navy);border-bottom:2px solid var(--d-navy)}
+.dz tfoot td{font-weight:700;border-top:2px solid var(--d-navy);border-bottom:0}
+.dz td.sep,.dz th.sep{width:10px;padding:0;background:transparent!important;border:0}
+.dz .sw{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.dz .note{font-size:12px;color:var(--d-mut);margin:8px 0 0}
+.dz .leg{display:flex;gap:14px;font-size:12px;color:var(--d-ink2);margin:0 0 6px}
+.dz svg{display:block;width:100%;height:auto;overflow:visible}
+.dz svg text{fill:var(--d-ink2);font-size:11px;font-family:inherit}
+.dz svg .grid{stroke:var(--d-line);stroke-width:1}
+.dz svg .axis{stroke:var(--d-mut);stroke-width:1}
+.dz .tip{position:fixed;pointer-events:none;background:var(--d-card);color:var(--d-ink);border:1px solid var(--d-line);border-radius:6px;padding:7px 9px;font-size:12px;box-shadow:0 4px 14px rgba(0,0,0,.14);z-index:20;line-height:1.45}
+.dz .gbar{height:10px;border-radius:0 4px 4px 0;background:var(--s1);min-width:1px}
+.dz .gcell{width:30%;min-width:110px}
+.dz-pend{display:grid;gap:6px;margin:0;padding:0;list-style:none}
+.dz-pend li{padding:8px 10px;border-radius:6px;background:var(--badbg);color:var(--d-ink);font-size:13px;border-left:3px solid var(--bad)}
+.dz-pend li.ok{background:var(--okbg);border-left-color:var(--ok)}
+#gridbtn{font:12px Arial;padding:6px 10px;border-radius:6px;border:1px solid var(--grid);background:var(--panel);color:var(--fg);cursor:pointer}
+
+.rt .rtab{min-width:1180px;font-size:12.5px}
+.rt .rtab td{vertical-align:top}
+.rt .rtab td.obs{white-space:normal;text-align:left;min-width:360px;max-width:520px;line-height:1.45;color:var(--d-ink)}
+.rt .rtab td.nm{white-space:normal;min-width:190px;text-align:left}
+.rt .rtab tr.sub td{background:var(--d-tealh)!important;font-weight:700;color:var(--d-navy)}
+.rt .rtab tr.tot td{background:var(--d-navy)!important;color:#fff;font-weight:700}
+:root[data-theme="dark"] .rt .rtab tr.tot td{color:#0f1720}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .rt .rtab tr.tot td{color:#0f1720}}
+.rt .rb{position:relative;min-width:108px;height:18px;background:var(--d-line);border-radius:3px;overflow:hidden}
+.rt .rb i{position:absolute;left:0;top:0;bottom:0;border-radius:3px 0 0 3px;opacity:.9}
+.rt .rb span{position:relative;display:block;text-align:right;padding:0 6px;font-size:11.5px;line-height:18px;color:var(--d-ink);font-weight:600}
+.rt .na{color:var(--d-mut)}.rt .nota{margin-top:4px;font-size:11px;color:var(--d-mut)}
+
+
+/* ---- layout: barra lateral + área principal ---- */
+html,body{height:100%}
+html{overflow:hidden}
+[hidden]{display:none!important}
+body{display:block!important;padding:0!important;overflow:hidden}
+body.panel #cell,body.panel .leg{display:none!important}
+#app{display:grid;grid-template-columns:248px minmax(0,1fr);grid-template-rows:minmax(0,1fr);height:100%;min-height:0}
+#side{background:var(--panel);border-right:1px solid var(--grid);overflow-y:auto;min-height:0;padding:14px 10px calc(14px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:14px}
+#side .brand{padding:2px 8px 6px;border-bottom:1px solid var(--grid)}
+#side .brand b{display:block;font-size:15px;color:var(--acc)}#side .brand span{font-size:11px;color:var(--mut)}
+#side .grp{display:grid;gap:2px}
+#side .gt{font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--mut);font-weight:700;padding:0 8px 4px}
+#side button{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:6px;font:13px Arial,Helvetica,sans-serif;color:var(--fg);width:100%}
+#side button:hover{background:var(--hd)}
+#side button:focus-visible{outline:2px solid var(--acc);outline-offset:-2px}
+#side button.on{background:var(--acc);color:#fff;font-weight:700}
+:root[data-theme="dark"] #side button.on{color:#0f1720}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) #side button.on{color:#0f1720}}
+#side .dash button{font-size:14px;font-weight:700;padding:10px 12px}
+#side .dash button::before{content:"";width:9px;height:9px;border-radius:2px;background:var(--acc);flex:none}
+#side .dash button.on::before{background:currentColor}
+#side .in-dot::after{content:"entrada";margin-left:auto;font-size:10px;color:var(--org);font-weight:700}
+#side button.on .in-dot::after,#side button.on.in-dot::after{color:inherit}
+#side details summary{cursor:pointer;list-style:none;font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--mut);font-weight:700;padding:0 8px 4px}
+#side details summary::after{content:" ▾"}#side details:not([open]) summary::after{content:" ▸"}
+#side input{width:100%;box-sizing:border-box;margin:0 0 6px;padding:6px 8px;border:1px solid var(--grid);border-radius:6px;background:var(--bg);color:var(--fg);font:12px Arial}
+#main{display:flex;flex-direction:column;min-width:0;min-height:0;height:100%;padding-inline:16px;background:var(--bg)}
+#main header{margin-inline:-16px}
+#main header h1{font-size:15px}
+#curtab{font-size:15px;font-weight:700;color:var(--fg)}
+#menubtn,#presbtn{font:12px Arial;padding:6px 10px;border-radius:6px;border:1px solid var(--grid);background:var(--panel);color:var(--fg);cursor:pointer}
+#presbtn{background:var(--acc);color:#fff;border-color:var(--acc);font-weight:700}
+:root[data-theme="dark"] #presbtn{color:#0f1720}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) #presbtn{color:#0f1720}}
+#menubtn{display:none}
+.pnav{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));display:none;gap:6px;align-items:center;z-index:30;background:var(--panel);border:1px solid var(--grid);border-radius:999px;padding:4px 6px;box-shadow:0 4px 18px rgba(0,0,0,.15)}
+.pnav button{font:13px Arial;border:0;background:transparent;color:var(--fg);padding:6px 10px;border-radius:999px;cursor:pointer}
+.pnav button:hover{background:var(--hd)}.pnav span{font-size:12px;color:var(--mut)}
+body.present #side,body.present #main header,body.present #note{display:none!important}
+body.present #app{grid-template-columns:1fr}
+body.present #wrap{border:0;margin-block:0}
+#wrap{min-height:0;overflow:auto!important;flex:1 1 auto}
+body.present .pnav{display:flex}
+@media (max-width:820px){
+ #app{grid-template-columns:1fr}
+ #side{position:fixed;inset:0 auto 0 0;width:min(280px,86vw);z-index:40;transform:translateX(-105%);transition:transform .2s;box-shadow:0 0 30px rgba(0,0,0,.25)}
+ body.menu #side{transform:none}
+ #menubtn{display:inline-block}
+ .leg{display:none!important}
+}
+@media (prefers-reduced-motion:reduce){#side{transition:none}}
+
+#wrap{scrollbar-gutter:stable;scrollbar-width:auto;scrollbar-color:var(--mut) transparent}
+#wrap::-webkit-scrollbar{width:12px;height:12px}
+#wrap::-webkit-scrollbar-thumb{background:var(--mut);border-radius:8px;border:3px solid var(--bg)}
+#wrap::-webkit-scrollbar-track{background:transparent}
+.dz-row .dz-tw table{min-width:0}
+.dz-row .dz-tw td,.dz-row .dz-tw th{padding:7px 8px}
+.dz-row .dz-tw td:first-child{white-space:normal;min-width:130px}
+.dz .gcell{width:22%!important;min-width:60px!important}
+
+/* ---- página inicial: escolha da obra ---- */
+#home{position:fixed;inset:0;overflow-y:auto;background:var(--bg);z-index:50;padding:32px 16px calc(32px + env(safe-area-inset-bottom,0px))}
+#home .hin{max-width:1120px;margin:0 auto;display:grid;gap:22px;font-family:"IBM Plex Sans",Arial,Helvetica,sans-serif}
+#home h1{margin:0;font-size:clamp(24px,3.4vw,34px);color:var(--acc);text-wrap:balance}
+#home .lead{margin:6px 0 0;color:var(--mut);font-size:14px;max-width:62ch}
+#home .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.ocard{all:unset;box-sizing:border-box;cursor:pointer;background:var(--panel);border:1px solid var(--grid);border-top:4px solid var(--acc);border-radius:10px;padding:18px;display:grid;gap:12px;align-content:start;transition:box-shadow .15s,transform .15s}
+.ocard:hover{box-shadow:0 6px 22px rgba(0,0,0,.12);transform:translateY(-1px)}
+.ocard:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.ocard .on_{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.ocard h2{margin:0;font-size:22px;color:var(--fg)}
+.ocard .corte{font-size:12px;color:var(--mut);white-space:nowrap}
+.ocard .kv{display:grid;grid-template-columns:1fr 1fr;gap:10px 14px}
+.ocard .kv div{display:grid;gap:2px}.ocard .kv span{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);font-weight:700}
+.ocard .kv b{font-size:17px;color:var(--fg);font-variant-numeric:tabular-nums}
+.ocard .bar{height:6px;border-radius:3px;background:var(--grid);overflow:hidden}.ocard .bar i{display:block;height:100%;background:var(--acc)}
+.ocard .foot{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.chip{font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px}
+.chip.ok{background:#e8f3e9;color:#2e7d32}.chip.bad{background:#fdecea;color:#c62828}
+:root[data-theme="dark"] .chip.ok{background:#1d3322;color:#6fcf7a}:root[data-theme="dark"] .chip.bad{background:#3a1f1d;color:#ff7b72}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .chip.ok{background:#1d3322;color:#6fcf7a}:root:not([data-theme="light"]) .chip.bad{background:#3a1f1d;color:#ff7b72}}
+.ocard .go{font-size:13px;font-weight:700;color:var(--acc)}
+.ocard.add{border-top-color:var(--grid);border-style:dashed;cursor:default}
+.ocard.add h2{font-size:17px}.ocard.add ol{margin:0;padding-left:18px;color:var(--fg);font-size:13px;line-height:1.55}
+.ocard.add p{margin:0;color:var(--mut);font-size:12px}
+#home .search{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+#home .search input{flex:1;min-width:200px;max-width:360px;padding:9px 12px;border-radius:8px;border:1px solid var(--grid);background:var(--panel);color:var(--fg);font:14px Arial}
+#home .cnt{color:var(--mut);font-size:13px}
+#side .back{all:unset;cursor:pointer;font:12px Arial;color:var(--acc);padding:4px 8px;border-radius:6px}
+#side .back:hover{background:var(--hd)}
+#loading{position:fixed;inset:0;display:grid;place-items:center;background:var(--bg);z-index:60;color:var(--mut);font:14px Arial}
+</style>
+<style id="obracss"></style>
+<section id="home" aria-label="Escolha da obra"><div class="hin">
+ <div><h1>Fluxo de caixa das obras</h1><p class="lead">Escolha a obra para abrir os painéis (DASHBOARD e RETRATO) e as abas da planilha.</p></div>
+ <div class="search"><input id="osearch" type="search" placeholder="Buscar obra…" aria-label="Buscar obra"><span class="cnt" id="ocount"></span></div>
+ <div class="grid" id="ogrid"></div>
+</div></section>
+<div id="loading" hidden>Carregando a obra…</div>
+<div id="app" hidden>
+<aside id="side" aria-label="Abas da planilha"></aside>
+<main id="main">
+<header><button id="menubtn" type="button" aria-label="Abrir lista de abas">☰ Abas</button><span id="curtab"></span>
+<div class="leg"><b style="color:var(--in)">azul = entrada</b><b style="color:var(--link)">verde = vínculo</b><b>preto = fórmula</b><b>cinza = mês realizado</b></div>
+<button id="gridbtn" type="button" hidden>Ver como planilha</button><button id="presbtn" type="button">▶ Apresentar</button><div id="cell">Toque/clique numa célula para ver a fórmula</div></header>
+<div id="note" class="note" hidden></div>
+<div id="wrap"></div>
+</main></div>
+<div class="pnav" id="pnav"><button type="button" id="pprev" aria-label="Painel anterior">◀</button><span id="pcount">1 / 2</span><button type="button" id="pnext" aria-label="Próximo painel">▶</button><button type="button" id="pexit">Sair (Esc)</button></div>
+<script>
+let RET=null;
+function renderRet(){
+  const R=RET,fmtC=(c,i)=>{const v=c.v;if(i===0||i===2)return fM(v);if(i===1)return (v||0).toLocaleString('pt-BR',{maximumFractionDigits:0})+' pts';if(i===3||i===4)return fP(v);return esc(v||'')};
+  const bar=(v,col)=>v==null?'<span class="na">—</span>':`<div class="rb"><i style="width:${Math.max(0,Math.min(1,v))*100}%;background:${col}"></i><span>${fP(v)}</span></div>`;
+  const rows=R.rows.map(x=>{const cls=x.k==='pl'?'':x.k;const f2=v=>v==null?'':fBR(v,0);
+    return `<tr class="${cls}"><td>${esc(x.c??'')}</td><td class="nm">${esc(x.n)}</td><td>${x.k==='tot'?'':bar(x.ff,'var(--s1)')}</td><td class="num">${x.fc==null?'':fP(x.fc)}</td><td class="num">${f2(x.rs)}</td><td class="num">${x.ic==null?'':x.ic.toLocaleString('pt-BR',{maximumFractionDigits:0})}</td><td class="num">${f2(x.rsel)}</td><td>${x.pa==null?'':bar(x.pa/Math.max(...R.rows.filter(y=>y.k==='pl').map(y=>y.pa||0)),'var(--s2)').replace(/<span>.*<\/span>/,'<span>'+fP(x.pa)+'</span>')}</td><td class="num">${x.fin==null?'':fP(x.fin)}</td><td class="obs">${esc(x.obs)}${x.nota?`<div class="nota">Anotação do modelo anterior: ${esc(x.nota)}</div>`:''}</td></tr>`}).join('');
+  wrap.innerHTML=`<div class="dz rt">
+   <div class="dz-head"><div><h1>${esc(R.title)}</h1><p>${esc(R.sub)}</p></div></div>
+   <div class="dz-kpis">${R.cards.map((c,i)=>`<div class="dz-kpi"><span class="l">${esc(c.l)}</span><span class="v"${i===5?' style="font-size:16px;line-height:1.25"':''}>${fmtC(c,i)}</span><span class="n">${esc(c.n||'')}</span>${i===3?`<div class="dz-bar"><i style="width:${(c.v*100).toFixed(1)}%"></i></div>`:''}</div>`).join('')}</div>
+   <div class="dz-card"><h2>PLs em ${R.ano} — execução física, desembolso e situação em 31/12/${R.ano}</h2>
+    <div class="leg"><span><span class="sw" style="background:var(--s1)"></span>Execução física no fim do ano (Prevision)</span><span><span class="sw" style="background:var(--s2)"></span>% do desembolso do ano</span><span>INCC selecionado: ${esc(R.incc_mes)} (${(R.incc_idx||0).toLocaleString('pt-BR',{minimumFractionDigits:2})})</span></div>
+    <div class="dz-tw"><table class="rtab"><thead><tr class="hd"><th>Cód.</th><th style="text-align:left">PL / serviço</th><th>Execução física<br>fim do ano</th><th>Físico<br>no corte</th><th>Desembolso<br>R$ nominal</th><th>Desembolso<br>INCC</th><th>R$ do INCC<br>selecionado</th><th>% do ano</th><th>Avanço<br>financeiro</th><th style="text-align:left">Situação em 31/12/${R.ano} (cronograma de atividades)</th></tr></thead>
+    <tbody>${rows}</tbody></table></div>
+    <p class="note">Execução física = % "Previsto" acumulado do cronograma físico-financeiro do Prevision em dezembro; no corte = % "Realizado". Situação em 31/12 = atividades do cronograma de atividades concluídas ou em execução nessa data, pelo andar mais alto.</p></div>
+  </div>`;
+  wrap.scrollTo(0,0);
+}
+
+let DASH=null;let gridMode=false;
+const fBR=(v,d=0)=>(v<0?'-':'')+'R$ '+Math.abs(v).toLocaleString('pt-BR',{minimumFractionDigits:d,maximumFractionDigits:d});
+const fM=v=>'R$ '+(v/1e6).toLocaleString('pt-BR',{minimumFractionDigits:1,maximumFractionDigits:1})+' mi';
+const fP=(v,d=1)=>(v*100).toLocaleString('pt-BR',{minimumFractionDigits:d,maximumFractionDigits:d})+'%';
+const MES=['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+const mLab=s=>{const[y,m]=s.split('-');return MES[+m-1]+'/'+y.slice(2)};
+function tipAt(el,html,x,y){el.innerHTML=html;el.hidden=false;const w=el.offsetWidth,h=el.offsetHeight;
+  el.style.left=Math.min(window.innerWidth-w-8,Math.max(8,x+14))+'px';el.style.top=Math.max(8,y-h-10)+'px'}
+function niceStep(v){const p=Math.pow(10,Math.floor(Math.log10(v)));const n=v/p;return (n<=1?1:n<=2?2:n<=2.5?2.5:n<=5?5:10)*p}
+function niceMax(v){const st=niceStep(v/4);return {mx:Math.ceil(v/st)*st,st}}
+function annualSVG(D){
+  const ys=D.years.filter(y=>y.anual>0.5),W=520,H=250,L=48,R=10,T=18,B=28,pw=W-L-R,ph=H-T-B;
+  const nm=niceMax(Math.max(...ys.map(y=>y.anual))),mx=nm.mx,nt=Math.round(mx/nm.st);const bw=pw/ys.length;let g='';
+  for(let i=0;i<=nt;i++){const v=nm.st*i,y=T+ph-ph*v/mx;g+=`<line class="grid" x1="${L}" x2="${W-R}" y1="${y}" y2="${y}"/><text x="${L-6}" y="${y+4}" text-anchor="end">${(v/1e6).toLocaleString('pt-BR')}M</text>`}
+  ys.forEach((y,i)=>{const x=L+i*bw+bw*.2,w=bw*.6,hr=ph*y.real/mx,hp=ph*y.proj/mx,base=T+ph;
+    const r=4,top=base-hr-hp;
+    if(y.real>0){g+=`<rect x="${x}" y="${base-hr+(hp>0?1:0)}" width="${w}" height="${Math.max(0,hr-(hp>0?1:0))}" fill="var(--s1)" rx="${hp>0?0:r}"/>`}
+    if(y.proj>0){g+=`<path d="M${x},${base-hr-1} v${-(hp-1-r)} q0,-${r} ${r},-${r} h${w-2*r} q${r},0 ${r},${r} v${hp-1-r} z" fill="var(--s2)"/>`}
+    g+=`<text x="${x+w/2}" y="${top-5}" text-anchor="middle" style="fill:var(--d-ink);font-weight:600">${(y.anual/1e6).toLocaleString('pt-BR',{maximumFractionDigits:1})}</text>`;
+    g+=`<text x="${x+w/2}" y="${H-10}" text-anchor="middle" style="${y.y===D.ano?'fill:var(--d-navy);font-weight:700':''}">${y.y}</text>`;
+    g+=`<rect class="hit" data-i="${i}" x="${L+i*bw}" y="${T}" width="${bw}" height="${ph}" fill="transparent"/>`});
+  g+=`<line class="axis" x1="${L}" x2="${W-R}" y1="${T+ph}" y2="${T+ph}"/>`;
+  return {svg:`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Desembolso anual realizado e a realizar">${g}</svg>`,ys}
+}
+function curveSVG(D){
+  const c=D.curve,W=1000,H=240,L=40,R=12,T=14,B=26,pw=W-L-R,ph=H-T-B,n=c.length,X=i=>L+pw*i/(n-1),Y=p=>T+ph-ph*p;
+  let g='';for(let i=0;i<=4;i++){const y=Y(i/4);g+=`<line class="grid" x1="${L}" x2="${W-R}" y1="${y}" y2="${y}"/><text x="${L-6}" y="${y+4}" text-anchor="end">${i*25}%</text>`}
+  const ci=c.findIndex(p=>p.m===D.corte);
+  c.forEach((p,i)=>{if(p.m.endsWith('-01'))g+=`<text x="${X(i)}" y="${H-8}" text-anchor="middle">${p.m.slice(0,4)}</text><line class="grid" x1="${X(i)}" x2="${X(i)}" y1="${T+ph}" y2="${T+ph+4}"/>`});
+  const pts=c.map((p,i)=>`${X(i).toFixed(1)},${Y(p.p).toFixed(1)}`);
+  if(ci>=0){g+=`<path d="M${pts.slice(0,ci+1).join(' L')} L${X(ci)},${Y(0)} L${X(0)},${Y(0)} Z" fill="var(--s1)" opacity=".12"/>`;
+    g+=`<line x1="${X(ci)}" x2="${X(ci)}" y1="${T}" y2="${T+ph}" stroke="var(--d-mut)" stroke-dasharray="4 4"/><text x="${X(ci)+6}" y="${T+12}" style="fill:var(--d-ink)">corte ${mLab(D.corte)} · ${fP(c[ci].p)}</text>`}
+  g+=`<polyline points="${pts.join(' ')}" fill="none" stroke="var(--s1)" stroke-width="2"/>`;
+  g+=`<line class="cx" x1="0" x2="0" y1="${T}" y2="${T+ph}" stroke="var(--d-ink2)" opacity="0"/><circle class="cd" r="4.5" fill="var(--s1)" stroke="var(--d-card)" stroke-width="2" opacity="0"/>`;
+  g+=`<line class="axis" x1="${L}" x2="${W-R}" y1="${T+ph}" y2="${T+ph}"/><rect class="hitc" x="${L}" y="${T}" width="${pw}" height="${ph}" fill="transparent"/>`;
+  return {svg:`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Curva S do percentual acumulado">${g}</svg>`,X,Y,L,pw,n}
+}
+function renderDash(){
+  const D=DASH,ok=String(D.conf).startsWith('✓'),A=annualSVG(D),C=curveSVG(D),gmax=Math.max(...D.groups.map(g=>g.v),1);
+  const yrows=D.years.map(y=>`<tr class="${y.y===D.ano?'hl':''}"><td>${y.y}</td><td>${y.anual?fBR(y.anual,2):'-'}</td><td>${fBR(y.acum,2)}</td><td>${fP(y.pa,2)}</td><td>${fP(y.pac,2)}</td><td class="sep"></td><td>${y.real?fBR(y.real,2):'-'}</td><td>${y.proj?fBR(y.proj,2):'-'}</td></tr>`).join('');
+  const grows=D.groups.map(g=>`<tr><td>${g.name}</td><td>${fBR(g.v,2)}</td><td>${fP(g.p)}</td><td>${g.av==null?'':fP(g.av)}</td><td class="gcell"><div class="gbar" style="width:${(g.v/gmax*100).toFixed(1)}%"></div></td></tr>`).join('');
+  wrap.innerHTML=`<div class="dz">
+  <div class="dz-head"><div><h1>${D.title}</h1><p>${D.sub}</p></div></div>
+  <div class="dz-kpis">
+   <div class="dz-kpi"><span class="l">Projeção total</span><span class="v">${fM(D.proj)}</span><span class="n">orçamento projetado (IEC)</span></div>
+   <div class="dz-kpi"><span class="l">Realizado até o corte</span><span class="v">${fM(D.real)}</span><span class="n">${fP(D.preal)} da projeção</span><div class="dz-bar"><i style="width:${(D.preal*100).toFixed(1)}%"></i></div></div>
+   <div class="dz-kpi"><span class="l">Desembolso em ${D.ano}</span><span class="v">${fM(D.ano_v)}</span><span class="n">realizado + previsto</span></div>
+   <div class="dz-kpi"><span class="l">Saldo a realizar</span><span class="v">${fM(D.saldo)}</span><span class="n">após a data de corte</span></div>
+   <div class="dz-kpi st ${ok?'ok':'bad'}"><span class="l">Conferência</span><span class="v">${D.conf}</span><span class="n">detalhes abaixo</span></div>
+  </div>
+   <div class="dz-card"><div class="dz-tw"><table>
+    <thead><tr class="cap"><th colspan="5">REALIZADO (ATUAL)</th><th class="sep"></th><th colspan="2" style="background:transparent;font-size:11px;color:var(--d-mut);vertical-align:bottom">COMPOSIÇÃO DO ANO</th></tr>
+    <tr class="cap2"><th colspan="5">${D.month}</th><th class="sep"></th><th colspan="2" style="background:transparent"></th></tr>
+    <tr class="hd"><th>Ano</th><th>Anual R$</th><th>Acumulado R$</th><th>Anual %</th><th>Acumulado %</th><th class="sep"></th><th><span class="sw" style="background:var(--s1)"></span>Realizado R$</th><th><span class="sw" style="background:var(--s2)"></span>A realizar R$</th></tr></thead>
+    <tbody>${yrows}</tbody>
+    <tfoot><tr><td>TOTAL</td><td>${fBR(D.total,2)}</td><td></td><td>100,00%</td><td></td><td class="sep"></td><td>${fBR(D.treal,2)}</td><td>${fBR(D.tproj,2)}</td></tr></tfoot></table></div>
+    <p class="note">Linha destacada = ano do retrato. Realizado = até a data de corte; a realizar = previsto depois dela.</p></div>
+  
+  <div class="dz-card"><h2>Curva S — % acumulado da projeção</h2>${C.svg}</div>
+  <div class="dz-row">
+   <div class="dz-card"><h2>Desembolso anual (R$ milhões)</h2><div class="leg"><span><span class="sw" style="background:var(--s1)"></span>Realizado</span><span><span class="sw" style="background:var(--s2)"></span>A realizar</span></div>${A.svg}</div>
+   <div class="dz-card"><h2>Desembolso em ${D.ano} por grupo</h2><div class="dz-tw"><table>
+    <thead><tr class="hd"><th>Grupo</th><th>R$</th><th>% do ano</th><th>Avanço financeiro</th><th></th></tr></thead>
+    <tbody>${grows}</tbody><tfoot><tr><td>TOTAL</td><td>${fBR(D.gtotal,2)}</td><td>100,0%</td><td></td><td></td></tr></tfoot></table></div>
+    <p class="note">Avanço financeiro = acumulado até dezembro do ano ÷ projeção.</p></div>
+  </div>
+  <div class="dz-card"><h2>Pendências da conferência</h2><ul class="dz-pend">${D.pend.length?D.pend.map(p=>`<li>${esc(p)}</li>`).join(''):'<li class="ok">Nenhuma pendência.</li>'}</ul>
+    <p class="note">Resolva na aba indicada (coluna H) ou em VALOR POR PL. Depois, gere a visualização novamente.</p></div>
+  <div class="tip" hidden></div></div>`;
+  const tip=wrap.querySelector('.tip');
+  wrap.querySelectorAll('.hit').forEach(h=>{const y=A.ys[+h.dataset.i];
+    const show=e=>tipAt(tip,`<b>${y.y}</b><br><span class="sw" style="background:var(--s1)"></span>Realizado ${fBR(y.real)}<br><span class="sw" style="background:var(--s2)"></span>A realizar ${fBR(y.proj)}<br>Total ${fBR(y.anual)} · ${fP(y.pa)} do total`,e.clientX,e.clientY);
+    h.addEventListener('pointermove',show);h.addEventListener('pointerleave',()=>tip.hidden=true)});
+  const svgc=wrap.querySelector('svg[aria-label^="Curva"]'),hc=svgc.querySelector('.hitc'),cx=svgc.querySelector('.cx'),cd=svgc.querySelector('.cd');
+  hc.addEventListener('pointermove',e=>{const r=svgc.getBoundingClientRect(),sx=(e.clientX-r.left)*1000/r.width;
+    const i=Math.max(0,Math.min(C.n-1,Math.round((sx-C.L)/C.pw*(C.n-1)))),p=DASH.curve[i];
+    cx.setAttribute('x1',C.X(i));cx.setAttribute('x2',C.X(i));cx.setAttribute('opacity','.5');cd.setAttribute('cx',C.X(i));cd.setAttribute('cy',C.Y(p.p));cd.setAttribute('opacity','1');
+    tipAt(tip,`<b>${mLab(p.m)}</b>${p.m<=DASH.corte?' · realizado':' · previsto'}<br>No mês ${fBR(p.v)}<br>Acumulado ${fP(p.p)}`,e.clientX,e.clientY)});
+  hc.addEventListener('pointerleave',()=>{tip.hidden=true;cx.setAttribute('opacity','0');cd.setAttribute('opacity','0')});
+  wrap.scrollTo(0,0);
+}
+
+const OBRAS=/*OBRAS*/[];
+let D=[],OBRA=null;
+const MAIN=["LEIA-ME","DASHBOARD","VALOR POR PL","RETRATO 2027","MODELO PARA BI","AUX. CURVA","\"INCC-FGV\"","CURVA PREVISION","CP RESUMO","DADOS HISTORICOS","DADOS BRUTOS"];
+const INPUT=new Set(["VALOR POR PL","\"INCC-FGV\"","CURVA PREVISION","DADOS BRUTOS","CRONOGRAMA ATIVIDADES"]);
+const side=document.getElementById('side'),wrap=document.getElementById('wrap'),cell=document.getElementById('cell'),note=document.getElementById('note'),curtab=document.getElementById('curtab');
+const sel={value:''};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function show(name){
+  const s=D.find(x=>x.name===name); if(!s) return;
+  const isD=name==='DASHBOARD'&&DASH;gridbtn.hidden=!isD;gridbtn.textContent=gridMode?'Ver como painel':'Ver como planilha';
+  if(name==='RETRATO 2027'&&RET&&!gridMode){gridbtn.hidden=false;gridbtn.textContent='Ver como planilha';markOn(name);sel.value='';note.hidden=true;renderRet();try{localStorage.setItem('aba:'+(OBRA&&OBRA.id),name)}catch(e){};return}
+  if(name==='RETRATO 2027'&&RET){gridbtn.hidden=false;gridbtn.textContent='Ver como painel'}
+  if(isD&&!gridMode){markOn(name);sel.value='';note.hidden=true;renderDash();try{localStorage.setItem('aba:'+(OBRA&&OBRA.id),name)}catch(e){};return}
+  markOn(name);
+  
+  note.hidden=!s.note; note.textContent=s.note;
+  const tw=38+s.w.reduce((a,w)=>a+Math.max(24,w),0);let h='<table style="width:'+tw+'px"><colgroup><col style="width:38px">'+s.w.map(w=>`<col style="width:${Math.max(24,w)}px">`).join('')+'</colgroup><thead><tr><th class="c0"></th>'+s.cols.map(c=>`<th>${c}</th>`).join('')+'</tr></thead><tbody>';
+  s.rows.forEach((r,i)=>{const m={};r.forEach(c=>m[c[0]]=c);
+    h+=`<tr><td class="rh">${i+1}</td>`;
+    for(let j=0;j<s.cols.length;j++){const c=m[j];
+      if(!c){h+='<td></td>';continue}
+      const cls=['s'+c[3],c[2],c[4]?'f':''].join(' ');
+      h+=`<td class="${cls}" data-a="${s.cols[j]}${i+1}"${c[4]?` data-f="${esc(c[4])}"`:''} title="${esc(c[1])}">${esc(c[1])}</td>`}
+    h+='</tr>'});
+  wrap.innerHTML=h+'</tbody></table>'; wrap.scrollTo(0,0);
+  cell.textContent='Toque/clique numa célula para ver a fórmula';
+  try{localStorage.setItem('aba:'+(OBRA&&OBRA.id),name)}catch(e){}
+}
+wrap.addEventListener('click',e=>{const td=e.target.closest('td[data-a]');if(!td)return;
+  wrap.querySelectorAll('.sel').forEach(x=>x.classList.remove('sel'));td.classList.add('sel');
+  cell.textContent=td.dataset.a+'  '+(td.dataset.f||td.textContent||'(vazia)')});
+const PAINEIS=["DASHBOARD","RETRATO 2027"];
+const GRUPOS=[["Entradas de dados",["VALOR POR PL","\"INCC-FGV\"","DADOS BRUTOS","CURVA PREVISION","CRONOGRAMA ATIVIDADES"]],
+ ["Cálculos",["MODELO PARA BI","AUX. CURVA","CP RESUMO","DADOS HISTORICOS"]]];
+let DISC=[],det=null;
+function btn(n,extra){const b=document.createElement('button');b.type='button';b.dataset.n=n;b.textContent=n.trim();if(extra)b.classList.add(extra);
+  b.onclick=()=>{gridMode=false;show(n);document.body.classList.remove('menu')};return b}
+function grupo(tit,nomes,cls){const g=document.createElement('div');g.className='grp '+(cls||'');g.innerHTML=`<div class="gt">${tit}</div>`;
+  nomes.filter(n=>D.find(x=>x.name===n)).forEach(n=>g.appendChild(btn(n,INPUT.has(n)?'in-dot':'')));return g}
+function buildSide(){
+  const usados=new Set([...PAINEIS,...GRUPOS.flatMap(g=>g[1]),"LEIA-ME"]);
+  DISC=D.map(x=>x.name).filter(n=>!usados.has(n));
+  side.innerHTML=`<div class="brand"><button type="button" class="back" id="backbtn">← Todas as obras</button><b>${esc(OBRA.nome)}</b><span>data de corte: ${mLab(OBRA.corte)}</span></div>`;
+  side.querySelector('#backbtn').onclick=goHome;
+  side.appendChild(grupo('Painéis',PAINEIS,'dash'));
+  GRUPOS.forEach(([t,n])=>side.appendChild(grupo(t,n)));
+  det=document.createElement('details');det.className='grp';det.innerHTML=`<summary>Disciplinas (${DISC.length})</summary><input id="dfilt" type="search" placeholder="Filtrar disciplina…" aria-label="Filtrar disciplina">`;
+  DISC.forEach(n=>det.appendChild(btn(n)));side.appendChild(det);
+  det.querySelector('#dfilt').addEventListener('input',e=>{const q=e.target.value.toLowerCase();det.querySelectorAll('button').forEach(b=>b.hidden=q&&!b.dataset.n.toLowerCase().includes(q))});
+  side.appendChild(grupo('Ajuda',["LEIA-ME"]));
+}
+function markOn(name){document.body.classList.toggle('panel',((name==='DASHBOARD'&&DASH)||(name==='RETRATO 2027'&&RET))&&!gridMode);side.querySelectorAll('button[data-n]').forEach(b=>b.classList.toggle('on',b.dataset.n===name));
+  curtab.textContent=name.trim();if(det&&DISC.includes(name))det.open=true}
+const gridbtn=document.getElementById('gridbtn');gridbtn.onclick=()=>{gridMode=!gridMode;show(side.querySelector('button.on')?.dataset.n||'DASHBOARD')};
+document.getElementById('menubtn').onclick=()=>document.body.classList.toggle('menu');
+// modo apresentação: só os painéis, com setas
+let pi=0;const pcount=document.getElementById('pcount');
+function pshow(i){pi=(i+PAINEIS.length)%PAINEIS.length;gridMode=false;show(PAINEIS[pi]);pcount.textContent=(pi+1)+' / '+PAINEIS.length}
+function pstart(){document.body.classList.add('present');const cur=PAINEIS.indexOf(side.querySelector('button.on')?.dataset.n);pshow(cur<0?0:cur);
+  try{document.documentElement.requestFullscreen?.().catch(()=>{})}catch(e){}}
+function pstop(){document.body.classList.remove('present');try{if(document.fullscreenElement)document.exitFullscreen().catch(()=>{})}catch(e){}}
+document.getElementById('presbtn').onclick=pstart;document.getElementById('pexit').onclick=pstop;
+document.getElementById('pprev').onclick=()=>pshow(pi-1);document.getElementById('pnext').onclick=()=>pshow(pi+1);
+document.addEventListener('keydown',e=>{if(!document.body.classList.contains('present'))return;
+  if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();pshow(pi+1)}else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();pshow(pi-1)}else if(e.key==='Escape')pstop()});
+document.addEventListener('fullscreenchange',()=>{if(!document.fullscreenElement&&document.body.classList.contains('present'))pstop()});
+// ---- página inicial e troca de obra
+const home=document.getElementById('home'),app=document.getElementById('app'),loading=document.getElementById('loading');
+const cache={};
+function cardHTML(o){const ok=String(o.conf).startsWith('✓');return `<button class="ocard" type="button" data-id="${esc(o.id)}">
+  <div class="on_"><h2>${esc(o.nome)}</h2><span class="corte">corte ${mLab(o.corte)}</span></div>
+  <div class="kv"><div><span>Projeção total</span><b>${fM(o.proj)}</b></div><div><span>Realizado</span><b>${fM(o.real)}</b></div>
+   <div><span>Desembolso ${o.ano}</span><b>${fM(o.ano_v)}</b></div><div><span>Saldo a realizar</span><b>${fM(o.saldo)}</b></div></div>
+  <div><div class="bar"><i style="width:${(o.preal*100).toFixed(1)}%"></i></div><span class="corte">${fP(o.preal)} da projeção realizado</span></div>
+  <div class="foot"><span class="chip ${ok?'ok':'bad'}">${esc(o.conf)}</span><span class="go">Abrir painéis →</span></div></button>`}
+function renderHome(q=''){const lst=OBRAS.filter(o=>o.nome.toLowerCase().includes(q.toLowerCase()));
+  document.getElementById('ocount').textContent=`${OBRAS.length} obra${OBRAS.length>1?'s':''} cadastrada${OBRAS.length>1?'s':''}`;
+  document.getElementById('ogrid').innerHTML=lst.map(cardHTML).join('')+`<div class="ocard add"><h2>Incluir outra obra</h2>
+   <ol><li>Copie a planilha modelo (fluxo_caixa_botanico_modelo.xlsx) e renomeie para a nova obra.</li>
+   <li>Preencha as abas de entrada: VALOR POR PL, "INCC-FGV", DADOS BRUTOS, CURVA PREVISION e CRONOGRAMA ATIVIDADES.</li>
+   <li>Envie a planilha no chat do Claude: ela entra nesta lista, com os mesmos painéis.</li></ol>
+   <p>Cada obra é um arquivo separado, então a página continua leve com várias obras.</p></div>`;
+  document.querySelectorAll('.ocard[data-id]').forEach(b=>b.onclick=()=>{location.hash=b.dataset.id})}
+document.getElementById('osearch').addEventListener('input',e=>renderHome(e.target.value));
+function goHome(){pstop();location.hash='inicio'}
+async function openObra(id){
+  const o=OBRAS.find(x=>x.id===id);if(!o){showHome();return}
+  loading.hidden=false;
+  try{if(!cache[id]){const r=await fetch(`obras/${id}.json`);if(!r.ok)throw new Error(r.status);cache[id]=await r.json()}}
+  catch(e){loading.hidden=true;alertBox(`Não foi possível carregar os dados da obra ${o.nome} (${e.message}). Tente recarregar a página.`);return}
+  const j=cache[id];OBRA=o;D=j.D;DASH=j.DASH;RET=j.RET;document.getElementById('obracss').textContent=j.css;gridMode=false;
+  buildSide();home.hidden=true;app.hidden=false;loading.hidden=true;document.title='Fluxo de Caixa · '+o.nome;
+  let start='DASHBOARD';try{const a=localStorage.getItem('aba:'+id);if(a&&D.find(x=>x.name===a))start=a}catch(e){}
+  show(start);
+}
+function alertBox(msg){document.getElementById('ogrid').insertAdjacentHTML('beforebegin',`<p class="lead" style="color:#c62828">${esc(msg)}</p>`)}
+function showHome(){app.hidden=true;home.hidden=false;document.title='Fluxo de Caixa das Obras';renderHome(document.getElementById('osearch').value)}
+function route(){const h=location.hash.replace('#','');if(OBRAS.some(o=>o.id===h))openObra(h);else showHome()}
+window.addEventListener('hashchange',route);
+route();
+</script>
