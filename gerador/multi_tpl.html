@@ -382,7 +382,7 @@ function cardHTML(o){const ok=String(o.conf).startsWith('✓');return `<button c
 function renderHome(q=''){const lst=OBRAS.filter(o=>o.nome.toLowerCase().includes(q.toLowerCase()));
   document.getElementById('ocount').textContent=`${OBRAS.length} obra${OBRAS.length>1?'s':''} cadastrada${OBRAS.length>1?'s':''}`;
   document.getElementById('ogrid').innerHTML=lst.map(cardHTML).join('')+`<div class="ocard add"><h2>Incluir outra obra</h2>
-   <ol><li>Copie a planilha modelo (fluxo_caixa_botanico_modelo.xlsx) e renomeie para a nova obra.</li>
+   <ol><li>Baixe a planilha em branco (fluxo_caixa_MODELO_EM_BRANCO.xlsx) e salve com o nome da obra. A aba LEIA-ME explica o preenchimento.</li>
    <li>Preencha as abas de entrada: VALOR POR PL, "INCC-FGV", DADOS BRUTOS, CURVA PREVISION e CRONOGRAMA ATIVIDADES.</li>
    <li>Envie a planilha no chat do Claude: ela entra nesta lista, com os mesmos painéis.</li></ol>
    <p>Cada obra é um arquivo separado, então a página continua leve com várias obras.</p></div>`;

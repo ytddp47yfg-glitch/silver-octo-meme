@@ -6,8 +6,8 @@ arquivo separado em `site/obras/<id>.json`, que só é carregado quando a obra �
 
 ## Incluir ou atualizar uma obra
 
-1. Parta de `fluxo_caixa_botanico_modelo.xlsx` (mesma estrutura de abas) e preencha as abas de
-   entrada da nova obra: VALOR POR PL, "INCC-FGV", DADOS BRUTOS, CURVA PREVISION e
+1. Parta de `fluxo_caixa_MODELO_EM_BRANCO.xlsx` (mesma estrutura, sem dados; a aba LEIA-ME explica cada
+   entrada) e preencha as abas de entrada da nova obra: VALOR POR PL, "INCC-FGV", DADOS BRUTOS, CURVA PREVISION e
    CRONOGRAMA ATIVIDADES.
 2. Recalcule a planilha no LibreOffice para gravar os valores das fórmulas (o Excel já grava ao salvar):
    `soffice --headless --convert-to xlsx --outdir /tmp/recalc OBRA.xlsx`
