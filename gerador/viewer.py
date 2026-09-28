@@ -124,7 +124,9 @@ if JSON_MODE:
     open(OUTF, 'w').write(obra)
     card = dict(nome=os.environ.get('VW_NOME', 'Obra'), id=os.environ.get('VW_ID', 'obra'), corte=dd['corte'], ano=dd['ano'], proj=dd['proj'],
                 real=dd['real'], preal=dd['preal'], ano_v=dd['ano_v'], saldo=dd['saldo'], conf=dd['conf'],
-                gerado=dt.date.today().isoformat(), kb=round(len(obra) / 1024))
+                gerado=dt.date.today().isoformat(), kb=round(len(obra) / 1024),
+                obra=os.environ.get('VW_OBRA', os.environ.get('VW_ID', 'obra')),     # cenários da mesma obra dividem o cartão
+                cen=os.environ.get('VW_CEN', ''), cen_desc=os.environ.get('VW_CEN_DESC', ''), cen_ord=int(os.environ.get('VW_CEN_ORD', '0')))
     open(OUTF + '.card.json', 'w').write(json.dumps(card, ensure_ascii=False))
 else:
     _h = open(OUTF).read().replace('/*DASH*/null', json.dumps(dash_data(), ensure_ascii=False)).replace('/*RET*/null', json.dumps(ret_data(), ensure_ascii=False, default=str))
