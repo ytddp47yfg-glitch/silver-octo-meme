@@ -90,6 +90,12 @@ font-family:"IBM Plex Sans",Arial,Helvetica,sans-serif;color:var(--d-ink);backgr
 .rt .rb{position:relative;min-width:108px;height:18px;background:var(--d-line);border-radius:3px;overflow:hidden}
 .rt .rb i{position:absolute;left:0;top:0;bottom:0;border-radius:3px 0 0 3px;opacity:.9}
 .rt .rb span{position:relative;display:block;text-align:right;padding:0 6px;font-size:11.5px;line-height:18px;color:var(--d-ink);font-weight:600}
+/* título do quadro fixo ao rolar + cópia do cabeçalho das colunas */
+.rt .rt-stick{position:sticky;top:0;z-index:4;background:var(--d-card);margin:-16px -16px 0;padding:14px 16px 6px;border-radius:10px 10px 0 0}
+.rt .rt-stick h2{margin:0}
+.rt .rt-stick.stuck{box-shadow:0 6px 10px -6px rgba(0,0,0,.28);border-radius:0}
+.rt .rt-hc{overflow:hidden;margin-top:8px;display:none}.rt .rt-stick.hdr .rt-hc{display:block}
+.rt .rt-hc table{table-layout:fixed;min-width:0}
 .rt .na{color:var(--d-mut)}.rt .nota{margin-top:4px;font-size:11px;color:var(--d-mut)}
 
 
@@ -221,6 +227,25 @@ body.present .pnav{display:flex}
 <div class="pnav" id="pnav"><button type="button" id="pprev" aria-label="Painel anterior">◀</button><span id="pcount">1 / 2</span><button type="button" id="pnext" aria-label="Próximo painel">▶</button><button type="button" id="pexit">Sair (Esc)</button></div>
 <script>
 let RET=null;
+let _rtSync=null;
+function stickRet(){
+  if(_rtSync){wrap.removeEventListener('scroll',_rtSync);window.removeEventListener('resize',_rtSync);_rtSync=null}
+  const st=wrap.querySelector('.rt .rt-stick');if(!st)return;
+  const tw=st.parentElement.querySelector('.dz-tw'),real=tw.querySelector('table'),hc=st.querySelector('.rt-hc');
+  hc.innerHTML=`<table class="rtab">${real.querySelector('thead').outerHTML}</table>`;
+  const ct=hc.querySelector('table');
+  const widths=()=>{ct.style.width=real.offsetWidth+'px';const a=real.querySelectorAll('thead th'),b=ct.querySelectorAll('th');
+    a.forEach((th,i)=>{const w=th.getBoundingClientRect().width+'px';b[i].style.width=w;b[i].style.minWidth=w;b[i].style.maxWidth=w})};
+  _rtSync=()=>{if(!st.isConnected){wrap.removeEventListener('scroll',_rtSync);return}
+    const top=wrap.getBoundingClientRect().top,sr=st.getBoundingClientRect();
+    st.classList.toggle('stuck',sr.top<=top+1&&wrap.scrollTop>0);
+    const hdrOut=real.querySelector('thead').getBoundingClientRect().bottom<st.querySelector('h2').getBoundingClientRect().bottom+4;
+    if(hdrOut&&!st.classList.contains('hdr'))widths();
+    st.classList.toggle('hdr',hdrOut);hc.scrollLeft=tw.scrollLeft};
+  tw.addEventListener('scroll',()=>{hc.scrollLeft=tw.scrollLeft},{passive:true});
+  wrap.addEventListener('scroll',_rtSync,{passive:true});window.addEventListener('resize',()=>{widths();_rtSync&&_rtSync()});
+  widths();_rtSync();
+}
 function renderRet(){
   const R=RET,fmtC=(c,i)=>{const v=c.v;if(i===0||i===2)return fM(v);if(i===1)return (v||0).toLocaleString('pt-BR',{maximumFractionDigits:0})+' pts';if(i===3||i===4)return fP(v);return esc(v||'')};
   const bar=(v,col)=>v==null?'<span class="na">—</span>':`<div class="rb"><i style="width:${Math.max(0,Math.min(1,v))*100}%;background:${col}"></i><span>${fP(v)}</span></div>`;
@@ -229,13 +254,14 @@ function renderRet(){
   wrap.innerHTML=`<div class="dz rt">
    <div class="dz-head"><div><h1>${esc(R.title)}</h1><p>${esc(R.sub)}</p></div></div>
    <div class="dz-kpis">${R.cards.map((c,i)=>`<div class="dz-kpi"><span class="l">${esc(c.l)}</span><span class="v"${i===5?' style="font-size:16px;line-height:1.25"':''}>${fmtC(c,i)}</span><span class="n">${esc(c.n||'')}</span>${i===3?`<div class="dz-bar"><i style="width:${(c.v*100).toFixed(1)}%"></i></div>`:''}</div>`).join('')}</div>
-   <div class="dz-card"><h2>PLs em ${R.ano} — execução física, desembolso e situação em 31/12/${R.ano}</h2>
+   <div class="dz-card"><div class="rt-stick"><h2>PLs em ${R.ano} — execução física, desembolso e situação em 31/12/${R.ano}</h2><div class="rt-hc" aria-hidden="true"></div></div>
     <div class="leg"><span><span class="sw" style="background:var(--s1)"></span>Execução física no fim do ano (Prevision)</span><span><span class="sw" style="background:var(--s2)"></span>% do desembolso do ano</span><span>INCC selecionado: ${esc(R.incc_mes)} (${(R.incc_idx||0).toLocaleString('pt-BR',{minimumFractionDigits:2})})</span></div>
     <div class="dz-tw"><table class="rtab"><thead><tr class="hd"><th>Cód.</th><th style="text-align:left">PL / serviço</th><th>Execução física<br>fim do ano</th><th>Físico<br>no corte</th><th>Desembolso<br>R$ nominal</th><th>Desembolso<br>INCC</th><th>R$ do INCC<br>selecionado</th><th>% do ano</th><th>Avanço<br>financeiro</th><th style="text-align:left">Situação em 31/12/${R.ano} (cronograma de atividades)</th></tr></thead>
     <tbody>${rows}</tbody></table></div>
     <p class="note">Execução física = % "Previsto" acumulado do cronograma físico-financeiro do Prevision em dezembro; no corte = % "Realizado". Situação em 31/12 = atividades do cronograma de atividades concluídas ou em execução nessa data, pelo andar mais alto.</p></div>
   </div>`;
   wrap.scrollTo(0,0);
+  stickRet();
 }
 
 let DASH=null;let gridMode=false;
