@@ -184,6 +184,10 @@ body.present .pnav{display:flex}
 .cen .cv{font-size:11px;color:var(--mut);margin-top:4px}.cen .cv b{display:block;font-size:15px;color:var(--fg);font-variant-numeric:tabular-nums}
 .cen .go{font-size:12px;margin-top:2px}
 @media (max-width:420px){.cens{grid-template-columns:1fr}}
+.cens.n3{grid-template-columns:1fr;gap:6px}
+.cens.n3 .cen{grid-template-columns:minmax(0,1fr) auto;column-gap:10px;row-gap:1px;padding:8px 11px}
+.cens.n3 .cen .ct,.cens.n3 .cen .cd{grid-column:1}.cens.n3 .cen .cv{grid-column:2;grid-row:1 / span 2;margin:0;text-align:right;align-self:center}
+.cens.n3 .cen .go{grid-column:2;text-align:right}
 #side .cenbar{display:flex;gap:4px;margin-top:8px;flex-wrap:wrap}
 #side .cenbar button{all:unset;cursor:pointer;font-size:11.5px;font-weight:700;padding:3px 9px;border-radius:999px;border:1px solid var(--grid);color:var(--mut)}
 #side .cenbar button.on{background:var(--acc);border-color:var(--acc);color:#fff}
@@ -392,9 +396,9 @@ function cardMulti(o){const ok=String(o.conf).startsWith('✓');return `<div cla
   <div class="on_"><h2>${esc(o.nome)}</h2><span class="corte">corte ${mLab(o.corte)}</span></div>
   <div class="kv"><div><span>Projeção total</span><b>${fM(o.proj)}</b></div><div><span>Realizado</span><b>${fM(o.real)}</b></div></div>
   <div><div class="bar"><i style="width:${(o.preal*100).toFixed(1)}%"></i></div><span class="corte">${fP(o.preal)} da projeção realizado</span></div>
-  <div class="cens">${o.cens.map(c=>`<button class="cen" type="button" data-id="${esc(c.id)}"><span class="ct">${esc(c.cen)}</span><span class="cd">${esc(c.cen_desc)}</span>
+  <div class="cens${o.cens.length>2?' n3':''}">${o.cens.map(c=>`<button class="cen" type="button" data-id="${esc(c.id)}"><span class="ct">${esc(c.cen)}</span><span class="cd">${esc(c.cen_desc)}</span>
    <span class="cv">Desembolso ${c.ano}<b>${fM(c.ano_v)}</b></span><span class="go">Abrir painéis →</span></button>`).join('')}</div>
-  <div class="foot"><span class="chip ${ok?'ok':'bad'}">${esc(o.conf)}</span><span class="corte">premissas especiais mantidas nos dois cenários</span></div></div>`}
+  <div class="foot"><span class="chip ${ok?'ok':'bad'}">${esc(o.conf)}</span><span class="corte">premissas especiais mantidas em todos os cenários</span></div></div>`}
 function cardHTML(o){if(o.cens&&o.cens.length>1)return cardMulti(o);const ok=String(o.conf).startsWith('✓');return `<button class="ocard" type="button" data-id="${esc(o.id)}">
   <div class="on_"><h2>${esc(o.nome)}</h2><span class="corte">corte ${mLab(o.corte)}</span></div>
   <div class="kv"><div><span>Projeção total</span><b>${fM(o.proj)}</b></div><div><span>Realizado</span><b>${fM(o.real)}</b></div>
