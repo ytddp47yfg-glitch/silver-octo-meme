@@ -38,3 +38,9 @@ Gantt do cronograma de atividades do Prevision (aba CRONOGRAMA ATIVIDADES), em �
     python3 gerador/gantt.py obra_calc.xlsx gantt.json
 
 Depois gere o JSON de cada cenário com `VW_GANTT=gantt.json` no ambiente do `viewer.py`.
+
+## PDF dos painéis
+
+Com o site servido localmente (`python3 -m http.server 8766 -d site`), `node gerador/pdfs.js 8766` gera `site/pdf/<cenário>.pdf`
+com todos os painéis do cenário (A4 paisagem; o Gantt repete a régua de meses em cada página e traz no final as notas dos
+pacotes inferidos). Rode `python3 gerador/make_site.py` depois, para o botão "⬇ PDF" aparecer.

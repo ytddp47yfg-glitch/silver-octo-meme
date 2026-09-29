@@ -9,6 +9,7 @@ import glob, json, os
 HERE = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.join(os.path.dirname(HERE), 'site')
 cards = [json.load(open(f)) for f in sorted(glob.glob(os.path.join(SITE, 'obras', '*.json.card.json')))]
+for c in cards: c['pdf'] = os.path.exists(os.path.join(SITE, 'pdf', c['id'] + '.pdf'))   # PDF dos painéis (gerador/pdfs.js)
 # cartões com o mesmo 'obra' são cenários da mesma obra (ex.: padrão × Prevision) e viram um só cartão
 obras = {}
 for c in sorted(cards, key=lambda c: c.get('cen_ord', 0)):

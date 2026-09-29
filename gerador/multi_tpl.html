@@ -267,6 +267,18 @@ body.present .pnav{display:flex}
 .gz .inf .gt .b i{background:var(--g-inf)!important}.gz .ic{display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border-radius:50%;background:var(--g-inf);color:#fff;font:700 10px Arial;flex:0 0 14px;margin-left:4px}
 .gz .nx{font-size:10.5px;font-weight:700;color:var(--g-inft);border:1px solid var(--g-inf);border-radius:9px;padding:0 6px;margin-left:6px;flex:0 0 auto}
 .gz .gtip .gnt{margin-top:6px;padding-top:6px;border-top:1px solid var(--d-line);color:var(--g-inft);max-width:340px;white-space:normal}
+/* PDF: todos os painéis empilhados, uma seção por página (usado pelo gerador de PDF) */
+html.printmode,html.printmode body{height:auto!important;overflow:visible!important;background:#fff}
+html.printmode #side,html.printmode #main header,html.printmode #note,html.printmode .pnav,html.printmode #home,html.printmode .tip,html.printmode .ftip,html.printmode .gtip,html.printmode .rt-hc,html.printmode .gtool,html.printmode .fbtns{display:none!important}
+html.printmode #app{display:block!important;height:auto!important}
+html.printmode #main,html.printmode #wrap{height:auto!important;overflow:visible!important;max-height:none!important}
+html.printmode .gbox,html.printmode .dz-tw,html.printmode .fchart{max-height:none!important;overflow:visible!important}
+html.printmode .pbreak{break-before:page;page-break-before:always}
+.prt{display:none}html.printmode .prt{display:inline}html.printmode .scr{display:none}
+html.printmode .dz-card,html.printmode .fcard,html.printmode .dz-kpis,html.printmode .dz-head,html.printmode svg,html.printmode .grow{break-inside:avoid;page-break-inside:avoid}
+html.printmode h2{break-after:avoid}
+html.printmode .gz .gv span{position:static}
+#pdfbtn{font:12px Arial;padding:6px 10px;border-radius:6px;border:1px solid var(--grid);background:var(--panel);color:var(--fg);text-decoration:none;font-weight:700}
 </style>
 <style id="obracss"></style>
 <section id="home" aria-label="Escolha da obra"><div class="hin">
@@ -280,7 +292,7 @@ body.present .pnav{display:flex}
 <main id="main">
 <header><button id="menubtn" type="button" aria-label="Abrir lista de abas">☰ Abas</button><span id="curtab"></span>
 <div class="leg"><b style="color:var(--in)">azul = entrada</b><b style="color:var(--link)">verde = vínculo</b><b>preto = fórmula</b><b>cinza = mês realizado</b></div>
-<button id="gridbtn" type="button" hidden>Ver como planilha</button><button id="presbtn" type="button">▶ Apresentar</button><div id="cell">Toque/clique numa célula para ver a fórmula</div></header>
+<button id="gridbtn" type="button" hidden>Ver como planilha</button><button id="presbtn" type="button">▶ Apresentar</button><a id="pdfbtn" href="#" download hidden title="Baixar os painéis deste cenário em PDF">⬇ PDF</a><div id="cell">Toque/clique numa célula para ver a fórmula</div></header>
 <div id="note" class="note" hidden></div>
 <div id="wrap"></div>
 </main></div>
@@ -369,7 +381,7 @@ function renderGantt(){
    <div class="gtool"><input type="search" id="gq" placeholder="Buscar PL, pacote ou pavimento…" aria-label="Buscar no cronograma" value="${esc(gQ)}">
     <button type="button" id="gexp">Expandir PLs</button><button type="button" id="gcol">Recolher tudo</button>
     <span style="flex:1"></span><span style="font-size:12px;color:var(--d-ink2)">Escala:</span>${[[34,'Mês'],[22,'Médio'],[12,'Trimestre']].map(([p,t])=>`<button type="button" data-px="${p}" class="${gPx===p?'on':''}">${t}</button>`).join('')}<button type="button" id="g27">Ir para ${G.ret.slice(0,4)}</button></div>
-   <div class="gleg"><span><i style="background:var(--g-bar)"></i>Planejado (início → término)</span><span><i style="background:var(--g-real)"></i>Realizado (% do Prevision)</span><span><i style="background:var(--g-ok)"></i>Concluído</span><span><i style="background:var(--g-infb);outline:1px dashed var(--g-inf)"></i><b style="color:var(--g-inft)">Não descrito de forma expressa na curva do Prevision</b> (passe o mouse para ver a nota)</span><span><i style="background:var(--g-late);width:3px"></i>Previsto para a data (atraso &gt; 5 p.p.)</span><span><i style="background:none;border-left:2px dashed var(--g-late);width:2px;height:12px"></i>Situação ${fD(G.ref)}</span><span><i style="background:none;border-left:2px dashed var(--d-navy);width:2px;height:12px"></i>31/12/${G.ret.slice(0,4)}</span></div>
+   <div class="gleg"><span><i style="background:var(--g-bar)"></i>Planejado (início → término)</span><span><i style="background:var(--g-real)"></i>Realizado (% do Prevision)</span><span><i style="background:var(--g-ok)"></i>Concluído</span><span><i style="background:var(--g-infb);outline:1px dashed var(--g-inf)"></i><b style="color:var(--g-inft)">Não descrito de forma expressa na curva do Prevision</b> <span class="scr">(passe o mouse para ver a nota)</span><span class="prt">(notas na última página)</span></span><span><i style="background:var(--g-late);width:3px"></i>Previsto para a data (atraso &gt; 5 p.p.)</span><span><i style="background:none;border-left:2px dashed var(--g-late);width:2px;height:12px"></i>Situação ${fD(G.ref)}</span><span><i style="background:none;border-left:2px dashed var(--d-navy);width:2px;height:12px"></i>31/12/${G.ret.slice(0,4)}</span></div>
    <div class="gbox" id="gbox"><div style="width:${LW+W}px;position:relative">
     <div class="ghead"><div class="gl"><span class="nm" style="padding-left:10px">PL / pacote / pavimento</span><span class="c">Início</span><span class="c">Término</span><span class="c p">Real.</span></div><div class="gt" style="width:${W}px">${head}</div></div>
     <div style="position:relative">${rows}<div class="gv" style="left:${LW+xr}px"><span>${fD(G.ref)}</span></div><div class="gv r" style="left:${LW+x27}px"><span>31/12/${G.ret.slice(2,4)}</span></div></div>
@@ -393,6 +405,26 @@ function renderGantt(){
   // mantém a rolagem entre redesenhos; na 1ª vez (ou ao trocar a escala) centra na data de situação
   if(gSL==null)gSL=Math.max(0,xr-(box.clientWidth-LW)*0.35);box.scrollLeft=gSL;box.scrollTop=gST;
   box.addEventListener('scroll',()=>{gSL=box.scrollLeft;gST=box.scrollTop},{passive:true});
+}
+// monta todos os painéis em sequência (uma seção por página) para gerar o PDF
+function printAll(){
+  document.documentElement.classList.add('printmode');document.documentElement.setAttribute('data-theme','light');
+  gPx=12;gQ='';gOpen.clear();if(GANTT)GANTT.arv.forEach((n,k)=>gOpen.add('r.'+k));gSL=0;gST=0;fisMode='MENSAL';fisOff.clear();
+  const partes=[];
+  PAINEIS.forEach(n=>{gridMode=false;show(n);
+    if(n==='GANTT'){   // Gantt: fatia as linhas em páginas, repetindo a régua de meses e as linhas de data em cada uma
+      const box=wrap.querySelector('#gbox'),inner=box.firstElementChild,head=inner.querySelector('.ghead').outerHTML,body=inner.children[1];
+      const rows=[...body.querySelectorAll('.grow')].map(r=>r.outerHTML),gv=[...body.querySelectorAll('.gv')].map(v=>v.outerHTML).join(''),W=inner.style.width;
+      const pg=[];for(let i=0,k=0;i<rows.length;k++){const nr=k===0?21:30;pg.push(`<div class="gbox" style="border-top:0"><div style="width:${W};position:relative">${head}<div style="position:relative">${rows.slice(i,i+nr).join('')}${gv}</div></div></div>`);i+=nr}
+      const card=box.parentElement;box.remove();card.insertAdjacentHTML('beforeend',pg[0]||'');
+      let ult=card;pg.slice(1).forEach(h=>{ult.insertAdjacentHTML('afterend',`<div class="pbreak"></div><div class="dz-card" style="padding:0;overflow:hidden">${h}</div>`);ult=ult.nextElementSibling.nextElementSibling});
+      // notas dos pacotes inferidos (no site aparecem ao passar o cursor)
+      const inf=[];GANTT.arv.forEach(pl=>(pl.c||[]).forEach(pk=>{if(pk.x)inf.push([pl.n,pk.n,pk.nt])}));
+      if(inf.length)ult.insertAdjacentHTML('afterend',`<div class="pbreak"></div><div class="dz-card" style="break-inside:auto;page-break-inside:auto"><h2>Pacotes não descritos de forma expressa na curva do Prevision (${inf.length})</h2><div class="dz-tw"><table><thead><tr class="hd"><th style="text-align:left">PL</th><th style="text-align:left">Pacote</th><th style="text-align:left">Nota</th></tr></thead><tbody>${inf.map(r=>`<tr><td style="text-align:left;white-space:normal">${esc(r[0])}</td><td style="text-align:left;white-space:normal;color:var(--g-inft);font-weight:600">${esc(r[1])}</td><td style="text-align:left;white-space:normal">${esc(r[2]||'')}</td></tr>`).join('')}</tbody></table></div></div>`);
+    }
+    partes.push(`<section class="psec">${wrap.innerHTML}</section>`)});
+  wrap.innerHTML=partes.join('<div class="pbreak"></div>');
+  return PAINEIS.length;
 }
 let RET=null;
 let _rtSync=null;
@@ -618,6 +650,7 @@ async function openObra(id){
   try{if(!cache[id]){const r=await fetch(`obras/${id}.json`);if(!r.ok)throw new Error(r.status);cache[id]=await r.json()}}
   catch(e){loading.hidden=true;alertBox(`Não foi possível carregar os dados da obra ${o.nome} (${e.message}). Tente recarregar a página.`);return}
   const j=cache[id];OBRA=o;D=j.D;DASH=j.DASH;RET=j.RET;FIS=j.FIS||null;GANTT=j.GANTT||null;gOpen.clear();gQ='';gSL=null;gST=0;PAINEIS=[...PAINEIS0,...EXTRA()];document.getElementById('obracss').textContent=j.css;gridMode=false;
+  {const pb=document.getElementById('pdfbtn');pb.href=`pdf/${id}.pdf`;pb.setAttribute('download',('Paineis '+o.nome+' '+(o.cen||'')).normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^A-Za-z0-9]+/g,'_').replace(/_+$/,'')+'.pdf');pb.hidden=!o.pdf}
   buildSide();home.hidden=true;app.hidden=false;loading.hidden=true;document.title='Fluxo de Caixa · '+o.nome+(o.cen?' · '+o.cen:'');
   let start='DASHBOARD';try{const a=localStorage.getItem('aba:'+id);if(a&&(D.find(x=>x.name===a)||EXTRA().includes(a)))start=a}catch(e){}
   show(start);
