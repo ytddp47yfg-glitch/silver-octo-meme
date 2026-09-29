@@ -231,9 +231,9 @@ body.present .pnav{display:flex}
 .fz th .sw{display:inline-block;width:10px;height:3px;margin-right:5px;vertical-align:middle}
 .fz .pad{padding:14px 18px}
 /* GANTT (cronograma do Prevision) */
-.gz{--g-pl:#1f4e78;--g-bar:#bcd3ee;--g-bar2:#d9e6f5;--g-real:#2a78d6;--g-late:#d9480f;--g-ok:#2e7d32}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .gz{--g-pl:#7fb2e5;--g-bar:#2c4a6b;--g-bar2:#243546;--g-real:#4c9bf0;--g-late:#ff8a50;--g-ok:#6fcf7a}}
-:root[data-theme="dark"] .gz{--g-pl:#7fb2e5;--g-bar:#2c4a6b;--g-bar2:#243546;--g-real:#4c9bf0;--g-late:#ff8a50;--g-ok:#6fcf7a}
+.gz{--g-pl:#1f4e78;--g-bar:#bcd3ee;--g-bar2:#d9e6f5;--g-real:#2a78d6;--g-late:#d9480f;--g-ok:#2e7d32;--g-inf:#8e44ad;--g-infb:#e3d0ee;--g-inft:#6d2f8a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .gz{--g-pl:#7fb2e5;--g-bar:#2c4a6b;--g-bar2:#243546;--g-real:#4c9bf0;--g-late:#ff8a50;--g-ok:#6fcf7a;--g-inf:#c38be0;--g-infb:#4a3358;--g-inft:#d7a9ee}}
+:root[data-theme="dark"] .gz{--g-pl:#7fb2e5;--g-bar:#2c4a6b;--g-bar2:#243546;--g-real:#4c9bf0;--g-late:#ff8a50;--g-ok:#6fcf7a;--g-inf:#c38be0;--g-infb:#4a3358;--g-inft:#d7a9ee}
 .gz .gtool{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:12px 14px;border-bottom:1px solid var(--d-line)}
 .gz .gtool input{font:13px Arial;padding:6px 9px;border:1px solid var(--d-line);border-radius:4px;background:var(--d-card);color:var(--d-ink);min-width:220px;flex:1;max-width:340px}
 .gz .gtool button{font:600 12px Arial;padding:6px 10px;border-radius:4px;border:1px solid var(--d-line);background:var(--d-card);color:var(--d-ink);cursor:pointer}
@@ -263,6 +263,10 @@ body.present .pnav{display:flex}
 .gz .gv span{position:sticky;top:42px;display:inline-block;transform:translateX(4px);font-size:11px;font-weight:700;background:var(--d-card);padding:1px 4px;border-radius:3px;color:var(--d-ink)}
 .gz .gtip{position:fixed;z-index:30;background:var(--d-card);border:1px solid var(--d-line);box-shadow:0 2px 8px rgba(0,0,0,.18);padding:8px 10px;font-size:12px;line-height:1.5;pointer-events:none;color:var(--d-ink);border-radius:3px;max-width:360px}
 .gz .gtip b{display:block}
+.gz .inf .gl .nm .tx{color:var(--g-inft)}.gz .gl .nm .tx{overflow:hidden;text-overflow:ellipsis}.gz .inf .gt .b{background:var(--g-infb)!important;outline:1px dashed var(--g-inf);outline-offset:-1px}
+.gz .inf .gt .b i{background:var(--g-inf)!important}.gz .ic{display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border-radius:50%;background:var(--g-inf);color:#fff;font:700 10px Arial;flex:0 0 14px;margin-left:4px}
+.gz .nx{font-size:10.5px;font-weight:700;color:var(--g-inft);border:1px solid var(--g-inf);border-radius:9px;padding:0 6px;margin-left:6px;flex:0 0 auto}
+.gz .gtip .gnt{margin-top:6px;padding-top:6px;border-top:1px solid var(--d-line);color:var(--g-inft);max-width:340px;white-space:normal}
 </style>
 <style id="obracss"></style>
 <section id="home" aria-label="Escolha da obra"><div class="hin">
@@ -348,15 +352,15 @@ function renderGantt(){
   const bate=n=>n.n.toLowerCase().includes(q)||(n.c||[]).some(bate);
   // na busca: abre os ancestrais do que bate; o item encontrado mostra os filhos quando aberto
   const self=n=>n.n.toLowerCase().includes(q),aberto=(n,id,inc,lv)=>gOpen.has(id)||(q&&!inc&&(!self(n)||lv===0));
-  const walk=(nos,lv,path,inc)=>nos.forEach((n,k)=>{const id=path+'.'+k;if(q&&!inc&&!bate(n))return;vis.push({n,lv,id,op:!!n.c&&aberto(n,id,inc,lv)});
-    if(n.c&&aberto(n,id,inc,lv))walk(n.c,lv+1,id,inc||(q&&self(n)))});
-  walk(G.arv,0,'r',false);
+  const walk=(nos,lv,path,inc,xf)=>nos.forEach((n,k)=>{const id=path+'.'+k,xi=xf||!!n.x;if(q&&!inc&&!bate(n))return;vis.push({n,lv,id,xi,op:!!n.c&&aberto(n,id,inc,lv)});
+    if(n.c&&aberto(n,id,inc,lv))walk(n.c,lv+1,id,inc||(q&&self(n)),xi)});
+  walk(G.arv,0,'r',false,false);
   let head='';for(let m=0;m<M;m++){const d=new Date(d0.getFullYear(),d0.getMonth()+m,1),x=m*gPx;
     if(d.getMonth()===0||m===0)head+=`<div style="left:${x}px;top:3px;font-size:12px">${d.getFullYear()}</div>`;
     if(gPx>=18||d.getMonth()%3===0)head+=`<div style="left:${x}px;top:21px;font-weight:400">${gPx>=18?MES[d.getMonth()][0].toUpperCase():MES[d.getMonth()]}</div>`}
   const xr=dx(G.ref),x27=dx(G.ret);
-  const rows=vis.map(({n,lv,id,op})=>{const a=dx(n.i),b=Math.max(a+2,dx(n.f)+gPx/30),w=b-a,late=n.pp-n.pr>5&&n.pr<99.9,done=n.pr>=99.9;
-    return `<div class="grow l${Math.min(lv,3)}" data-id="${id}"><div class="gl"><span class="nm" style="padding-left:${6+lv*16}px">${n.c?`<button type="button" aria-label="${op?'Recolher':'Expandir'}" aria-expanded="${op}">${op?'▾':'▸'}</button>`:'<span style="width:18px;flex:0 0 18px"></span>'}<span title="${esc(n.n)}">${esc(n.n)}</span></span><span class="c">${fD(n.i)}</span><span class="c">${fD(n.f)}</span><span class="c p">${n.pr.toLocaleString('pt-BR',{maximumFractionDigits:0})}%</span></div>
+  const rows=vis.map(({n,lv,id,op,xi})=>{const a=dx(n.i),b=Math.max(a+2,dx(n.f)+gPx/30),w=b-a,late=n.pp-n.pr>5&&n.pr<99.9,done=n.pr>=99.9;
+    return `<div class="grow l${Math.min(lv,3)}${xi?' inf':''}" data-id="${id}"><div class="gl"><span class="nm" style="padding-left:${6+lv*16}px">${n.c?`<button type="button" aria-label="${op?'Recolher':'Expandir'}" aria-expanded="${op}">${op?'▾':'▸'}</button>`:'<span style="width:18px;flex:0 0 18px"></span>'}<span class="tx">${esc(n.n)}</span>${n.x?'<span class="ic" aria-label="associação inferida">i</span>':''}${n.nx?`<span class="nx" title="pacotes sem descrição expressa na curva do Prevision">${n.nx} inferido${n.nx>1?'s':''}</span>`:''}</span><span class="c">${fD(n.i)}</span><span class="c">${fD(n.f)}</span><span class="c p">${n.pr.toLocaleString('pt-BR',{maximumFractionDigits:0})}%</span></div>
     <div class="gt" style="width:${W}px"><div class="b${done?' done':''}" style="left:${a}px;width:${w}px"><i style="width:${Math.min(100,n.pr)}%"></i>${late?`<u style="left:${Math.min(100,n.pp)}%"></u>`:''}</div></div></div>`}).join('');
   const LW=330+74+74+56;
   wrap.innerHTML=`<div class="dz gz">
@@ -365,7 +369,7 @@ function renderGantt(){
    <div class="gtool"><input type="search" id="gq" placeholder="Buscar PL, pacote ou pavimento…" aria-label="Buscar no cronograma" value="${esc(gQ)}">
     <button type="button" id="gexp">Expandir PLs</button><button type="button" id="gcol">Recolher tudo</button>
     <span style="flex:1"></span><span style="font-size:12px;color:var(--d-ink2)">Escala:</span>${[[34,'Mês'],[22,'Médio'],[12,'Trimestre']].map(([p,t])=>`<button type="button" data-px="${p}" class="${gPx===p?'on':''}">${t}</button>`).join('')}<button type="button" id="g27">Ir para ${G.ret.slice(0,4)}</button></div>
-   <div class="gleg"><span><i style="background:var(--g-bar)"></i>Planejado (início → término)</span><span><i style="background:var(--g-real)"></i>Realizado (% do Prevision)</span><span><i style="background:var(--g-ok)"></i>Concluído</span><span><i style="background:var(--g-late);width:3px"></i>Previsto para a data (atraso &gt; 5 p.p.)</span><span><i style="background:none;border-left:2px dashed var(--g-late);width:2px;height:12px"></i>Situação ${fD(G.ref)}</span><span><i style="background:none;border-left:2px dashed var(--d-navy);width:2px;height:12px"></i>31/12/${G.ret.slice(0,4)}</span></div>
+   <div class="gleg"><span><i style="background:var(--g-bar)"></i>Planejado (início → término)</span><span><i style="background:var(--g-real)"></i>Realizado (% do Prevision)</span><span><i style="background:var(--g-ok)"></i>Concluído</span><span><i style="background:var(--g-infb);outline:1px dashed var(--g-inf)"></i><b style="color:var(--g-inft)">Não descrito de forma expressa na curva do Prevision</b> (passe o mouse para ver a nota)</span><span><i style="background:var(--g-late);width:3px"></i>Previsto para a data (atraso &gt; 5 p.p.)</span><span><i style="background:none;border-left:2px dashed var(--g-late);width:2px;height:12px"></i>Situação ${fD(G.ref)}</span><span><i style="background:none;border-left:2px dashed var(--d-navy);width:2px;height:12px"></i>31/12/${G.ret.slice(0,4)}</span></div>
    <div class="gbox" id="gbox"><div style="width:${LW+W}px;position:relative">
     <div class="ghead"><div class="gl"><span class="nm" style="padding-left:10px">PL / pacote / pavimento</span><span class="c">Início</span><span class="c">Término</span><span class="c p">Real.</span></div><div class="gt" style="width:${W}px">${head}</div></div>
     <div style="position:relative">${rows}<div class="gv" style="left:${LW+xr}px"><span>${fD(G.ref)}</span></div><div class="gv r" style="left:${LW+x27}px"><span>31/12/${G.ret.slice(2,4)}</span></div></div>
@@ -375,10 +379,11 @@ function renderGantt(){
   <div class="dz-card"><p class="note" style="margin:0">Fonte: aba CRONOGRAMA ATIVIDADES (export do Prevision). Datas de início e término e % realizado vêm do Prevision; nos níveis PL e pacote o % é a média dos itens ponderada pela duração. O cronograma é o mesmo nos três cenários (os cenários mudam as curvas financeiras, não as datas das atividades).</p></div>
   <div class="gtip" hidden></div></div>`;
   const box=wrap.querySelector('#gbox'),tip=wrap.querySelector('.gtip'),find=id=>{let n={c:G.arv};id.split('.').slice(1).forEach(k=>n=n.c[+k]);return n};
+  const nota=id=>{let n={c:G.arv},nt='';id.split('.').slice(1).forEach(k=>{n=n.c[+k];if(n.nt)nt=n.nt});return nt};
   box.addEventListener('click',e=>{const b=e.target.closest('.gl button');if(!b)return;const id=b.closest('.grow').dataset.id;gOpen.has(id)?gOpen.delete(id):gOpen.add(id);renderGantt()});
   box.addEventListener('pointermove',e=>{const r=e.target.closest('.grow');if(!r||!e.target.closest('.gt,.gl')){tip.hidden=true;return}const n=find(r.dataset.id);
     const dias=Math.round((new Date(n.f)-new Date(n.i))/864e5)+1;
-    tipAt(tip,`<b>${esc(n.n)}</b>${fD(n.i)} → ${fD(n.f)} · ${dias} dias<br>Realizado ${n.pr.toLocaleString('pt-BR',{maximumFractionDigits:1})}% · previsto ${n.pp.toLocaleString('pt-BR',{maximumFractionDigits:1})}% · base ${n.pb.toLocaleString('pt-BR',{maximumFractionDigits:1})}%${n.s?`<br>Situação em 31/12/${G.ret.slice(0,4)}: ${esc(n.s)}`:''}${n.c?`<br>${n.c.length} itens abaixo`:''}`,e.clientX,e.clientY)});
+    tipAt(tip,`<b>${esc(n.n)}</b>${fD(n.i)} → ${fD(n.f)} · ${dias} dias<br>Realizado ${n.pr.toLocaleString('pt-BR',{maximumFractionDigits:1})}% · previsto ${n.pp.toLocaleString('pt-BR',{maximumFractionDigits:1})}% · base ${n.pb.toLocaleString('pt-BR',{maximumFractionDigits:1})}%${n.s?`<br>Situação em 31/12/${G.ret.slice(0,4)}: ${esc(n.s)}`:''}${n.c?`<br>${n.c.length} itens abaixo`:''}${n.nx?`<br>${n.nx} pacote(s) desta PL sem descrição expressa na curva do Prevision`:''}${nota(r.dataset.id)?`<div class="gnt">${esc(nota(r.dataset.id))}</div>`:''}`,e.clientX,e.clientY)});
   box.addEventListener('pointerleave',()=>tip.hidden=true);
   const qi=wrap.querySelector('#gq');let tq;qi.addEventListener('input',()=>{clearTimeout(tq);tq=setTimeout(()=>{gQ=qi.value;gST=0;renderGantt();const n=wrap.querySelector('#gq');n.focus();n.setSelectionRange(n.value.length,n.value.length)},250)});
   wrap.querySelector('#gexp').onclick=()=>{G.arv.forEach((n,k)=>gOpen.add('r.'+k));renderGantt()};
