@@ -95,7 +95,7 @@ def dash_data():
                           pac=num(d.cell(r, 6).value), real=num(d.cell(r, 8).value), proj=num(d.cell(r, 9).value)))
     groups = [dict(name=d.cell(r, 2).value, v=num(d.cell(r, 4).value), p=num(d.cell(r, 5).value),
                    av=(None if d.cell(r, 6).value in (None, '') else num(d.cell(r, 6).value))) for r in range(26, 32)]
-    curve = [dict(m=bi.cell(1, c).value.strftime('%Y-%m'), p=num(bi.cell(65, c).value), v=num(bi.cell(63, c).value)) for c in range(8, 80)]
+    curve = [dict(m=bi.cell(1, c).value.strftime('%Y-%m'), p=num(bi.cell(67, c).value), v=num(bi.cell(65, c).value)) for c in range(8, 80)]
     pend = [f"{vp.cell(r, 4).value}: {vp.cell(r, 14).value.lstrip('⚠ ')}" for r in range(11, 49) if vp.cell(r, 14).value not in (None, 'OK')]
     pend += [f"{vp.cell(r, 4).value}: {vp.cell(r, 6).value.lstrip('⚠ ')}" for r in range(54, 60)
              if isinstance(vp.cell(r, 6).value, str) and vp.cell(r, 6).value.startswith('⚠') and r not in (54, 59)]
