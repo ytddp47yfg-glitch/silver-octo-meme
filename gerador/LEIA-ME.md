@@ -30,3 +30,11 @@ Curvas de avanço físico por cenário, calculadas a partir das PLs (itens diret
     python3 gerador/fisico.py fis.json "Padrão=ej_padrao_calc.xlsx" "Prevision=ej_tool_calc.xlsx" "Prevision ajustado=ej_sim4_calc.xlsx"
 
 Depois gere o JSON de cada cenário com `VW_FIS=fis.json` no ambiente do `viewer.py`; o painel aparece só nas obras que têm esses dados.
+
+## Painel GANTT (todas as obras)
+
+Gantt do cronograma de atividades do Prevision (aba CRONOGRAMA ATIVIDADES), em árvore PL → pacote → pavimento/tarefa:
+
+    python3 gerador/gantt.py obra_calc.xlsx gantt.json
+
+Depois gere o JSON de cada cenário com `VW_GANTT=gantt.json` no ambiente do `viewer.py`.

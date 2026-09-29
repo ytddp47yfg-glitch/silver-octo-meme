@@ -232,6 +232,39 @@ body.present .pnav{display:flex}
 .fz td:first-child{white-space:normal;min-width:170px}.fz tr.hl td{background:var(--d-hl);font-weight:700}
 .fz th .sw{display:inline-block;width:10px;height:3px;margin-right:5px;vertical-align:middle}
 .fz .pad{padding:14px 18px}
+/* GANTT (cronograma do Prevision) */
+.gz{--g-pl:#1f4e78;--g-bar:#bcd3ee;--g-bar2:#d9e6f5;--g-real:#2a78d6;--g-late:#d9480f;--g-ok:#2e7d32}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .gz{--g-pl:#7fb2e5;--g-bar:#2c4a6b;--g-bar2:#243546;--g-real:#4c9bf0;--g-late:#ff8a50;--g-ok:#6fcf7a}}
+:root[data-theme="dark"] .gz{--g-pl:#7fb2e5;--g-bar:#2c4a6b;--g-bar2:#243546;--g-real:#4c9bf0;--g-late:#ff8a50;--g-ok:#6fcf7a}
+.gz .gtool{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:12px 14px;border-bottom:1px solid var(--d-line)}
+.gz .gtool input{font:13px Arial;padding:6px 9px;border:1px solid var(--d-line);border-radius:4px;background:var(--d-card);color:var(--d-ink);min-width:220px;flex:1;max-width:340px}
+.gz .gtool button{font:600 12px Arial;padding:6px 10px;border-radius:4px;border:1px solid var(--d-line);background:var(--d-card);color:var(--d-ink);cursor:pointer}
+.gz .gtool button.on{border-color:var(--g-real);color:var(--g-real)}
+.gz .gleg{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--d-ink2);padding:8px 14px 10px}
+.gz .gleg i{display:inline-block;width:18px;height:9px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.gz .gbox{overflow:auto;max-height:calc(100vh - 230px);min-height:320px;position:relative;border-top:1px solid var(--d-line)}
+.gz .grow{display:flex;height:26px;border-bottom:1px solid var(--d-line);font-size:12px}
+.gz .grow:hover .gl,.gz .grow:hover .gt{background:var(--d-hl)}
+.gz .gl{position:sticky;left:0;z-index:2;background:var(--d-card);display:flex;align-items:center;flex:0 0 auto;border-right:1px solid var(--d-line)}
+.gz .gl .nm{width:330px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:flex;align-items:center;gap:4px}
+.gz .gl .nm button{border:0;background:none;color:var(--d-ink2);cursor:pointer;width:18px;padding:0;font-size:11px;flex:0 0 18px}
+.gz .gl .c{width:74px;text-align:right;padding-right:8px;color:var(--d-ink2);white-space:nowrap}
+.gz .gl .c.p{width:56px}
+.gz .l0 .gl{font-weight:700;color:var(--g-pl)}.gz .l1 .gl{font-weight:600}
+.gz .gt{position:relative;flex:0 0 auto}
+.gz .gt .b{position:absolute;top:7px;height:12px;border-radius:2px;background:var(--g-bar)}
+.gz .l0 .gt .b{top:6px;height:14px;background:var(--g-bar)}.gz .l2 .gt .b,.gz .l3 .gt .b{background:var(--g-bar2);top:8px;height:10px}
+.gz .gt .b i{position:absolute;left:0;top:0;bottom:0;background:var(--g-real);border-radius:2px 0 0 2px}
+.gz .gt .b.done i{background:var(--g-ok);border-radius:2px}
+.gz .gt .b u{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--g-late)}
+.gz .ghead{position:sticky;top:0;z-index:3;display:flex;background:var(--d-teal);border-bottom:1px solid var(--d-line);height:40px;font-size:11px;color:var(--d-navy);font-weight:700}
+.gz .ghead .gl{background:var(--d-teal);z-index:4}
+.gz .ghead .gt div{position:absolute;white-space:nowrap;border-left:1px solid var(--d-line);padding-left:3px}
+.gz .gv{position:absolute;top:0;bottom:0;width:0;border-left:2px dashed var(--g-late);z-index:1;pointer-events:none}
+.gz .gv.r{border-left-color:var(--d-navy)}
+.gz .gv span{position:sticky;top:42px;display:inline-block;transform:translateX(4px);font-size:11px;font-weight:700;background:var(--d-card);padding:1px 4px;border-radius:3px;color:var(--d-ink)}
+.gz .gtip{position:fixed;z-index:30;background:var(--d-card);border:1px solid var(--d-line);box-shadow:0 2px 8px rgba(0,0,0,.18);padding:8px 10px;font-size:12px;line-height:1.5;pointer-events:none;color:var(--d-ink);border-radius:3px;max-width:360px}
+.gz .gtip b{display:block}
 </style>
 <style id="obracss"></style>
 <section id="home" aria-label="Escolha da obra"><div class="hin">
@@ -306,6 +339,57 @@ function renderFis(){
   hit.addEventListener('pointermove',e=>{const r=svg.getBoundingClientRect(),sx=(e.clientX-r.left)*C.W/r.width;at(Math.max(0,Math.min(C.n-1,Math.round((sx-C.L)/C.pw*(C.n-1)))),e.clientX,e.clientY)});
   hit.addEventListener('pointerleave',()=>{tip.hidden=true;fx.setAttribute('opacity','0')});
   wrap.scrollTo(0,0);
+}
+let GANTT=null,gOpen=new Set(),gPx=22,gQ='',gSL=null,gST=0;
+function renderGantt(){
+  const G=GANTT,d0=new Date(G.ini.slice(0,7)+'-01T00:00'),fimD=new Date(G.fim),M=(fimD.getFullYear()-d0.getFullYear())*12+fimD.getMonth()-d0.getMonth()+2;
+  const W=M*gPx,dx=s=>{const d=new Date(s+'T00:00');return ((d.getFullYear()-d0.getFullYear())*12+d.getMonth()-d0.getMonth()+(d.getDate()-1)/new Date(d.getFullYear(),d.getMonth()+1,0).getDate())*gPx};
+  const fD=s=>s.slice(8,10)+'/'+s.slice(5,7)+'/'+s.slice(2,4);
+  // linhas visíveis
+  const q=gQ.trim().toLowerCase(),vis=[];
+  const bate=n=>n.n.toLowerCase().includes(q)||(n.c||[]).some(bate);
+  // na busca: abre os ancestrais do que bate; o item encontrado mostra os filhos quando aberto
+  const self=n=>n.n.toLowerCase().includes(q),aberto=(n,id,inc,lv)=>gOpen.has(id)||(q&&!inc&&(!self(n)||lv===0));
+  const walk=(nos,lv,path,inc)=>nos.forEach((n,k)=>{const id=path+'.'+k;if(q&&!inc&&!bate(n))return;vis.push({n,lv,id,op:!!n.c&&aberto(n,id,inc,lv)});
+    if(n.c&&aberto(n,id,inc,lv))walk(n.c,lv+1,id,inc||(q&&self(n)))});
+  walk(G.arv,0,'r',false);
+  let head='';for(let m=0;m<M;m++){const d=new Date(d0.getFullYear(),d0.getMonth()+m,1),x=m*gPx;
+    if(d.getMonth()===0||m===0)head+=`<div style="left:${x}px;top:3px;font-size:12px">${d.getFullYear()}</div>`;
+    if(gPx>=18||d.getMonth()%3===0)head+=`<div style="left:${x}px;top:21px;font-weight:400">${gPx>=18?MES[d.getMonth()][0].toUpperCase():MES[d.getMonth()]}</div>`}
+  const xr=dx(G.ref),x27=dx(G.ret);
+  const rows=vis.map(({n,lv,id,op})=>{const a=dx(n.i),b=Math.max(a+2,dx(n.f)+gPx/30),w=b-a,late=n.pp-n.pr>5&&n.pr<99.9,done=n.pr>=99.9;
+    return `<div class="grow l${Math.min(lv,3)}" data-id="${id}"><div class="gl"><span class="nm" style="padding-left:${6+lv*16}px">${n.c?`<button type="button" aria-label="${op?'Recolher':'Expandir'}" aria-expanded="${op}">${op?'▾':'▸'}</button>`:'<span style="width:18px;flex:0 0 18px"></span>'}<span title="${esc(n.n)}">${esc(n.n)}</span></span><span class="c">${fD(n.i)}</span><span class="c">${fD(n.f)}</span><span class="c p">${n.pr.toLocaleString('pt-BR',{maximumFractionDigits:0})}%</span></div>
+    <div class="gt" style="width:${W}px"><div class="b${done?' done':''}" style="left:${a}px;width:${w}px"><i style="width:${Math.min(100,n.pr)}%"></i>${late?`<u style="left:${Math.min(100,n.pp)}%"></u>`:''}</div></div></div>`}).join('');
+  const LW=330+74+74+56;
+  wrap.innerHTML=`<div class="dz gz">
+  <div class="dz-head"><div><h1>${esc(OBRA.nome)} · Gantt do cronograma</h1><p>${G.n.toLocaleString('pt-BR')} atividades do Prevision (situação em ${fD(G.ref)}) · PL → pacote de trabalho → pavimento/tarefa · clique na seta para abrir</p></div></div>
+  <div class="dz-card" style="padding:0;overflow:hidden">
+   <div class="gtool"><input type="search" id="gq" placeholder="Buscar PL, pacote ou pavimento…" aria-label="Buscar no cronograma" value="${esc(gQ)}">
+    <button type="button" id="gexp">Expandir PLs</button><button type="button" id="gcol">Recolher tudo</button>
+    <span style="flex:1"></span><span style="font-size:12px;color:var(--d-ink2)">Escala:</span>${[[34,'Mês'],[22,'Médio'],[12,'Trimestre']].map(([p,t])=>`<button type="button" data-px="${p}" class="${gPx===p?'on':''}">${t}</button>`).join('')}<button type="button" id="g27">Ir para ${G.ret.slice(0,4)}</button></div>
+   <div class="gleg"><span><i style="background:var(--g-bar)"></i>Planejado (início → término)</span><span><i style="background:var(--g-real)"></i>Realizado (% do Prevision)</span><span><i style="background:var(--g-ok)"></i>Concluído</span><span><i style="background:var(--g-late);width:3px"></i>Previsto para a data (atraso &gt; 5 p.p.)</span><span><i style="background:none;border-left:2px dashed var(--g-late);width:2px;height:12px"></i>Situação ${fD(G.ref)}</span><span><i style="background:none;border-left:2px dashed var(--d-navy);width:2px;height:12px"></i>31/12/${G.ret.slice(0,4)}</span></div>
+   <div class="gbox" id="gbox"><div style="width:${LW+W}px;position:relative">
+    <div class="ghead"><div class="gl"><span class="nm" style="padding-left:10px">PL / pacote / pavimento</span><span class="c">Início</span><span class="c">Término</span><span class="c p">Real.</span></div><div class="gt" style="width:${W}px">${head}</div></div>
+    <div style="position:relative">${rows}<div class="gv" style="left:${LW+xr}px"><span>${fD(G.ref)}</span></div><div class="gv r" style="left:${LW+x27}px"><span>31/12/${G.ret.slice(2,4)}</span></div></div>
+   </div></div>
+   ${vis.length?'':'<p class="note" style="padding:14px">Nada encontrado.</p>'}
+  </div>
+  <div class="dz-card"><p class="note" style="margin:0">Fonte: aba CRONOGRAMA ATIVIDADES (export do Prevision). Datas de início e término e % realizado vêm do Prevision; nos níveis PL e pacote o % é a média dos itens ponderada pela duração. O cronograma é o mesmo nos três cenários (os cenários mudam as curvas financeiras, não as datas das atividades).</p></div>
+  <div class="gtip" hidden></div></div>`;
+  const box=wrap.querySelector('#gbox'),tip=wrap.querySelector('.gtip'),find=id=>{let n={c:G.arv};id.split('.').slice(1).forEach(k=>n=n.c[+k]);return n};
+  box.addEventListener('click',e=>{const b=e.target.closest('.gl button');if(!b)return;const id=b.closest('.grow').dataset.id;gOpen.has(id)?gOpen.delete(id):gOpen.add(id);renderGantt()});
+  box.addEventListener('pointermove',e=>{const r=e.target.closest('.grow');if(!r||!e.target.closest('.gt,.gl')){tip.hidden=true;return}const n=find(r.dataset.id);
+    const dias=Math.round((new Date(n.f)-new Date(n.i))/864e5)+1;
+    tipAt(tip,`<b>${esc(n.n)}</b>${fD(n.i)} → ${fD(n.f)} · ${dias} dias<br>Realizado ${n.pr.toLocaleString('pt-BR',{maximumFractionDigits:1})}% · previsto ${n.pp.toLocaleString('pt-BR',{maximumFractionDigits:1})}% · base ${n.pb.toLocaleString('pt-BR',{maximumFractionDigits:1})}%${n.s?`<br>Situação em 31/12/${G.ret.slice(0,4)}: ${esc(n.s)}`:''}${n.c?`<br>${n.c.length} itens abaixo`:''}`,e.clientX,e.clientY)});
+  box.addEventListener('pointerleave',()=>tip.hidden=true);
+  const qi=wrap.querySelector('#gq');let tq;qi.addEventListener('input',()=>{clearTimeout(tq);tq=setTimeout(()=>{gQ=qi.value;gST=0;renderGantt();const n=wrap.querySelector('#gq');n.focus();n.setSelectionRange(n.value.length,n.value.length)},250)});
+  wrap.querySelector('#gexp').onclick=()=>{G.arv.forEach((n,k)=>gOpen.add('r.'+k));renderGantt()};
+  wrap.querySelector('#gcol').onclick=()=>{gOpen.clear();renderGantt()};
+  wrap.querySelectorAll('[data-px]').forEach(b=>b.onclick=()=>{gPx=+b.dataset.px;gSL=null;renderGantt()});
+  wrap.querySelector('#g27').onclick=()=>{box.scrollLeft=Math.max(0,x27-box.clientWidth/2)};
+  // mantém a rolagem entre redesenhos; na 1ª vez (ou ao trocar a escala) centra na data de situação
+  if(gSL==null)gSL=Math.max(0,xr-(box.clientWidth-LW)*0.35);box.scrollLeft=gSL;box.scrollTop=gST;
+  box.addEventListener('scroll',()=>{gSL=box.scrollLeft;gST=box.scrollTop},{passive:true});
 }
 let RET=null;
 let _rtSync=null;
@@ -427,7 +511,7 @@ function renderDash(){
   wrap.scrollTo(0,0);
 }
 
-const OBRAS=[{"nome": "Botânico", "id": "botanico", "corte": "2026-08", "ano": 2027, "proj": 160341788.080649, "real": 21284340.810013, "preal": 0.132743566507487, "ano_v": 48774959.4525306, "saldo": 139057447.270636, "conf": "✓ Tudo OK", "gerado": "2026-09-29", "kb": 4755, "obra": "botanico", "cen": "Padrão", "cen_desc": "Curvas digitadas na versão original", "cen_ord": 1, "cens": [{"nome": "Botânico", "id": "botanico-padrao", "corte": "2026-08", "ano": 2027, "proj": 160341788.080649, "real": 21284340.810013, "preal": 0.132743566507487, "ano_v": 48774959.4525306, "saldo": 139057447.270636, "conf": "✓ Tudo OK", "gerado": "2026-09-29", "kb": 4755, "obra": "botanico", "cen": "Padrão", "cen_desc": "Curvas digitadas na versão original", "cen_ord": 1}, {"nome": "Botânico", "id": "botanico", "corte": "2026-08", "ano": 2027, "proj": 160341788.080649, "real": 21284340.810013, "preal": 0.132743566507487, "ano_v": 57036385.8563455, "saldo": 139057447.270636, "conf": "✓ Tudo OK", "gerado": "2026-09-29", "kb": 4753, "obra": "botanico", "cen": "Prevision", "cen_desc": "Curvas de andamento do Prevision", "cen_ord": 2}]}, {"nome": "Ed Jardim", "id": "ed-jardim", "corte": "2026-08", "ano": 2027, "proj": 154459552.469737, "real": 42586104.68, "preal": 0.275710397958998, "ano_v": 56009788.8655176, "saldo": 111873447.789737, "conf": "✓ Tudo OK", "gerado": "2026-09-29", "kb": 5386, "obra": "ed-jardim", "cen": "Padrão", "cen_desc": "Curvas digitadas na versão original; 2027 reduzido para o valor da revisão anterior (diferença em 2028)", "cen_ord": 1, "cens": [{"nome": "Ed Jardim", "id": "ed-jardim-padrao", "corte": "2026-08", "ano": 2027, "proj": 154459552.469737, "real": 42586104.68, "preal": 0.275710397958998, "ano_v": 56009788.8655176, "saldo": 111873447.789737, "conf": "✓ Tudo OK", "gerado": "2026-09-29", "kb": 5386, "obra": "ed-jardim", "cen": "Padrão", "cen_desc": "Curvas digitadas na versão original; 2027 reduzido para o valor da revisão anterior (diferença em 2028)", "cen_ord": 1}, {"nome": "Ed Jardim", "id": "ed-jardim", "corte": "2026-08", "ano": 2027, "proj": 154459552.469737, "real": 42586104.68, "preal": 0.275710397958998, "ano_v": 66268020.4153684, "saldo": 111873447.789737, "conf": "✓ Tudo OK", "gerado": "2026-09-29", "kb": 4714, "obra": "ed-jardim", "cen": "Prevision", "cen_desc": "Curvas de andamento do Prevision (exceto estrutura, elevadores, esquadrias e indiretos)", "cen_ord": 2}, {"nome": "Ed Jardim", "id": "ed-jardim-ajustado", "corte": "2026-08", "ano": 2027, "proj": 154459552.469737, "real": 42586104.68, "preal": 0.275710397958998, "ano_v": 53460558.958548, "saldo": 111873447.789737, "conf": "✓ Tudo OK", "gerado": "2026-09-29", "kb": 5387, "obra": "ed-jardim", "cen": "Prevision ajustado", "cen_desc": "Prevision com: rev. de acabamento em 11 de 28 pavimentos em 2027; fachada pelo estudo de balancins (R12); inst. especiais e fundação superficial na curva digitada; hidráulica com o andamento da elétrica; 2027 reduzido para o valor da revisão anterior (diferença em 2028)", "cen_ord": 3}]}, {"nome": "Torre Catharina", "id": "torre-catharina", "corte": "2026-08", "ano": 2027, "proj": 183651938.357373, "real": 44412501.1799771, "preal": 0.241829743683693, "ano_v": 61374321.7614814, "saldo": 139239437.177396, "conf": "✓ Tudo OK", "gerado": "2026-09-29", "kb": 4711, "obra": "torre-catharina", "cen": "Padrão", "cen_desc": "Curvas digitadas na versão original", "cen_ord": 1, "cens": [{"nome": "Torre Catharina", "id": "torre-catharina-padrao", "corte": "2026-08", "ano": 2027, "proj": 183651938.357373, "real": 44412501.1799771, "preal": 0.241829743683693, "ano_v": 61374321.7614814, "saldo": 139239437.177396, "conf": "✓ Tudo OK", "gerado": "2026-09-29", "kb": 4711, "obra": "torre-catharina", "cen": "Padrão", "cen_desc": "Curvas digitadas na versão original", "cen_ord": 1}, {"nome": "Torre Catharina", "id": "torre-catharina", "corte": "2026-08", "ano": 2027, "proj": 183651938.357373, "real": 44412501.1799771, "preal": 0.241829743683693, "ano_v": 66279735.2478808, "saldo": 139239437.177396, "conf": "✓ Tudo OK", "gerado": "2026-09-29", "kb": 4709, "obra": "torre-catharina", "cen": "Prevision", "cen_desc": "Curvas de andamento do Prevision", "cen_ord": 2}]}];
+const OBRAS=[{"nome": "Botânico", "id": "botanico", "corte": "2026-08", "ano": 2027, "proj": 160341788.080649, "real": 21284340.810013, "preal": 0.132743566507487, "ano_v": 48774959.4525306, "saldo": 139057447.270636, "conf": "✓ Tudo OK", "gerado": "2026-09-29", "kb": 5016, "obra": "botanico", "cen": "Padrão", "cen_desc": "Curvas digitadas na versão original", "cen_ord": 1, "cens": [{"nome": "Botânico", "id": "botanico-padrao", "corte": "2026-08", "ano": 2027, "proj": 160341788.080649, "real": 21284340.810013, "preal": 0.132743566507487, "ano_v": 48774959.4525306, "saldo": 139057447.270636, "conf": "✓ Tudo OK", "gerado": "2026-09-29", "kb": 5016, "obra": "botanico", "cen": "Padrão", "cen_desc": "Curvas digitadas na versão original", "cen_ord": 1}, {"nome": "Botânico", "id": "botanico", "corte": "2026-08", "ano": 2027, "proj": 160341788.080649, "real": 21284340.810013, "preal": 0.132743566507487, "ano_v": 57036385.8563455, "saldo": 139057447.270636, "conf": "✓ Tudo OK", "gerado": "2026-09-29", "kb": 5014, "obra": "botanico", "cen": "Prevision", "cen_desc": "Curvas de andamento do Prevision", "cen_ord": 2}]}, {"nome": "Ed Jardim", "id": "ed-jardim", "corte": "2026-08", "ano": 2027, "proj": 154459552.469737, "real": 42586104.68, "preal": 0.275710397958998, "ano_v": 56009788.8655176, "saldo": 111873447.789737, "conf": "✓ Tudo OK", "gerado": "2026-09-29", "kb": 5645, "obra": "ed-jardim", "cen": "Padrão", "cen_desc": "Curvas digitadas na versão original; 2027 reduzido para o valor da revisão anterior (diferença em 2028)", "cen_ord": 1, "cens": [{"nome": "Ed Jardim", "id": "ed-jardim-padrao", "corte": "2026-08", "ano": 2027, "proj": 154459552.469737, "real": 42586104.68, "preal": 0.275710397958998, "ano_v": 56009788.8655176, "saldo": 111873447.789737, "conf": "✓ Tudo OK", "gerado": "2026-09-29", "kb": 5645, "obra": "ed-jardim", "cen": "Padrão", "cen_desc": "Curvas digitadas na versão original; 2027 reduzido para o valor da revisão anterior (diferença em 2028)", "cen_ord": 1}, {"nome": "Ed Jardim", "id": "ed-jardim", "corte": "2026-08", "ano": 2027, "proj": 154459552.469737, "real": 42586104.68, "preal": 0.275710397958998, "ano_v": 66268020.4153684, "saldo": 111873447.789737, "conf": "✓ Tudo OK", "gerado": "2026-09-29", "kb": 4973, "obra": "ed-jardim", "cen": "Prevision", "cen_desc": "Curvas de andamento do Prevision (exceto estrutura, elevadores, esquadrias e indiretos)", "cen_ord": 2}, {"nome": "Ed Jardim", "id": "ed-jardim-ajustado", "corte": "2026-08", "ano": 2027, "proj": 154459552.469737, "real": 42586104.68, "preal": 0.275710397958998, "ano_v": 53460558.958548, "saldo": 111873447.789737, "conf": "✓ Tudo OK", "gerado": "2026-09-29", "kb": 5646, "obra": "ed-jardim", "cen": "Prevision ajustado", "cen_desc": "Prevision com: rev. de acabamento em 11 de 28 pavimentos em 2027; fachada pelo estudo de balancins (R12); inst. especiais e fundação superficial na curva digitada; hidráulica com o andamento da elétrica; 2027 reduzido para o valor da revisão anterior (diferença em 2028)", "cen_ord": 3}]}, {"nome": "Torre Catharina", "id": "torre-catharina", "corte": "2026-08", "ano": 2027, "proj": 183651938.357373, "real": 44412501.1799771, "preal": 0.241829743683693, "ano_v": 61374321.7614814, "saldo": 139239437.177396, "conf": "✓ Tudo OK", "gerado": "2026-09-29", "kb": 5158, "obra": "torre-catharina", "cen": "Padrão", "cen_desc": "Curvas digitadas na versão original", "cen_ord": 1, "cens": [{"nome": "Torre Catharina", "id": "torre-catharina-padrao", "corte": "2026-08", "ano": 2027, "proj": 183651938.357373, "real": 44412501.1799771, "preal": 0.241829743683693, "ano_v": 61374321.7614814, "saldo": 139239437.177396, "conf": "✓ Tudo OK", "gerado": "2026-09-29", "kb": 5158, "obra": "torre-catharina", "cen": "Padrão", "cen_desc": "Curvas digitadas na versão original", "cen_ord": 1}, {"nome": "Torre Catharina", "id": "torre-catharina", "corte": "2026-08", "ano": 2027, "proj": 183651938.357373, "real": 44412501.1799771, "preal": 0.241829743683693, "ano_v": 66279735.2478808, "saldo": 139239437.177396, "conf": "✓ Tudo OK", "gerado": "2026-09-29", "kb": 5155, "obra": "torre-catharina", "cen": "Prevision", "cen_desc": "Curvas de andamento do Prevision", "cen_ord": 2}]}];
 // cada cenário é uma entrada navegável (#id); cartões de obra sem cenários têm um só
 const ALL=OBRAS.flatMap(o=>(o.cens&&o.cens.length?o.cens:[o]).map(c=>Object.assign({},c,{nome:o.nome,grupo:o})));
 let D=[],OBRA=null;
@@ -437,6 +521,7 @@ const side=document.getElementById('side'),wrap=document.getElementById('wrap'),
 const sel={value:''};
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 function show(name){
+  if(name==='GANTT'&&GANTT){gridbtn.hidden=true;markOn(name);sel.value='';note.hidden=true;renderGantt();try{localStorage.setItem('aba:'+(OBRA&&OBRA.id),name)}catch(e){};return}
   if(name==='CURVA FÍSICA'&&FIS){gridbtn.hidden=true;markOn(name);sel.value='';note.hidden=true;renderFis();try{localStorage.setItem('aba:'+(OBRA&&OBRA.id),name)}catch(e){};return}
   const s=D.find(x=>x.name===name); if(!s) return;
   const isD=name==='DASHBOARD'&&DASH;gridbtn.hidden=!isD;gridbtn.textContent=gridMode?'Ver como painel':'Ver como planilha';
@@ -462,13 +547,14 @@ wrap.addEventListener('click',e=>{const td=e.target.closest('td[data-a]');if(!td
   wrap.querySelectorAll('.sel').forEach(x=>x.classList.remove('sel'));td.classList.add('sel');
   cell.textContent=td.dataset.a+'  '+(td.dataset.f||td.textContent||'(vazia)')});
 const PAINEIS0=["DASHBOARD","RETRATO 2027"];let PAINEIS=PAINEIS0.slice();
+const EXTRA=()=>[...(FIS?['CURVA FÍSICA']:[]),...(GANTT?['GANTT']:[])];
 const GRUPOS=[["Entradas de dados",["VALOR POR PL","\"INCC-FGV\"","DADOS BRUTOS","CURVA PREVISION","CRONOGRAMA ATIVIDADES"]],
  ["Cálculos",["MODELO PARA BI","AUX. CURVA","CP RESUMO","DADOS HISTORICOS"]]];
 let DISC=[],det=null;
 function btn(n,extra){const b=document.createElement('button');b.type='button';b.dataset.n=n;b.textContent=n.trim();if(extra)b.classList.add(extra);
   b.onclick=()=>{gridMode=false;show(n);document.body.classList.remove('menu')};return b}
 function grupo(tit,nomes,cls){const g=document.createElement('div');g.className='grp '+(cls||'');g.innerHTML=`<div class="gt">${tit}</div>`;
-  nomes.filter(n=>D.find(x=>x.name===n)||(n==='CURVA FÍSICA'&&FIS)).forEach(n=>g.appendChild(btn(n,INPUT.has(n)?'in-dot':'')));return g}
+  nomes.filter(n=>D.find(x=>x.name===n)||EXTRA().includes(n)).forEach(n=>g.appendChild(btn(n,INPUT.has(n)?'in-dot':'')));return g}
 function buildSide(){
   const usados=new Set([...PAINEIS,...GRUPOS.flatMap(g=>g[1]),"LEIA-ME"]);
   DISC=D.map(x=>x.name).filter(n=>!usados.has(n));
@@ -482,7 +568,7 @@ function buildSide(){
   det.querySelector('#dfilt').addEventListener('input',e=>{const q=e.target.value.toLowerCase();det.querySelectorAll('button').forEach(b=>b.hidden=q&&!b.dataset.n.toLowerCase().includes(q))});
   side.appendChild(grupo('Ajuda',["LEIA-ME"]));
 }
-function markOn(name){document.body.classList.toggle('panel',((name==='DASHBOARD'&&DASH)||(name==='RETRATO 2027'&&RET)||(name==='CURVA FÍSICA'&&FIS))&&!gridMode);side.querySelectorAll('button[data-n]').forEach(b=>b.classList.toggle('on',b.dataset.n===name));
+function markOn(name){document.body.classList.toggle('panel',((name==='DASHBOARD'&&DASH)||(name==='RETRATO 2027'&&RET)||(name==='CURVA FÍSICA'&&FIS)||(name==='GANTT'&&GANTT))&&!gridMode);side.querySelectorAll('button[data-n]').forEach(b=>b.classList.toggle('on',b.dataset.n===name));
   curtab.textContent=name.trim();if(det&&DISC.includes(name))det.open=true}
 const gridbtn=document.getElementById('gridbtn');gridbtn.onclick=()=>{gridMode=!gridMode;show(side.querySelector('button.on')?.dataset.n||'DASHBOARD')};
 document.getElementById('menubtn').onclick=()=>document.body.classList.toggle('menu');
@@ -528,9 +614,9 @@ async function openObra(id){
   loading.hidden=false;
   try{if(!cache[id]){const r=await fetch(`obras/${id}.json`);if(!r.ok)throw new Error(r.status);cache[id]=await r.json()}}
   catch(e){loading.hidden=true;alertBox(`Não foi possível carregar os dados da obra ${o.nome} (${e.message}). Tente recarregar a página.`);return}
-  const j=cache[id];OBRA=o;D=j.D;DASH=j.DASH;RET=j.RET;FIS=j.FIS||null;PAINEIS=FIS?[...PAINEIS0,'CURVA FÍSICA']:PAINEIS0.slice();document.getElementById('obracss').textContent=j.css;gridMode=false;
+  const j=cache[id];OBRA=o;D=j.D;DASH=j.DASH;RET=j.RET;FIS=j.FIS||null;GANTT=j.GANTT||null;gOpen.clear();gQ='';gSL=null;gST=0;PAINEIS=[...PAINEIS0,...EXTRA()];document.getElementById('obracss').textContent=j.css;gridMode=false;
   buildSide();home.hidden=true;app.hidden=false;loading.hidden=true;document.title='Fluxo de Caixa · '+o.nome+(o.cen?' · '+o.cen:'');
-  let start='DASHBOARD';try{const a=localStorage.getItem('aba:'+id);if(a&&(D.find(x=>x.name===a)||(a==='CURVA FÍSICA'&&FIS)))start=a}catch(e){}
+  let start='DASHBOARD';try{const a=localStorage.getItem('aba:'+id);if(a&&(D.find(x=>x.name===a)||EXTRA().includes(a)))start=a}catch(e){}
   show(start);
 }
 function alertBox(msg){document.getElementById('ogrid').insertAdjacentHTML('beforebegin',`<p class="lead" style="color:#c62828">${esc(msg)}</p>`)}
