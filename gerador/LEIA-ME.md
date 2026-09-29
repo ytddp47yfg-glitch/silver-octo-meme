@@ -22,3 +22,11 @@ arquivo separado em `site/obras/<id>.json`, que só é carregado quando a obra �
    como arquivo de apoio no caminho `obras/<id>.json`.
 
 Dependências: Python 3 com `openpyxl` e LibreOffice (para o passo 2).
+
+## Painel CURVA FÍSICA (Ed Jardim)
+
+Curvas de avanço físico por cenário, calculadas a partir das PLs (itens diretos, ponderados pela projeção):
+
+    python3 gerador/fisico.py fis.json "Padrão=ej_padrao_calc.xlsx" "Prevision=ej_tool_calc.xlsx" "Prevision ajustado=ej_sim4_calc.xlsx"
+
+Depois gere o JSON de cada cenário com `VW_FIS=fis.json` no ambiente do `viewer.py`; o painel aparece só nas obras que têm esses dados.

@@ -207,6 +207,29 @@ body.present .pnav{display:flex}
 #side .back{all:unset;cursor:pointer;font:12px Arial;color:var(--acc);padding:4px 8px;border-radius:6px}
 #side .back:hover{background:var(--hd)}
 #loading{position:fixed;inset:0;display:grid;place-items:center;background:var(--bg);z-index:60;color:var(--mut);font:14px Arial}
+/* CURVA FÍSICA (estilo da Curva S do Prevision) */
+.fz{--f-real:#4b3bea;--f-prev:#1c2127;--f-c0:#e5533d;--f-c1:#0f8f7e;--f-c2:#c98a00}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .fz{--f-real:#8b80ff;--f-prev:#e8edf2;--f-c0:#ff7a66;--f-c1:#3cc7b3;--f-c2:#f0b429}}
+:root[data-theme="dark"] .fz{--f-real:#8b80ff;--f-prev:#e8edf2;--f-c0:#ff7a66;--f-c1:#3cc7b3;--f-c2:#f0b429}
+.fz .fcard{background:var(--d-card);border:1px solid var(--d-line);border-radius:6px;box-shadow:0 1px 2px rgba(0,0,0,.06);min-width:0}
+.fz .fhead{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:14px 18px 10px;border-bottom:1px solid var(--d-line);flex-wrap:wrap}
+.fz .fhead h2{font-size:19px;letter-spacing:0;text-transform:none;color:var(--d-ink);font-weight:500;margin:0 0 8px}
+.fz .fhead .crumb{color:var(--d-mut);font-size:13px}.fz .fhead .crumb b{color:var(--d-ink2);font-weight:400}
+.fz .fbtns{display:flex;gap:8px;flex-wrap:wrap}.fz .fbtns button{font:600 12px Arial;padding:7px 12px;border-radius:4px;border:1px solid var(--d-line);background:var(--d-card);color:var(--d-ink);cursor:pointer}
+.fz .fbtns button.on{border-color:var(--f-real);color:var(--f-real)}
+.fz .fleg{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;padding:16px 12px 0;font-size:12.5px;font-weight:700;color:var(--d-ink)}
+.fz .fleg span{display:inline-flex;align-items:center;gap:7px;cursor:pointer;user-select:none}.fz .fleg span.off{opacity:.35}
+.fz .fleg i{display:inline-block;width:16px;height:2px;border-radius:1px}.fz .fleg i.dot{width:11px;height:11px;border-radius:50%}
+.fz svg{display:block;width:100%;height:auto}.fz .fchart{overflow-x:auto}.fz .fchart svg{min-width:760px}
+.fz svg text{font-size:11px;fill:var(--d-ink2)}.fz svg .grid{stroke:var(--d-line)}
+.fz .ftip{position:fixed;z-index:30;background:var(--d-card);border:1px solid var(--d-line);box-shadow:0 2px 8px rgba(0,0,0,.18);padding:8px 10px;font-size:12px;line-height:1.55;pointer-events:none;color:var(--d-ink);border-radius:3px}
+.fz .ftip b{display:block;margin-bottom:2px}.fz .ftip i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.fz table{border-collapse:collapse;width:100%;font-size:12.5px;table-layout:auto}
+.fz th,.fz td{padding:6px 8px;border-bottom:1px solid var(--d-line);text-align:right;white-space:nowrap}
+.fz th{background:var(--d-teal);color:var(--d-navy);font-size:11.5px}.fz th:first-child,.fz td:first-child{text-align:left}
+.fz td:first-child{white-space:normal;min-width:170px}.fz tr.hl td{background:var(--d-hl);font-weight:700}
+.fz th .sw{display:inline-block;width:10px;height:3px;margin-right:5px;vertical-align:middle}
+.fz .pad{padding:14px 18px}
 </style>
 <style id="obracss"></style>
 <section id="home" aria-label="Escolha da obra"><div class="hin">
@@ -226,6 +249,62 @@ body.present .pnav{display:flex}
 </main></div>
 <div class="pnav" id="pnav"><button type="button" id="pprev" aria-label="Painel anterior">◀</button><span id="pcount">1 / 2</span><button type="button" id="pnext" aria-label="Próximo painel">▶</button><button type="button" id="pexit">Sair (Esc)</button></div>
 <script>
+let FIS=null,fisMode='MENSAL',fisOff=new Set();
+const fDia=m=>{const[y,mo]=m.split('-').map(Number);const d=new Date(y,mo,0).getDate();return String(d).padStart(2,'0')+'/'+String(mo).padStart(2,'0')+'/'+y};
+const fPc=(v,d=2)=>v==null?'—':(v*100).toLocaleString('pt-BR',{minimumFractionDigits:d,maximumFractionDigits:d})+'%';
+function fisSeries(){const F=FIS,cor=['var(--f-c0)','var(--f-c1)','var(--f-c2)'];
+  const s=[{k:'prev',nome:'Previsto (Prevision)',cor:'var(--f-prev)',v:F.prev,w:2}];
+  F.cens.forEach((c,i)=>s.push({k:'c'+i,nome:'Cenário '+c.nome,cor:cor[i%3],v:c.v,w:c.nome===OBRA.cen?3:2,cur:c.nome===OBRA.cen}));return s}
+function fisSVG(){
+  const F=FIS,ser=fisSeries(),anual=fisMode==='ANUAL';
+  // horizonte até 2 meses depois de todas as curvas chegarem a 100% (como o gráfico do Prevision)
+  const fim=Math.min(F.meses.length-1,Math.max(...ser.map(s=>s.v.findIndex(x=>x>=0.9995)).map(i=>i<0?F.meses.length-1:i))+2);
+  const idx=F.meses.map((m,i)=>i).filter(i=>i<=fim&&(!anual||F.meses[i].endsWith('-12')||i===fim));
+  const W=1200,H=380,L=64,R=24,T=14,B=78,pw=W-L-R,ph=H-T-B,n=idx.length,X=j=>L+pw*j/(n-1),Y=p=>T+ph-ph*p;
+  let g='';
+  for(let i=0;i<=4;i++){const y=Y(i/4);g+=`<line class="grid" x1="${L}" x2="${W-R}" y1="${y}" y2="${y}"/><text x="${L-8}" y="${y+4}" text-anchor="end">${(i*25).toFixed(2).replace('.',',')}%</text>`}
+  const step=anual?1:4;idx.forEach((i,j)=>{if(j%step===(anual?0:(n-1)%step)){const x=X(j);g+=`<line class="grid" x1="${x}" x2="${x}" y1="${T+ph}" y2="${T+ph+5}"/><text transform="translate(${x+4},${T+ph+14}) rotate(-45)" text-anchor="end">${fDia(F.meses[i])}</text>`}});
+  if(!fisOff.has('real')){const bw=Math.max(2,pw/(n-1)*.86);idx.forEach((i,j)=>{const v=F.real[i];if(v==null||v<=0)return;g+=`<rect x="${X(j)-bw/2}" y="${Y(v)}" width="${bw}" height="${ph*v}" fill="var(--f-real)"/>`})}
+  ser.forEach(s=>{if(fisOff.has(s.k))return;const pts=idx.map((i,j)=>`${X(j).toFixed(1)},${Y(s.v[i]).toFixed(1)}`).join(' ');
+    g+=`<polyline points="${pts}" fill="none" stroke="${s.cor}" stroke-width="${s.w}" stroke-linejoin="round"${s.k==='prev'?'':' opacity=".95"'}/>`});
+  g+=`<line x1="${L}" x2="${W-R}" y1="${T+ph}" y2="${T+ph}" stroke="var(--d-mut)"/>`;
+  g+=`<g class="fx" opacity="0"><line class="fxl" x1="0" x2="0" y1="${T}" y2="${T+ph}" stroke="var(--d-ink2)" stroke-dasharray="2 3"/></g>`;
+  g+=`<rect class="fhit" x="${L}" y="${T}" width="${pw}" height="${ph}" fill="transparent"/>`;
+  return {svg:`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Curva S do avanço físico por cenário">${g}</svg>`,X,Y,L,pw,n,idx,ser,W}
+}
+function renderFis(){
+  const F=FIS,ser=fisSeries(),C=fisSVG(),ic=F.meses.indexOf(F.corte);
+  const leg=[{k:'real',nome:'Realizado',cor:'var(--f-real)',dot:1},...ser].map(s=>`<span data-k="${s.k}" class="${fisOff.has(s.k)?'off':''}" role="button" tabindex="0" aria-pressed="${!fisOff.has(s.k)}"><i class="${s.dot?'dot':''}" style="background:${s.cor}${s.cur?';height:3px':''}"></i>${s.nome}${s.cur?' (atual)':''}</span>`).join('');
+  const dez=F.meses.map((m,i)=>[m,i]).filter(([m])=>m.endsWith('-12'));
+  const concl=v=>{const i=v.findIndex(x=>x>=0.9995);return i<0?'—':mLab(F.meses[i])};
+  const ano=(DASH&&DASH.ano)||2027;
+  const yr=dez.map(([m,i])=>`<tr class="${+m.slice(0,4)===ano?'hl':''}"><td>31/12/${m.slice(0,4)}</td><td>${F.real[i]==null?'—':fPc(F.real[i],1)}</td>${ser.map(s=>`<td>${fPc(s.v[i],1)}</td>`).join('')}</tr>`).join('');
+  const th=ser.map(s=>`<th><span class="sw" style="background:${s.cor}"></span>${s.nome.replace('Cenário ','')}</th>`).join('');
+  const k=dez.findIndex(([m])=>+m.slice(0,4)===ano);
+  const plr=F.cens[0].pls.map((p,j)=>`<tr><td>${esc(p.n)}</td><td>${fPc(p.fc,1)}</td><td>${fPc(p.pdez[k],1)}</td>${F.cens.map(c=>`<td>${fPc(c.pls[j].dez[k],1)}</td>`).join('')}</tr>`).join('');
+  const sw=F.cens[0].pls.reduce((a,p)=>a+p.w,0);
+  wrap.innerHTML=`<div class="dz fz">
+  <div class="dz-head"><div><h1>${esc(OBRA.nome)} · Curva física por cenário</h1><p>Avanço físico acumulado dos itens diretos (${F.npl} PLs), ponderado pela projeção de cada PL · Corte: ${mLab(F.corte)} · Realizado no corte: ${fPc(F.real[ic])}</p></div></div>
+  <div class="fcard"><div class="fhead"><div><h2>Curva S</h2><div class="crumb">Visão geral <b>›</b> passe o mouse no gráfico para ver o detalhamento do mês</div></div>
+   <div class="fbtns" role="group" aria-label="Periodicidade"><button type="button" data-m="MENSAL" class="${fisMode==='MENSAL'?'on':''}">MENSAL</button><button type="button" data-m="ANUAL" class="${fisMode==='ANUAL'?'on':''}">ANUAL</button></div></div>
+   <div class="fleg">${leg}</div><div class="fchart" style="padding:4px 10px 6px">${C.svg}</div></div>
+  <div class="fcard"><div class="pad"><h2>Avanço físico acumulado no fim de cada ano</h2><div class="dz-tw"><table><thead><tr><th>Data</th><th><span class="sw" style="background:var(--f-real)"></span>Realizado</th>${th}</tr></thead><tbody>${yr}
+    <tr><td>Conclusão (100%)</td><td></td>${ser.map(s=>`<td>${concl(s.v)}</td>`).join('')}</tr></tbody></table></div></div></div>
+  <div class="fcard"><div class="pad"><h2>Por PL em 31/12/${ano}</h2><div class="dz-tw" style="max-height:420px;overflow:auto"><table><thead><tr><th>PL</th><th>No corte</th><th>Prevision</th>${F.cens.map(c=>`<th>${esc(c.nome)}</th>`).join('')}</tr></thead><tbody>${plr}</tbody></table></div></div></div>
+  <div class="fcard"><div class="pad"><p class="note" style="margin:0">Como a curva é montada. <b>Realizado</b> e <b>Previsto (Prevision)</b>: % acumulado do cronograma físico-financeiro do Prevision (aba CP RESUMO) de cada PL. <b>Cenários</b>: até o corte, o realizado; depois, o físico de cada PL avança na mesma proporção do desembolso que falta no cenário (curva financeira da aba da PL). PL sem desembolso futuro segue o previsto do Prevision. A obra é a média das PLs diretas ponderada pela projeção (R$ ${(sw/1e6).toLocaleString('pt-BR',{maximumFractionDigits:1})} mi). O Prevision pondera pelo custo do próprio cronograma, por isso o % dele pode ser um pouco diferente.</p></div></div>
+  <div class="ftip" hidden></div></div>`;
+  const tip=wrap.querySelector('.ftip'),svg=wrap.querySelector('svg[aria-label^="Curva S do avanço"]'),fx=svg.querySelector('.fx'),fxl=svg.querySelector('.fxl');
+  wrap.querySelectorAll('.fbtns button').forEach(b=>b.onclick=()=>{fisMode=b.dataset.m;renderFis()});
+  wrap.querySelectorAll('.fleg span').forEach(sp=>{const t=()=>{const k=sp.dataset.k;fisOff.has(k)?fisOff.delete(k):fisOff.add(k);renderFis()};sp.onclick=t;sp.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();t()}}});
+  const at=(j,cx,cy)=>{const i=C.idx[j];fxl.setAttribute('x1',C.X(j));fxl.setAttribute('x2',C.X(j));fx.setAttribute('opacity','1');
+    fx.querySelectorAll('circle').forEach(c=>c.remove());
+    C.ser.forEach(s=>{if(fisOff.has(s.k))return;const c=document.createElementNS('http://www.w3.org/2000/svg','circle');c.setAttribute('cx',C.X(j));c.setAttribute('cy',C.Y(s.v[i]));c.setAttribute('r',s.cur?5:4);c.setAttribute('fill',s.cor);c.setAttribute('stroke','var(--d-card)');c.setAttribute('stroke-width','1.5');fx.appendChild(c)});
+    tipAt(tip,`<b>${fDia(F.meses[i])}</b>${C.ser.filter(s=>!fisOff.has(s.k)).map(s=>`<i style="background:${s.cor}"></i>${s.nome.replace('Cenário ','')}: <b style="display:inline">${fPc(s.v[i])}</b>`).join('<br>')}${F.real[i]!=null?`<br><i style="background:var(--f-real)"></i>Realizado: <b style="display:inline">${fPc(F.real[i])}</b>`:''}`,cx,cy)};
+  const hit=svg.querySelector('.fhit');
+  hit.addEventListener('pointermove',e=>{const r=svg.getBoundingClientRect(),sx=(e.clientX-r.left)*C.W/r.width;at(Math.max(0,Math.min(C.n-1,Math.round((sx-C.L)/C.pw*(C.n-1)))),e.clientX,e.clientY)});
+  hit.addEventListener('pointerleave',()=>{tip.hidden=true;fx.setAttribute('opacity','0')});
+  wrap.scrollTo(0,0);
+}
 let RET=null;
 let _rtSync=null;
 function stickRet(){
@@ -346,7 +425,7 @@ function renderDash(){
   wrap.scrollTo(0,0);
 }
 
-const OBRAS=[{"nome": "Botânico", "id": "botanico", "corte": "2026-08", "ano": 2027, "proj": 160341788.080649, "real": 21284340.810013, "preal": 0.132743566507487, "ano_v": 48774959.4525306, "saldo": 139057447.270636, "conf": "✓ Tudo OK", "gerado": "2026-09-29", "kb": 4755, "obra": "botanico", "cen": "Padrão", "cen_desc": "Curvas digitadas na versão original", "cen_ord": 1, "cens": [{"nome": "Botânico", "id": "botanico-padrao", "corte": "2026-08", "ano": 2027, "proj": 160341788.080649, "real": 21284340.810013, "preal": 0.132743566507487, "ano_v": 48774959.4525306, "saldo": 139057447.270636, "conf": "✓ Tudo OK", "gerado": "2026-09-29", "kb": 4755, "obra": "botanico", "cen": "Padrão", "cen_desc": "Curvas digitadas na versão original", "cen_ord": 1}, {"nome": "Botânico", "id": "botanico", "corte": "2026-08", "ano": 2027, "proj": 160341788.080649, "real": 21284340.810013, "preal": 0.132743566507487, "ano_v": 57036385.8563455, "saldo": 139057447.270636, "conf": "✓ Tudo OK", "gerado": "2026-09-29", "kb": 4753, "obra": "botanico", "cen": "Prevision", "cen_desc": "Curvas de andamento do Prevision", "cen_ord": 2}]}, {"nome": "Ed Jardim", "id": "ed-jardim", "corte": "2026-08", "ano": 2027, "proj": 154459552.469737, "real": 42586104.68, "preal": 0.275710397958998, "ano_v": 56009788.8655176, "saldo": 111873447.789737, "conf": "✓ Tudo OK", "gerado": "2026-09-29", "kb": 5373, "obra": "ed-jardim", "cen": "Padrão", "cen_desc": "Curvas digitadas na versão original; 2027 reduzido para o valor da revisão anterior (diferença em 2028)", "cen_ord": 1, "cens": [{"nome": "Ed Jardim", "id": "ed-jardim-padrao", "corte": "2026-08", "ano": 2027, "proj": 154459552.469737, "real": 42586104.68, "preal": 0.275710397958998, "ano_v": 56009788.8655176, "saldo": 111873447.789737, "conf": "✓ Tudo OK", "gerado": "2026-09-29", "kb": 5373, "obra": "ed-jardim", "cen": "Padrão", "cen_desc": "Curvas digitadas na versão original; 2027 reduzido para o valor da revisão anterior (diferença em 2028)", "cen_ord": 1}, {"nome": "Ed Jardim", "id": "ed-jardim", "corte": "2026-08", "ano": 2027, "proj": 154459552.469737, "real": 42586104.68, "preal": 0.275710397958998, "ano_v": 66268020.4153684, "saldo": 111873447.789737, "conf": "✓ Tudo OK", "gerado": "2026-09-29", "kb": 4701, "obra": "ed-jardim", "cen": "Prevision", "cen_desc": "Curvas de andamento do Prevision (exceto estrutura, elevadores, esquadrias e indiretos)", "cen_ord": 2}, {"nome": "Ed Jardim", "id": "ed-jardim-ajustado", "corte": "2026-08", "ano": 2027, "proj": 154459552.469737, "real": 42586104.68, "preal": 0.275710397958998, "ano_v": 53460558.958548, "saldo": 111873447.789737, "conf": "✓ Tudo OK", "gerado": "2026-09-29", "kb": 5374, "obra": "ed-jardim", "cen": "Prevision ajustado", "cen_desc": "Prevision com: rev. de acabamento em 11 de 28 pavimentos em 2027; fachada pelo estudo de balancins (R12); inst. especiais e fundação superficial na curva digitada; hidráulica com o andamento da elétrica; 2027 reduzido para o valor da revisão anterior (diferença em 2028)", "cen_ord": 3}]}, {"nome": "Torre Catharina", "id": "torre-catharina", "corte": "2026-08", "ano": 2027, "proj": 183651938.357373, "real": 44412501.1799771, "preal": 0.241829743683693, "ano_v": 61374321.7614814, "saldo": 139239437.177396, "conf": "✓ Tudo OK", "gerado": "2026-09-29", "kb": 4711, "obra": "torre-catharina", "cen": "Padrão", "cen_desc": "Curvas digitadas na versão original", "cen_ord": 1, "cens": [{"nome": "Torre Catharina", "id": "torre-catharina-padrao", "corte": "2026-08", "ano": 2027, "proj": 183651938.357373, "real": 44412501.1799771, "preal": 0.241829743683693, "ano_v": 61374321.7614814, "saldo": 139239437.177396, "conf": "✓ Tudo OK", "gerado": "2026-09-29", "kb": 4711, "obra": "torre-catharina", "cen": "Padrão", "cen_desc": "Curvas digitadas na versão original", "cen_ord": 1}, {"nome": "Torre Catharina", "id": "torre-catharina", "corte": "2026-08", "ano": 2027, "proj": 183651938.357373, "real": 44412501.1799771, "preal": 0.241829743683693, "ano_v": 66279735.2478808, "saldo": 139239437.177396, "conf": "✓ Tudo OK", "gerado": "2026-09-29", "kb": 4709, "obra": "torre-catharina", "cen": "Prevision", "cen_desc": "Curvas de andamento do Prevision", "cen_ord": 2}]}];
+const OBRAS=[{"nome": "Botânico", "id": "botanico", "corte": "2026-08", "ano": 2027, "proj": 160341788.080649, "real": 21284340.810013, "preal": 0.132743566507487, "ano_v": 48774959.4525306, "saldo": 139057447.270636, "conf": "✓ Tudo OK", "gerado": "2026-09-29", "kb": 4755, "obra": "botanico", "cen": "Padrão", "cen_desc": "Curvas digitadas na versão original", "cen_ord": 1, "cens": [{"nome": "Botânico", "id": "botanico-padrao", "corte": "2026-08", "ano": 2027, "proj": 160341788.080649, "real": 21284340.810013, "preal": 0.132743566507487, "ano_v": 48774959.4525306, "saldo": 139057447.270636, "conf": "✓ Tudo OK", "gerado": "2026-09-29", "kb": 4755, "obra": "botanico", "cen": "Padrão", "cen_desc": "Curvas digitadas na versão original", "cen_ord": 1}, {"nome": "Botânico", "id": "botanico", "corte": "2026-08", "ano": 2027, "proj": 160341788.080649, "real": 21284340.810013, "preal": 0.132743566507487, "ano_v": 57036385.8563455, "saldo": 139057447.270636, "conf": "✓ Tudo OK", "gerado": "2026-09-29", "kb": 4753, "obra": "botanico", "cen": "Prevision", "cen_desc": "Curvas de andamento do Prevision", "cen_ord": 2}]}, {"nome": "Ed Jardim", "id": "ed-jardim", "corte": "2026-08", "ano": 2027, "proj": 154459552.469737, "real": 42586104.68, "preal": 0.275710397958998, "ano_v": 56009788.8655176, "saldo": 111873447.789737, "conf": "✓ Tudo OK", "gerado": "2026-09-29", "kb": 5386, "obra": "ed-jardim", "cen": "Padrão", "cen_desc": "Curvas digitadas na versão original; 2027 reduzido para o valor da revisão anterior (diferença em 2028)", "cen_ord": 1, "cens": [{"nome": "Ed Jardim", "id": "ed-jardim-padrao", "corte": "2026-08", "ano": 2027, "proj": 154459552.469737, "real": 42586104.68, "preal": 0.275710397958998, "ano_v": 56009788.8655176, "saldo": 111873447.789737, "conf": "✓ Tudo OK", "gerado": "2026-09-29", "kb": 5386, "obra": "ed-jardim", "cen": "Padrão", "cen_desc": "Curvas digitadas na versão original; 2027 reduzido para o valor da revisão anterior (diferença em 2028)", "cen_ord": 1}, {"nome": "Ed Jardim", "id": "ed-jardim", "corte": "2026-08", "ano": 2027, "proj": 154459552.469737, "real": 42586104.68, "preal": 0.275710397958998, "ano_v": 66268020.4153684, "saldo": 111873447.789737, "conf": "✓ Tudo OK", "gerado": "2026-09-29", "kb": 4714, "obra": "ed-jardim", "cen": "Prevision", "cen_desc": "Curvas de andamento do Prevision (exceto estrutura, elevadores, esquadrias e indiretos)", "cen_ord": 2}, {"nome": "Ed Jardim", "id": "ed-jardim-ajustado", "corte": "2026-08", "ano": 2027, "proj": 154459552.469737, "real": 42586104.68, "preal": 0.275710397958998, "ano_v": 53460558.958548, "saldo": 111873447.789737, "conf": "✓ Tudo OK", "gerado": "2026-09-29", "kb": 5387, "obra": "ed-jardim", "cen": "Prevision ajustado", "cen_desc": "Prevision com: rev. de acabamento em 11 de 28 pavimentos em 2027; fachada pelo estudo de balancins (R12); inst. especiais e fundação superficial na curva digitada; hidráulica com o andamento da elétrica; 2027 reduzido para o valor da revisão anterior (diferença em 2028)", "cen_ord": 3}]}, {"nome": "Torre Catharina", "id": "torre-catharina", "corte": "2026-08", "ano": 2027, "proj": 183651938.357373, "real": 44412501.1799771, "preal": 0.241829743683693, "ano_v": 61374321.7614814, "saldo": 139239437.177396, "conf": "✓ Tudo OK", "gerado": "2026-09-29", "kb": 4711, "obra": "torre-catharina", "cen": "Padrão", "cen_desc": "Curvas digitadas na versão original", "cen_ord": 1, "cens": [{"nome": "Torre Catharina", "id": "torre-catharina-padrao", "corte": "2026-08", "ano": 2027, "proj": 183651938.357373, "real": 44412501.1799771, "preal": 0.241829743683693, "ano_v": 61374321.7614814, "saldo": 139239437.177396, "conf": "✓ Tudo OK", "gerado": "2026-09-29", "kb": 4711, "obra": "torre-catharina", "cen": "Padrão", "cen_desc": "Curvas digitadas na versão original", "cen_ord": 1}, {"nome": "Torre Catharina", "id": "torre-catharina", "corte": "2026-08", "ano": 2027, "proj": 183651938.357373, "real": 44412501.1799771, "preal": 0.241829743683693, "ano_v": 66279735.2478808, "saldo": 139239437.177396, "conf": "✓ Tudo OK", "gerado": "2026-09-29", "kb": 4709, "obra": "torre-catharina", "cen": "Prevision", "cen_desc": "Curvas de andamento do Prevision", "cen_ord": 2}]}];
 // cada cenário é uma entrada navegável (#id); cartões de obra sem cenários têm um só
 const ALL=OBRAS.flatMap(o=>(o.cens&&o.cens.length?o.cens:[o]).map(c=>Object.assign({},c,{nome:o.nome,grupo:o})));
 let D=[],OBRA=null;
@@ -356,6 +435,7 @@ const side=document.getElementById('side'),wrap=document.getElementById('wrap'),
 const sel={value:''};
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 function show(name){
+  if(name==='CURVA FÍSICA'&&FIS){gridbtn.hidden=true;markOn(name);sel.value='';note.hidden=true;renderFis();try{localStorage.setItem('aba:'+(OBRA&&OBRA.id),name)}catch(e){};return}
   const s=D.find(x=>x.name===name); if(!s) return;
   const isD=name==='DASHBOARD'&&DASH;gridbtn.hidden=!isD;gridbtn.textContent=gridMode?'Ver como painel':'Ver como planilha';
   if(name==='RETRATO 2027'&&RET&&!gridMode){gridbtn.hidden=false;gridbtn.textContent='Ver como planilha';markOn(name);sel.value='';note.hidden=true;renderRet();try{localStorage.setItem('aba:'+(OBRA&&OBRA.id),name)}catch(e){};return}
@@ -379,14 +459,14 @@ function show(name){
 wrap.addEventListener('click',e=>{const td=e.target.closest('td[data-a]');if(!td)return;
   wrap.querySelectorAll('.sel').forEach(x=>x.classList.remove('sel'));td.classList.add('sel');
   cell.textContent=td.dataset.a+'  '+(td.dataset.f||td.textContent||'(vazia)')});
-const PAINEIS=["DASHBOARD","RETRATO 2027"];
+const PAINEIS0=["DASHBOARD","RETRATO 2027"];let PAINEIS=PAINEIS0.slice();
 const GRUPOS=[["Entradas de dados",["VALOR POR PL","\"INCC-FGV\"","DADOS BRUTOS","CURVA PREVISION","CRONOGRAMA ATIVIDADES"]],
  ["Cálculos",["MODELO PARA BI","AUX. CURVA","CP RESUMO","DADOS HISTORICOS"]]];
 let DISC=[],det=null;
 function btn(n,extra){const b=document.createElement('button');b.type='button';b.dataset.n=n;b.textContent=n.trim();if(extra)b.classList.add(extra);
   b.onclick=()=>{gridMode=false;show(n);document.body.classList.remove('menu')};return b}
 function grupo(tit,nomes,cls){const g=document.createElement('div');g.className='grp '+(cls||'');g.innerHTML=`<div class="gt">${tit}</div>`;
-  nomes.filter(n=>D.find(x=>x.name===n)).forEach(n=>g.appendChild(btn(n,INPUT.has(n)?'in-dot':'')));return g}
+  nomes.filter(n=>D.find(x=>x.name===n)||(n==='CURVA FÍSICA'&&FIS)).forEach(n=>g.appendChild(btn(n,INPUT.has(n)?'in-dot':'')));return g}
 function buildSide(){
   const usados=new Set([...PAINEIS,...GRUPOS.flatMap(g=>g[1]),"LEIA-ME"]);
   DISC=D.map(x=>x.name).filter(n=>!usados.has(n));
@@ -400,7 +480,7 @@ function buildSide(){
   det.querySelector('#dfilt').addEventListener('input',e=>{const q=e.target.value.toLowerCase();det.querySelectorAll('button').forEach(b=>b.hidden=q&&!b.dataset.n.toLowerCase().includes(q))});
   side.appendChild(grupo('Ajuda',["LEIA-ME"]));
 }
-function markOn(name){document.body.classList.toggle('panel',((name==='DASHBOARD'&&DASH)||(name==='RETRATO 2027'&&RET))&&!gridMode);side.querySelectorAll('button[data-n]').forEach(b=>b.classList.toggle('on',b.dataset.n===name));
+function markOn(name){document.body.classList.toggle('panel',((name==='DASHBOARD'&&DASH)||(name==='RETRATO 2027'&&RET)||(name==='CURVA FÍSICA'&&FIS))&&!gridMode);side.querySelectorAll('button[data-n]').forEach(b=>b.classList.toggle('on',b.dataset.n===name));
   curtab.textContent=name.trim();if(det&&DISC.includes(name))det.open=true}
 const gridbtn=document.getElementById('gridbtn');gridbtn.onclick=()=>{gridMode=!gridMode;show(side.querySelector('button.on')?.dataset.n||'DASHBOARD')};
 document.getElementById('menubtn').onclick=()=>document.body.classList.toggle('menu');
@@ -446,9 +526,9 @@ async function openObra(id){
   loading.hidden=false;
   try{if(!cache[id]){const r=await fetch(`obras/${id}.json`);if(!r.ok)throw new Error(r.status);cache[id]=await r.json()}}
   catch(e){loading.hidden=true;alertBox(`Não foi possível carregar os dados da obra ${o.nome} (${e.message}). Tente recarregar a página.`);return}
-  const j=cache[id];OBRA=o;D=j.D;DASH=j.DASH;RET=j.RET;document.getElementById('obracss').textContent=j.css;gridMode=false;
+  const j=cache[id];OBRA=o;D=j.D;DASH=j.DASH;RET=j.RET;FIS=j.FIS||null;PAINEIS=FIS?[...PAINEIS0,'CURVA FÍSICA']:PAINEIS0.slice();document.getElementById('obracss').textContent=j.css;gridMode=false;
   buildSide();home.hidden=true;app.hidden=false;loading.hidden=true;document.title='Fluxo de Caixa · '+o.nome+(o.cen?' · '+o.cen:'');
-  let start='DASHBOARD';try{const a=localStorage.getItem('aba:'+id);if(a&&D.find(x=>x.name===a))start=a}catch(e){}
+  let start='DASHBOARD';try{const a=localStorage.getItem('aba:'+id);if(a&&(D.find(x=>x.name===a)||(a==='CURVA FÍSICA'&&FIS)))start=a}catch(e){}
   show(start);
 }
 function alertBox(msg){document.getElementById('ogrid').insertAdjacentHTML('beforebegin',`<p class="lead" style="color:#c62828">${esc(msg)}</p>`)}

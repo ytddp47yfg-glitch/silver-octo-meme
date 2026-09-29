@@ -120,7 +120,8 @@ def ret_data():
                 incc_mes=r['F5'].value.strftime('%m/%Y'), cards=[dict(l=r[f'{c}7'].value, v=r[f'{c}8'].value, n=r[f'{c}9'].value) for c in 'BDFHJK'], rows=rows)
 if JSON_MODE:
     dd = dash_data(); rr = ret_data()
-    obra = json.dumps(dict(css='\n'.join(css), D=out, DASH=dd, RET=rr), ensure_ascii=False, default=str, separators=(',', ':'))
+    fis = json.load(open(os.environ['VW_FIS'])) if os.environ.get('VW_FIS') else None   # painel CURVA FÍSICA (gerador/fisico.py)
+    obra = json.dumps(dict(css='\n'.join(css), D=out, DASH=dd, RET=rr, **({'FIS': fis} if fis else {})), ensure_ascii=False, default=str, separators=(',', ':'))
     open(OUTF, 'w').write(obra)
     card = dict(nome=os.environ.get('VW_NOME', 'Obra'), id=os.environ.get('VW_ID', 'obra'), corte=dd['corte'], ano=dd['ano'], proj=dd['proj'],
                 real=dd['real'], preal=dd['preal'], ano_v=dd['ano_v'], saldo=dd['saldo'], conf=dd['conf'],
