@@ -93,7 +93,7 @@ def curva_fisica(wb, F, obra):
     ln = LineChart()
     ln.add_data(Reference(ws, min_col=4, max_col=4 + nc, min_row=D0, max_row=R1), titles_from_data=True)
     for k, s in enumerate(ln.series):
-        s.smooth = False; s.marker.symbol = "none"
+        s.smooth = True; s.marker.symbol = "none"
         s.graphicalProperties.line.solidFill = "1C2127" if k == 0 else cor[(k - 1) % 3]
         s.graphicalProperties.line.width = 38100 if k == nc else 25400
     bar += ln
