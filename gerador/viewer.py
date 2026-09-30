@@ -101,7 +101,7 @@ def dash_data():
              if isinstance(vp.cell(r, 6).value, str) and vp.cell(r, 6).value.startswith('⚠') and r not in (54, 59)]
     corte = vp['P5'].value
     return dict(title=d['B2'].value, sub=d['B3'].value, month=d['B11'].value, ano=int(V['RETRATO 2027']['D5'].value),
-                corte=corte.strftime('%Y-%m'), proj=num(d['B6'].value), real=num(d['D6'].value), preal=num(d['E6'].value),
+                corte=corte.strftime('%Y-%m'), proj=num(d['B6'].value), real=num(d['D6'].value), preal=(num(d['D6'].value) / num(d['B6'].value) if num(d['B6'].value) else 0.0),
                 ano_v=num(d['F6'].value), saldo=num(d['H6'].value), conf=d['I6'].value, years=years,
                 total=num(d.cell(20, 3).value), treal=num(d.cell(20, 8).value), tproj=num(d.cell(20, 9).value),
                 groups=groups, gtotal=num(d.cell(32, 4).value), curve=curve, pend=pend)
