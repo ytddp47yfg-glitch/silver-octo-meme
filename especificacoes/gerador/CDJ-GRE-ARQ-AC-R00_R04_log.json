@@ -1,0 +1,1613 @@
+{
+ "pilotis": {
+  "LOBBY PILOTIS": "PI02 P7 PA20 PA44 PA53 PA58 FO2 T1 D12 D19 D39 D74 D75 D85",
+  "CIRCULAÇÃO": "PI02 P7 PA20 PA44 PA53 PA58 FO2 T1 D12 D75",
+  "SALÃO DE FESTAS": "PI02 P7 PA20 PA40 PA41 PA31 FO1 FO2 T1 D12 D21 D24 D83",
+  "I.S FEMININO": "PI02 P7 PA20 PA39 T1 D12 D22 D23 D25 D26 D27 D28 D37 D83",
+  "I.S MASCULINO": "PI02 P7 PA20 PA39 T1 D12 D22 D23 D25 D26 D27 D28 D37 D83",
+  "COZINHA SALÃO DE FESTAS": "PI02 P7 PA43 PA52 T1 D12 D21 D36 D74 D80 D81 D82",
+  "I.S P.C.D": "P7 PA20 PA26 PA32 PA52 T1 D12 D19 D22 D23 D26 D27 D28 D30 D38",
+  "I.S": "P7 PA20 PA26 PA32 PA52 T1 D12 D19 D22 D23 D26 D27 D28 D30 D38",
+  "ESPAÇO KIDS": "PI02 P24 PA20 PA34 PA35 PA36 PA37 PA38 FO1 FO2 T1 D12 D18 D11 D39 D56",
+  "ESPAÇO GOURMET": "PI02 P7 PA20 PA44 PA32 PA33 FO1 FO2 D8 D9 D10 D11 D12 D13 D14 D15 D16 D17 D83",
+  "PISCINA DECOBERTA": "P18 P28 PA59 D76 D77 D78 D79",
+  "DECK": "P26",
+  "ESTAR PISCINA / CIRCULAÇÃO": "P28 P8 D76 D78",
+  "BAR PISCINA": "P9 PA20 PA42 PA51 T4 T1 D9 D10 D12 D34 D35 D46 D47 D48 D49 D50",
+  "CIRCULAÇÃO VESTIÁRIOS": "P9 PA52 T1 D12",
+  "VESTIÁRIO FEMININO": "P9 PA20 PA26 PA52 PA60 T1 D12 D22 D26 D27 D28 D29 D31 D32 D33 D34 D35 D36 D37",
+  "VESTIÁRIO MASCULINO": "P9 PA20 PA26 PA52 PA60 T1 D12 D22 D26 D27 D28 D29 D31 D32 D33 D34 D35 D36 D37",
+  "ACADEMIA": "PI02 P22 PA20 PA26 PA27 PA28 PA29 PA30 T1 FO2 D3 D4 D5 D6 D7 D12 D57",
+  "PISCINA RAIA": "P10 PA46",
+  "SPA": "P18 PA46",
+  "ESPAÇO TERMAS": "P10 PA23 PA46 PA48 PA49 T1 T7 D12 D35 D43 D54 D58",
+  "SAUNA VAPOR": "P10 PA46 T10 D35 D54 D58",
+  "SAUNA SECA": "P19 PA50 T11",
+  "MASSAGEM": "P10 PA23 PA26 PA46 PA47 T1 D12 D43 D51 D53 D55 D59 D60 D61 D62",
+  "BELEZA": "P10 PA23 PA26 PA46 PA47 T1 D12 D43 D51 D53 D55 D59 D60 D61 D62",
+  "HALL VESTIÁRIOS": "P10 PA23 PA46 PA48 T1 D39 D43",
+  "VEST. P.C.D": "P10 PA23 PA46 PA47 T8 D12 D22 D26 D27 D28 D33 D35 D38 D69 D70 D72 D73 D84",
+  "DML#2": "P10 PA23 PA47 T1 D67 D68",
+  "VESTIÁRIO FEM./MASC. - TERMAS": "P10 PA23 PA46 PA47 PA48 T8 D12 D22 D26 D27 D28 D33 D34 D35 D38 D39 D43 D69 D70 D72 D73",
+  "APOIO QUADRAS": "P7 P27 FO2 T1"
+ },
+ "terreo": {
+  "ANTECÂMARA(ECLUSA PEDESTRE)": "P13 PA20 PA56 T1 D12 D41 D42",
+  "GUARITA": "P5 PA1 PA20 T1 D12",
+  "LOBBY ENTRADA": "P13 PA1 PA20 PA53 PA54 PA56 T1 T12 D12 D41 D42 D63",
+  "HALL ELEVADORES": "P13 PA1 PA20 PA53 PA54 T1 D12 D64",
+  "HALL GARGEM": "P13 PA1 PA20 PA53 T1 D12 D44 D45 D64",
+  "VESTÍBULO": "P13 PA20 PA53 PA55 T1 D12 D39 D42",
+  "I.S P.C.D": "P13 PA20 PA26 PA53 T1 D12 D22 D26 D27 D28 D34 D37 D39 D65 D66"
+ },
+ "mudancas": [
+  [
+   "PILOTIS",
+   "LOBBY PILOTIS",
+   "PISO/REJUNTE",
+   "P7",
+   "P7, PI02"
+  ],
+  [
+   "PILOTIS",
+   "LOBBY PILOTIS",
+   "PAREDE/REJUNTE",
+   "PA44, PA53",
+   "PA44, PA53, PA58"
+  ],
+  [
+   "PILOTIS",
+   "LOBBY PILOTIS",
+   "TETO",
+   "T1, T8",
+   "FO2, T1"
+  ],
+  [
+   "PILOTIS",
+   "LOBBY PILOTIS",
+   "ACABAMENTOS ELÉTRICOS",
+   "—",
+   "D12"
+  ],
+  [
+   "PILOTIS",
+   "LOBBY PILOTIS",
+   "PORTAS",
+   "—",
+   "D19, D39, D74, D85"
+  ],
+  [
+   "PILOTIS",
+   "SALÃO DE FESTAS",
+   "PISO/REJUNTE",
+   "P7",
+   "P7, PI02"
+  ],
+  [
+   "PILOTIS",
+   "SALÃO DE FESTAS",
+   "TETO",
+   "T1, T8",
+   "FO1, FO2, T1"
+  ],
+  [
+   "PILOTIS",
+   "SALÃO DE FESTAS",
+   "ACABAMENTOS ELÉTRICOS",
+   "—",
+   "D12"
+  ],
+  [
+   "PILOTIS",
+   "SALÃO DE FESTAS",
+   "PORTAS",
+   "—",
+   "D21, D83"
+  ],
+  [
+   "PILOTIS",
+   "I.S FEMININO",
+   "PISO/REJUNTE",
+   "P7",
+   "P7, PI02"
+  ],
+  [
+   "PILOTIS",
+   "I.S FEMININO",
+   "TETO",
+   "T1, T8",
+   "T1"
+  ],
+  [
+   "PILOTIS",
+   "I.S FEMININO",
+   "BACIAS SANITÁRIAS",
+   "D22, P606",
+   "D22"
+  ],
+  [
+   "PILOTIS",
+   "I.S FEMININO",
+   "ACABAMENTOS ELÉTRICOS",
+   "—",
+   "D12"
+  ],
+  [
+   "PILOTIS",
+   "I.S FEMININO",
+   "PORTAS",
+   "—",
+   "D27, D83"
+  ],
+  [
+   "PILOTIS",
+   "I.S FEMININO",
+   "OUTROS COMPLEMENTARES",
+   "D26, D27, D28",
+   "D26, D28"
+  ],
+  [
+   "PILOTIS",
+   "I.S MASCULINO",
+   "PISO/REJUNTE",
+   "P7",
+   "P7, PI02"
+  ],
+  [
+   "PILOTIS",
+   "I.S MASCULINO",
+   "TETO",
+   "T1, T8",
+   "T1"
+  ],
+  [
+   "PILOTIS",
+   "I.S MASCULINO",
+   "BACIAS SANITÁRIAS",
+   "D22, P606",
+   "D22"
+  ],
+  [
+   "PILOTIS",
+   "I.S MASCULINO",
+   "ACABAMENTOS ELÉTRICOS",
+   "—",
+   "D12"
+  ],
+  [
+   "PILOTIS",
+   "I.S MASCULINO",
+   "PORTAS",
+   "—",
+   "D27, D83"
+  ],
+  [
+   "PILOTIS",
+   "I.S MASCULINO",
+   "OUTROS COMPLEMENTARES",
+   "D26, D27, D28",
+   "D26, D28"
+  ],
+  [
+   "PILOTIS",
+   "COZINHA SALÃO DE FESTAS",
+   "PISO/REJUNTE",
+   "P7",
+   "P7, PI02"
+  ],
+  [
+   "PILOTIS",
+   "COZINHA SALÃO DE FESTAS",
+   "TETO",
+   "T1, T8",
+   "T1"
+  ],
+  [
+   "PILOTIS",
+   "COZINHA SALÃO DE FESTAS",
+   "ACABAMENTOS ELÉTRICOS",
+   "—",
+   "D12"
+  ],
+  [
+   "PILOTIS",
+   "COZINHA SALÃO DE FESTAS",
+   "PORTAS",
+   "—",
+   "D21, D74"
+  ],
+  [
+   "PILOTIS",
+   "COZINHA SALÃO DE FESTAS",
+   "OUTROS COMPLEMENTARES",
+   "—",
+   "D82"
+  ],
+  [
+   "PILOTIS",
+   "I.S P.C.D",
+   "PAREDE/REJUNTE",
+   "PA32, PA52",
+   "PA26, PA32, PA52"
+  ],
+  [
+   "PILOTIS",
+   "I.S P.C.D",
+   "TETO",
+   "T1, T8",
+   "T1"
+  ],
+  [
+   "PILOTIS",
+   "I.S P.C.D",
+   "BACIAS SANITÁRIAS",
+   "D22, P606",
+   "D22"
+  ],
+  [
+   "PILOTIS",
+   "I.S P.C.D",
+   "ACABAMENTOS ELÉTRICOS",
+   "—",
+   "D12"
+  ],
+  [
+   "PILOTIS",
+   "I.S P.C.D",
+   "PORTAS",
+   "—",
+   "D19, D27"
+  ],
+  [
+   "PILOTIS",
+   "I.S P.C.D",
+   "OUTROS COMPLEMENTARES",
+   "D26, D27, D28",
+   "D26, D28"
+  ],
+  [
+   "PILOTIS",
+   "I.S",
+   "PAREDE/REJUNTE",
+   "PA32, PA52",
+   "PA26, PA32, PA52"
+  ],
+  [
+   "PILOTIS",
+   "I.S",
+   "TETO",
+   "T1, T8",
+   "T1"
+  ],
+  [
+   "PILOTIS",
+   "I.S",
+   "BACIAS SANITÁRIAS",
+   "D22, P606",
+   "D22"
+  ],
+  [
+   "PILOTIS",
+   "I.S",
+   "ACABAMENTOS ELÉTRICOS",
+   "—",
+   "D12"
+  ],
+  [
+   "PILOTIS",
+   "I.S",
+   "PORTAS",
+   "—",
+   "D19, D27"
+  ],
+  [
+   "PILOTIS",
+   "I.S",
+   "OUTROS COMPLEMENTARES",
+   "D26, D27, D28",
+   "D26, D28"
+  ],
+  [
+   "PILOTIS",
+   "ESPAÇO KIDS",
+   "PISO/REJUNTE",
+   "P24",
+   "P24, PI02"
+  ],
+  [
+   "PILOTIS",
+   "ESPAÇO KIDS",
+   "TETO",
+   "T1, T8",
+   "FO1, FO2, T1"
+  ],
+  [
+   "PILOTIS",
+   "ESPAÇO KIDS",
+   "ACABAMENTOS ELÉTRICOS",
+   "—",
+   "D12"
+  ],
+  [
+   "PILOTIS",
+   "ESPAÇO KIDS",
+   "PORTAS",
+   "—",
+   "D11, D39"
+  ],
+  [
+   "PILOTIS",
+   "ESPAÇO KIDS",
+   "OUTROS COMPLEMENTARES",
+   "—",
+   "D18, D56"
+  ],
+  [
+   "PILOTIS",
+   "ESPAÇO GOURMET",
+   "PISO/REJUNTE",
+   "P7",
+   "P7, PI02"
+  ],
+  [
+   "PILOTIS",
+   "ESPAÇO GOURMET",
+   "PAREDE/REJUNTE",
+   "PA32, PA44",
+   "PA32, PA33, PA44"
+  ],
+  [
+   "PILOTIS",
+   "ESPAÇO GOURMET",
+   "TETO",
+   "T1, T8",
+   "FO1, FO2"
+  ],
+  [
+   "PILOTIS",
+   "ESPAÇO GOURMET",
+   "ACABAMENTOS ELÉTRICOS",
+   "—",
+   "D12"
+  ],
+  [
+   "PILOTIS",
+   "ESPAÇO GOURMET",
+   "PORTAS",
+   "—",
+   "D11, D83"
+  ],
+  [
+   "PILOTIS",
+   "ESPAÇO GOURMET",
+   "OUTROS COMPLEMENTARES",
+   "—",
+   "D13, D14, D15, D16, D17"
+  ],
+  [
+   "PILOTIS",
+   "PISCINA DECOBERTA",
+   "PISO/REJUNTE",
+   "P18",
+   "P18, P28"
+  ],
+  [
+   "PILOTIS",
+   "PISCINA DECOBERTA",
+   "PAREDE/REJUNTE",
+   "P18",
+   "PA59"
+  ],
+  [
+   "PILOTIS",
+   "PISCINA DECOBERTA",
+   "RALOS",
+   "—",
+   "D78"
+  ],
+  [
+   "PILOTIS",
+   "PISCINA DECOBERTA",
+   "OUTROS  LOUÇAS E METAIS",
+   "—",
+   "D79"
+  ],
+  [
+   "PILOTIS",
+   "PISCINA DECOBERTA",
+   "PORTAS",
+   "—",
+   "D77"
+  ],
+  [
+   "PILOTIS",
+   "PISCINA DECOBERTA",
+   "OUTROS COMPLEMENTARES",
+   "—",
+   "D76"
+  ],
+  [
+   "PILOTIS",
+   "BAR PISCINA",
+   "PISO/REJUNTE",
+   "—",
+   "P9"
+  ],
+  [
+   "PILOTIS",
+   "BAR PISCINA",
+   "RODAPÉ",
+   "—",
+   "PA20"
+  ],
+  [
+   "PILOTIS",
+   "BAR PISCINA",
+   "PAREDE/REJUNTE",
+   "—",
+   "PA42, PA51"
+  ],
+  [
+   "PILOTIS",
+   "BAR PISCINA",
+   "TETO",
+   "—",
+   "T1, T4"
+  ],
+  [
+   "PILOTIS",
+   "BAR PISCINA",
+   "BANCADA",
+   "—",
+   "D46"
+  ],
+  [
+   "PILOTIS",
+   "BAR PISCINA",
+   "LOUÇAS, CUBAS E TANQUES",
+   "—",
+   "D10"
+  ],
+  [
+   "PILOTIS",
+   "BAR PISCINA",
+   "TORNEIRAS",
+   "—",
+   "D9"
+  ],
+  [
+   "PILOTIS",
+   "BAR PISCINA",
+   "RALOS",
+   "—",
+   "D34, D35"
+  ],
+  [
+   "PILOTIS",
+   "BAR PISCINA",
+   "ACABAMENTOS ELÉTRICOS",
+   "—",
+   "D12"
+  ],
+  [
+   "PILOTIS",
+   "BAR PISCINA",
+   "OUTROS COMPLEMENTARES",
+   "—",
+   "D47, D48, D49, D50"
+  ],
+  [
+   "PILOTIS",
+   "CIRCULAÇÃO VESTIÁRIOS",
+   "PISO/REJUNTE",
+   "—",
+   "P9"
+  ],
+  [
+   "PILOTIS",
+   "CIRCULAÇÃO VESTIÁRIOS",
+   "PAREDE/REJUNTE",
+   "—",
+   "PA52"
+  ],
+  [
+   "PILOTIS",
+   "CIRCULAÇÃO VESTIÁRIOS",
+   "TETO",
+   "—",
+   "T1"
+  ],
+  [
+   "PILOTIS",
+   "CIRCULAÇÃO VESTIÁRIOS",
+   "ACABAMENTOS ELÉTRICOS",
+   "—",
+   "D12"
+  ],
+  [
+   "PILOTIS",
+   "VESTIÁRIO FEMININO",
+   "PISO/REJUNTE",
+   "P7",
+   "P9"
+  ],
+  [
+   "PILOTIS",
+   "VESTIÁRIO FEMININO",
+   "RODAPÉ",
+   "—",
+   "PA20"
+  ],
+  [
+   "PILOTIS",
+   "VESTIÁRIO FEMININO",
+   "PAREDE/REJUNTE",
+   "PA46, PA52",
+   "PA26, PA52, PA60"
+  ],
+  [
+   "PILOTIS",
+   "VESTIÁRIO FEMININO",
+   "TETO",
+   "T1, T8",
+   "T1"
+  ],
+  [
+   "PILOTIS",
+   "VESTIÁRIO FEMININO",
+   "BANCADA",
+   "D73",
+   "D36"
+  ],
+  [
+   "PILOTIS",
+   "VESTIÁRIO FEMININO",
+   "BACIAS SANITÁRIAS",
+   "D22, P606",
+   "D22"
+  ],
+  [
+   "PILOTIS",
+   "VESTIÁRIO FEMININO",
+   "ACABAMENTOS ELÉTRICOS",
+   "—",
+   "D12"
+  ],
+  [
+   "PILOTIS",
+   "VESTIÁRIO FEMININO",
+   "PORTAS",
+   "—",
+   "D27, D32"
+  ],
+  [
+   "PILOTIS",
+   "VESTIÁRIO FEMININO",
+   "OUTROS COMPLEMENTARES",
+   "D26, D27, D28",
+   "D26, D28"
+  ],
+  [
+   "PILOTIS",
+   "VESTIÁRIO MASCULINO",
+   "PISO/REJUNTE",
+   "P7",
+   "P9"
+  ],
+  [
+   "PILOTIS",
+   "VESTIÁRIO MASCULINO",
+   "RODAPÉ",
+   "—",
+   "PA20"
+  ],
+  [
+   "PILOTIS",
+   "VESTIÁRIO MASCULINO",
+   "PAREDE/REJUNTE",
+   "PA46, PA52",
+   "PA26, PA52, PA60"
+  ],
+  [
+   "PILOTIS",
+   "VESTIÁRIO MASCULINO",
+   "TETO",
+   "T1, T8",
+   "T1"
+  ],
+  [
+   "PILOTIS",
+   "VESTIÁRIO MASCULINO",
+   "BANCADA",
+   "D73",
+   "D36"
+  ],
+  [
+   "PILOTIS",
+   "VESTIÁRIO MASCULINO",
+   "BACIAS SANITÁRIAS",
+   "D22, P606",
+   "D22"
+  ],
+  [
+   "PILOTIS",
+   "VESTIÁRIO MASCULINO",
+   "ACABAMENTOS ELÉTRICOS",
+   "—",
+   "D12"
+  ],
+  [
+   "PILOTIS",
+   "VESTIÁRIO MASCULINO",
+   "PORTAS",
+   "—",
+   "D27, D32"
+  ],
+  [
+   "PILOTIS",
+   "VESTIÁRIO MASCULINO",
+   "OUTROS COMPLEMENTARES",
+   "D26, D27, D28",
+   "D26, D28"
+  ],
+  [
+   "PILOTIS",
+   "ACADEMIA",
+   "PISO/REJUNTE",
+   "PA22",
+   "P22, PI02"
+  ],
+  [
+   "PILOTIS",
+   "ACADEMIA",
+   "PAREDE/REJUNTE",
+   "PA26, PA27, PA28",
+   "PA26, PA27, PA28, PA29, PA30"
+  ],
+  [
+   "PILOTIS",
+   "ACADEMIA",
+   "TETO",
+   "FO1",
+   "FO2, T1"
+  ],
+  [
+   "PILOTIS",
+   "ACADEMIA",
+   "ACABAMENTOS ELÉTRICOS",
+   "—",
+   "D12"
+  ],
+  [
+   "PILOTIS",
+   "ACADEMIA",
+   "PORTAS",
+   "—",
+   "D57"
+  ],
+  [
+   "PILOTIS",
+   "ACADEMIA",
+   "OUTROS COMPLEMENTARES",
+   "—",
+   "D3, D4, D5, D6, D7"
+  ],
+  [
+   "PILOTIS",
+   "PISCINA RAIA",
+   "PISO/REJUNTE",
+   "P18",
+   "P10"
+  ],
+  [
+   "PILOTIS",
+   "PISCINA RAIA",
+   "PAREDE/REJUNTE",
+   "P18",
+   "PA46"
+  ],
+  [
+   "PILOTIS",
+   "SPA",
+   "PAREDE/REJUNTE",
+   "P18",
+   "PA46"
+  ],
+  [
+   "PILOTIS",
+   "ESPAÇO TERMAS",
+   "RODAPÉ",
+   "—",
+   "PA23"
+  ],
+  [
+   "PILOTIS",
+   "ESPAÇO TERMAS",
+   "TETO",
+   "T7",
+   "T1, T7"
+  ],
+  [
+   "PILOTIS",
+   "ESPAÇO TERMAS",
+   "ACABAMENTOS DE REGISTROS GERAL",
+   "—",
+   "D58"
+  ],
+  [
+   "PILOTIS",
+   "ESPAÇO TERMAS",
+   "RALOS",
+   "—",
+   "D35"
+  ],
+  [
+   "PILOTIS",
+   "ESPAÇO TERMAS",
+   "ACABAMENTOS ELÉTRICOS",
+   "—",
+   "D12"
+  ],
+  [
+   "PILOTIS",
+   "ESPAÇO TERMAS",
+   "PORTAS",
+   "—",
+   "D43"
+  ],
+  [
+   "PILOTIS",
+   "SAUNA VAPOR",
+   "ACABAMENTOS DE REGISTROS GERAL",
+   "—",
+   "D58"
+  ],
+  [
+   "PILOTIS",
+   "SAUNA VAPOR",
+   "RALOS",
+   "—",
+   "D35"
+  ],
+  [
+   "PILOTIS",
+   "SAUNA VAPOR",
+   "OUTROS  LOUÇAS E METAIS",
+   "—",
+   "D54"
+  ],
+  [
+   "PILOTIS",
+   "MASSAGEM",
+   "PAREDE/REJUNTE",
+   "PA47",
+   "PA26, PA46, PA47"
+  ],
+  [
+   "PILOTIS",
+   "MASSAGEM",
+   "TETO",
+   "T1, T8",
+   "T1"
+  ],
+  [
+   "PILOTIS",
+   "MASSAGEM",
+   "LOUÇAS, CUBAS E TANQUES",
+   "D55",
+   "D55, D62"
+  ],
+  [
+   "PILOTIS",
+   "MASSAGEM",
+   "TORNEIRAS",
+   "D53",
+   "D51, D53"
+  ],
+  [
+   "PILOTIS",
+   "MASSAGEM",
+   "ACABAMENTOS ELÉTRICOS",
+   "—",
+   "D12"
+  ],
+  [
+   "PILOTIS",
+   "MASSAGEM",
+   "PORTAS",
+   "D43, P28",
+   "D43"
+  ],
+  [
+   "PILOTIS",
+   "BELEZA",
+   "PAREDE/REJUNTE",
+   "PA26, PA47",
+   "PA26, PA46, PA47"
+  ],
+  [
+   "PILOTIS",
+   "BELEZA",
+   "TETO",
+   "T1, T8",
+   "T1"
+  ],
+  [
+   "PILOTIS",
+   "BELEZA",
+   "LOUÇAS, CUBAS E TANQUES",
+   "—",
+   "D55, D62"
+  ],
+  [
+   "PILOTIS",
+   "BELEZA",
+   "TORNEIRAS",
+   "D51",
+   "D51, D53"
+  ],
+  [
+   "PILOTIS",
+   "BELEZA",
+   "ACABAMENTOS ELÉTRICOS",
+   "—",
+   "D12"
+  ],
+  [
+   "PILOTIS",
+   "BELEZA",
+   "PORTAS",
+   "—",
+   "D43"
+  ],
+  [
+   "PILOTIS",
+   "HALL VESTIÁRIOS",
+   "PISO/REJUNTE",
+   "—",
+   "P10"
+  ],
+  [
+   "PILOTIS",
+   "HALL VESTIÁRIOS",
+   "RODAPÉ",
+   "—",
+   "PA23"
+  ],
+  [
+   "PILOTIS",
+   "HALL VESTIÁRIOS",
+   "PAREDE/REJUNTE",
+   "—",
+   "PA46, PA48"
+  ],
+  [
+   "PILOTIS",
+   "HALL VESTIÁRIOS",
+   "TETO",
+   "—",
+   "T1"
+  ],
+  [
+   "PILOTIS",
+   "HALL VESTIÁRIOS",
+   "PORTAS",
+   "—",
+   "D39, D43"
+  ],
+  [
+   "PILOTIS",
+   "VEST. P.C.D",
+   "PISO/REJUNTE",
+   "—",
+   "P10"
+  ],
+  [
+   "PILOTIS",
+   "VEST. P.C.D",
+   "RODAPÉ",
+   "—",
+   "PA23"
+  ],
+  [
+   "PILOTIS",
+   "VEST. P.C.D",
+   "PAREDE/REJUNTE",
+   "—",
+   "PA46, PA47"
+  ],
+  [
+   "PILOTIS",
+   "VEST. P.C.D",
+   "TETO",
+   "—",
+   "T8"
+  ],
+  [
+   "PILOTIS",
+   "VEST. P.C.D",
+   "BANCADA",
+   "—",
+   "D73"
+  ],
+  [
+   "PILOTIS",
+   "VEST. P.C.D",
+   "OUTROS REVESTIMENTOS",
+   "—",
+   "D38"
+  ],
+  [
+   "PILOTIS",
+   "VEST. P.C.D",
+   "LOUÇAS, CUBAS E TANQUES",
+   "—",
+   "D72"
+  ],
+  [
+   "PILOTIS",
+   "VEST. P.C.D",
+   "TORNEIRAS",
+   "—",
+   "D69"
+  ],
+  [
+   "PILOTIS",
+   "VEST. P.C.D",
+   "BACIAS SANITÁRIAS",
+   "—",
+   "D22"
+  ],
+  [
+   "PILOTIS",
+   "VEST. P.C.D",
+   "DUCHAS HIGIÊNICAS",
+   "—",
+   "D84"
+  ],
+  [
+   "PILOTIS",
+   "VEST. P.C.D",
+   "ACIONAMENTO DE CHUVEIRO",
+   "—",
+   "D33"
+  ],
+  [
+   "PILOTIS",
+   "VEST. P.C.D",
+   "RALOS",
+   "—",
+   "D35"
+  ],
+  [
+   "PILOTIS",
+   "VEST. P.C.D",
+   "OUTROS  LOUÇAS E METAIS",
+   "—",
+   "D70"
+  ],
+  [
+   "PILOTIS",
+   "VEST. P.C.D",
+   "ACABAMENTOS ELÉTRICOS",
+   "—",
+   "D12"
+  ],
+  [
+   "PILOTIS",
+   "VEST. P.C.D",
+   "PORTAS",
+   "—",
+   "D27"
+  ],
+  [
+   "PILOTIS",
+   "VEST. P.C.D",
+   "OUTROS COMPLEMENTARES",
+   "—",
+   "D26, D28"
+  ],
+  [
+   "PILOTIS",
+   "VEST. P.C.D",
+   "PISO/REJUNTE",
+   "—",
+   "P10"
+  ],
+  [
+   "PILOTIS",
+   "VEST. P.C.D",
+   "RODAPÉ",
+   "—",
+   "PA23"
+  ],
+  [
+   "PILOTIS",
+   "VEST. P.C.D",
+   "PAREDE/REJUNTE",
+   "—",
+   "PA46, PA47"
+  ],
+  [
+   "PILOTIS",
+   "VEST. P.C.D",
+   "TETO",
+   "—",
+   "T8"
+  ],
+  [
+   "PILOTIS",
+   "VEST. P.C.D",
+   "BANCADA",
+   "—",
+   "D73"
+  ],
+  [
+   "PILOTIS",
+   "VEST. P.C.D",
+   "OUTROS REVESTIMENTOS",
+   "—",
+   "D38"
+  ],
+  [
+   "PILOTIS",
+   "VEST. P.C.D",
+   "LOUÇAS, CUBAS E TANQUES",
+   "—",
+   "D72"
+  ],
+  [
+   "PILOTIS",
+   "VEST. P.C.D",
+   "TORNEIRAS",
+   "—",
+   "D69"
+  ],
+  [
+   "PILOTIS",
+   "VEST. P.C.D",
+   "BACIAS SANITÁRIAS",
+   "—",
+   "D22"
+  ],
+  [
+   "PILOTIS",
+   "VEST. P.C.D",
+   "DUCHAS HIGIÊNICAS",
+   "—",
+   "D84"
+  ],
+  [
+   "PILOTIS",
+   "VEST. P.C.D",
+   "ACIONAMENTO DE CHUVEIRO",
+   "—",
+   "D33"
+  ],
+  [
+   "PILOTIS",
+   "VEST. P.C.D",
+   "RALOS",
+   "—",
+   "D35"
+  ],
+  [
+   "PILOTIS",
+   "VEST. P.C.D",
+   "OUTROS  LOUÇAS E METAIS",
+   "—",
+   "D70"
+  ],
+  [
+   "PILOTIS",
+   "VEST. P.C.D",
+   "ACABAMENTOS ELÉTRICOS",
+   "—",
+   "D12"
+  ],
+  [
+   "PILOTIS",
+   "VEST. P.C.D",
+   "PORTAS",
+   "—",
+   "D27"
+  ],
+  [
+   "PILOTIS",
+   "VEST. P.C.D",
+   "OUTROS COMPLEMENTARES",
+   "—",
+   "D26, D28"
+  ],
+  [
+   "PILOTIS",
+   "DML",
+   "PISO/REJUNTE",
+   "P7",
+   "P10"
+  ],
+  [
+   "PILOTIS",
+   "DML",
+   "RODAPÉ",
+   "—",
+   "PA23"
+  ],
+  [
+   "PILOTIS",
+   "DML",
+   "TETO",
+   "T1, T8",
+   "T1"
+  ],
+  [
+   "PILOTIS",
+   "VESTIÁRIO FEM./MASC. - TERMAS",
+   "RODAPÉ",
+   "—",
+   "PA23"
+  ],
+  [
+   "PILOTIS",
+   "VESTIÁRIO FEM./MASC. - TERMAS",
+   "PAREDE/REJUNTE",
+   "PA46, PA47",
+   "PA46, PA47, PA48"
+  ],
+  [
+   "PILOTIS",
+   "VESTIÁRIO FEM./MASC. - TERMAS",
+   "TETO",
+   "T1, T8",
+   "T8"
+  ],
+  [
+   "PILOTIS",
+   "VESTIÁRIO FEM./MASC. - TERMAS",
+   "BACIAS SANITÁRIAS",
+   "D22, P606",
+   "D22"
+  ],
+  [
+   "PILOTIS",
+   "VESTIÁRIO FEM./MASC. - TERMAS",
+   "RALOS",
+   "—",
+   "D34, D35"
+  ],
+  [
+   "PILOTIS",
+   "VESTIÁRIO FEM./MASC. - TERMAS",
+   "ACABAMENTOS ELÉTRICOS",
+   "—",
+   "D12"
+  ],
+  [
+   "PILOTIS",
+   "VESTIÁRIO FEM./MASC. - TERMAS",
+   "PORTAS",
+   "—",
+   "D27, D39, D43"
+  ],
+  [
+   "PILOTIS",
+   "VESTIÁRIO FEM./MASC. - TERMAS",
+   "OUTROS COMPLEMENTARES",
+   "D26, D27, D28",
+   "D26, D28"
+  ],
+  [
+   "PILOTIS",
+   "CIRCULAÇÃO",
+   "PISO/REJUNTE",
+   "—",
+   "P7, PI02"
+  ],
+  [
+   "PILOTIS",
+   "CIRCULAÇÃO",
+   "RODAPÉ",
+   "—",
+   "PA20"
+  ],
+  [
+   "PILOTIS",
+   "CIRCULAÇÃO",
+   "PAREDE/REJUNTE",
+   "—",
+   "PA44, PA53, PA58"
+  ],
+  [
+   "PILOTIS",
+   "CIRCULAÇÃO",
+   "TETO",
+   "T1, T8",
+   "FO2, T1"
+  ],
+  [
+   "PILOTIS",
+   "CIRCULAÇÃO",
+   "OUTROS REVESTIMENTOS",
+   "—",
+   "D75"
+  ],
+  [
+   "PILOTIS",
+   "CIRCULAÇÃO",
+   "ACABAMENTOS ELÉTRICOS",
+   "—",
+   "D12"
+  ],
+  [
+   "PILOTIS",
+   "ESTAR PISCINA / CIRCULAÇÃO",
+   "PISO/REJUNTE",
+   "P28",
+   "P28, P8"
+  ],
+  [
+   "PILOTIS",
+   "ESTAR PISCINA / CIRCULAÇÃO",
+   "OUTROS COMPLEMENTARES",
+   "—",
+   "D76"
+  ],
+  [
+   "PILOTIS",
+   "APOIO QUADRAS",
+   "PISO/REJUNTE",
+   "P27",
+   "P27, P7"
+  ],
+  [
+   "PILOTIS",
+   "APOIO QUADRAS",
+   "TETO",
+   "—",
+   "FO2, T1"
+  ],
+  [
+   "TÉRREO",
+   "ANTECÂMARA(ECLUSA PEDESTRE)",
+   "PISO/REJUNTE",
+   "—",
+   "P13"
+  ],
+  [
+   "TÉRREO",
+   "ANTECÂMARA(ECLUSA PEDESTRE)",
+   "RODAPÉ",
+   "—",
+   "PA20"
+  ],
+  [
+   "TÉRREO",
+   "ANTECÂMARA(ECLUSA PEDESTRE)",
+   "PAREDE/REJUNTE",
+   "—",
+   "PA56"
+  ],
+  [
+   "TÉRREO",
+   "ANTECÂMARA(ECLUSA PEDESTRE)",
+   "TETO",
+   "—",
+   "T1"
+  ],
+  [
+   "TÉRREO",
+   "ANTECÂMARA(ECLUSA PEDESTRE)",
+   "ACABAMENTOS ELÉTRICOS",
+   "—",
+   "D12"
+  ],
+  [
+   "TÉRREO",
+   "ANTECÂMARA(ECLUSA PEDESTRE)",
+   "PORTAS",
+   "—",
+   "D41, D42"
+  ],
+  [
+   "TÉRREO",
+   "GUARITA",
+   "PISO/REJUNTE",
+   "—",
+   "P5"
+  ],
+  [
+   "TÉRREO",
+   "GUARITA",
+   "RODAPÉ",
+   "—",
+   "PA20"
+  ],
+  [
+   "TÉRREO",
+   "GUARITA",
+   "PAREDE/REJUNTE",
+   "—",
+   "PA1"
+  ],
+  [
+   "TÉRREO",
+   "GUARITA",
+   "TETO",
+   "—",
+   "T1"
+  ],
+  [
+   "TÉRREO",
+   "GUARITA",
+   "ACABAMENTOS ELÉTRICOS",
+   "—",
+   "D12"
+  ],
+  [
+   "TÉRREO",
+   "LOBBY ENTRADA",
+   "PISO/REJUNTE",
+   "—",
+   "P13"
+  ],
+  [
+   "TÉRREO",
+   "LOBBY ENTRADA",
+   "RODAPÉ",
+   "—",
+   "PA20"
+  ],
+  [
+   "TÉRREO",
+   "LOBBY ENTRADA",
+   "PAREDE/REJUNTE",
+   "—",
+   "PA1, PA53, PA54, PA56"
+  ],
+  [
+   "TÉRREO",
+   "LOBBY ENTRADA",
+   "TETO",
+   "—",
+   "T1, T12"
+  ],
+  [
+   "TÉRREO",
+   "LOBBY ENTRADA",
+   "ACABAMENTOS ELÉTRICOS",
+   "—",
+   "D12"
+  ],
+  [
+   "TÉRREO",
+   "LOBBY ENTRADA",
+   "PORTAS",
+   "—",
+   "D41, D42"
+  ],
+  [
+   "TÉRREO",
+   "LOBBY ENTRADA",
+   "OUTROS COMPLEMENTARES",
+   "—",
+   "D63"
+  ],
+  [
+   "TÉRREO",
+   "HALL ELEVADORES",
+   "PISO/REJUNTE",
+   "—",
+   "P13"
+  ],
+  [
+   "TÉRREO",
+   "HALL ELEVADORES",
+   "RODAPÉ",
+   "—",
+   "PA20"
+  ],
+  [
+   "TÉRREO",
+   "HALL ELEVADORES",
+   "PAREDE/REJUNTE",
+   "—",
+   "PA1, PA53, PA54"
+  ],
+  [
+   "TÉRREO",
+   "HALL ELEVADORES",
+   "TETO",
+   "—",
+   "T1"
+  ],
+  [
+   "TÉRREO",
+   "HALL ELEVADORES",
+   "ACABAMENTOS ELÉTRICOS",
+   "—",
+   "D12"
+  ],
+  [
+   "TÉRREO",
+   "HALL ELEVADORES",
+   "OUTROS COMPLEMENTARES",
+   "—",
+   "D64"
+  ],
+  [
+   "TÉRREO",
+   "HALL GARGEM",
+   "PISO/REJUNTE",
+   "—",
+   "P13"
+  ],
+  [
+   "TÉRREO",
+   "HALL GARGEM",
+   "RODAPÉ",
+   "—",
+   "PA20"
+  ],
+  [
+   "TÉRREO",
+   "HALL GARGEM",
+   "PAREDE/REJUNTE",
+   "—",
+   "PA1, PA53"
+  ],
+  [
+   "TÉRREO",
+   "HALL GARGEM",
+   "TETO",
+   "—",
+   "T1"
+  ],
+  [
+   "TÉRREO",
+   "HALL GARGEM",
+   "ACABAMENTOS ELÉTRICOS",
+   "—",
+   "D12"
+  ],
+  [
+   "TÉRREO",
+   "HALL GARGEM",
+   "PORTAS",
+   "—",
+   "D44, D45"
+  ],
+  [
+   "TÉRREO",
+   "HALL GARGEM",
+   "OUTROS COMPLEMENTARES",
+   "—",
+   "D64"
+  ],
+  [
+   "TÉRREO",
+   "I.S P.C.D",
+   "PISO/REJUNTE",
+   "—",
+   "P13"
+  ],
+  [
+   "TÉRREO",
+   "I.S P.C.D",
+   "RODAPÉ",
+   "—",
+   "PA20"
+  ],
+  [
+   "TÉRREO",
+   "I.S P.C.D",
+   "PAREDE/REJUNTE",
+   "—",
+   "PA26, PA53"
+  ],
+  [
+   "TÉRREO",
+   "I.S P.C.D",
+   "TETO",
+   "—",
+   "T1"
+  ],
+  [
+   "TÉRREO",
+   "I.S P.C.D",
+   "BANCADA",
+   "—",
+   "D65"
+  ],
+  [
+   "TÉRREO",
+   "I.S P.C.D",
+   "OUTROS REVESTIMENTOS",
+   "—",
+   "D37"
+  ],
+  [
+   "TÉRREO",
+   "I.S P.C.D",
+   "TORNEIRAS",
+   "—",
+   "D66"
+  ],
+  [
+   "TÉRREO",
+   "I.S P.C.D",
+   "BACIAS SANITÁRIAS",
+   "—",
+   "D22"
+  ],
+  [
+   "TÉRREO",
+   "I.S P.C.D",
+   "RALOS",
+   "—",
+   "D34"
+  ],
+  [
+   "TÉRREO",
+   "I.S P.C.D",
+   "ACABAMENTOS ELÉTRICOS",
+   "—",
+   "D12"
+  ],
+  [
+   "TÉRREO",
+   "I.S P.C.D",
+   "PORTAS",
+   "—",
+   "D27, D39"
+  ],
+  [
+   "TÉRREO",
+   "I.S P.C.D",
+   "OUTROS COMPLEMENTARES",
+   "—",
+   "D26, D28"
+  ],
+  [
+   "TÉRREO",
+   "VESTÍBULO",
+   "PISO/REJUNTE",
+   "—",
+   "P13"
+  ],
+  [
+   "TÉRREO",
+   "VESTÍBULO",
+   "RODAPÉ",
+   "—",
+   "PA20"
+  ],
+  [
+   "TÉRREO",
+   "VESTÍBULO",
+   "PAREDE/REJUNTE",
+   "—",
+   "PA53, PA55"
+  ],
+  [
+   "TÉRREO",
+   "VESTÍBULO",
+   "TETO",
+   "—",
+   "T1"
+  ],
+  [
+   "TÉRREO",
+   "VESTÍBULO",
+   "ACABAMENTOS ELÉTRICOS",
+   "—",
+   "D12"
+  ],
+  [
+   "TÉRREO",
+   "VESTÍBULO",
+   "PORTAS",
+   "—",
+   "D39, D42"
+  ]
+ ]
+}
