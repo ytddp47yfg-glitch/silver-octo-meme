@@ -13,9 +13,9 @@ from openpyxl.formatting.rule import FormulaRule
 from openpyxl.utils import get_column_letter as L
 from openpyxl.worksheet.formula import ArrayFormula
 
-F_ = "Arial"
-NAVY, INK, INK2, MUT, LINE, BG = "1F4E78", "15202B", "4F5B67", "7A8591", "DFE6EC", "F4F7FA"
-TEAL, TEALH, HL = "E6F4F6", "CDEAEF", "DBEAF8"
+F_ = "Calibri"
+NAVY, INK, INK2, MUT, LINE, BG = "1C3B2A", "3C3A33", "8C877A", "8C877A", "E5DFD2", "F4F1EA"
+TEAL, TEALH, HL = "F1F5F0", "C5D3C8", "D9E6DC"
 fill = lambda h: PatternFill("solid", fgColor=h)
 sd = Side(style="thin", color=LINE)
 MES = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"]
@@ -36,7 +36,7 @@ def _fundo(ws, max_col, max_row):
 def _card(ws, c0, c1, r0, r1):
     for rr in range(r0, r1 + 1):
         for cc in range(c0, c1 + 1):
-            cell = ws.cell(rr, cc); cell.fill = fill("FFFFFF")
+            cell = ws.cell(rr, cc); cell.fill = fill("FCFBF8")
             cell.border = Border(top=sd if rr == r0 else None, bottom=sd if rr == r1 else None,
                                  left=sd if cc == c0 else None, right=sd if cc == c1 else None)
 
@@ -54,9 +54,9 @@ def _h2(ws, ref, txt):
 # ============================================================ CURVA FÍSICA
 def curva_fisica(wb, F, obra):
     ws = wb.create_sheet("CURVA FÍSICA", wb.sheetnames.index("RETRATO 2027") + 1)
-    ws.sheet_view.showGridLines = False; ws.sheet_properties.tabColor = "00B0A0"
+    ws.sheet_view.showGridLines = False; ws.sheet_properties.tabColor = "1F7A52"
     cens = F["cens"]; nc = len(cens)
-    cor = ["E5533D", "0F8F7E", "C98A00"]
+    cor = ["7FA88F", "1F7A52", "1C3B2A"]
     ic = F["meses"].index(F["corte"])
     fim = min(len(F["meses"]) - 1, max([next((i for i, x in enumerate(v) if x >= 0.9995), len(F["meses"]) - 1)
                                         for v in [F["prev"]] + [c["v"] for c in cens]]) + 2)
@@ -88,13 +88,13 @@ def curva_fisica(wb, F, obra):
     ws["B6"] = "Visão geral  ›  realizado em colunas; previsto do Prevision e cenários em linhas"; ws["B6"].font = Font(name=F_, size=9, color=MUT)
     bar = BarChart(); bar.type = "col"; bar.gapWidth = 10
     bar.add_data(Reference(ws, min_col=3, min_row=D0, max_row=R1), titles_from_data=True)
-    bar.series[0].graphicalProperties.solidFill = "4B3BEA"; bar.series[0].graphicalProperties.line.noFill = True
+    bar.series[0].graphicalProperties.solidFill = "C5D3C8"; bar.series[0].graphicalProperties.line.noFill = True
     bar.set_categories(Reference(ws, min_col=2, min_row=D0 + 1, max_row=R1))
     ln = LineChart()
     ln.add_data(Reference(ws, min_col=4, max_col=4 + nc, min_row=D0, max_row=R1), titles_from_data=True)
     for k, s in enumerate(ln.series):
         s.smooth = True; s.marker.symbol = "none"
-        s.graphicalProperties.line.solidFill = "1C2127" if k == 0 else cor[(k - 1) % 3]
+        s.graphicalProperties.line.solidFill = "C0A062" if k == 0 else cor[(k - 1) % 3]
         s.graphicalProperties.line.width = 38100 if k == nc else 25400
     bar += ln
     bar.y_axis.scaling.min = 0; bar.y_axis.scaling.max = 1; bar.y_axis.numFmt = "0.00%"; bar.y_axis.majorUnit = 0.25
@@ -159,7 +159,7 @@ def curva_fisica(wb, F, obra):
 def gantt(wb, G, obra):
     pos = wb.sheetnames.index("CURVA FÍSICA") + 1 if "CURVA FÍSICA" in wb.sheetnames else wb.sheetnames.index("RETRATO 2027") + 1
     ws = wb.create_sheet("GANTT", pos)
-    ws.sheet_view.showGridLines = False; ws.sheet_properties.tabColor = "00B0A0"
+    ws.sheet_view.showGridLines = False; ws.sheet_properties.tabColor = "1F7A52"
     ws.sheet_properties.outlinePr.summaryBelow = False
     d0 = _d(G["ini"][:7]); df = _d(G["fim"][:7])
     M = (df.year - d0.year) * 12 + df.month - d0.month + 2
@@ -172,23 +172,22 @@ def gantt(wb, G, obra):
             f"{G['n']:,} atividades do Prevision (situação em {ref:%d/%m/%y})  ·  PL → pacote de trabalho → pavimento  ·  "
             "use os botões + / − à esquerda para abrir e fechar os níveis".replace(",", "."))
     # legenda
-    leg = [("BCD3EE", "Planejado (início → término)"), ("2A78D6", "Realizado (% do Prevision)"), ("2E7D32", "Concluído"),
-           ("E3D0EE", "Não descrito de forma expressa na curva do Prevision (nota no comentário da célula: passe o mouse)")]
-    ws["B5"] = "Legenda:"; ws["B5"].font = Font(name=F_, bold=True, size=9, color=INK2)
+    leg = [("C5D3C8", "Planejado (início → término)"), ("446756", "Realizado (% do Prevision)"), ("1F7A52", "Concluído"),
+           ("F1E6CC", "Não descrito de forma expressa na curva do Prevision (nota no comentário da célula: passe o mouse)")]
     col = 3
     for cor, txt in leg:
         ws.cell(5, col).fill = fill(cor); ws.cell(5, col + 1, txt).font = Font(name=F_, size=9, color=INK2)
         col += 1 if len(txt) < 12 else 2
-    ws["C5"].fill = fill("BCD3EE"); ws["D5"] = leg[0][1]
+    ws["C5"].fill = fill("C5D3C8"); ws["D5"] = leg[0][1]
     # (a legenda cabe melhor em linhas separadas)
     for c in range(3, 20): ws.cell(5, c).value = None; ws.cell(5, c).fill = PatternFill()
-    for i, (cor, txt) in enumerate(leg + [("D9480F", f"Linha tracejada laranja: situação em {ref:%d/%m/%y}"), (NAVY, f"Linha tracejada azul: {ret:%d/%m/%Y}")]):
+    for i, (cor, txt) in enumerate(leg + [("B3392B", f"Linha tracejada vermelha: situação em {ref:%d/%m/%y}"), (NAVY, f"Linha tracejada verde-escura: {ret:%d/%m/%Y}")]):
         r = 4 + i if i < 3 else 4 + i - 3
         cc = 3 if i < 3 else C0 + 2
         cl = ws.cell(r, cc); cl.fill = fill(cor)
-        if cor == "E3D0EE": cl.border = Border(left=Side(style="dashed", color="8E44AD"), right=Side(style="dashed", color="8E44AD"),
-                                              top=Side(style="dashed", color="8E44AD"), bottom=Side(style="dashed", color="8E44AD"))
-        t = ws.cell(r, cc + 1, txt); t.font = Font(name=F_, size=9, color="6D2F8A" if cor == "E3D0EE" else INK2)
+        if cor == "F1E6CC": cl.border = Border(left=Side(style="dashed", color="C0A062"), right=Side(style="dashed", color="C0A062"),
+                                              top=Side(style="dashed", color="C0A062"), bottom=Side(style="dashed", color="C0A062"))
+        t = ws.cell(r, cc + 1, txt); t.font = Font(name=F_, size=9, color="8C6D2F" if cor == "F1E6CC" else INK2)
     ws["B4"] = "Legenda"; ws["B4"].font = Font(name=F_, bold=True, size=9, color=INK2)
     # cabeçalho: anos (linha 8) e meses (linha 9, datas com formato de 1 letra)
     HY, HM, R0 = 8, 9, 10
@@ -201,7 +200,7 @@ def gantt(wb, G, obra):
         m = dt.date(d0.year + (d0.month - 1 + k) // 12, (d0.month - 1 + k) % 12 + 1, 1)
         c = ws.cell(HM, C0 + k, m); c.number_format = "mmmmm"; c.alignment = Alignment(horizontal="center")
         c.font = Font(name=F_, size=8, color=NAVY)
-        if m.month == 1 or k == 0: ws.cell(HY, C0 + k, m.year).alignment = Alignment(horizontal="left")
+        if m.month == 1 or k == 0: ws.cell(HY, C0 + k, str(m.year)).alignment = Alignment(horizontal="left")   # texto: transborda para as colunas vizinhas
     ws.row_dimensions[HM].height = 16
     # linhas
     r = R0; inf_ok = 0
@@ -212,7 +211,7 @@ def gantt(wb, G, obra):
         ws.cell(r, 4, _d(n["f"])).number_format = "dd/mm/yy"
         ws.cell(r, 5, round(n["pr"] / 100, 4)).number_format = "0%"
         if inferido: ws.cell(r, 6, "x")
-        cor = "6D2F8A" if inferido else (NAVY if lv == 0 else INK)
+        cor = "8C6D2F" if inferido else (NAVY if lv == 0 else INK)
         for c in range(2, 6): ws.cell(r, c).font = Font(name=F_, size=9 if lv else 10, bold=lv < 2, color=cor)
         for c in range(2, C0 + M): ws.cell(r, c).border = Border(bottom=sd)
         if lv: ws.row_dimensions[r].outlineLevel = lv
@@ -234,12 +233,12 @@ def gantt(wb, G, obra):
     g = f"{L(C0)}${HM}"
     over = f"AND({g}<=$D{R0},EOMONTH({g},0)>=$C{R0})"
     real = f"{g}<=$C{R0}+($D{R0}-$C{R0})*$E{R0}"
-    regras = [(f'AND($F{R0}="x",{over},{real})', "8E44AD"), (f'AND($F{R0}="x",{over})', "E3D0EE"),
-              (f"AND($E{R0}>=0.999,{over})", "2E7D32"), (f"AND({over},{real},$E{R0}>0)", "2A78D6"), (over, "BCD3EE")]
+    regras = [(f'AND($F{R0}="x",{over},{real})', "C0A062"), (f'AND($F{R0}="x",{over})', "F1E6CC"),
+              (f"AND($E{R0}>=0.999,{over})", "1F7A52"), (f"AND({over},{real},$E{R0}>0)", "446756"), (over, "C5D3C8")]
     for fml, cor in regras:
         ws.conditional_formatting.add(rng, FormulaRule(formula=[fml], fill=fill(cor), stopIfTrue=True))
     # linhas de data (situação do Prevision e 31/12 do ano do retrato): borda tracejada fixa na coluna do mês
-    for dd, cor in ((ref, "D9480F"), (ret, NAVY)):
+    for dd, cor in ((ref, "B3392B"), (ret, NAVY)):
         k = (dd.year - d0.year) * 12 + dd.month - d0.month
         if 0 <= k < M:
             for rr in range(HY, RN + 1):
