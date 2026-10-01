@@ -34,9 +34,10 @@ for i, ws in enumerate(wb.worksheets):
     ws.print_area = f'A1:{lc}{max(minr, ultima(ws, lc))}'
     if tit:
         ws.print_title_rows = tit
-    ws.sheet_properties.pageSetUpPr.fitToPage = True
-    ws.page_setup.fitToWidth = 1
-    ws.page_setup.fitToHeight = 0
+    if not tit:  # abas simples: cabem em uma página de largura
+        ws.sheet_properties.pageSetUpPr.fitToPage = True
+        ws.page_setup.fitToWidth = 1
+        ws.page_setup.fitToHeight = 0
     q = "'" + ws.title.replace("'", "''") + "'"
     rng = f"{q}!$A$1:${lc}${MAXR}"
     ncol = openpyxl.utils.column_index_from_string(lc)
