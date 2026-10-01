@@ -1,0 +1,1865 @@
+{
+ "quadro": {
+  "PISO": {
+   "01": "Piso em concreto mecanizado com acabamento polido. Vagas demarcadas em pintura epóxi fosca de tom cinza médio com requadro em faixa de pintura epóxi fosca de tom cinza chumbo.",
+   "02": "Piso em concreto mecanizado com acabamento polido.",
+   "03": "Piso em concreto mecanizado com acabamento antiderrapante",
+   "04": "Piso em concreto mecanizado com acabamento em ladrilho hidráulico antiderrapante cinza, tom concreto. Amostra a ser aprovada pela GPA&A.",
+   "05": "Piso em porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado. Paginação conforme detalhamento. Ref.: Khali Off White AC; Linha Khali; Eliane. Amostra a ser aprovada pela GPA&A.",
+   "06": "Piso em porcelanato padrão cimentício 120x120cm, espessura 1cm, com acabamento fosco (antiderrapante). Ref.: CITTA SGR HARD; cód. 61588; Portinari. Amostra a ser aprovada pela GPA&A.",
+   "07": "Piso assentado em granito cinza santa rosa, acabamento serrado, Espessura: 2cm. Dimensões e paginação conforme detalhamento. Amostra a ser aprovada pela GPA&A. Obs.: Resina, hidrofugante ou outros acabamentos aplicados no granito devem ser foscos e não podem alterar ou escurecer a cor original do material.",
+   "08": "Piso elevado em granito cinza santa rosa, acabamento serrado, Espessura: 2cm. Dimensões e paginação conforme detalhamento. Amostra a ser aprovada pela GPA&A. Obs.: Resina, hidrofugante ou outros acabamentos aplicados no granito devem ser foscos e não podem alterar ou escurecer a cor original do material.",
+   "09": "Piso em granito branco siena escovado. Paginação conforme melhor aproveitamento da chapa.",
+   "10": "Piso em granito branco siena escovado. Paginação conforme melhor aproveitamento da chapa (aprox. 90x135cm).",
+   "11": "Piso em mármore travertino romano resinado. Paginação conforme melhor aproveitamento da chapa.",
+   "12": "Piso em mármore travertino romano bruto. Paginação conforme melhor aproveitamento da chapa (aprox. 90x135cm).",
+   "13": "Piso em pedra natural Basaltina. Espessura: 2cm. Dimensões e paginação conforme detalhamento. Amostra a ser aprovada pela GPA&A",
+   "14": "Piso de madeira Indusparquet sólido em taco cumaru.",
+   "15": "Piso vinílico Durafloor madeirado linha Urban padrão Austin.",
+   "16": "Piso em pó de saibro com faixa na cor branca para marcação de quadra de tênis fixada com pregos especiais. Verificar detalhes no projeto específico de quadra.",
+   "17": "Piso em concreto com acabamento em pintura epóxi nas cores cinza e verde, tons a definir. Faixa de pintura epóxi na cor branca, para marcação do desenho de mini quadra infantil. Verificar dimensões conforme detalhamento.",
+   "20": "Pedras irregulares ver projeto do paisagismo.",
+   "21": "Piso em granito marrom absoluto serrado e envernizado, ou pedra sintética a definir. Paginação conforme detalhamento. Amostra a ser aprovada pela GPA&A."
+  },
+  "PAREDE": {
+   "01": "Parede em alvenaria, emassada e regularizada, pintada com tinta acrílica, cor branco neve, acabamento acetinado. Ref.: Suvinil.",
+   "02": "Parede em alvenaria, emassada e regularizada, pintada com tinta acrílica, cor a definir, acabamento acetinado.",
+   "03": "Parede em alvenaria, emassada e regularizada, pintada com tinta acrílica fosca cinza, tom a definir.",
+   "04": "Parede em alvenaria, emassada e regularizada, revestida em textura acrílica fosca. Ref.: Terra Fértil; Suvinil.",
+   "05": "Parede em alvenaria, emassada e regularizada, pintada com tinta acrílica fosca, tom a definir e fixação de estrutura metálica tipo brise em perfis de alumínio pintado. Tom Ref.: Bronze 11002.",
+   "06": "Parede em alvenaria, emassada e regularizada, pintada com tinta acrílica fosca cinza tom a definir. Meia parede pintada com tinta acrílica fosca na cor verde, tom a definir. Verificar altura conforme detalhamento.",
+   "07": "Parede em alvenaria, emassada e regularizada, pintada com tinta acrílica fosca cinza claro. Pintura de meia parede em epóxi monolítico de tom cinza médio, com arremate em faixa com tinta epóxi fosca de cor cinza chumbo. Altura conforme projeto arquitetônico. Amostra a ser aprovada pela GPA&A.",
+   "08": "Meia parede em alvenaria, emassada e regularizada, pintada com tinta acrílica fosca cor verde escuro a definir.",
+   "09": "Parede em alvenaria, emassada e regularizada, revestida em textura acrílica rolada fosca branca. Ref.: Branco Neve; Suvinil.",
+   "10": "Muro em alvenaria regularizada e emassada, revestida em textura acrílica rolada fosca. Ref.: Terra Fértil; Suvinil.",
+   "11": "Parede revestida em porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado. Paginação conforme detalhamento. Ref.: Khali Off White AC; Linha Khali; Eliane.",
+   "12": "Parede em alvenaria, emassada e regularizada, pintada com tinta acrílica fosca branca. Ref.: branco neve; Suvinil. Acabamento de meia parede em porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado. Paginação conforme detalhamento. Ref.: Khali Off White AC; Linha Khali; Eliane.",
+   "13": "Parede em alvenaria, emassada e regularizada, pintada com tinta acrílica fosca cinza claro. Acabamento de meia parede com porcelanato padrão cimentício 120x120cm, espessura 1cm, com acabamento fosco (antiderrapante). Ref.: CITTA SGR HARD; cód. 61588; Portinari. Paginação e altura conforme detalhamento. Amostra a ser aprovada pela GPA&A.",
+   "14": "Parede revestida em mármore travertino romano resinado com nicho no box. Paginação conforme melhor aproveitamento da chapa.",
+   "15": "Parede em alvenaria, emassada e regularizada, pintada com tinta acrílica cor branco neve, acabamento acetinado. Meia parede em mármore travertino romano resinado semi embutido. Box em mármore travertino romano resinado piso-teto e nicho. Paginação conforme melhor aproveitamento da chapa.",
+   "16": "Parede revestida em cerâmica retificada 32,50x59cm, cor branca, acabamento acetinado, Forma Eliane.",
+   "17": "Laminado melamínico cor branca.",
+   "18": "Sistema de fachada aerada em placas de granito cinza santa rosa, espessura 2cm, com acabamento serrado, fixadas na estrutura do edifício através de dispositivos metálicos de aço galvanizado, conforme detalhamento do fornecedor. Paginação conforme detalhamento. Amostra a ser aprovada pela GPA&A. Obs.: Resina ou outros acabamentos aplicados no granito devem ser foscos e não podem alterar ou escurecer a cor original do material.",
+   "19": "Rodapé em porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado. Paginação e altura conforme detalhamento. Ref.: Khali Off White AC; Linha Khali; Eliane. Amostra a ser aprovada pela GPA&A.",
+   "20": "Rodapé de embutir em alvenaria em cantoneira metálica 50x15mm em alumínio anodizado pintado no tom da parede.",
+   "21": "Rodapé em granito cinza santa rosa, acabamento serrado, h=15cm, espessura 2cm. Dimensões e paginação conforme detalhamento. Amostra a ser aprovada pela GPA&A",
+   "22": "Rodapé em granito branco siena escovado semi embutido, h=15cm.",
+   "23": "Rodapé em mármore travertino romano bruto semi embutido, h=15cm.",
+   "24": "Rodapé de madeira Indusparquet sólido cumaru, h=10cm.",
+   "25": "Rodapé Durafloor Easy Y-01 120."
+  },
+  "TETO": {
+   "01": "Forro em gesso acartonado liso, com acabamento em tinta acrílica, cor branco neve, acabamento fosco, com junta dilatação metálica cor branca. Ref.: Suvinil",
+   "02": "Laje em concreto aparente com tratamento a ser indicado pelo projeto estrutural.",
+   "03": "Laje nervurada em concreto aparente com tratamento a ser indicado pelo projeto estrutural.",
+   "04": "Forro em madeira pinho autoclavado tonalizado, espessura de 3cm, réguas de 10cm.",
+   "05": "Cobertura em telha sanduíche com estrutura espacial pintadas na cor cinza tom a definir.",
+   "06": "Manta ardosinada com pintura cinza tom concreto."
+  }
+ },
+ "mudancas": [
+  [
+   "TÉRREO",
+   "GUARITA",
+   "PISO/REJUNTE",
+   "CONFLITO: P5 - Piso em porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado. Paginação conforme detalhamento. Ref.: Khali Off White AC; Linha Khali; Eliane. Rejunte Infinity Hard cor Mocha ou cor Branco Pérola Deverá ser testado as duas opções de rejunte para escolher a que mais se aproxima do tom da peça. Amostra a ser aprovada pela GPA&A.",
+   "ARQ-P13 - Piso em pedra natural Basaltina. Espessura: 2cm. Dimensões e paginação conforme detalhamento. Amostra a ser aprovada pela GPA&A"
+  ],
+  [
+   "TÉRREO",
+   "GUARITA",
+   "RODAPÉ",
+   "PA20 - Rodapé de embutir em alvenaria em cantoneira metálica 50x15mm em alumínio anodizado pintado no tom da parede.",
+   "mesma especificação na arquitetura: ARQ-RD20 - Rodapé de embutir em alvenaria em cantoneira metálica 50x15mm em alumínio anodizado pintado no tom da parede."
+  ],
+  [
+   "TÉRREO",
+   "GUARITA",
+   "PAREDE/REJUNTE",
+   "CONFLITO: PA1 - Parede em alvenaria com reboco convencional 2,5cm, emassada e regularizada, pintada com tinta acrílica, cor branco neve, acabamento acetinado. Ref.: Suvinil.",
+   "ARQ-PA02 - Parede em alvenaria, emassada e regularizada, pintada com tinta acrílica, cor a definir, acabamento acetinado."
+  ],
+  [
+   "TÉRREO",
+   "GUARITA",
+   "TETO",
+   "T1 - Forro em gesso acartonado liso, com acabamento em tinta acrílica, cor branco neve, acabamento fosco, com junta dilatação metálica cor branca. Ref.: Suvinil",
+   "mesma especificação na arquitetura: ARQ-T01 - Forro em gesso acartonado liso, com acabamento em tinta acrílica, cor branco neve, acabamento fosco, com junta dilatação metálica cor branca. Ref.: Suvinil"
+  ],
+  [
+   "TÉRREO",
+   "LAVABO GUARITA",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P05 - Piso em porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado. Paginação conforme detalhamento. Ref.: Khali Off White AC; Linha Khali; Eliane. Amostra a ser aprovada pela GPA&A."
+  ],
+  [
+   "TÉRREO",
+   "LAVABO GUARITA",
+   "RODAPÉ",
+   "—",
+   "ARQ-RD19 - Rodapé em porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado. Paginação e altura conforme detalhamento. Ref.: Khali Off White AC; Linha Khali; Eliane. Amostra a ser aprovada pela GPA&A."
+  ],
+  [
+   "TÉRREO",
+   "LAVABO GUARITA",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA02 - Parede em alvenaria, emassada e regularizada, pintada com tinta acrílica, cor a definir, acabamento acetinado."
+  ],
+  [
+   "TÉRREO",
+   "LAVABO GUARITA",
+   "TETO",
+   "—",
+   "ARQ-T01 - Forro em gesso acartonado liso, com acabamento em tinta acrílica, cor branco neve, acabamento fosco, com junta dilatação metálica cor branca. Ref.: Suvinil"
+  ],
+  [
+   "TÉRREO",
+   "CIRCULAÇÃO GUARITA",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P05 - Piso em porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado. Paginação conforme detalhamento. Ref.: Khali Off White AC; Linha Khali; Eliane. Amostra a ser aprovada pela GPA&A."
+  ],
+  [
+   "TÉRREO",
+   "CIRCULAÇÃO GUARITA",
+   "RODAPÉ",
+   "—",
+   "ARQ-RD19 - Rodapé em porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado. Paginação e altura conforme detalhamento. Ref.: Khali Off White AC; Linha Khali; Eliane. Amostra a ser aprovada pela GPA&A."
+  ],
+  [
+   "TÉRREO",
+   "CIRCULAÇÃO GUARITA",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA09 - Parede em alvenaria, emassada e regularizada, revestida em textura acrílica rolada fosca branca. Ref.: Branco Neve; Suvinil."
+  ],
+  [
+   "TÉRREO",
+   "CIRCULAÇÃO GUARITA",
+   "TETO",
+   "—",
+   "ARQ-T01 - Forro em gesso acartonado liso, com acabamento em tinta acrílica, cor branco neve, acabamento fosco, com junta dilatação metálica cor branca. Ref.: Suvinil"
+  ],
+  [
+   "TÉRREO",
+   "CIRCULAÇÃO ELEVADOR DE SERVIÇO/ANTICÂRA",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P13 - Piso em pedra natural Basaltina. Espessura: 2cm. Dimensões e paginação conforme detalhamento. Amostra a ser aprovada pela GPA&A"
+  ],
+  [
+   "TÉRREO",
+   "CIRCULAÇÃO ELEVADOR DE SERVIÇO/ANTICÂRA",
+   "RODAPÉ",
+   "—",
+   "ARQ-RD20 - Rodapé de embutir em alvenaria em cantoneira metálica 50x15mm em alumínio anodizado pintado no tom da parede."
+  ],
+  [
+   "TÉRREO",
+   "CIRCULAÇÃO ELEVADOR DE SERVIÇO/ANTICÂRA",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA01 - Parede em alvenaria, emassada e regularizada, pintada com tinta acrílica, cor branco neve, acabamento acetinado. Ref.: Suvinil."
+  ],
+  [
+   "TÉRREO",
+   "CIRCULAÇÃO ELEVADOR DE SERVIÇO/ANTICÂRA",
+   "TETO",
+   "—",
+   "ARQ-T01 - Forro em gesso acartonado liso, com acabamento em tinta acrílica, cor branco neve, acabamento fosco, com junta dilatação metálica cor branca. Ref.: Suvinil"
+  ],
+  [
+   "TÉRREO",
+   "GARAGEM",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P01 - Piso em concreto mecanizado com acabamento polido. Vagas demarcadas em pintura epóxi fosca de tom cinza médio com requadro em faixa de pintura epóxi fosca de tom cinza chumbo."
+  ],
+  [
+   "TÉRREO",
+   "GARAGEM",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA07 - Parede em alvenaria, emassada e regularizada, pintada com tinta acrílica fosca cinza claro. Pintura de meia parede em epóxi monolítico de tom cinza médio, com arremate em faixa com tinta epóxi fosca de cor cinza chumbo. Altura conforme projeto arquitetônico. Amostra a ser aprovada pela GPA&A."
+  ],
+  [
+   "TÉRREO",
+   "GARAGEM",
+   "TETO",
+   "—",
+   "ARQ-T03 - Laje nervurada em concreto aparente com tratamento a ser indicado pelo projeto estrutural."
+  ],
+  [
+   "TÉRREO",
+   "CASA DE BOMBAS",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P02 - Piso em concreto mecanizado com acabamento polido."
+  ],
+  [
+   "TÉRREO",
+   "CASA DE BOMBAS",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA09 - Parede em alvenaria, emassada e regularizada, revestida em textura acrílica rolada fosca branca. Ref.: Branco Neve; Suvinil."
+  ],
+  [
+   "TÉRREO",
+   "CASA DE BOMBAS",
+   "TETO",
+   "—",
+   "ARQ-T03 - Laje nervurada em concreto aparente com tratamento a ser indicado pelo projeto estrutural."
+  ],
+  [
+   "TÉRREO",
+   "CIRCULAÇÃO",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P05 - Piso em porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado. Paginação conforme detalhamento. Ref.: Khali Off White AC; Linha Khali; Eliane. Amostra a ser aprovada pela GPA&A."
+  ],
+  [
+   "TÉRREO",
+   "CIRCULAÇÃO",
+   "RODAPÉ",
+   "—",
+   "ARQ-RD19 - Rodapé em porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado. Paginação e altura conforme detalhamento. Ref.: Khali Off White AC; Linha Khali; Eliane. Amostra a ser aprovada pela GPA&A."
+  ],
+  [
+   "TÉRREO",
+   "CIRCULAÇÃO",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA01 - Parede em alvenaria, emassada e regularizada, pintada com tinta acrílica, cor branco neve, acabamento acetinado. Ref.: Suvinil."
+  ],
+  [
+   "TÉRREO",
+   "CIRCULAÇÃO",
+   "TETO",
+   "—",
+   "ARQ-T01 - Forro em gesso acartonado liso, com acabamento em tinta acrílica, cor branco neve, acabamento fosco, com junta dilatação metálica cor branca. Ref.: Suvinil"
+  ],
+  [
+   "TÉRREO",
+   "CONCIERGE",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P05 - Piso em porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado. Paginação conforme detalhamento. Ref.: Khali Off White AC; Linha Khali; Eliane. Amostra a ser aprovada pela GPA&A."
+  ],
+  [
+   "TÉRREO",
+   "CONCIERGE",
+   "RODAPÉ",
+   "—",
+   "ARQ-RD19 - Rodapé em porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado. Paginação e altura conforme detalhamento. Ref.: Khali Off White AC; Linha Khali; Eliane. Amostra a ser aprovada pela GPA&A."
+  ],
+  [
+   "TÉRREO",
+   "CONCIERGE",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA01 - Parede em alvenaria, emassada e regularizada, pintada com tinta acrílica, cor branco neve, acabamento acetinado. Ref.: Suvinil."
+  ],
+  [
+   "TÉRREO",
+   "CONCIERGE",
+   "TETO",
+   "—",
+   "ARQ-T19 - código não existe no quadro de tetos (01 a 06); conferir na planta"
+  ],
+  [
+   "TÉRREO",
+   "DELIVERY",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P05 - Piso em porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado. Paginação conforme detalhamento. Ref.: Khali Off White AC; Linha Khali; Eliane. Amostra a ser aprovada pela GPA&A."
+  ],
+  [
+   "TÉRREO",
+   "DELIVERY",
+   "RODAPÉ",
+   "—",
+   "ARQ-RD19 - Rodapé em porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado. Paginação e altura conforme detalhamento. Ref.: Khali Off White AC; Linha Khali; Eliane. Amostra a ser aprovada pela GPA&A."
+  ],
+  [
+   "TÉRREO",
+   "DELIVERY",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA01 - Parede em alvenaria, emassada e regularizada, pintada com tinta acrílica, cor branco neve, acabamento acetinado. Ref.: Suvinil."
+  ],
+  [
+   "TÉRREO",
+   "DELIVERY",
+   "TETO",
+   "—",
+   "ARQ-T01 - Forro em gesso acartonado liso, com acabamento em tinta acrílica, cor branco neve, acabamento fosco, com junta dilatação metálica cor branca. Ref.: Suvinil"
+  ],
+  [
+   "TÉRREO",
+   "CIRCULAÇÃO SERVIÇO",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P07 - Piso assentado em granito cinza santa rosa, acabamento serrado, Espessura: 2cm. Dimensões e paginação conforme detalhamento. Amostra a ser aprovada pela GPA&A. Obs.: Resina, hidrofugante ou outros acabamentos aplicados no granito devem ser foscos e não podem alterar ou escurecer a cor original do material."
+  ],
+  [
+   "TÉRREO",
+   "CIRCULAÇÃO SERVIÇO",
+   "RODAPÉ",
+   "—",
+   "ARQ-RD19 - Rodapé em porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado. Paginação e altura conforme detalhamento. Ref.: Khali Off White AC; Linha Khali; Eliane. Amostra a ser aprovada pela GPA&A."
+  ],
+  [
+   "TÉRREO",
+   "CIRCULAÇÃO SERVIÇO",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA09 - Parede em alvenaria, emassada e regularizada, revestida em textura acrílica rolada fosca branca. Ref.: Branco Neve; Suvinil."
+  ],
+  [
+   "TÉRREO",
+   "CIRCULAÇÃO SERVIÇO",
+   "TETO",
+   "—",
+   "ARQ-T01 - Forro em gesso acartonado liso, com acabamento em tinta acrílica, cor branco neve, acabamento fosco, com junta dilatação metálica cor branca. Ref.: Suvinil"
+  ],
+  [
+   "TÉRREO",
+   "CAR WASH",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P01 - Piso em concreto mecanizado com acabamento polido. Vagas demarcadas em pintura epóxi fosca de tom cinza médio com requadro em faixa de pintura epóxi fosca de tom cinza chumbo."
+  ],
+  [
+   "TÉRREO",
+   "CAR WASH",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA13 - Parede em alvenaria, emassada e regularizada, pintada com tinta acrílica fosca cinza claro. Acabamento de meia parede com porcelanato padrão cimentício 120x120cm, espessura 1cm, com acabamento fosco (antiderrapante). Ref.: CITTA SGR HARD; cód. 61588; Portinari. Paginação e altura conforme detalhamento. Amostra a ser aprovada pela GPA&A."
+  ],
+  [
+   "TÉRREO",
+   "CAR WASH",
+   "TETO",
+   "—",
+   "ARQ-T03 - Laje nervurada em concreto aparente com tratamento a ser indicado pelo projeto estrutural."
+  ],
+  [
+   "TÉRREO",
+   "BICICLETÁRIO",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P01 - Piso em concreto mecanizado com acabamento polido. Vagas demarcadas em pintura epóxi fosca de tom cinza médio com requadro em faixa de pintura epóxi fosca de tom cinza chumbo."
+  ],
+  [
+   "TÉRREO",
+   "BICICLETÁRIO",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA13 - Parede em alvenaria, emassada e regularizada, pintada com tinta acrílica fosca cinza claro. Acabamento de meia parede com porcelanato padrão cimentício 120x120cm, espessura 1cm, com acabamento fosco (antiderrapante). Ref.: CITTA SGR HARD; cód. 61588; Portinari. Paginação e altura conforme detalhamento. Amostra a ser aprovada pela GPA&A."
+  ],
+  [
+   "TÉRREO",
+   "BICICLETÁRIO",
+   "TETO",
+   "—",
+   "ARQ-T03 - Laje nervurada em concreto aparente com tratamento a ser indicado pelo projeto estrutural."
+  ],
+  [
+   "TÉRREO",
+   "ZELADORIA",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P05 - Piso em porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado. Paginação conforme detalhamento. Ref.: Khali Off White AC; Linha Khali; Eliane. Amostra a ser aprovada pela GPA&A."
+  ],
+  [
+   "TÉRREO",
+   "ZELADORIA",
+   "RODAPÉ",
+   "—",
+   "ARQ-RD19 - Rodapé em porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado. Paginação e altura conforme detalhamento. Ref.: Khali Off White AC; Linha Khali; Eliane. Amostra a ser aprovada pela GPA&A."
+  ],
+  [
+   "TÉRREO",
+   "ZELADORIA",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA01 - Parede em alvenaria, emassada e regularizada, pintada com tinta acrílica, cor branco neve, acabamento acetinado. Ref.: Suvinil."
+  ],
+  [
+   "TÉRREO",
+   "ZELADORIA",
+   "TETO",
+   "—",
+   "ARQ-T01 - Forro em gesso acartonado liso, com acabamento em tinta acrílica, cor branco neve, acabamento fosco, com junta dilatação metálica cor branca. Ref.: Suvinil"
+  ],
+  [
+   "TÉRREO",
+   "ARS 1",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P05 - Piso em porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado. Paginação conforme detalhamento. Ref.: Khali Off White AC; Linha Khali; Eliane. Amostra a ser aprovada pela GPA&A."
+  ],
+  [
+   "TÉRREO",
+   "ARS 1",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA11 - Parede revestida em porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado. Paginação conforme detalhamento. Ref.: Khali Off White AC; Linha Khali; Eliane."
+  ],
+  [
+   "TÉRREO",
+   "ARS 1",
+   "TETO",
+   "—",
+   "ARQ-T01 - Forro em gesso acartonado liso, com acabamento em tinta acrílica, cor branco neve, acabamento fosco, com junta dilatação metálica cor branca. Ref.: Suvinil"
+  ],
+  [
+   "TÉRREO",
+   "ARS 2",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P05 - Piso em porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado. Paginação conforme detalhamento. Ref.: Khali Off White AC; Linha Khali; Eliane. Amostra a ser aprovada pela GPA&A."
+  ],
+  [
+   "TÉRREO",
+   "ARS 2",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA11 - Parede revestida em porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado. Paginação conforme detalhamento. Ref.: Khali Off White AC; Linha Khali; Eliane."
+  ],
+  [
+   "TÉRREO",
+   "ARS 2",
+   "TETO",
+   "—",
+   "ARQ-T01 - Forro em gesso acartonado liso, com acabamento em tinta acrílica, cor branco neve, acabamento fosco, com junta dilatação metálica cor branca. Ref.: Suvinil"
+  ],
+  [
+   "TÉRREO",
+   "ARS 3",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P05 - Piso em porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado. Paginação conforme detalhamento. Ref.: Khali Off White AC; Linha Khali; Eliane. Amostra a ser aprovada pela GPA&A."
+  ],
+  [
+   "TÉRREO",
+   "ARS 3",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA11 - Parede revestida em porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado. Paginação conforme detalhamento. Ref.: Khali Off White AC; Linha Khali; Eliane."
+  ],
+  [
+   "TÉRREO",
+   "ARS 3",
+   "TETO",
+   "—",
+   "ARQ-T01 - Forro em gesso acartonado liso, com acabamento em tinta acrílica, cor branco neve, acabamento fosco, com junta dilatação metálica cor branca. Ref.: Suvinil"
+  ],
+  [
+   "TÉRREO",
+   "SALA MOTORISTA",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P06 - Piso em porcelanato padrão cimentício 120x120cm, espessura 1cm, com acabamento fosco (antiderrapante). Ref.: CITTA SGR HARD; cód. 61588; Portinari. Amostra a ser aprovada pela GPA&A."
+  ],
+  [
+   "TÉRREO",
+   "SALA MOTORISTA",
+   "RODAPÉ",
+   "—",
+   "ARQ-RD20 - Rodapé de embutir em alvenaria em cantoneira metálica 50x15mm em alumínio anodizado pintado no tom da parede."
+  ],
+  [
+   "TÉRREO",
+   "SALA MOTORISTA",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA02 - Parede em alvenaria, emassada e regularizada, pintada com tinta acrílica, cor a definir, acabamento acetinado."
+  ],
+  [
+   "TÉRREO",
+   "SALA MOTORISTA",
+   "TETO",
+   "—",
+   "ARQ-T03 - Laje nervurada em concreto aparente com tratamento a ser indicado pelo projeto estrutural."
+  ],
+  [
+   "TÉRREO",
+   "DML",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P02 - Piso em concreto mecanizado com acabamento polido."
+  ],
+  [
+   "TÉRREO",
+   "DML",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA12 - Parede em alvenaria, emassada e regularizada, pintada com tinta acrílica fosca branca. Ref.: branco neve; Suvinil. Acabamento de meia parede em porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado. Paginação conforme detalhamento. Ref.: Khali Off White AC; Linha Khali; Eliane."
+  ],
+  [
+   "TÉRREO",
+   "DML",
+   "TETO",
+   "—",
+   "ARQ-T01 - Forro em gesso acartonado liso, com acabamento em tinta acrílica, cor branco neve, acabamento fosco, com junta dilatação metálica cor branca. Ref.: Suvinil"
+  ],
+  [
+   "TÉRREO",
+   "VEST. P.C.D",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P05 - Piso em porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado. Paginação conforme detalhamento. Ref.: Khali Off White AC; Linha Khali; Eliane. Amostra a ser aprovada pela GPA&A."
+  ],
+  [
+   "TÉRREO",
+   "VEST. P.C.D",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA11 - Parede revestida em porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado. Paginação conforme detalhamento. Ref.: Khali Off White AC; Linha Khali; Eliane."
+  ],
+  [
+   "TÉRREO",
+   "VEST. P.C.D",
+   "TETO",
+   "—",
+   "ARQ-T01 - Forro em gesso acartonado liso, com acabamento em tinta acrílica, cor branco neve, acabamento fosco, com junta dilatação metálica cor branca. Ref.: Suvinil"
+  ],
+  [
+   "TÉRREO",
+   "VEST. FEMININO",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P05 - Piso em porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado. Paginação conforme detalhamento. Ref.: Khali Off White AC; Linha Khali; Eliane. Amostra a ser aprovada pela GPA&A."
+  ],
+  [
+   "TÉRREO",
+   "VEST. FEMININO",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA11 - Parede revestida em porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado. Paginação conforme detalhamento. Ref.: Khali Off White AC; Linha Khali; Eliane."
+  ],
+  [
+   "TÉRREO",
+   "VEST. FEMININO",
+   "TETO",
+   "—",
+   "ARQ-T01 - Forro em gesso acartonado liso, com acabamento em tinta acrílica, cor branco neve, acabamento fosco, com junta dilatação metálica cor branca. Ref.: Suvinil"
+  ],
+  [
+   "TÉRREO",
+   "VEST. MASC.",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P05 - Piso em porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado. Paginação conforme detalhamento. Ref.: Khali Off White AC; Linha Khali; Eliane. Amostra a ser aprovada pela GPA&A."
+  ],
+  [
+   "TÉRREO",
+   "VEST. MASC.",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA11 - Parede revestida em porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado. Paginação conforme detalhamento. Ref.: Khali Off White AC; Linha Khali; Eliane."
+  ],
+  [
+   "TÉRREO",
+   "VEST. MASC.",
+   "TETO",
+   "—",
+   "ARQ-T01 - Forro em gesso acartonado liso, com acabamento em tinta acrílica, cor branco neve, acabamento fosco, com junta dilatação metálica cor branca. Ref.: Suvinil"
+  ],
+  [
+   "TÉRREO",
+   "ESTAR/COPA FUNCIONÁRIOS",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P05 - Piso em porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado. Paginação conforme detalhamento. Ref.: Khali Off White AC; Linha Khali; Eliane. Amostra a ser aprovada pela GPA&A."
+  ],
+  [
+   "TÉRREO",
+   "ESTAR/COPA FUNCIONÁRIOS",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA01 - Parede em alvenaria, emassada e regularizada, pintada com tinta acrílica, cor branco neve, acabamento acetinado. Ref.: Suvinil."
+  ],
+  [
+   "TÉRREO",
+   "ESTAR/COPA FUNCIONÁRIOS",
+   "TETO",
+   "—",
+   "ARQ-T01 - Forro em gesso acartonado liso, com acabamento em tinta acrílica, cor branco neve, acabamento fosco, com junta dilatação metálica cor branca. Ref.: Suvinil"
+  ],
+  [
+   "TÉRREO",
+   "CIRCULAÇÃO",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P05 - Piso em porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado. Paginação conforme detalhamento. Ref.: Khali Off White AC; Linha Khali; Eliane. Amostra a ser aprovada pela GPA&A."
+  ],
+  [
+   "TÉRREO",
+   "CIRCULAÇÃO",
+   "RODAPÉ",
+   "—",
+   "ARQ-RD19 - Rodapé em porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado. Paginação e altura conforme detalhamento. Ref.: Khali Off White AC; Linha Khali; Eliane. Amostra a ser aprovada pela GPA&A."
+  ],
+  [
+   "TÉRREO",
+   "CIRCULAÇÃO",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA01 - Parede em alvenaria, emassada e regularizada, pintada com tinta acrílica, cor branco neve, acabamento acetinado. Ref.: Suvinil."
+  ],
+  [
+   "TÉRREO",
+   "CIRCULAÇÃO",
+   "TETO",
+   "—",
+   "ARQ-T01 - Forro em gesso acartonado liso, com acabamento em tinta acrílica, cor branco neve, acabamento fosco, com junta dilatação metálica cor branca. Ref.: Suvinil"
+  ],
+  [
+   "TÉRREO",
+   "GERADOR",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P02 - Piso em concreto mecanizado com acabamento polido."
+  ],
+  [
+   "TÉRREO",
+   "GERADOR",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA09 - Parede em alvenaria, emassada e regularizada, revestida em textura acrílica rolada fosca branca. Ref.: Branco Neve; Suvinil."
+  ],
+  [
+   "TÉRREO",
+   "GERADOR",
+   "TETO",
+   "—",
+   "ARQ-T03 - Laje nervurada em concreto aparente com tratamento a ser indicado pelo projeto estrutural."
+  ],
+  [
+   "TÉRREO",
+   "VAGAS BOX",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P01 - Piso em concreto mecanizado com acabamento polido. Vagas demarcadas em pintura epóxi fosca de tom cinza médio com requadro em faixa de pintura epóxi fosca de tom cinza chumbo."
+  ],
+  [
+   "TÉRREO",
+   "VAGAS BOX",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA07 - Parede em alvenaria, emassada e regularizada, pintada com tinta acrílica fosca cinza claro. Pintura de meia parede em epóxi monolítico de tom cinza médio, com arremate em faixa com tinta epóxi fosca de cor cinza chumbo. Altura conforme projeto arquitetônico. Amostra a ser aprovada pela GPA&A."
+  ],
+  [
+   "TÉRREO",
+   "VAGAS BOX",
+   "TETO",
+   "—",
+   "ARQ-T03 - Laje nervurada em concreto aparente com tratamento a ser indicado pelo projeto estrutural."
+  ],
+  [
+   "TÉRREO",
+   "QUADROS ELÉTRICOS",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P02 - Piso em concreto mecanizado com acabamento polido."
+  ],
+  [
+   "TÉRREO",
+   "QUADROS ELÉTRICOS",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA09 - Parede em alvenaria, emassada e regularizada, revestida em textura acrílica rolada fosca branca. Ref.: Branco Neve; Suvinil."
+  ],
+  [
+   "TÉRREO",
+   "QUADROS ELÉTRICOS",
+   "TETO",
+   "—",
+   "ARQ-T03 - Laje nervurada em concreto aparente com tratamento a ser indicado pelo projeto estrutural."
+  ],
+  [
+   "TÉRREO",
+   "ACESSO E SAÍDA DE VEÍCULOS",
+   "CÔMODO/AMBIENTE",
+   "linha nova",
+   "planta de arquitetura"
+  ],
+  [
+   "TÉRREO",
+   "ACESSO E SAÍDA DE VEÍCULOS",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P01 - Piso em concreto mecanizado com acabamento polido. Vagas demarcadas em pintura epóxi fosca de tom cinza médio com requadro em faixa de pintura epóxi fosca de tom cinza chumbo."
+  ],
+  [
+   "TÉRREO",
+   "ACESSO E SAÍDA DE VEÍCULOS",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA07 - Parede em alvenaria, emassada e regularizada, pintada com tinta acrílica fosca cinza claro. Pintura de meia parede em epóxi monolítico de tom cinza médio, com arremate em faixa com tinta epóxi fosca de cor cinza chumbo. Altura conforme projeto arquitetônico. Amostra a ser aprovada pela GPA&A."
+  ],
+  [
+   "TÉRREO",
+   "ESTACIONAMENTO VISITANTES",
+   "CÔMODO/AMBIENTE",
+   "linha nova",
+   "planta de arquitetura"
+  ],
+  [
+   "TÉRREO",
+   "ESTACIONAMENTO VISITANTES",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P01 - Piso em concreto mecanizado com acabamento polido. Vagas demarcadas em pintura epóxi fosca de tom cinza médio com requadro em faixa de pintura epóxi fosca de tom cinza chumbo."
+  ],
+  [
+   "TÉRREO",
+   "ESTACIONAMENTO VISITANTES",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA07 - Parede em alvenaria, emassada e regularizada, pintada com tinta acrílica fosca cinza claro. Pintura de meia parede em epóxi monolítico de tom cinza médio, com arremate em faixa com tinta epóxi fosca de cor cinza chumbo. Altura conforme projeto arquitetônico. Amostra a ser aprovada pela GPA&A."
+  ],
+  [
+   "TÉRREO",
+   "ESTACIONAMENTO VISITANTES",
+   "TETO",
+   "—",
+   "ARQ-T03 - Laje nervurada em concreto aparente com tratamento a ser indicado pelo projeto estrutural."
+  ],
+  [
+   "TÉRREO",
+   "RAMPA VEÍCULOS",
+   "CÔMODO/AMBIENTE",
+   "linha nova",
+   "planta de arquitetura"
+  ],
+  [
+   "TÉRREO",
+   "RAMPA VEÍCULOS",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P03 - Piso em concreto mecanizado com acabamento antiderrapante"
+  ],
+  [
+   "TÉRREO",
+   "RAMPA VEÍCULOS",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA07 - Parede em alvenaria, emassada e regularizada, pintada com tinta acrílica fosca cinza claro. Pintura de meia parede em epóxi monolítico de tom cinza médio, com arremate em faixa com tinta epóxi fosca de cor cinza chumbo. Altura conforme projeto arquitetônico. Amostra a ser aprovada pela GPA&A."
+  ],
+  [
+   "TÉRREO",
+   "RAMPA VEÍCULOS",
+   "TETO",
+   "—",
+   "ARQ-T03 - Laje nervurada em concreto aparente com tratamento a ser indicado pelo projeto estrutural."
+  ],
+  [
+   "TÉRREO",
+   "DEPÓSITO (A=8,85 m²)",
+   "CÔMODO/AMBIENTE",
+   "linha nova",
+   "planta de arquitetura"
+  ],
+  [
+   "TÉRREO",
+   "DEPÓSITO (A=8,85 m²)",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P02 - Piso em concreto mecanizado com acabamento polido."
+  ],
+  [
+   "TÉRREO",
+   "DEPÓSITO (A=8,85 m²)",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA09 - Parede em alvenaria, emassada e regularizada, revestida em textura acrílica rolada fosca branca. Ref.: Branco Neve; Suvinil."
+  ],
+  [
+   "TÉRREO",
+   "DEPÓSITO (A=8,85 m²)",
+   "TETO",
+   "—",
+   "ARQ-T03 - Laje nervurada em concreto aparente com tratamento a ser indicado pelo projeto estrutural."
+  ],
+  [
+   "TÉRREO",
+   "SERVIÇO JUNTO AO PORTÃO (A=6,87 m²)",
+   "CÔMODO/AMBIENTE",
+   "linha nova",
+   "planta de arquitetura"
+  ],
+  [
+   "TÉRREO",
+   "SERVIÇO JUNTO AO PORTÃO (A=6,87 m²)",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P13 - Piso em pedra natural Basaltina. Espessura: 2cm. Dimensões e paginação conforme detalhamento. Amostra a ser aprovada pela GPA&A"
+  ],
+  [
+   "TÉRREO",
+   "SERVIÇO JUNTO AO PORTÃO (A=6,87 m²)",
+   "RODAPÉ",
+   "—",
+   "ARQ-RD20 - Rodapé de embutir em alvenaria em cantoneira metálica 50x15mm em alumínio anodizado pintado no tom da parede."
+  ],
+  [
+   "TÉRREO",
+   "SERVIÇO JUNTO AO PORTÃO (A=6,87 m²)",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA02 - Parede em alvenaria, emassada e regularizada, pintada com tinta acrílica, cor a definir, acabamento acetinado."
+  ],
+  [
+   "TÉRREO",
+   "SERVIÇO JUNTO AO PORTÃO (A=6,87 m²)",
+   "TETO",
+   "—",
+   "ARQ-T01 - Forro em gesso acartonado liso, com acabamento em tinta acrílica, cor branco neve, acabamento fosco, com junta dilatação metálica cor branca. Ref.: Suvinil"
+  ],
+  [
+   "TÉRREO",
+   "CIRCULAÇÃO JUNTO À ESCADA (A=4,06 m²)",
+   "CÔMODO/AMBIENTE",
+   "linha nova",
+   "planta de arquitetura"
+  ],
+  [
+   "TÉRREO",
+   "CIRCULAÇÃO JUNTO À ESCADA (A=4,06 m²)",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P02 - Piso em concreto mecanizado com acabamento polido."
+  ],
+  [
+   "TÉRREO",
+   "CIRCULAÇÃO JUNTO À ESCADA (A=4,06 m²)",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA09 - Parede em alvenaria, emassada e regularizada, revestida em textura acrílica rolada fosca branca. Ref.: Branco Neve; Suvinil."
+  ],
+  [
+   "TÉRREO",
+   "CIRCULAÇÃO JUNTO À ESCADA (A=4,06 m²)",
+   "TETO",
+   "—",
+   "ARQ-T02 - Laje em concreto aparente com tratamento a ser indicado pelo projeto estrutural."
+  ],
+  [
+   "2° PAVTO",
+   "CASA DE BOMBAS PISCINA 1",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P02 - Piso em concreto mecanizado com acabamento polido."
+  ],
+  [
+   "2° PAVTO",
+   "CASA DE BOMBAS PISCINA 1",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA09 - Parede em alvenaria, emassada e regularizada, revestida em textura acrílica rolada fosca branca. Ref.: Branco Neve; Suvinil."
+  ],
+  [
+   "2° PAVTO",
+   "CASA DE BOMBAS PISCINA 1",
+   "TETO",
+   "—",
+   "ARQ-T03 - Laje nervurada em concreto aparente com tratamento a ser indicado pelo projeto estrutural."
+  ],
+  [
+   "2° PAVTO",
+   "SHAFT ELÉTRICA",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P02 - Piso em concreto mecanizado com acabamento polido."
+  ],
+  [
+   "2° PAVTO",
+   "SHAFT ELÉTRICA",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA09 - Parede em alvenaria, emassada e regularizada, revestida em textura acrílica rolada fosca branca. Ref.: Branco Neve; Suvinil."
+  ],
+  [
+   "2° PAVTO",
+   "SHAFT ELÉTRICA",
+   "TETO",
+   "—",
+   "ARQ-T03 - Laje nervurada em concreto aparente com tratamento a ser indicado pelo projeto estrutural."
+  ],
+  [
+   "2° PAVTO",
+   "CIRCULAÇÃO/ANTECÂMARA",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P13 - Piso em pedra natural Basaltina. Espessura: 2cm. Dimensões e paginação conforme detalhamento. Amostra a ser aprovada pela GPA&A"
+  ],
+  [
+   "2° PAVTO",
+   "CIRCULAÇÃO/ANTECÂMARA",
+   "RODAPÉ",
+   "—",
+   "ARQ-RD20 - Rodapé de embutir em alvenaria em cantoneira metálica 50x15mm em alumínio anodizado pintado no tom da parede."
+  ],
+  [
+   "2° PAVTO",
+   "CIRCULAÇÃO/ANTECÂMARA",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA09 - Parede em alvenaria, emassada e regularizada, revestida em textura acrílica rolada fosca branca. Ref.: Branco Neve; Suvinil."
+  ],
+  [
+   "2° PAVTO",
+   "CIRCULAÇÃO/ANTECÂMARA",
+   "TETO",
+   "—",
+   "ARQ-T01 - Forro em gesso acartonado liso, com acabamento em tinta acrílica, cor branco neve, acabamento fosco, com junta dilatação metálica cor branca. Ref.: Suvinil | ARQ-T02 - Laje em concreto aparente com tratamento a ser indicado pelo projeto estrutural."
+  ],
+  [
+   "2° PAVTO",
+   "PRESSURIZAÇÃO/ANTECÂMARA",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P02 - Piso em concreto mecanizado com acabamento polido."
+  ],
+  [
+   "2° PAVTO",
+   "PRESSURIZAÇÃO/ANTECÂMARA",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA09 - Parede em alvenaria, emassada e regularizada, revestida em textura acrílica rolada fosca branca. Ref.: Branco Neve; Suvinil."
+  ],
+  [
+   "2° PAVTO",
+   "PRESSURIZAÇÃO/ANTECÂMARA",
+   "TETO",
+   "—",
+   "ARQ-T03 - Laje nervurada em concreto aparente com tratamento a ser indicado pelo projeto estrutural."
+  ],
+  [
+   "2° PAVTO",
+   "ÁREA TÉCNICA 1",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P02 - Piso em concreto mecanizado com acabamento polido."
+  ],
+  [
+   "2° PAVTO",
+   "ÁREA TÉCNICA 1",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA09 - Parede em alvenaria, emassada e regularizada, revestida em textura acrílica rolada fosca branca. Ref.: Branco Neve; Suvinil."
+  ],
+  [
+   "2° PAVTO",
+   "ÁREA TÉCNICA 1",
+   "TETO",
+   "—",
+   "ARQ-T03 - Laje nervurada em concreto aparente com tratamento a ser indicado pelo projeto estrutural."
+  ],
+  [
+   "2° PAVTO",
+   "ÁREA TÉCNICA 2",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P02 - Piso em concreto mecanizado com acabamento polido."
+  ],
+  [
+   "2° PAVTO",
+   "ÁREA TÉCNICA 2",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA09 - Parede em alvenaria, emassada e regularizada, revestida em textura acrílica rolada fosca branca. Ref.: Branco Neve; Suvinil."
+  ],
+  [
+   "2° PAVTO",
+   "ÁREA TÉCNICA 2",
+   "TETO",
+   "—",
+   "ARQ-T03 - Laje nervurada em concreto aparente com tratamento a ser indicado pelo projeto estrutural."
+  ],
+  [
+   "2° PAVTO",
+   "GARAGEM",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P01 - Piso em concreto mecanizado com acabamento polido. Vagas demarcadas em pintura epóxi fosca de tom cinza médio com requadro em faixa de pintura epóxi fosca de tom cinza chumbo."
+  ],
+  [
+   "2° PAVTO",
+   "GARAGEM",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA07 - Parede em alvenaria, emassada e regularizada, pintada com tinta acrílica fosca cinza claro. Pintura de meia parede em epóxi monolítico de tom cinza médio, com arremate em faixa com tinta epóxi fosca de cor cinza chumbo. Altura conforme projeto arquitetônico. Amostra a ser aprovada pela GPA&A."
+  ],
+  [
+   "2° PAVTO",
+   "GARAGEM",
+   "TETO",
+   "—",
+   "ARQ-T03 - Laje nervurada em concreto aparente com tratamento a ser indicado pelo projeto estrutural."
+  ],
+  [
+   "2° PAVTO",
+   "VAGAS BOX",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P01 - Piso em concreto mecanizado com acabamento polido. Vagas demarcadas em pintura epóxi fosca de tom cinza médio com requadro em faixa de pintura epóxi fosca de tom cinza chumbo."
+  ],
+  [
+   "2° PAVTO",
+   "VAGAS BOX",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA07 - Parede em alvenaria, emassada e regularizada, pintada com tinta acrílica fosca cinza claro. Pintura de meia parede em epóxi monolítico de tom cinza médio, com arremate em faixa com tinta epóxi fosca de cor cinza chumbo. Altura conforme projeto arquitetônico. Amostra a ser aprovada pela GPA&A."
+  ],
+  [
+   "2° PAVTO",
+   "VAGAS BOX",
+   "TETO",
+   "—",
+   "ARQ-T03 - Laje nervurada em concreto aparente com tratamento a ser indicado pelo projeto estrutural."
+  ],
+  [
+   "2° PAVTO",
+   "TELECOM",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P02 - Piso em concreto mecanizado com acabamento polido."
+  ],
+  [
+   "2° PAVTO",
+   "TELECOM",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA09 - Parede em alvenaria, emassada e regularizada, revestida em textura acrílica rolada fosca branca. Ref.: Branco Neve; Suvinil."
+  ],
+  [
+   "2° PAVTO",
+   "TELECOM",
+   "TETO",
+   "—",
+   "ARQ-T03 - Laje nervurada em concreto aparente com tratamento a ser indicado pelo projeto estrutural."
+  ],
+  [
+   "2° PAVTO",
+   "SALA DE SEGURANÇA",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P02 - Piso em concreto mecanizado com acabamento polido."
+  ],
+  [
+   "2° PAVTO",
+   "SALA DE SEGURANÇA",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA09 - Parede em alvenaria, emassada e regularizada, revestida em textura acrílica rolada fosca branca. Ref.: Branco Neve; Suvinil."
+  ],
+  [
+   "2° PAVTO",
+   "SALA DE SEGURANÇA",
+   "TETO",
+   "—",
+   "ARQ-T03 - Laje nervurada em concreto aparente com tratamento a ser indicado pelo projeto estrutural."
+  ],
+  [
+   "2° PAVTO",
+   "CASA DE BOMBAS PISCINA 2 (FUNDO)",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P02 - Piso em concreto mecanizado com acabamento polido."
+  ],
+  [
+   "2° PAVTO",
+   "CASA DE BOMBAS PISCINA 2 (FUNDO)",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA09 - Parede em alvenaria, emassada e regularizada, revestida em textura acrílica rolada fosca branca. Ref.: Branco Neve; Suvinil."
+  ],
+  [
+   "2° PAVTO",
+   "CASA DE BOMBAS PISCINA 2 (FUNDO)",
+   "TETO",
+   "—",
+   "ARQ-T03 - Laje nervurada em concreto aparente com tratamento a ser indicado pelo projeto estrutural."
+  ],
+  [
+   "2° PAVTO",
+   "DML",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P02 - Piso em concreto mecanizado com acabamento polido."
+  ],
+  [
+   "2° PAVTO",
+   "DML",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA12 - Parede em alvenaria, emassada e regularizada, pintada com tinta acrílica fosca branca. Ref.: branco neve; Suvinil. Acabamento de meia parede em porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado. Paginação conforme detalhamento. Ref.: Khali Off White AC; Linha Khali; Eliane."
+  ],
+  [
+   "2° PAVTO",
+   "DML",
+   "TETO",
+   "—",
+   "ARQ-T03 - Laje nervurada em concreto aparente com tratamento a ser indicado pelo projeto estrutural."
+  ],
+  [
+   "2° PAVTO",
+   "RESERVATÓRIO INFERIOR",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P02 - Piso em concreto mecanizado com acabamento polido."
+  ],
+  [
+   "2° PAVTO",
+   "RESERVATÓRIO INFERIOR",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA09 - Parede em alvenaria, emassada e regularizada, revestida em textura acrílica rolada fosca branca. Ref.: Branco Neve; Suvinil."
+  ],
+  [
+   "2° PAVTO",
+   "RESERVATÓRIO INFERIOR",
+   "TETO",
+   "—",
+   "ARQ-T03 - Laje nervurada em concreto aparente com tratamento a ser indicado pelo projeto estrutural."
+  ],
+  [
+   "2° PAVTO",
+   "HALL TÉCNICO/CIRCULAÇÃO",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P02 - Piso em concreto mecanizado com acabamento polido."
+  ],
+  [
+   "2° PAVTO",
+   "HALL TÉCNICO/CIRCULAÇÃO",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA09 - Parede em alvenaria, emassada e regularizada, revestida em textura acrílica rolada fosca branca. Ref.: Branco Neve; Suvinil."
+  ],
+  [
+   "2° PAVTO",
+   "HALL TÉCNICO/CIRCULAÇÃO",
+   "TETO",
+   "—",
+   "ARQ-T03 - Laje nervurada em concreto aparente com tratamento a ser indicado pelo projeto estrutural."
+  ],
+  [
+   "2° PAVTO",
+   "RAMPA VEÍCULOS",
+   "CÔMODO/AMBIENTE",
+   "linha nova",
+   "planta de arquitetura"
+  ],
+  [
+   "2° PAVTO",
+   "RAMPA VEÍCULOS",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P04 - Piso em concreto mecanizado com acabamento em ladrilho hidráulico antiderrapante cinza, tom concreto. Amostra a ser aprovada pela GPA&A."
+  ],
+  [
+   "2° PAVTO",
+   "RAMPA VEÍCULOS",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA07 - Parede em alvenaria, emassada e regularizada, pintada com tinta acrílica fosca cinza claro. Pintura de meia parede em epóxi monolítico de tom cinza médio, com arremate em faixa com tinta epóxi fosca de cor cinza chumbo. Altura conforme projeto arquitetônico. Amostra a ser aprovada pela GPA&A."
+  ],
+  [
+   "2° PAVTO",
+   "RAMPA VEÍCULOS",
+   "TETO",
+   "—",
+   "ARQ-T03 - Laje nervurada em concreto aparente com tratamento a ser indicado pelo projeto estrutural."
+  ],
+  [
+   "2° PAVTO",
+   "CIRCULAÇÃO ÁREA TÉCNICA (A=14,54 m²)",
+   "CÔMODO/AMBIENTE",
+   "linha nova",
+   "planta de arquitetura"
+  ],
+  [
+   "2° PAVTO",
+   "CIRCULAÇÃO ÁREA TÉCNICA (A=14,54 m²)",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P02 - Piso em concreto mecanizado com acabamento polido."
+  ],
+  [
+   "2° PAVTO",
+   "CIRCULAÇÃO ÁREA TÉCNICA (A=14,54 m²)",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA09 - Parede em alvenaria, emassada e regularizada, revestida em textura acrílica rolada fosca branca. Ref.: Branco Neve; Suvinil."
+  ],
+  [
+   "2° PAVTO",
+   "CIRCULAÇÃO ÁREA TÉCNICA (A=14,54 m²)",
+   "TETO",
+   "—",
+   "ARQ-T03 - Laje nervurada em concreto aparente com tratamento a ser indicado pelo projeto estrutural."
+  ],
+  [
+   "2° PAVTO",
+   "CIRCULAÇÃO JUNTO À ESCADA (A=3,07 m²)",
+   "CÔMODO/AMBIENTE",
+   "linha nova",
+   "planta de arquitetura"
+  ],
+  [
+   "2° PAVTO",
+   "CIRCULAÇÃO JUNTO À ESCADA (A=3,07 m²)",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P02 - Piso em concreto mecanizado com acabamento polido."
+  ],
+  [
+   "2° PAVTO",
+   "CIRCULAÇÃO JUNTO À ESCADA (A=3,07 m²)",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA09 - Parede em alvenaria, emassada e regularizada, revestida em textura acrílica rolada fosca branca. Ref.: Branco Neve; Suvinil."
+  ],
+  [
+   "2° PAVTO",
+   "CIRCULAÇÃO JUNTO À ESCADA (A=3,07 m²)",
+   "TETO",
+   "—",
+   "ARQ-T02 - Laje em concreto aparente com tratamento a ser indicado pelo projeto estrutural."
+  ],
+  [
+   "PILOTIS",
+   "CIRCULAÇÃO/ANTECÂMARA ELEVADOR SERVIÇO",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P07 - Piso assentado em granito cinza santa rosa, acabamento serrado, Espessura: 2cm. Dimensões e paginação conforme detalhamento. Amostra a ser aprovada pela GPA&A. Obs.: Resina, hidrofugante ou outros acabamentos aplicados no granito devem ser foscos e não podem alterar ou escurecer a cor original do material."
+  ],
+  [
+   "PILOTIS",
+   "CIRCULAÇÃO/ANTECÂMARA ELEVADOR SERVIÇO",
+   "RODAPÉ",
+   "—",
+   "ARQ-RD21 - Rodapé em granito cinza santa rosa, acabamento serrado, h=15cm, espessura 2cm. Dimensões e paginação conforme detalhamento. Amostra a ser aprovada pela GPA&A"
+  ],
+  [
+   "PILOTIS",
+   "CIRCULAÇÃO/ANTECÂMARA ELEVADOR SERVIÇO",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA01 - Parede em alvenaria, emassada e regularizada, pintada com tinta acrílica, cor branco neve, acabamento acetinado. Ref.: Suvinil."
+  ],
+  [
+   "PILOTIS",
+   "CIRCULAÇÃO/ANTECÂMARA ELEVADOR SERVIÇO",
+   "TETO",
+   "—",
+   "ARQ-T01 - Forro em gesso acartonado liso, com acabamento em tinta acrílica, cor branco neve, acabamento fosco, com junta dilatação metálica cor branca. Ref.: Suvinil"
+  ],
+  [
+   "PILOTIS",
+   "ANTECÂMARA",
+   "PISO/REJUNTE",
+   "07 - Piso de granito cinza santa rosa, acabamento serrado, espessura: 2cm, dimensões e paginação conforme detalhamento, assentado com argamassa colante em pó ACIII. Obs.: Resina hidrofugante ou outros acabamentos aplicados no granito devem ser foscos e não podem alterar ou escurecer a cor original do material",
+   "mesma especificação na arquitetura: ARQ-P07 - Piso assentado em granito cinza santa rosa, acabamento serrado, Espessura: 2cm. Dimensões e paginação conforme detalhamento. Amostra a ser aprovada pela GPA&A. Obs.: Resina, hidrofugante ou outros acabamentos aplicados no granito devem ser foscos e não podem alterar ou escurecer a cor original do material."
+  ],
+  [
+   "PILOTIS",
+   "ANTECÂMARA",
+   "RODAPÉ",
+   "21 - Rodapé em granito cinza santa rosa, acabamento serrado, h=15cm, espessura 2cm, assentado com argamassa colante em pó ACIII",
+   "mesma especificação na arquitetura: ARQ-RD21 - Rodapé em granito cinza santa rosa, acabamento serrado, h=15cm, espessura 2cm. Dimensões e paginação conforme detalhamento. Amostra a ser aprovada pela GPA&A"
+  ],
+  [
+   "PILOTIS",
+   "ANTECÂMARA",
+   "PAREDE/REJUNTE",
+   "01| 21 - Pintura acrílica, cor branco neve, acabamento acetinado. Ref.: Suvinil, sobre paredes - Reboco (1 demão selador + 3 demãos Latex acrílico)",
+   "mesma especificação na arquitetura: ARQ-PA01 - Parede em alvenaria, emassada e regularizada, pintada com tinta acrílica, cor branco neve, acabamento acetinado. Ref.: Suvinil."
+  ],
+  [
+   "PILOTIS",
+   "ANTECÂMARA",
+   "TETO",
+   "02 - Laje em concreto aparente com tratamento a ser indicado pelo projeto estrutural",
+   "mesma especificação na arquitetura: ARQ-T02 - Laje em concreto aparente com tratamento a ser indicado pelo projeto estrutural."
+  ],
+  [
+   "PILOTIS",
+   "QUADRA TÊNIS",
+   "PISO/REJUNTE",
+   "16 - Piso em pó de saibro com faixa na cor branca para marcação de quadra de tênis fixada com pregos especiais",
+   "mesma especificação na arquitetura: ARQ-P16 - Piso em pó de saibro com faixa na cor branca para marcação de quadra de tênis fixada com pregos especiais. Verificar detalhes no projeto específico de quadra."
+  ],
+  [
+   "PILOTIS",
+   "QUADRA TÊNIS",
+   "PAREDE/REJUNTE",
+   "03 - Pintura acrílica fosca cinza tom a definir - Reboco (2 demãos Latex acrílico)",
+   "mesma especificação na arquitetura: ARQ-PA03 - Parede em alvenaria, emassada e regularizada, pintada com tinta acrílica fosca cinza, tom a definir."
+  ],
+  [
+   "PILOTIS",
+   "QUADRA TÊNIS",
+   "TETO",
+   "—",
+   "ARQ-T05 - Cobertura em telha sanduíche com estrutura espacial pintadas na cor cinza tom a definir."
+  ],
+  [
+   "PILOTIS",
+   "DEP JARDIM",
+   "PISO/REJUNTE",
+   "05 - Piso Porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado, ref.: Khali off white AC linha Khali; Eliane, assentado com argamassa colante em pó ACIII",
+   "mesma especificação na arquitetura: ARQ-P05 - Piso em porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado. Paginação conforme detalhamento. Ref.: Khali Off White AC; Linha Khali; Eliane. Amostra a ser aprovada pela GPA&A."
+  ],
+  [
+   "PILOTIS",
+   "DEP JARDIM",
+   "RODAPÉ",
+   "19 - Rodapé para Piso Porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado, ref.: Khali off white AC linha Khali; Eliane, assentado com argamassa colante em pó ACIII",
+   "mesma especificação na arquitetura: ARQ-RD19 - Rodapé em porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado. Paginação e altura conforme detalhamento. Ref.: Khali Off White AC; Linha Khali; Eliane. Amostra a ser aprovada pela GPA&A."
+  ],
+  [
+   "PILOTIS",
+   "DEP JARDIM",
+   "PAREDE/REJUNTE",
+   "12 - Revestimento Porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado, Ref.: Khali pff white AC, linha Khali; Eliane, assentado com argamassa colante em pó ACIII | 01| 21 - Pintura acrílica, cor branco neve, acabamento acetinado. Ref.: Suvinil, sobre paredes - Reboco (1 demão selador + 3 demãos Latex acrílico)",
+   "mesma especificação na arquitetura: ARQ-PA01 - Parede em alvenaria, emassada e regularizada, pintada com tinta acrílica, cor branco neve, acabamento acetinado. Ref.: Suvinil."
+  ],
+  [
+   "PILOTIS",
+   "DEP JARDIM",
+   "TETO",
+   "01| T1| T8 - Forro de gesso acartonado liso| 01|07| 08 - Pintura acrílica, cor branca neve, acabamento fosco, Ref.: Suvinil sob tetos (2 demãos Latex acrílico)",
+   "mesma especificação na arquitetura: ARQ-T01 - Forro em gesso acartonado liso, com acabamento em tinta acrílica, cor branco neve, acabamento fosco, com junta dilatação metálica cor branca. Ref.: Suvinil"
+  ],
+  [
+   "PILOTIS",
+   "DEPÓSITO",
+   "PISO/REJUNTE",
+   "05 - Piso Porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado, ref.: Khali off white AC linha Khali; Eliane, assentado com argamassa colante em pó ACIII",
+   "mesma especificação na arquitetura: ARQ-P05 - Piso em porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado. Paginação conforme detalhamento. Ref.: Khali Off White AC; Linha Khali; Eliane. Amostra a ser aprovada pela GPA&A."
+  ],
+  [
+   "PILOTIS",
+   "DEPÓSITO",
+   "RODAPÉ",
+   "19 - Rodapé para Piso Porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado, ref.: Khali off white AC linha Khali; Eliane, assentado com argamassa colante em pó ACIII",
+   "mesma especificação na arquitetura: ARQ-RD19 - Rodapé em porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado. Paginação e altura conforme detalhamento. Ref.: Khali Off White AC; Linha Khali; Eliane. Amostra a ser aprovada pela GPA&A."
+  ],
+  [
+   "PILOTIS",
+   "DEPÓSITO",
+   "PAREDE/REJUNTE",
+   "12 - Revestimento Porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado, Ref.: Khali pff white AC, linha Khali; Eliane, assentado com argamassa colante em pó ACIII | 01| 21 - Pintura acrílica, cor branco neve, acabamento acetinado. Ref.: Suvinil, sobre paredes - Reboco (1 demão selador + 3 demãos Latex acrílico)",
+   "mesma especificação na arquitetura: ARQ-PA01 - Parede em alvenaria, emassada e regularizada, pintada com tinta acrílica, cor branco neve, acabamento acetinado. Ref.: Suvinil."
+  ],
+  [
+   "PILOTIS",
+   "DEPÓSITO",
+   "TETO",
+   "01| T1| T8 - Forro de gesso acartonado liso| 01|07| 08 - Pintura acrílica, cor branca neve, acabamento fosco, Ref.: Suvinil sob tetos (2 demãos Latex acrílico)",
+   "mesma especificação na arquitetura: ARQ-T01 - Forro em gesso acartonado liso, com acabamento em tinta acrílica, cor branco neve, acabamento fosco, com junta dilatação metálica cor branca. Ref.: Suvinil"
+  ],
+  [
+   "PILOTIS",
+   "QUADRA INFANTIL",
+   "PISO/REJUNTE",
+   "17 - Piso em concreto com acabamento em pintura epóxi nas cores verde e cinza, tons a definir. Faixa de pintura epóxi na cor branca, para a marcação do desenho da miniquadra infantil.",
+   "mesma especificação na arquitetura: ARQ-P17 - Piso em concreto com acabamento em pintura epóxi nas cores cinza e verde, tons a definir. Faixa de pintura epóxi na cor branca, para marcação do desenho de mini quadra infantil. Verificar dimensões conforme detalhamento."
+  ],
+  [
+   "PILOTIS",
+   "QUADRA INFANTIL",
+   "PAREDE/REJUNTE",
+   "06 - Pintura acrílica fosca cinza tom a definir| Meia parede pintada com tinha acrílica fosca na cor verde, tom a definir - Reboco (2 demãos Latex acrílico)",
+   "mesma especificação na arquitetura: ARQ-PA06 - Parede em alvenaria, emassada e regularizada, pintada com tinta acrílica fosca cinza tom a definir. Meia parede pintada com tinta acrílica fosca na cor verde, tom a definir. Verificar altura conforme detalhamento."
+  ],
+  [
+   "PILOTIS",
+   "ESCADA EXTERNA",
+   "PISO/REJUNTE",
+   "07| P28 - Piso de granito Santa rosa, acabamento serrado. Espessura de 2cm. Obs.: Resina hidrofugante ou outros acabamentos aplicados no granito devem ser foscos e não podem alterar ou escurecer a cor original do material",
+   "mesma especificação na arquitetura: ARQ-P07 - Piso assentado em granito cinza santa rosa, acabamento serrado, Espessura: 2cm. Dimensões e paginação conforme detalhamento. Amostra a ser aprovada pela GPA&A. Obs.: Resina, hidrofugante ou outros acabamentos aplicados no granito devem ser foscos e não podem alterar ou escurecer a cor original do material."
+  ],
+  [
+   "PILOTIS",
+   "ESCADA EXTERNA",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA06 - Parede em alvenaria, emassada e regularizada, pintada com tinta acrílica fosca cinza tom a definir. Meia parede pintada com tinta acrílica fosca na cor verde, tom a definir. Verificar altura conforme detalhamento."
+  ],
+  [
+   "PILOTIS",
+   "CIRCULAÇÃO JUNTO À ESCADA (A=2,91 m²)",
+   "CÔMODO/AMBIENTE",
+   "linha nova",
+   "planta de arquitetura"
+  ],
+  [
+   "PILOTIS",
+   "CIRCULAÇÃO JUNTO À ESCADA (A=2,91 m²)",
+   "PISO/REJUNTE",
+   "—",
+   "ARQ-P03 - Piso em concreto mecanizado com acabamento antiderrapante"
+  ],
+  [
+   "PILOTIS",
+   "CIRCULAÇÃO JUNTO À ESCADA (A=2,91 m²)",
+   "PAREDE/REJUNTE",
+   "—",
+   "ARQ-PA09 - Parede em alvenaria, emassada e regularizada, revestida em textura acrílica rolada fosca branca. Ref.: Branco Neve; Suvinil."
+  ],
+  [
+   "PILOTIS",
+   "CIRCULAÇÃO JUNTO À ESCADA (A=2,91 m²)",
+   "TETO",
+   "—",
+   "ARQ-T02 - Laje em concreto aparente com tratamento a ser indicado pelo projeto estrutural."
+  ]
+ ],
+ "mapa": {
+  "TÉRREO ": {
+   "GUARITA": [
+    [
+     "PR003",
+     "GUARITA",
+     "7,42 m²"
+    ]
+   ],
+   "LAVABO GUARITA": [
+    [
+     "PR003",
+     "LAVABO",
+     "1,89 m²"
+    ]
+   ],
+   "CIRCULAÇÃO GUARITA": [
+    [
+     "PR003",
+     "CIRC.",
+     "5,48 m²"
+    ]
+   ],
+   "CIRCULAÇÃO ELEVADOR DE SERVIÇO/ANTICÂRA": [
+    [
+     "PR003",
+     "ANTECÂMARA",
+     "5,78 m²"
+    ]
+   ],
+   "GARAGEM": [
+    [
+     "PR005",
+     null,
+     null,
+     [
+      531,
+      2264
+     ]
+    ]
+   ],
+   "CASA DE BOMBAS": [
+    [
+     "PR003",
+     "C. BOMBAS",
+     "4,41 m²"
+    ]
+   ],
+   "CIRCULAÇÃO#1": [
+    [
+     "PR003",
+     "CIRCULAÇÃO",
+     "35,62 m²"
+    ]
+   ],
+   "CONCIERGE": [
+    [
+     "PR003",
+     "CONCIERGE",
+     "11,72 m²"
+    ]
+   ],
+   "DELIVERY": [
+    [
+     "PR003",
+     "DELIVERY",
+     "8,59 m²"
+    ]
+   ],
+   "CIRCULAÇÃO SERVIÇO": [
+    [
+     "PR003",
+     "CIRC. SERV.",
+     "29,56 m²"
+    ]
+   ],
+   "CAR WASH": [
+    [
+     "PR005",
+     "CAR WASH",
+     null
+    ]
+   ],
+   "BICICLETÁRIO": [
+    [
+     "PR005",
+     "BICICLETÁRIO",
+     null
+    ]
+   ],
+   "ZELADORIA": [
+    [
+     "PR005",
+     "ZELADORIA",
+     null
+    ]
+   ],
+   "ARS 1": [
+    [
+     "PR005",
+     "A.R.S.",
+     "24,09 m²"
+    ]
+   ],
+   "ARS 2": [
+    [
+     "PR005",
+     "A.R.S.",
+     "14,93 m²"
+    ]
+   ],
+   "ARS 3": [
+    [
+     "PR005",
+     "A.R.S.",
+     "4,25 m²"
+    ]
+   ],
+   "SALA MOTORISTA": [
+    [
+     "PR005",
+     "SALA MOTORISTA",
+     null
+    ]
+   ],
+   "DML": [
+    [
+     "PR005",
+     "DML",
+     "7,01 m²"
+    ]
+   ],
+   "VEST. P.C.D": [
+    [
+     "PR005",
+     "VEST. P.C.D.",
+     null
+    ]
+   ],
+   "VEST. FEMININO": [
+    [
+     "PR005",
+     "VESTIÁRIO FEM.",
+     null
+    ]
+   ],
+   "VEST. MASC.": [
+    [
+     "PR005",
+     "VESTIÁRIO MASC.",
+     null
+    ]
+   ],
+   "ESTAR/COPA FUNCIONÁRIOS": [
+    [
+     "PR005",
+     "ESTAR/COPA FUNC.",
+     null
+    ]
+   ],
+   "CIRCULAÇÃO#2": [
+    [
+     "PR005",
+     "CIRCULAÇÃO",
+     "24,85 m²"
+    ]
+   ],
+   "GERADOR": [
+    [
+     "PR004",
+     "GERADOR",
+     null
+    ]
+   ],
+   "VAGAS BOX": [
+    [
+     "PR005",
+     "VAGA BOX 01",
+     null
+    ]
+   ],
+   "QUADROS ELÉTRICOS": [
+    [
+     "PR003",
+     "QUADROS ELÉTRICOS",
+     null
+    ]
+   ],
+   "+ACESSO E SAÍDA DE VEÍCULOS": [
+    [
+     "PR003",
+     "ACESSO VEÍCULOS",
+     "287,93 m²"
+    ]
+   ],
+   "+ESTACIONAMENTO VISITANTES": [
+    [
+     "PR005",
+     "ESTACIONAMENTO VISTANTES",
+     null
+    ]
+   ],
+   "+RAMPA VEÍCULOS": [
+    [
+     "PR005",
+     "RAMPA VEÍCULOS",
+     null
+    ]
+   ],
+   "+DEPÓSITO (A=8,85 m²)": [
+    [
+     "PR005",
+     "DEPÓSITO",
+     "8,85 m²"
+    ]
+   ],
+   "+SERVIÇO JUNTO AO PORTÃO (A=6,87 m²)": [
+    [
+     "PR003",
+     "SERV.",
+     "6,87 m²",
+     [
+      2447,
+      996
+     ]
+    ]
+   ],
+   "+CIRCULAÇÃO JUNTO À ESCADA (A=4,06 m²)": [
+    [
+     "PR003",
+     "CIRC.",
+     "4,06 m²"
+    ]
+   ]
+  },
+  "2° PAVTO": {
+   "CASA DE BOMBAS PISCINA 1": [
+    [
+     "PR007",
+     "CASA DE BOMBAS PISCINA",
+     null
+    ]
+   ],
+   "SHAFT ELÉTRICA": [
+    [
+     "PR007",
+     "SHAFT ELÉTRICA",
+     null
+    ]
+   ],
+   "CIRCULAÇÃO/ANTECÂMARA": [
+    [
+     "PR007",
+     "CIRC.",
+     "5,86 m²"
+    ],
+    [
+     "PR007",
+     "ANTECÂMARA",
+     "5,78 m²"
+    ]
+   ],
+   "PRESSURIZAÇÃO/ANTECÂMARA": [
+    [
+     "PR007",
+     "PRESSURIZAÇÃO",
+     null
+    ],
+    [
+     "PR007",
+     "ANTECÂMARA",
+     "3,49 m²"
+    ]
+   ],
+   "ÁREA TÉCNICA 1": [
+    [
+     "PR007",
+     "ÁREA TÉCNICA",
+     "13,08 m²"
+    ]
+   ],
+   "ÁREA TÉCNICA 2": [
+    [
+     "PR007",
+     "ÁREA TÉCNICA",
+     "8,14 m²"
+    ]
+   ],
+   "GARAGEM": [
+    [
+     "PR009",
+     "GARAGEM",
+     null
+    ]
+   ],
+   "VAGAS BOX": [
+    [
+     "PR009",
+     "VAGA BOX 01",
+     null
+    ]
+   ],
+   "TELECOM": [
+    [
+     "PR009",
+     "TELECOM",
+     null
+    ]
+   ],
+   "SALA DE SEGURANÇA": [
+    [
+     "PR009",
+     "SALA DE SEGURANÇA",
+     null
+    ]
+   ],
+   "CASA DE BOMBAS PISCINA 2 (FUNDO)": [
+    [
+     "PR009",
+     "CASA DE BOMBAS PISCINA",
+     null
+    ]
+   ],
+   "DML": [
+    [
+     "PR009",
+     "DML",
+     null
+    ]
+   ],
+   "RESERVATÓRIO INFERIOR": [
+    [
+     "PR009",
+     "RESERVATÓRIO INFERIOR",
+     null
+    ]
+   ],
+   "HALL TÉCNICO/CIRCULAÇÃO": [
+    [
+     "PR009",
+     "HALL TÉCNICO",
+     null
+    ],
+    [
+     "PR009",
+     "CIRC.",
+     "51,88 m²"
+    ]
+   ],
+   "+RAMPA VEÍCULOS": [
+    [
+     "PR009",
+     null,
+     null,
+     [
+      528,
+      1602
+     ]
+    ]
+   ],
+   "+CIRCULAÇÃO ÁREA TÉCNICA (A=14,54 m²)": [
+    [
+     "PR007",
+     "CIRC.",
+     "14,54 m²"
+    ]
+   ],
+   "+CIRCULAÇÃO JUNTO À ESCADA (A=3,07 m²)": [
+    [
+     "PR007",
+     "CIRC.",
+     "3,07 m²"
+    ]
+   ]
+  },
+  "PILOTIS": {
+   "CIRCULAÇÃO/ANTECÂMARA ELEVADOR SERVIÇO": [
+    [
+     "PR011",
+     "CIRC.",
+     "5,76 m²"
+    ]
+   ],
+   "ANTECÂMARA": [
+    [
+     "PR011",
+     "ANTECÂMARA",
+     "5,78 m²"
+    ]
+   ],
+   "QUADRA TÊNIS": [
+    [
+     "PR013",
+     "QUADRA DE TÊNIS",
+     null
+    ]
+   ],
+   "DEP JARDIM": [
+    [
+     "PR013",
+     "DEP. JARDIM",
+     null
+    ]
+   ],
+   "DEPÓSITO": [
+    [
+     "PR013",
+     "DEPÓSITO",
+     null
+    ]
+   ],
+   "QUADRA INFANTIL": [
+    [
+     "PR013",
+     "QUADRA INFANTIL",
+     null
+    ]
+   ],
+   "ESCADA EXTERNA": [
+    [
+     "PR013",
+     null,
+     null,
+     [
+      1686,
+      804
+     ]
+    ]
+   ],
+   "+CIRCULAÇÃO JUNTO À ESCADA (A=2,91 m²)": [
+    [
+     "PR011",
+     "CIRC.",
+     "2,91 m²"
+    ]
+   ]
+  }
+ }
+}
