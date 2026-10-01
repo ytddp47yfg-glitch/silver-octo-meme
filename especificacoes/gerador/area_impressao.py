@@ -30,6 +30,8 @@ def ultima(ws, lc):
 wb = openpyxl.load_workbook(P)
 dyn = {}
 for i, ws in enumerate(wb.worksheets):
+    if ws.title not in CFG:
+        continue
     lc, minr, tit = CFG[ws.title]
     ws.print_area = f'A1:{lc}{max(minr, ultima(ws, lc))}'
     if tit:

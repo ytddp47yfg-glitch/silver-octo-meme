@@ -73,10 +73,10 @@ for nome in ABAS:
     alto = [r for r in range(13, last + 1) if ws.row_dimensions[r].height >= 409]
     print(nome, 'linhas no limite', alto, 'linhas', 13, '-', last, 'maior altura', max(ws.row_dimensions[r].height for r in range(13, last + 1)))
 # IMAGENS: volta ao layout do modelo (escala fixa, quebra na coluna H)
-wi = wb['IMAGENS ESPECIFICAÇÕES ']
-wi.sheet_properties.pageSetUpPr.fitToPage = False
-wi.page_setup.scale = ESCALA; wi.page_setup.fitToWidth = None; wi.page_setup.fitToHeight = None
-wi.print_options.horizontalCentered = True
+for wi in [wb[n] for n in wb.sheetnames if n.startswith('IMAGENS')]:
+  wi.sheet_properties.pageSetUpPr.fitToPage = False
+  wi.page_setup.scale = ESCALA; wi.page_setup.fitToWidth = None; wi.page_setup.fitToHeight = None
+  wi.print_options.horizontalCentered = True
 # traços soltos do modelo abaixo dos dados criavam linhas/folhas em branco na impressão
 for ws in wb.worksheets[1:6]:
     for row in ws.iter_rows(min_row=13):
