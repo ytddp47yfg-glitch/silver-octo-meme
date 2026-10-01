@@ -37,7 +37,7 @@ def coluna(cod):
     if dl.startswith('monocomando para chuveiro'): return 'chuveiro_ac'
     if dl.startswith('ralo'): return 'ralos'
     if dl.startswith('chuveiro'): return 'outros_lm'
-    if re.match(r'(porta|divisórias e portas|painel e porta)', dl): return 'portas'
+    if re.match(r'(porta(?! papel)|divisórias e portas|painel e porta)', dl): return 'portas'
     if cod in ('D37', 'D38', 'D75'): return 'outrosrev'
     return 'outros_c'
 
