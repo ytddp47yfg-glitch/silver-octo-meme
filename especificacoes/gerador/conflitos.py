@@ -11,7 +11,8 @@ FILL = PatternFill('solid', fgColor='FFFFC7CE')
 COR = 'FF9C0006'
 
 # (aba, ambiente, coluna, texto da segunda fonte)
-CONFLITOS = [
+CONFLITOS = []  # regra R00: lista x pranchas é interno ao detalhamento (ver conflitos_regra.py)
+_ANTIGOS = [
  ('PILOTIS', 'VESTIÁRIO FEMININO', 'J', 'CONFLITO – Pranchas 37 e 38 do detalhamento R04: bancada em granito Branco Siena com duas cubas esculpidas com bandeja removível'),
  ('PILOTIS', 'VESTIÁRIO MASCULINO', 'J', 'CONFLITO – Pranchas 37 e 38 do detalhamento R04: bancada em granito Branco Siena com duas cubas esculpidas com bandeja removível'),
  ('PILOTIS', 'VESTIÁRIO FEMININO', 'O', 'CONFLITO – Pranchas 37 e 38 do detalhamento R04: torneira de mesa bica baixa Argon, Docol'),
