@@ -1,0 +1,166 @@
+﻿Pavimento;Prancha;Ambiente;Área (m²);Piso ○;Parede △;Rodapé △;Teto □;Ver interiores;Observação
+Térreo;PR003;GUARITA;7,42;13;02;20;01;;
+Térreo;PR003;CIRC.;5,48;05;09;19;01;;
+Térreo;PR003;SERV.;6,87;13;02;20;01;;circle 13 partly overlapped by pillar outline but legible
+Térreo;PR003;ACESSO VEÍCULOS;46,48;01;07;;;;
+Térreo;PR003;SAÍDA VEÍCULOS;25,40;01;07;;;;
+Térreo;PR003;LAVABO;1,89;05;02;19;01;;
+Térreo;PR003;ACESSO VEÍCULOS;287,93;01;07;;;;
+Térreo;PR003;ELEV.;4,76;;;;;;"elevator shaft, no finish tags; two identical ELEV. 4,76 labels side by side"
+Térreo;PR003;ELEVADOR;4,01;;;;;;elevator shaft (8 passageiros), no finish tags
+Térreo;PR003;HALL DA GARAGEM;16,06;;;;;sim;
+Térreo;PR003;I.S. P.C.D.;9,05;;;;;;no finish tags visible under label (only 'ventilação mecânica')
+Térreo;PR003;CONCIERGE;11,72;05;01;19;19;;ceiling square reads 19 (unusual ceiling code, but clearly 19)
+Térreo;PR003;VESTÍBULO;9,05;;;;;;no finish tags visible under label
+Térreo;PR003;DELIVERY;8,59;05;01;19;01;;
+Térreo;PR003;C. BOMBAS;4,41;02;09;;03;;
+Térreo;PR003;QUADROS ELÉTRICOS;35,26;02;09;;03;;
+Térreo;PR003;CIRCULAÇÃO;35,62;05;01;19;01;;
+Térreo;PR003;ELEV.;4,76;;;;;;"elevator shaft, no finish tags; two identical ELEV. labels in crop"
+Térreo;PR003;CIRC. SERV.;29,56;07;09;19;01;;
+Térreo;PR003;ANTECÂMARA;43,33;;;;;sim;ACABAMENTOS VER INTERIORES placed just above the label/level mark, not below
+Térreo;PR003;HALL;17,73;;;;;sim;
+Térreo;PR003;ESCADA;9,99;;;;;;"no tags under ESCADA label; a partial square '02' appears near 'Degraus 01 a 14' at stair bottom-left in other crops (possibly stair ceiling tag), not visible here"
+Térreo;PR003;CIRC.;4,06;02;09;;02;;
+Térreo;PR003;LOBBY DE ENTRADA;101,74;;;;;sim;ACABAMENTOS VER INTERIORES placed above the label
+Térreo;PR003;ANTECÂMARA;5,78;13;01;20;01;;label also gives PD = 298 cm
+Térreo;PR003;DML E JARDINAGEM;14,30;;;;;;no finish tags visible under label (only 'ventilação mecânica' and level mark)
+Térreo;PR004;GERADOR;35,97;02;09;;03;;tags placed well below label inside dashed outline
+Térreo;PR005;VAGA BOX 07;17,82;01;07;;03;;label note: PONTO DE RECARGA PARA CARRO ELÉTRICO
+Térreo;PR005;VAGA BOX 08;17,82;01;07;;03;;label note: PONTO DE RECARGA PARA CARRO ELÉTRICO
+Térreo;PR005;VAGA BOX 06;17,73;01;07;;03;;label note: PONTO DE RECARGA PARA CARRO ELÉTRICO
+Térreo;PR005;DEPÓSITO;8,85;02;09;;03;;
+Térreo;PR005;ESTACIONAMENTO VISTANTES;85,83;01;07;;03;;"name spelled 'VISTANTES' on plan; note '07 vagas livres' is not a tag"
+Térreo;PR005;RAMPA VEÍCULOS;125,34;03;07;;03;;"slope note i: 14,72% ; h= 326cm ; c= 2214cm"
+Térreo;PR005;VAGA BOX 13;17,73;01;07;;03;;label note: PONTO DE RECARGA PARA CARRO ELÉTRICO
+Térreo;PR005;VAGA BOX 09;17,80;01;07;;03;;label note: PONTO DE RECARGA PARA CARRO ELÉTRICO
+Térreo;PR005;VAGA BOX 10;17,78;01;07;;03;;label note: PONTO DE RECARGA PARA CARRO ELÉTRICO
+Térreo;PR005;VAGA BOX 11;17,84;01;07;;03;;label note: PONTO DE RECARGA PARA CARRO ELÉTRICO
+Térreo;PR005;VAGA BOX 12;17,71;01;07;;03;;label note: PONTO DE RECARGA PARA CARRO ELÉTRICO
+Térreo;PR005;VAGA BOX 01;17,92;01;07;;03;;label note: PONTO DE RECARGA PARA CARRO ELÉTRICO
+Térreo;PR005;VAGA BOX 02;17,88;01;07;;03;;label note: PONTO DE RECARGA PARA CARRO ELÉTRICO
+Térreo;PR005;VAGA BOX 03;17,92;01;07;;03;;label note: PONTO DE RECARGA PARA CARRO ELÉTRICO
+Térreo;PR005;VAGA BOX 04;17,92;01;07;;03;;label note: PONTO DE RECARGA PARA CARRO ELÉTRICO
+Térreo;PR005;VAGA BOX 05;17,90;01;07;;03;;label note: PONTO DE RECARGA PARA CARRO ELÉTRICO
+Térreo;PR005;BICICLETÁRIO;15,88;01;13;;03;;
+Térreo;PR005;SALA MOTORISTA;13,77;06;02;20;03;;
+Térreo;PR005;VEST. P.C.D.;6,96;05;11;;01;;
+Térreo;PR005;DML;7,01;02;12;;01;;
+Térreo;PR005;ESTAR/COPA FUNC.;11,67;05;01;;01;;
+Térreo;PR005;GARAGEM;1.321,83;;;;;;"sem etiquetas de acabamento visíveis no recorte; apenas texto '13 vagas box / 39 vagas livres / 04 vagas presas'"
+Térreo;PR005;VESTIÁRIO MASC.;10,45;05;11;;01;;etiquetas posicionadas ACIMA do rótulo (não abaixo), dentro do mesmo ambiente
+Térreo;PR005;VESTIÁRIO FEM.;10,81;05;11;;01;;etiquetas posicionadas ACIMA do rótulo, dentro do mesmo ambiente
+Térreo;PR005;ZELADORIA;23,94;05;01;19;01;;
+Térreo;PR005;A.R.S. RECICLÁVEIS;24,09;05;11;;01;;rótulo A.R.S. com subtítulo RECICLÁVEIS
+Térreo;PR005;A.R.S. ORGÂNICOS E NÃO RECICLÁVEIS;14,93;05;11;;01;;rótulo A.R.S. com subtítulo ORGÂNICOS E NÃO RECICLÁVEIS
+Térreo;PR005;A.R.S. RESÍDUOS PERIGOSOS;4,25;05;11;;01;;"rótulo A.R.S. com subtítulo RESÍDUOS PERIGOSOS; etiquetas à esquerda, abaixo do nível"
+Térreo;PR005;CIRCULAÇÃO;24,85;05;01;19;01;;
+Térreo;PR005;CAR WASH;33,37;01;13;;03;;
+2º pav.;PR007;SHAFT ELÉTRICA;3,88;02;09;;03;;etiquetas posicionadas ACIMA do rótulo, dentro do mesmo ambiente
+2º pav.;PR007;CIRC.;14,54;02;09;;03;;
+2º pav.;PR007;HALL;20,67;;;;;sim;ACABAMENTOS VER INTERIORES
+2º pav.;PR007;ELEV.;4,76;;;;;;"elevador (14 passageiros), sem etiquetas; há dois ELEV. 4,76 lado a lado — este é o da esquerda (centro do recorte)"
+2º pav.;PR007;ELEV.;4,76;;;;;;"elevador (14 passageiros), sem etiquetas; há dois ELEV. 4,76 lado a lado — este é o da direita (centro do recorte)"
+2º pav.;PR007;ELEV.;4,01;;;;;;"elevador (8 passageiros), sem etiquetas; etiquetas visíveis à direita pertencem à ANTECÂMARA 5,78"
+2º pav.;PR007;HALL GARAGEM;16,06;;;;;sim;ACABAMENTOS VER INTERIORES
+2º pav.;PR007;ESCADA;11,10;;;;;;"sem etiquetas de acabamento visíveis junto ao rótulo (números ao redor são degraus); etiquetas 02/09/03 à direita pertencem à ANTECÂMARA 3,49"
+2º pav.;PR007;ANTECÂMARA;3,49;02;09;;03;;
+2º pav.;PR007;PRESSURIZAÇÃO;33,83;02;09;;03;;
+2º pav.;PR007;CASA DE BOMBAS PISCINA;40,27;02;09;;03;;
+2º pav.;PR007;CIRC.;5,86;13;09;;01;;PD = 295 cm
+2º pav.;PR007;ÁREA TÉCNICA;13,08;02;09;;03;;
+2º pav.;PR007;ÁREA TÉCNICA;8,14;02;09;;03;;
+2º pav.;PR007;CIRC.;3,07;02;09;;02;;teto 02 (quadrado), diferente do usual 03
+2º pav.;PR007;ANTECÂMARA;5,78;13;09;20;02;;"PD = 385 cm; piso 13 confirmado com zoom (linha tracejada cruza o círculo)"
+2º pav.;PR009;VAGA BOX 01;18,26;01;07;;03;;PONTO DE RECARGA PARA CARRO ELÉTRICO (texto sob o rótulo)
+2º pav.;PR009;VAGA BOX 09;18,12;01;07;;03;;PONTO DE RECARGA PARA CARRO ELÉTRICO (texto sob o rótulo)
+2º pav.;PR009;VAGA BOX 07;18,19;01;07;;03;;PONTO DE RECARGA PARA CARRO ELÉTRICO (texto sob o rótulo)
+2º pav.;PR009;TELECOM;6,64;02;09;;03;;
+2º pav.;PR009;VAGA BOX 10;17,48;01;07;;03;;PONTO DE RECARGA PARA CARRO ELÉTRICO (texto sob o rótulo)
+2º pav.;PR009;SALA DE SEGURANÇA;6,64;02;09;;03;;
+2º pav.;PR009;VAGA BOX 08;18,18;01;07;;03;;PONTO DE RECARGA PARA CARRO ELÉTRICO (texto sob o rótulo)
+2º pav.;PR009;RAMPA VEÍCULOS;120,84;;;;;;"sem etiquetas; apenas 'i: 14,72% ; h= 326cm ; c= 2214cm'"
+2º pav.;PR009;CIRC.;51,88;02;09;;03;;
+2º pav.;PR009;GARAGEM;1.558,72;01;07;;03;;etiquetas à esquerda do texto '10 vagas box / 45 vagas livres / 10 vagas presas'
+2º pav.;PR009;VAGA BOX 06;17,69;01;07;;03;;PONTO DE RECARGA PARA CARRO ELÉTRICO (texto sob o rótulo)
+2º pav.;PR009;RESERVATÓRIO INFERIOR;144,23;02;09;;03;;
+2º pav.;PR009;CASA DE BOMBAS PISCINA;49,33;02;09;;03;;
+2º pav.;PR009;HALL TÉCNICO;10,62;02;09;;03;;
+2º pav.;PR009;VAGA BOX 05;17,68;01;07;;03;;PONTO DE RECARGA PARA CARRO ELÉTRICO (texto sob o rótulo)
+2º pav.;PR009;VAGA BOX 04;17,81;01;07;;03;;label also reads 'PONTO DE RECARGA PARA CARRO ELÉTRICO'
+2º pav.;PR009;VAGA BOX 03;17,75;01;07;;03;;label also reads 'PONTO DE RECARGA PARA CARRO ELÉTRICO'
+2º pav.;PR009;VAGA BOX 02;17,76;01;07;;03;;label also reads 'PONTO DE RECARGA PARA CARRO ELÉTRICO'
+2º pav.;PR009;DML;8,61;02;12;;03;;neighbour HALL TÉCNICO has 02/09/03 (ignored)
+Pilotis;PR011;JARDIM SOBRE LAJE;215,80;;;;;;no tags
+Pilotis;PR011;VARANDA;58,56;08;;;;;only floor circle 08
+Pilotis;PR011;ESPAÇO KIDS;35,42;;;;;sim;ACABAMENTOS VER INTERIORES above label
+Pilotis;PR011;ESPAÇO GOURMET;63,07;;;;;sim;ACABAMENTOS VER INTERIORES above label
+Pilotis;PR011;LOBBY PILOTIS;67,39;;;;;;no tags visible
+Pilotis;PR011;CIRC.;13,20;;;;;;no tags
+Pilotis;PR011;CIRC.;12,39;;;;;;"no tags; tags 07/01/21/01 below belong to neighbour CIRC. 5,76"
+Pilotis;PR011;I.S.;2,93;;;;;;no tags
+Pilotis;PR011;I.S. P.C.D.;5,44;;;;;;no tags
+Pilotis;PR011;JARDIM SOBRE LAJE;62,87;;;;;;no tags
+Pilotis;PR011;SALÃO DE FESTAS;170,55;;;;;sim;ACABAMENTOS VER INTERIORES above label
+Pilotis;PR011;COZINHA;15,50;;;;;sim;ACABAMENTOS VER INTERIORES above label
+Pilotis;PR011;ELEV.;4,82;;;;;;"no tags; '14 passageiros'; two identical ELEV. labels in crop"
+Pilotis;PR011;ELEV.;4,82;;;;;;"no tags; '14 passageiros'; two identical ELEV. labels in crop"
+Pilotis;PR011;ELEV.;4,01;;;;;;"no tags; '8 passageiros'; tags 07/01/21/02 belong to neighbour ANTECÂMARA"
+Pilotis;PR011;ANTECÂMARA;5,78;07;01;21;02;;PD = 386 cm
+Pilotis;PR011;CIRC.;5,76;07;01;21;01;;PD = 324 cm
+Pilotis;PR011;ESCADA;11,06;;;;;;"no tags; numbers are stair steps"
+Pilotis;PR011;TERRAÇO SALÃO DE FESTAS;82,42;08;;;;;only floor circle 08
+Pilotis;PR011;JARDIM SOBRE LAJE;28,44;;;;;;no tags
+Pilotis;PR011;APOIO;4,58;;;;;;no tags
+Pilotis;PR011;DML;2,07;;;;;;no tags
+Pilotis;PR011;I.S. FEM;3,15;;;;;sim;ACABAMENTOS VER INTERIORES via leader line into room
+Pilotis;PR011;I.S. MASC;3,15;;;;;sim;"ACABAMENTOS VER INTERIORES via leader line into room; 'ventilação mecânica'"
+Pilotis;PR011;CIRC.;9,55;;;;;;no tags
+Pilotis;PR011;JARDIM SOBRE LAJE;18,14;;;;;;no tags
+Pilotis;PR011;CIRCULAÇÃO;40,36;08;;;;;floor circle 08 placed to the right of label
+Pilotis;PR011;CIRC.;2,91;03;09;;02;;
+Pilotis;PR012;PISCINA CLIMATIZADA;114,17;;;;;;no tags (pool)
+Pilotis;PR012;VARANDA;58,56;08;;;;;only floor circle 08
+Pilotis;PR012;PISCINA INFANTIL;26,52;;;;;;no tags (pool)
+Pilotis;PR012;PRAINHA;89,13;;;;;;"no tags; square below is pillar P214 outline, not a tag"
+Pilotis;PR012;JARDIM SOBRE LAJE;217,73;;;;;;no tags
+Pilotis;PR012;DECK;92,39;;;;;;no tags
+Pilotis;PR013;MASSAGEM;13,49;;;;;sim;ACABAMENTOS VER INTERIORES below label
+Pilotis;PR013;BELEZA;17,59;;;;;sim;ACABAMENTOS VER INTERIORES below label
+Pilotis;PR013;SAUNA SECA;7,02;;;;;;"no tags; 'ventilação mecânica'"
+Pilotis;PR013;HALL;7,21;;;;;sim;ACABAMENTOS VER INTERIORES above label
+Pilotis;PR013;VEST. P.C.D.;6,18;;;;;;"no tags and no VER INTERIORES text visible for this room (the one nearby belongs to HALL); top of crop may cut it off"
+Pilotis;PR013;VEST. P.C.D.;9,79;;;;;sim;ACABAMENTOS VER INTERIORES above label
+Pilotis;PR013;SAUNA VAPOR;7,10;;;;;;"sem etiquetas; texto 'ventilação mecânica'"
+Pilotis;PR013;ESPAÇO TERMAS;157,96;;;;;sim;
+Pilotis;PR013;PISCINA RAIA;84,00;;;;;sim;Lâmina d'água =+948,54
+Pilotis;PR013;QUADRA DE TÊNIS;673,11;16;03;;05;;
+Pilotis;PR013;LOUNGE QUADRAS;102,69;;;;;;sem etiquetas visíveis
+Pilotis;PR013;QUADRA INFANTIL;104,73;17;06;;;;
+Pilotis;PR013;VEST. FEM;10,83;;;;;sim;rótulo auto incluía 'ACABAMENTOS' (texto ACABAMENTOS VER INTERIORES logo acima/direita do nome)
+Pilotis;PR013;VEST. MASC.;10,55;;;;;sim;
+Pilotis;PR013;BAR PISCINA;169,12;;;;;sim;ACABAMENTOS VER INTERIORES acima do nível/nome
+Pilotis;PR013;PLAYGROUND;14,38;;;;;;sem etiquetas
+Pilotis;PR013;ACADEMIA;133,26;;;;;sim;ACABAMENTOS VER INTERIORES acima do nome
+Pilotis;PR013;CIRCULAÇÃO;59,22;08;;;;;círculo 08 isolado à esquerda do rótulo, não diretamente abaixo
+Pilotis;PR013;JARDIM SOBRE LAJE;44,26;;;;;;sem etiquetas
+Pilotis;PR013;JARDIM SOBRE LAJE;91,55;;;;;;sem etiquetas
+Pilotis;PR013;CIRCULAÇÃO;83,52;08;;;;;
+Pilotis;PR013;DML;3,23;;;;;;"sem etiquetas; ACABAMENTOS VER INTERIORES próximo pertence à VEST. P.C.D. vizinha"
+Pilotis;PR013;DEPÓSITO;12,55;05;01;19;01;;
+Pilotis;PR013;DEP. JARDIM;9,90;05;01;19;01;;
+Pilotis;PR013;CIRCULAÇÃO;4,78;;;;;;"sem etiquetas; ACABAMENTOS VER INTERIORES pertence a MASSAGEM vizinha"
+Pilotis;PR013;CIRCULAÇÃO;13,33;;;;;;"sem etiquetas; ACABAMENTOS VER INTERIORES abaixo pertence a VEST. MASC."
+Pilotis;PR013;CIRCULAÇÃO;9,03;;;;;;sem etiquetas
+Térreo;PR003;(sem rótulo);;;04;;;;"triângulo 04 isolado junto à faixa de JARDIM/muro; sem rótulo de ambiente visível"
+Térreo;PR003;(sem rótulo);;;04;;;;"triângulo 04 isolado junto ao muro/jardim (perto de P107); sem rótulo"
+Térreo;PR003;(sem rótulo);;;04;;;;"triângulo 04 isolado junto ao muro/jardim (P109-P110); rótulo '...VEÍCULOS A=...87,93' cortado à esquerda com tags próprias (círculo cortado, triângulo 07) - não confirmado se 04 pertence a ele"
+Térreo;PR003;PLANO INCLINADO - PEDESTRES (SERVIÇO);;07;;;;;"i:3,83%; h=68cm; c=1773cm; sem área. Outro círculo 07 à direita pertence a PLANO INCLINADO - VEÍCULOS"
+Térreo;PR003;PLANO INCLINADO - VEÍCULOS;;07;;;;;"i:3,50%; h=64cm; c=1825cm; sem área. Círculo 07 à esquerda pertence a PLANO INCLINADO - PEDESTRES (SERVIÇO)"
+Térreo;PR003;PLANO INCLINADO - VEÍCULOS;;07;;;;;"i:3,28%; h=61cm; c=1859cm; sem área"
+Térreo;PR003;PLANO INCLINADO - PEDESTRES (SOCIAL);;21;;;;;"i:4,99%; h=100cm; c=1693cm; sem área; código de piso 21"
+Térreo;PR005;(sem rótulo);;01;07;;03;;tags sob marca de nível N.A.=N.O.=+941,27 sem nome de ambiente visível (área ao lado das notas gerais/norte)
+2º pav.;PR008;(sem rótulo);;04;07;;03;;etiqueta real (04/07/03) sob nivel N.A.=N.O.=+944,45 sem rotulo de ambiente visivel (provavel circulacao de garagem)
+2º pav.;PR009;(sem rótulo);;01;07;;03;;etiqueta real (01/07/03) sob nivel N.A.=N.O.=+944,45 sem rotulo de ambiente visivel (provavel circulacao de garagem)
+2º pav.;PR009;(sem rótulo);;04;07;;03;;"etiqueta real (04/07/03) sem rotulo proprio; RAMPA VEICULOS A=120,84 esta a direita alem de linha tracejada, nao parece ser dela"
+Pilotis;PR013;ESCADA;;07;06;;;;"circulo 07 + triangulo 06 sob o rotulo ESCADA (sem area A=); um pouco abaixo do centro"

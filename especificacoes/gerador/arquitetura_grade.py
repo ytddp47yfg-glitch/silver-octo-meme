@@ -17,7 +17,7 @@ PASTA, XLSX, LOG = sys.argv[1:4]
 pdfs = {re.search(r'PR\d{3}', f).group(0): f for f in glob.glob(os.path.join(PASTA, '*.pdf'))}
 Q = quadro(pdfs['PR003'])
 TAGS = []
-for pr in ('PR003', 'PR004', 'PR005', 'PR007', 'PR009', 'PR011', 'PR013'):  # PR008 e PR012 são revisões antigas
+for pr in ('PR003', 'PR004', 'PR005', 'PR007', 'PR009', 'PR011', 'PR013'):  # PR008 e PR012 (trecho 2) conferidas à parte em arq_conferencia.py
     TAGS += ambientes(pdfs[pr])
 
 def tag(pr, amb, area=None, xy=None):
