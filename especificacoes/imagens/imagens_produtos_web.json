@@ -39,7 +39,9 @@
    "PILOTIS!V55",
    "PILOTIS!V58"
   ],
-  "descricao": "Acabamento de tomadas e interruptores, linha Arteor, cor a definir conforme superfície a ser instalado. Ref.: Legrand"
+  "descricao": "Acabamento de tomadas e interruptores, linha Arteor, cor a definir conforme superfície a ser instalado. Ref.: Legrand",
+  "arquivo": "CDJ-WEB-01_ARTEOR.jpg",
+  "asset_id": "1827cb1b2182c8837e58458ed19864d5"
  },
  {
   "n": 2,
@@ -92,7 +94,9 @@
    "PILOTIS!H53",
    "PILOTIS!H54"
   ],
-  "descricao": "Piso em porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado. Paginação conforme detalhamento. Ref.: Khali Off White AC; Linha Khali; Eliane. Rejunte Infinity Hard cor Mocha ou cor Branco Pérola Deverá "
+  "descricao": "Piso em porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado. Paginação conforme detalhamento. Ref.: Khali Off White AC; Linha Khali; Eliane. Rejunte Infinity Hard cor Mocha ou cor Branco Pérola Deverá ",
+  "arquivo": "CDJ-WEB-02_KHALI-OFF-WHITE-AC-60X60.jpg",
+  "asset_id": "e0caca6b5e40f56d68e00ccf33433e1d"
  },
  {
   "n": 3,
@@ -107,7 +111,9 @@
   "celulas": [
    "TÉRREO!O28"
   ],
-  "descricao": "Monocomando de mesa para lavatório, linha Mix&Match, bica baixa, acabamento grafite escovado, cód.: 01739870. Ref.: Docol. Obs.: Se necessário instalar cardal para aquecimento de água. ATENÇÃO: vazão máxima de 6 l/min, i"
+  "descricao": "Monocomando de mesa para lavatório, linha Mix&Match, bica baixa, acabamento grafite escovado, cód.: 01739870. Ref.: Docol. Obs.: Se necessário instalar cardal para aquecimento de água. ATENÇÃO: vazão máxima de 6 l/min, i",
+  "arquivo": "CDJ-WEB-03_01739870.jpg",
+  "asset_id": "48c505f02baf084b3b7017f5cec09f1e"
  },
  {
   "n": 4,
@@ -132,7 +138,9 @@
    "PILOTIS!P55",
    "APTO TIPO!P15"
   ],
-  "descricao": "Bacia Sanitária com caixa acoplada, linha Carrara, acabamento branco, cód.: P.606.17. Ref.: Deca OU Bacia Sanitária com caixa acoplada, linha Panache, acabamento branco, cód.: K-18395BR-0.Amostra a ser aprovada pela GPA&"
+  "descricao": "Bacia Sanitária com caixa acoplada, linha Carrara, acabamento branco, cód.: P.606.17. Ref.: Deca OU Bacia Sanitária com caixa acoplada, linha Panache, acabamento branco, cód.: K-18395BR-0.Amostra a ser aprovada pela GPA&",
+  "arquivo": "CDJ-WEB-04_P.606.17.jpg",
+  "asset_id": "a61352bf213ec66dd2fd016fec803880"
  },
  {
   "n": 5,
@@ -151,7 +159,9 @@
    "PILOTIS!T36",
    "PILOTIS!T55"
   ],
-  "descricao": "Ralo 15x15cm com tampa lisa em aço inox, linha Square. Ref.: Elleve"
+  "descricao": "Ralo 15x15cm com tampa lisa em aço inox, linha Square. Ref.: Elleve",
+  "arquivo": "CDJ-WEB-05_SQUARE.jpg",
+  "asset_id": "a0c24bb61574f2bc082e6d6643bc8923"
  },
  {
   "n": 6,
@@ -175,7 +185,9 @@
    "PILOTIS!Z49",
    "PILOTIS!Z55"
   ],
-  "descricao": "Saboneteira de pressão em aço inox, instalação na parede, modelo Prime Press Espuma, cód.:70.032. Ref.: Draco"
+  "descricao": "Saboneteira de pressão em aço inox, instalação na parede, modelo Prime Press Espuma, cód.:70.032. Ref.: Draco",
+  "arquivo": "CDJ-WEB-06_70.032.jpg",
+  "asset_id": "c9d6571751fdc4f6e3d78fd80d004319"
  },
  {
   "n": 7,
@@ -199,7 +211,9 @@
    "PILOTIS!Z49",
    "PILOTIS!Z55"
   ],
-  "descricao": "Papeleira em aço Inox para papel interfolhado, modelo Basic, cód.:74.103. Ref.: Draco"
+  "descricao": "Papeleira em aço Inox para papel interfolhado, modelo Basic, cód.:74.103. Ref.: Draco",
+  "arquivo": "CDJ-WEB-07_74.103.jpg",
+  "asset_id": "4b525edc1d8372f2cf9b5b1bacbada8b"
  },
  {
   "n": 8,
@@ -214,7 +228,9 @@
   "celulas": [
    "TÉRREO!B39"
   ],
-  "descricao": "Piso em porcelanato padrão cimentício 120x120cm, espessura 1cm, com acabamento fosco (antiderrapante). Ref.: CITTA SGR HARD; cód. 61588; Portinari. Amostra a ser aprovada pela GPA&A."
+  "descricao": "Piso em porcelanato padrão cimentício 120x120cm, espessura 1cm, com acabamento fosco (antiderrapante). Ref.: CITTA SGR HARD; cód. 61588; Portinari. Amostra a ser aprovada pela GPA&A.",
+  "arquivo": "CDJ-WEB-08_61588.jpg",
+  "asset_id": "21b8694c934c844c88a850a4e998a714"
  },
  {
   "n": 9,
@@ -230,7 +246,8 @@
    "PILOTIS!H17",
    "PILOTIS!H18"
   ],
-  "descricao": "Parede em alvenaria rebocada regularizada revestida em pedra mármore Barrocci Honed, acabamento levigado, espessura 2cm. Ref.: Brasigran. Paginação e dimensões conforme detalhamento. Rejunte em massa plástica a ser tonal"
+  "descricao": "Parede em alvenaria rebocada regularizada revestida em pedra mármore Barrocci Honed, acabamento levigado, espessura 2cm. Ref.: Brasigran. Paginação e dimensões conforme detalhamento. Rejunte em massa plástica a ser tonal",
+  "arquivo": null
  },
  {
   "n": 10,
@@ -246,7 +263,8 @@
    "PILOTIS!J17",
    "PILOTIS!J18"
   ],
-  "descricao": "Bancada e cuba esculpida com bandeja removível em pedra mármore Barrocci Honed, acabamento levigado, espessura 2cm. Ref.: Brasigran. Paginação e dimensões conforme detalhamento. Rejunte em massa plástica a ser tonalizada"
+  "descricao": "Bancada e cuba esculpida com bandeja removível em pedra mármore Barrocci Honed, acabamento levigado, espessura 2cm. Ref.: Brasigran. Paginação e dimensões conforme detalhamento. Rejunte em massa plástica a ser tonalizada",
+  "arquivo": null
  },
  {
   "n": 11,
@@ -264,7 +282,9 @@
    "PILOTIS!O23",
    "PILOTIS!O24"
   ],
-  "descricao": "Monocomando de mesa para lavatório, linha Mix&Match, bica baixa, acabamento cromado, cód.: 90017398006. Ref.: Docol. Obs.: Se necessário instalar cardal para aquecimento de água. ATENÇÃO: vazão máxima de 6 l/min, instala"
+  "descricao": "Monocomando de mesa para lavatório, linha Mix&Match, bica baixa, acabamento cromado, cód.: 90017398006. Ref.: Docol. Obs.: Se necessário instalar cardal para aquecimento de água. ATENÇÃO: vazão máxima de 6 l/min, instala",
+  "arquivo": "CDJ-WEB-11_90017398006.jpg",
+  "asset_id": "a85150c67000c06eda2e30c6b0b90bef"
  },
  {
   "n": 12,
@@ -279,7 +299,9 @@
   "celulas": [
    "PILOTIS!H20"
   ],
-  "descricao": "Parede emassada regularizada, revestida com fórmica cor Almond L112, acabamento mate. Ref.: Formica. Dimensões e paginações conforme detalhamento. Amostra a ser aprovada pela GPA&A."
+  "descricao": "Parede emassada regularizada, revestida com fórmica cor Almond L112, acabamento mate. Ref.: Formica. Dimensões e paginações conforme detalhamento. Amostra a ser aprovada pela GPA&A.",
+  "arquivo": "CDJ-WEB-12_FORMICA-ALMOND.jpg",
+  "asset_id": "26c20e50a12cded886c82f333ce556c1"
  },
  {
   "n": 13,
@@ -294,7 +316,9 @@
   "celulas": [
    "PILOTIS!L20"
   ],
-  "descricao": "Cuba de embutir, Dora 70 em aço inox, 70x40cm, acabamento acetinado, cód.: BL R6. Ref.: Tramontina"
+  "descricao": "Cuba de embutir, Dora 70 em aço inox, 70x40cm, acabamento acetinado, cód.: BL R6. Ref.: Tramontina",
+  "arquivo": "CDJ-WEB-13_BL.R6.jpg",
+  "asset_id": "2ec73028875fb85000c8195ecd149aea"
  },
  {
   "n": 14,
@@ -309,7 +333,9 @@
   "celulas": [
    "PILOTIS!O20"
   ],
-  "descricao": "Monocomando de mesa, modelo Angolare, acabamento Scotch Brite, cód.: 94520022. Ref.: Tramontina. ATENÇÃO: vazão máxima de 9 l/min, instalar redutor de vazão se necessário."
+  "descricao": "Monocomando de mesa, modelo Angolare, acabamento Scotch Brite, cód.: 94520022. Ref.: Tramontina. ATENÇÃO: vazão máxima de 9 l/min, instalar redutor de vazão se necessário.",
+  "arquivo": "CDJ-WEB-14_94520022.jpg",
+  "asset_id": "1340e85141f4d03bee1a43b83b20241e"
  },
  {
   "n": 15,
@@ -325,7 +351,9 @@
    "PILOTIS!L21",
    "PILOTIS!L50"
   ],
-  "descricao": "Tanque em cerâmica 18L cor branco fosco. Cód.: TQ.01.17, Ref.: Deca"
+  "descricao": "Tanque em cerâmica 18L cor branco fosco. Cód.: TQ.01.17, Ref.: Deca",
+  "arquivo": "CDJ-WEB-15_TQ.01.17.jpg",
+  "asset_id": "8327c0c0a4090a4ee0e4401dbc23dbc2"
  },
  {
   "n": 16,
@@ -343,7 +371,9 @@
    "PILOTIS!O53",
    "PILOTIS!O54"
   ],
-  "descricao": "Torneira de parede com arejador, para jardim e tanque, linha Izy, acabamento cromado. Cód.: 1154 C37; Ref.: Deca"
+  "descricao": "Torneira de parede com arejador, para jardim e tanque, linha Izy, acabamento cromado. Cód.: 1154 C37; Ref.: Deca",
+  "arquivo": "CDJ-WEB-16_1154.C37.jpg",
+  "asset_id": "6024f4a9654b193020178a573bc1e25b"
  },
  {
   "n": 17,
@@ -359,7 +389,9 @@
    "PILOTIS!L27",
    "PILOTIS!L32"
   ],
-  "descricao": "Cuba Design Collection Quadrum 70 em Aço Inox com Acabamento Scotch Brite. Cód Ref.: REF 94007103. Ref.: Tramontina"
+  "descricao": "Cuba Design Collection Quadrum 70 em Aço Inox com Acabamento Scotch Brite. Cód Ref.: REF 94007103. Ref.: Tramontina",
+  "arquivo": "CDJ-WEB-17_REF.94007103.jpg",
+  "asset_id": "dc8dabd4e209775abb6afdc345cd6512"
  },
  {
   "n": 18,
@@ -375,7 +407,9 @@
    "PILOTIS!O27",
    "PILOTIS!O32"
   ],
-  "descricao": "Misturador Monocomando Monde Filter Plus em Aço Inox com Saída Adicional para Água Filtrada + Filtro 3M. Cód Ref.: REF 94520025. Ref.: Tramontina. ATENÇÃO: vazão máxima de 9 l/min, instalar redutor de vazão se necessário"
+  "descricao": "Misturador Monocomando Monde Filter Plus em Aço Inox com Saída Adicional para Água Filtrada + Filtro 3M. Cód Ref.: REF 94520025. Ref.: Tramontina. ATENÇÃO: vazão máxima de 9 l/min, instalar redutor de vazão se necessário",
+  "arquivo": "CDJ-WEB-18_REF.94520025.jpg",
+  "asset_id": "1ac71530c7e6f0adf3d6e7125441c0f9"
  },
  {
   "n": 19,
@@ -390,7 +424,9 @@
   "celulas": [
    "PILOTIS!H29"
   ],
-  "descricao": "Parede revestida em pastilha Jatobá, acabamento cinza cimento brilhante, 5x5cm. Cód.: CJC1614. Ref.: Ceramicasa. Rejunte em massa plástica a ser tonalizada de acordo com a cor da pedra. Amostra a ser aprovada pela GPA&A"
+  "descricao": "Parede revestida em pastilha Jatobá, acabamento cinza cimento brilhante, 5x5cm. Cód.: CJC1614. Ref.: Ceramicasa. Rejunte em massa plástica a ser tonalizada de acordo com a cor da pedra. Amostra a ser aprovada pela GPA&A",
+  "arquivo": "CDJ-WEB-19_CJC1614.jpg",
+  "asset_id": "ca1cec4010545716d7edfb6f66d54b64"
  },
  {
   "n": 20,
@@ -406,7 +442,9 @@
    "PILOTIS!T29",
    "PILOTIS!T59"
   ],
-  "descricao": "Ralo linear oculto para encaixe de granito. Dimensões conforme detalhamento. Ref.: Elleve"
+  "descricao": "Ralo linear oculto para encaixe de granito. Dimensões conforme detalhamento. Ref.: Elleve",
+  "arquivo": "CDJ-WEB-20_ELLEVE-RALO.jpg",
+  "asset_id": "098dbdcabe1af908e0bbccd14f94451a"
  },
  {
   "n": 21,
@@ -421,7 +459,9 @@
   "celulas": [
    "PILOTIS!U29"
   ],
-  "descricao": "Chuveiro de piso para área externa em aço inox 316. cód.: DK5123B. Ref.: Doka"
+  "descricao": "Chuveiro de piso para área externa em aço inox 316. cód.: DK5123B. Ref.: Doka",
+  "arquivo": "CDJ-WEB-21_DK5123B.jpg",
+  "asset_id": "ca3302a94163be22b632433632310d6b"
  },
  {
   "n": 22,
@@ -443,7 +483,9 @@
    "PILOTIS!T49",
    "PILOTIS!T55"
   ],
-  "descricao": "Ralo linear com tampa lisa em aço inox. Dimensões conforme detalhamento. Ref.: Elleve"
+  "descricao": "Ralo linear com tampa lisa em aço inox. Dimensões conforme detalhamento. Ref.: Elleve",
+  "arquivo": "CDJ-WEB-22_ELLEVE-RALO.jpg",
+  "asset_id": "37889fd0921c26a5fd590eb231cdaf49"
  },
  {
   "n": 23,
@@ -462,7 +504,9 @@
    "PILOTIS!O49",
    "PILOTIS!O55"
   ],
-  "descricao": "Torneira de mesa com sensor bivolt e bateria, linha Decalux, acabamento cromado, cód.: 1188.C.N. Ref.: Deca ATENÇÃO: vazão máxima de 6 l/min, instalar restritor de vazão se necessário."
+  "descricao": "Torneira de mesa com sensor bivolt e bateria, linha Decalux, acabamento cromado, cód.: 1188.C.N. Ref.: Deca ATENÇÃO: vazão máxima de 6 l/min, instalar restritor de vazão se necessário.",
+  "arquivo": "CDJ-WEB-23_1188.C.N.jpg",
+  "asset_id": "b97af43dabcf0da10cc9d54ad77e41f7"
  },
  {
   "n": 24,
@@ -481,7 +525,9 @@
    "PILOTIS!S49",
    "PILOTIS!S55"
   ],
-  "descricao": "Monocomando para chuveiro, linha Mix&Match, acabamento cromado, cód.:90009312006. Ref.: Docol"
+  "descricao": "Monocomando para chuveiro, linha Mix&Match, acabamento cromado, cód.:90009312006. Ref.: Docol",
+  "arquivo": "CDJ-WEB-24_90009312006.jpg",
+  "asset_id": "c9b0ce5239e44f0abb52a59a02397752"
  },
  {
   "n": 25,
@@ -489,10 +535,10 @@
   "codigo": "90008879006",
   "produto": "Chuveiro R200 de parede DocolEden cromado",
   "pagina_url": "https://www.docol.com.br/en/90008879006-chuveiro-r200-de-parede-docoleden-cromado/p",
-  "imagem_url": "https://docolinstitucional.vtexassets.com/arquivos/ids/161874/Cromado.jpg?v=638888795858170000",
+  "imagem_url": "https://docolinstitucional.vteximg.com.br/arquivos/ids/161872/986813_00887906-chuveiro-docol-eden-r200_z2_637299294362929507.jpg.jpg?v=638888795857830000",
   "fonte": "fabricante",
   "confianca": "alta",
-  "obs": "og:image da pagina oficial",
+  "obs": "og:image da pagina oficial | 02/10/2026: imagem trocada pela foto do produto (a anterior era só a amostra de acabamento).",
   "celulas": [
    "PILOTIS!U35",
    "PILOTIS!U36",
@@ -500,7 +546,9 @@
    "PILOTIS!U49",
    "PILOTIS!U55"
   ],
-  "descricao": "Chuveiro 200 de parede, com tubo reto, linha DocolEden, acabamento cromado, cód.:90008879006. Ref.: Docol. ATENÇÃO: vazão máxima de 8 l/min, instalar restritor de vazão se necessário."
+  "descricao": "Chuveiro 200 de parede, com tubo reto, linha DocolEden, acabamento cromado, cód.:90008879006. Ref.: Docol. ATENÇÃO: vazão máxima de 8 l/min, instalar restritor de vazão se necessário.",
+  "arquivo": "CDJ-WEB-25_90008879006.jpg",
+  "asset_id": "d26fbcfb57f366d6e1754514bd7d29c3"
  },
  {
   "n": 26,
@@ -516,7 +564,9 @@
    "PILOTIS!R41",
    "PILOTIS!R42"
   ],
-  "descricao": "Acabamento para registro DocolBase, linha Mix&Match, acabamento cromado. Ref.: Docol"
+  "descricao": "Acabamento para registro DocolBase, linha Mix&Match, acabamento cromado. Ref.: Docol",
+  "arquivo": "CDJ-WEB-26_MIX-MATCH.jpg",
+  "asset_id": "766e0611c358bf470d622074be528615"
  },
  {
   "n": 27,
@@ -532,7 +582,9 @@
    "PILOTIS!U41",
    "PILOTIS!U42"
   ],
-  "descricao": "Chuveiro de embutir no teto Raindream, Roca, acabamento cromado, cód.: A5B3250C0C. Ref.: Roca. ATENÇÃO: vazão máxima de 8 l/min, instalar restritor de vazão se necessário."
+  "descricao": "Chuveiro de embutir no teto Raindream, Roca, acabamento cromado, cód.: A5B3250C0C. Ref.: Roca. ATENÇÃO: vazão máxima de 8 l/min, instalar restritor de vazão se necessário.",
+  "arquivo": "CDJ-WEB-27_A5B3250C0C.jpg",
+  "asset_id": "3a376ccefce06bce511eeceb6889e490"
  },
  {
   "n": 28,
@@ -548,7 +600,9 @@
    "PILOTIS!L45",
    "PILOTIS!L46"
   ],
-  "descricao": "Cuba de apoio, modelo Ametista 26, cor branco, cód.:121003002. Ref.: Sabbia"
+  "descricao": "Cuba de apoio, modelo Ametista 26, cor branco, cód.:121003002. Ref.: Sabbia",
+  "arquivo": "CDJ-WEB-28_121003002.jpg",
+  "asset_id": "627d18582ccbd72fbc55fdcaf161b005"
  },
  {
   "n": 29,
@@ -556,15 +610,17 @@
   "codigo": "90015460070",
   "produto": "Torneira Presence de mesa para cozinha Mix&Match grafite escovado",
   "pagina_url": "https://www.docol.com.br/br/90015460070-torneira-presence-de-mesa-para-cozinha-mix-match-grafite-escovado/p",
-  "imagem_url": "https://docolinstitucional.vtexassets.com/arquivos/ids/160221/grafite-escovado.jpg?v=638804329224670000",
+  "imagem_url": "https://docolinstitucional.vteximg.com.br/arquivos/ids/158553/997366_01546070-torneira-presence-cozinha-de-mesa-grafite-escovado_z1_637593683307644844.jpg?v=638785097508070000",
   "fonte": "fabricante",
   "confianca": "alta",
-  "obs": "codigo exato; Docol classifica como torneira de cozinha (Presence = acionamento por sensor), spec fala em torneira de mesa",
+  "obs": "codigo exato; Docol classifica como torneira de cozinha (Presence = acionamento por sensor), spec fala em torneira de mesa | 02/10/2026: imagem trocada pela foto do produto (a anterior era só a amostra de acabamento).",
   "celulas": [
    "PILOTIS!O45",
    "PILOTIS!O46"
   ],
-  "descricao": "Torneira de mesa, linha Mix&Match Presence, com sensor, acabamento grafite escovado. Cód.: 90015460070 Ref.: Docol ATENÇÃO: vazão máxima de 6 l/min, instalar restritor de vazão se necessário."
+  "descricao": "Torneira de mesa, linha Mix&Match Presence, com sensor, acabamento grafite escovado. Cód.: 90015460070 Ref.: Docol ATENÇÃO: vazão máxima de 6 l/min, instalar restritor de vazão se necessário.",
+  "arquivo": "CDJ-WEB-29_90015460070.jpg",
+  "asset_id": "9cfbdd823f61f243c6c1c528010cf603"
  },
  {
   "n": 30,
@@ -581,7 +637,9 @@
    "PILOTIS!L49",
    "PILOTIS!L55"
   ],
-  "descricao": "Cuba de semiencaixe, linha Slim, cor branco, cód.: L.61040.M.17. Ref.: Deca"
+  "descricao": "Cuba de semiencaixe, linha Slim, cor branco, cód.: L.61040.M.17. Ref.: Deca",
+  "arquivo": "CDJ-WEB-30_L.61040.M.17.jpg",
+  "asset_id": "429458866c781349863dbb8500903515"
  },
  {
   "n": 31,
@@ -597,7 +655,9 @@
    "PILOTIS!Q48",
    "PILOTIS!Q49"
   ],
-  "descricao": "Ducha higiênica com registro e derivação de parede linha Mix&Match, acabamento cromado. Cód.: 90009316006. Ref.: Docol"
+  "descricao": "Ducha higiênica com registro e derivação de parede linha Mix&Match, acabamento cromado. Cód.: 90009316006. Ref.: Docol",
+  "arquivo": "CDJ-WEB-31_90009316006.jpg",
+  "asset_id": "364b2ff4d3f9cf2a50fb54cfc3e7dd36"
  },
  {
   "n": 32,
@@ -613,7 +673,9 @@
    "PILOTIS!L53",
    "PILOTIS!L54"
   ],
-  "descricao": "Tanque de embutir CT-50, Mekal, escovado cód.: 90010195016"
+  "descricao": "Tanque de embutir CT-50, Mekal, escovado cód.: 90010195016",
+  "arquivo": "CDJ-WEB-32_90010195016.jpg",
+  "asset_id": "8b158e26ae9b3ea72a1cfec146032d45"
  },
  {
   "n": 33,
@@ -628,7 +690,9 @@
   "celulas": [
    "PILOTIS!B63"
   ],
-  "descricao": "Piso em deck de madeira, modelo Tauari Teak encaixe macho e femea, acabamento com cavilha, reguas 20mmx100mmx2000m-acima. Ref.: Indusparquet. ATENÇÃO: a madeira deve possuir certificação FSC ou CERFLOR"
+  "descricao": "Piso em deck de madeira, modelo Tauari Teak encaixe macho e femea, acabamento com cavilha, reguas 20mmx100mmx2000m-acima. Ref.: Indusparquet. ATENÇÃO: a madeira deve possuir certificação FSC ou CERFLOR",
+  "arquivo": "CDJ-WEB-33_INDUSPARQUET-TAUARI.jpg",
+  "asset_id": "51f272b618391056ce5ebd4288d57a73"
  },
  {
   "n": 34,
@@ -643,7 +707,9 @@
   "celulas": [
    "APTO TIPO!O14"
   ],
-  "descricao": "Torneira de mesa bica baixa para lavatório, cromado, linha Unic, cód. 1197.C90. Ref.: Deca. (DET PR004; Tab. R01)"
+  "descricao": "Torneira de mesa bica baixa para lavatório, cromado, linha Unic, cód. 1197.C90. Ref.: Deca. (DET PR004; Tab. R01)",
+  "arquivo": "CDJ-WEB-34_1197.C90.jpg",
+  "asset_id": "351c756b4958299aff33f448c99738d7"
  },
  {
   "n": 35,
@@ -658,7 +724,9 @@
   "celulas": [
    "APTO TIPO!P14"
   ],
-  "descricao": "Bacia convencional suspensa branca, linha LK, cód. P.232.17. Ref.: Deca. Caixa de descarga embutida para alvenaria. (DET PR004; Tab. R01)"
+  "descricao": "Bacia convencional suspensa branca, linha LK, cód. P.232.17. Ref.: Deca. Caixa de descarga embutida para alvenaria. (DET PR004; Tab. R01)",
+  "arquivo": "CDJ-WEB-35_P.232.17.jpg",
+  "asset_id": "ec7834d51e1a53a430513f9d135620cf"
  },
  {
   "n": 36,
@@ -673,7 +741,9 @@
   "celulas": [
    "APTO TIPO!R14"
   ],
-  "descricao": "Acabamento para registro de gaveta 1 1/4\" e 1 1/2\", cromado, Unic, cód. 4900.C90.GD. Ref.: Deca"
+  "descricao": "Acabamento para registro de gaveta 1 1/4\" e 1 1/2\", cromado, Unic, cód. 4900.C90.GD. Ref.: Deca",
+  "arquivo": "CDJ-WEB-36_4900.C90.GD.jpg",
+  "asset_id": "e9f9aa08fb8009261a0b2ffa9cba31ac"
  },
  {
   "n": 37,
@@ -688,7 +758,9 @@
   "celulas": [
    "APTO TIPO!R14"
   ],
-  "descricao": "Acabamento para caixa de descarga embutida, cromado, H Quadra Duo, cód. 4900.C.HQD.DUO. Ref.: Deca. (DET PR004)"
+  "descricao": "Acabamento para caixa de descarga embutida, cromado, H Quadra Duo, cód. 4900.C.HQD.DUO. Ref.: Deca. (DET PR004)",
+  "arquivo": "CDJ-WEB-37_4900.C.HQD.DUO.jpg",
+  "asset_id": "a6d12bb85c517aaf999e63d500316db7"
  },
  {
   "n": 38,
@@ -703,7 +775,9 @@
   "celulas": [
    "APTO TIPO!L15"
   ],
-  "descricao": "Cuba de apoio retangular Jader Almeida 670x495x120mm, branca, cód. L.310.17. Ref.: Deca. (PR408; Tab. R01)"
+  "descricao": "Cuba de apoio retangular Jader Almeida 670x495x120mm, branca, cód. L.310.17. Ref.: Deca. (PR408; Tab. R01)",
+  "arquivo": "CDJ-WEB-38_L.310.17.jpg",
+  "asset_id": "798bd043229e99c5464b2f78c357e3c4"
  },
  {
   "n": 39,
@@ -718,7 +792,9 @@
   "celulas": [
    "APTO TIPO!O15"
   ],
-  "descricao": "Misturador monocomando de mesa bica alta para lavatório, Level cromado, cód. 2885.C26. Ref.: Deca. (PR408; Tab. R01)"
+  "descricao": "Misturador monocomando de mesa bica alta para lavatório, Level cromado, cód. 2885.C26. Ref.: Deca. (PR408; Tab. R01)",
+  "arquivo": "CDJ-WEB-39_2885.C26.jpg",
+  "asset_id": "4cd2bbfb69501f73fcfe707f9cee8792"
  },
  {
   "n": 40,
@@ -733,7 +809,9 @@
   "celulas": [
    "APTO TIPO!P15"
   ],
-  "descricao": "Bidê 3 furos Carrara branco, cód. B.60.17. Ref.: Deca. (PR408; Tab. R01)"
+  "descricao": "Bidê 3 furos Carrara branco, cód. B.60.17. Ref.: Deca. (PR408; Tab. R01)",
+  "arquivo": "CDJ-WEB-40_B.60.17.jpg",
+  "asset_id": "7c5a6134de21114f19ee28bf083c391b"
  },
  {
   "n": 41,
@@ -748,7 +826,9 @@
   "celulas": [
    "APTO TIPO!R15"
   ],
-  "descricao": "Acabamento para registro Level cromado, cód. 4900.C26.PQ. Ref.: Deca. (PR408)"
+  "descricao": "Acabamento para registro Level cromado, cód. 4900.C26.PQ. Ref.: Deca. (PR408)",
+  "arquivo": "CDJ-WEB-41_4900.C26.PQ.jpg",
+  "asset_id": "185bde3a1eda1c407191dd09a21f4b09"
  },
  {
   "n": 42,
@@ -763,7 +843,9 @@
   "celulas": [
    "APTO TIPO!V15"
   ],
-  "descricao": "Tomadas e interruptores Arteor quadrado branco. Ref.: Legrand. (PR408)"
+  "descricao": "Tomadas e interruptores Arteor quadrado branco. Ref.: Legrand. (PR408)",
+  "arquivo": "CDJ-WEB-42_LEGRAND-ARTEOR.jpg",
+  "asset_id": "034622ea92ebbc603de2f789d10a0beb"
  },
  {
   "n": 43,
@@ -778,7 +860,9 @@
   "celulas": [
    "APTO TIPO!W15"
   ],
-  "descricao": "Maçaneta Sara cromo acetinado. Ref.: Pado. (PR408)"
+  "descricao": "Maçaneta Sara cromo acetinado. Ref.: Pado. (PR408)",
+  "arquivo": "CDJ-WEB-43_PADO-FECHADURA.jpg",
+  "asset_id": "2e541f34999913751a67a769888210ad"
  },
  {
   "n": 44,
@@ -793,7 +877,9 @@
   "celulas": [
    "APTO TIPO!L16"
   ],
-  "descricao": "Cuba retangular de apoio 60cm com deck, branca, linha Slim, cód. L.13060.M.17. Ref.: Deca. (DET PR008; Tab. R01)"
+  "descricao": "Cuba retangular de apoio 60cm com deck, branca, linha Slim, cód. L.13060.M.17. Ref.: Deca. (DET PR008; Tab. R01)",
+  "arquivo": "CDJ-WEB-44_L.13060.M.17.jpg",
+  "asset_id": "c96ce06623c714237e9761ba552e2508"
  },
  {
   "n": 45,
@@ -808,7 +894,9 @@
   "celulas": [
    "APTO TIPO!O16"
   ],
-  "descricao": "Misturador monocomando de mesa bica baixa para lavatório, cromado, linha Level, cód. 2875.C26. Ref.: Deca. (DET PR008; Tab. R01)"
+  "descricao": "Misturador monocomando de mesa bica baixa para lavatório, cromado, linha Level, cód. 2875.C26. Ref.: Deca. (DET PR008; Tab. R01)",
+  "arquivo": "CDJ-WEB-45_2875.C26.jpg",
+  "asset_id": "1b04c2c0fb1661545611bd9755a05f52"
  },
  {
   "n": 46,
@@ -823,7 +911,9 @@
   "celulas": [
    "APTO TIPO!P16"
   ],
-  "descricao": "Bacia convencional Carrara branca com caixa acoplada, cód. KP.606.17. Ref.: Deca. (DET PR008; Tab. R01)"
+  "descricao": "Bacia convencional Carrara branca com caixa acoplada, cód. KP.606.17. Ref.: Deca. (DET PR008; Tab. R01)",
+  "arquivo": "CDJ-WEB-46_KP.606.17.jpg",
+  "asset_id": "f18cc39ea9867a8bfd2d7534acffb6e4"
  },
  {
   "n": 47,
@@ -839,7 +929,9 @@
    "APTO TIPO!Q16",
    "APTO TIPO!O19"
   ],
-  "descricao": "Ducha higiênica com registro e derivação, cromada, linha Level. Ref.: Deca. (DET PR008; Tab. R01)"
+  "descricao": "Ducha higiênica com registro e derivação, cromada, linha Level. Ref.: Deca. (DET PR008; Tab. R01)",
+  "arquivo": "CDJ-WEB-47_LEVEL.jpg",
+  "asset_id": "50957e36f075d49f5f77fc64c72327e5"
  },
  {
   "n": 48,
@@ -854,7 +946,9 @@
   "celulas": [
    "APTO TIPO!R16"
   ],
-  "descricao": "Acabamento para registro de gaveta 1 1/4\" e 1 1/2\", cromado, Level, cód. 4900.C26.GD. Ref.: Deca. (DET PR008)"
+  "descricao": "Acabamento para registro de gaveta 1 1/4\" e 1 1/2\", cromado, Level, cód. 4900.C26.GD. Ref.: Deca. (DET PR008)",
+  "arquivo": "CDJ-WEB-48_4900.C26.GD.jpg",
+  "asset_id": "82d770ee84bd8f5af85941928fafcd98"
  },
  {
   "n": 49,
@@ -869,7 +963,9 @@
   "celulas": [
    "APTO TIPO!S16"
   ],
-  "descricao": "Acabamento monocomando para chuveiro, cromado, linha Level, cód. 4993.C26.CHU. Ref.: Deca. (DET PR008; Tab. R01)"
+  "descricao": "Acabamento monocomando para chuveiro, cromado, linha Level, cód. 4993.C26.CHU. Ref.: Deca. (DET PR008; Tab. R01)",
+  "arquivo": "CDJ-WEB-49_4993.C26.CHU.jpg",
+  "asset_id": "6f6ec1fb2bf9f780ab8c4503bbadc784"
  },
  {
   "n": 50,
@@ -885,7 +981,9 @@
    "APTO TIPO!B17",
    "APTO TIPO!B18"
   ],
-  "descricao": "Piso em cumaru, assoalho piso pronto. Ref.: Indusparquet. (DET PR001/PR002; Tab. R01)"
+  "descricao": "Piso em cumaru, assoalho piso pronto. Ref.: Indusparquet. (DET PR001/PR002; Tab. R01)",
+  "arquivo": "CDJ-WEB-50_INDUSPARQUET-CUMARU.jpg",
+  "asset_id": "fa66592e483bed91cfc4f7b778ab312b"
  },
  {
   "n": 51,
@@ -901,7 +999,9 @@
    "APTO TIPO!F17",
    "APTO TIPO!F18"
   ],
-  "descricao": "Rodapé maciço com o mesmo acabamento do piso, h=10cm. Ref.: Indusparquet. (Tab. R01; quadro do DET PR001)"
+  "descricao": "Rodapé maciço com o mesmo acabamento do piso, h=10cm. Ref.: Indusparquet. (Tab. R01; quadro do DET PR001)",
+  "arquivo": "CDJ-WEB-51_INDUSPARQUET-RODAPE.jpg",
+  "asset_id": "ff016b5f954234e85c1dda2d870e5885"
  },
  {
   "n": 52,
@@ -916,7 +1016,9 @@
   "celulas": [
    "APTO TIPO!L18"
   ],
-  "descricao": "Cuba redonda CR-30, escovada, cód. 01018116 / 90010181016. Ref.: Mekal. (DET PR003; Tab. R01)"
+  "descricao": "Cuba redonda CR-30, escovada, cód. 01018116 / 90010181016. Ref.: Mekal. (DET PR003; Tab. R01)",
+  "arquivo": "CDJ-WEB-52_01018116.-.90010181016.jpg",
+  "asset_id": "f300b436c98f2b666d1cbab565a75ccb"
  },
  {
   "n": 53,
@@ -931,7 +1033,9 @@
   "celulas": [
    "APTO TIPO!O18"
   ],
-  "descricao": "Torneira de mesa bica alta para lavatório, cromada, linha Link, cód. 1198.C.LNK. Ref.: Deca. (DET PR003; Tab. R01)"
+  "descricao": "Torneira de mesa bica alta para lavatório, cromada, linha Link, cód. 1198.C.LNK. Ref.: Deca. (DET PR003; Tab. R01)",
+  "arquivo": "CDJ-WEB-53_1198.C.LNK.jpg",
+  "asset_id": "451c65557d20e723e107e4a5f0577620"
  },
  {
   "n": 54,
@@ -946,7 +1050,9 @@
   "celulas": [
    "APTO TIPO!L19"
   ],
-  "descricao": "Cuba de embutir 600x400x230mm em aço inox, linha Retta. Ref.: Mekal ou similar. (Tab. R01; PR406 sem modelo)"
+  "descricao": "Cuba de embutir 600x400x230mm em aço inox, linha Retta. Ref.: Mekal ou similar. (Tab. R01; PR406 sem modelo)",
+  "arquivo": "CDJ-WEB-54_RETTA.jpg",
+  "asset_id": "a536277d504df5938d4ee1f3f3bcbf87"
  },
  {
   "n": 55,
@@ -961,7 +1067,9 @@
   "celulas": [
    "APTO TIPO!L20"
   ],
-  "descricao": "Tanque para lavanderia CT-60, escovado, cód. 01019616 / 90010196016, 2 unidades, instalados sob a pedra da bancada. Ref.: Mekal. (DET PR005; Tab. R01)"
+  "descricao": "Tanque para lavanderia CT-60, escovado, cód. 01019616 / 90010196016, 2 unidades, instalados sob a pedra da bancada. Ref.: Mekal. (DET PR005; Tab. R01)",
+  "arquivo": "CDJ-WEB-55_01019616.-.90010196016.jpg",
+  "asset_id": "89991b4cc109e8a7f7f96f0628aca182"
  },
  {
   "n": 56,
@@ -976,7 +1084,9 @@
   "celulas": [
    "APTO TIPO!O20"
   ],
-  "descricao": "Torneira de parede com arejador para cozinha, cromada, linha Link, cód. 1159.C.LNK, 2 unidades. Ref.: Deca. (DET PR005; Tab. R01)"
+  "descricao": "Torneira de parede com arejador para cozinha, cromada, linha Link, cód. 1159.C.LNK, 2 unidades. Ref.: Deca. (DET PR005; Tab. R01)",
+  "arquivo": "CDJ-WEB-56_1159.C.LNK.jpg",
+  "asset_id": "cbd17cb777c61c2fda895a1e45c2867e"
  },
  {
   "n": 57,
@@ -991,7 +1101,9 @@
   "celulas": [
    "APTO TIPO!R20"
   ],
-  "descricao": "Acabamento para registro de gaveta 1 1/4\" e 1 1/2\", cromado, Link, cód. 4900.C.GD.LNK. Ref.: Deca. (DET PR005)"
+  "descricao": "Acabamento para registro de gaveta 1 1/4\" e 1 1/2\", cromado, Link, cód. 4900.C.GD.LNK. Ref.: Deca. (DET PR005)",
+  "arquivo": "CDJ-WEB-57_4900.C.GD.LNK.jpg",
+  "asset_id": "c85adfc88407c7ea71f427b5617b18db"
  },
  {
   "n": 58,
@@ -1006,7 +1118,9 @@
   "celulas": [
    "APTO TIPO!H21"
   ],
-  "descricao": "Revestimento Forma Branco AC retificado 32,5x59cm. Ref.: Eliane. (DET PR007; Tab. R01)"
+  "descricao": "Revestimento Forma Branco AC retificado 32,5x59cm. Ref.: Eliane. (DET PR007; Tab. R01)",
+  "arquivo": "CDJ-WEB-58_ELIANE-REVESTIMENTO.jpg",
+  "asset_id": "0434672bbbb75eaf9cf873dc7305a3d1"
  },
  {
   "n": 59,
@@ -1021,7 +1135,9 @@
   "celulas": [
    "APTO TIPO!L21"
   ],
-  "descricao": "Cuba redonda de embutir 31cm branca, linha L, cód. L.41.17. Ref.: Deca. (DET PR007; Tab. R01)"
+  "descricao": "Cuba redonda de embutir 31cm branca, linha L, cód. L.41.17. Ref.: Deca. (DET PR007; Tab. R01)",
+  "arquivo": "CDJ-WEB-59_L.41.17.jpg",
+  "asset_id": "c6afd1f91ee587a21c46c5007f0b2bd4"
  },
  {
   "n": 60,
@@ -1036,7 +1152,9 @@
   "celulas": [
    "APTO TIPO!O21"
   ],
-  "descricao": "Torneira de mesa bica baixa para lavatório, cromada, linha Link, cód. 1197.C.LNK. Ref.: Deca. (DET PR007; Tab. R01)"
+  "descricao": "Torneira de mesa bica baixa para lavatório, cromada, linha Link, cód. 1197.C.LNK. Ref.: Deca. (DET PR007; Tab. R01)",
+  "arquivo": "CDJ-WEB-60_1197.C.LNK.jpg",
+  "asset_id": "8601b11a1db04ce40c7a53416008e6fc"
  },
  {
   "n": 61,
@@ -1051,7 +1169,9 @@
   "celulas": [
    "APTO TIPO!P21"
   ],
-  "descricao": "Bacia com caixa acoplada branca, linha Axis, cód. KP.470.17. Ref.: Deca. (DET PR007; Tab. R01)"
+  "descricao": "Bacia com caixa acoplada branca, linha Axis, cód. KP.470.17. Ref.: Deca. (DET PR007; Tab. R01)",
+  "arquivo": "CDJ-WEB-61_KP.470.17.jpg",
+  "asset_id": "9dba7e5ad11a1f04c0ac97aef67542c9"
  },
  {
   "n": 62,
@@ -1066,7 +1186,9 @@
   "celulas": [
    "APTO TIPO!Q21"
   ],
-  "descricao": "Ducha higiênica com registro e derivação, cromada, linha Link, cód. 1984.C.ACT.LNK.BR. Ref.: Deca. (DET PR007)"
+  "descricao": "Ducha higiênica com registro e derivação, cromada, linha Link, cód. 1984.C.ACT.LNK.BR. Ref.: Deca. (DET PR007)",
+  "arquivo": "CDJ-WEB-62_1984.C.ACT.LNK.BR.jpg",
+  "asset_id": "1dff7e83952c1972e0aaf76d9d97ec28"
  },
  {
   "n": 63,
@@ -1081,7 +1203,9 @@
   "celulas": [
    "APTO TIPO!R21"
   ],
-  "descricao": "Acabamento para registro de gaveta e pressão até 1\", cromado, Link, cód. 4900.C.PQ.LNK. Ref.: Deca. (DET PR007; Tab. R01)"
+  "descricao": "Acabamento para registro de gaveta e pressão até 1\", cromado, Link, cód. 4900.C.PQ.LNK. Ref.: Deca. (DET PR007; Tab. R01)",
+  "arquivo": "CDJ-WEB-63_4900.C.PQ.LNK.jpg",
+  "asset_id": "3546660d6af6fc7cc82be66bd2ec62be"
  },
  {
   "n": 64,
@@ -1096,7 +1220,9 @@
   "celulas": [
    "APTO TIPO!B22"
   ],
-  "descricao": "Piso vinílico Austin, linha Urban, 18x121cm. Ref.: Durafloor. (DET PR001; Tab. R01)"
+  "descricao": "Piso vinílico Austin, linha Urban, 18x121cm. Ref.: Durafloor. (DET PR001; Tab. R01)",
+  "arquivo": "CDJ-WEB-64_URBAN.jpg",
+  "asset_id": "0ee5148c0cd79e8b2548d234e7b9a9c3"
  },
  {
   "n": 65,
@@ -1111,6 +1237,8 @@
   "celulas": [
    "APTO TIPO!F22"
   ],
-  "descricao": "Rodapé Easy Y.01 120. Ref.: Durafloor. (DET PR001; Tab. R01)"
+  "descricao": "Rodapé Easy Y.01 120. Ref.: Durafloor. (DET PR001; Tab. R01)",
+  "arquivo": "CDJ-WEB-65_DURAFLOOR-RODAPE.jpg",
+  "asset_id": "5826e46f4c7bca70b97e63753bd54977"
  }
 ]
