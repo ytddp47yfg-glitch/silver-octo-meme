@@ -22,6 +22,9 @@ Q21 = ('ARQ-P21 - Piso em granito marrom absoluto serrado e envernizado, ou pedr
 PREENCHER = [  # (aba, ambiente, coluna, texto)
  ('TÉRREO ', 'RAMPA ACESSO PEDESTRES', 'B', Q21 + ' (Planta PR003: plano inclinado - pedestres (social), i=4,99%)'),
  ('PILOTIS', 'VARANDA', 'B', Q08 + ' (Plantas PR011 e PR012)'),
+ # usuária (2026-10-02): lançar as circulações externas como dois ambientes
+ ('PILOTIS', 'CIRCULAÇÃO JARDINS', 'B', Q08 + ' (Plantas PR011 e PR013: circulações externas junto aos jardins)'),
+ ('PILOTIS', 'CIRCULAÇÃO PLAYGROUND', 'B', Q08 + ' (Planta PR013: circulação junto ao playground)'),
 ]
 NOVAS = [  # linhas novas no fim da aba
  ('TÉRREO ', 'PLANO INCLINADO - PEDESTRES (SERVIÇO)', 'B', Q07 + ' (Planta PR003, i=3,83%)'),
@@ -31,7 +34,7 @@ NOTAS = [
  ('Conferência visual', 'Todos os ambientes das plantas PR003, PR004, PR005, PR007, PR008, PR009, PR011, PR012 e PR013 foram conferidos no desenho, etiqueta por etiqueta. Os ambientes já lançados estão de acordo com as plantas. Lista completa: levantamento/arquitetura/conferencia_etiquetas_arquitetura.csv.'),
  ('PR008 e PR012', 'São o trecho 2 do 2º pavimento e do Pilotis (não revisões antigas, como estava anotado). PR008 só traz a rampa (○04 △07 □03, igual à PR009). PR012 traz a varanda (○08); piscinas, prainha e deck sem etiqueta.'),
  ('PILOTIS – VARANDA', 'Planta indica só piso ○08 (ARQ-P08), lançado na grade. Detalhamento R04 sem especificação.'),
- ('PILOTIS – CIRCULAÇÕES EXTERNAS', 'As circulações de 40,36 m² (PR011), 59,22 m² e 83,52 m² (PR013) têm só piso ○08 (ARQ-P08), a mesma especificação já lançada em "CIRCULAÇÃO EXTERNA COBERTA/DESCOBERTA E VARANDA ESPAÇO KIDS". Não foi possível ligar cada uma às linhas "CIRCULAÇÃO JARDINS" e "CIRCULAÇÃO PLAYGROUND" pelo nome; confirmar.'),
+ ('PILOTIS – CIRCULAÇÕES EXTERNAS', 'As circulações de 40,36 m² (PR011), 59,22 m² e 83,52 m² (PR013) têm só piso ○08 (ARQ-P08), a mesma especificação já lançada em "CIRCULAÇÃO EXTERNA COBERTA/DESCOBERTA E VARANDA ESPAÇO KIDS". Lançadas como dois ambientes, "CIRCULAÇÃO JARDINS" e "CIRCULAÇÃO PLAYGROUND", conforme orientação de 02/10/2026.'),
  ('TÉRREO – PLANOS INCLINADOS', 'Plano inclinado de pedestres (social) com ○21, lançado em RAMPA ACESSO PEDESTRES. Plano inclinado de pedestres (serviço) e de veículos com ○07, em linhas novas.'),
  ('TÉRREO – MUROS', 'Triângulo △04 isolado em três pontos do muro junto ao jardim (PR003): parede em textura acrílica fosca Terra Fértil, Suvinil. Não é um ambiente da grade.'),
  ('Sem etiqueta na planta', 'Elevadores, escadas, I.S. P.C.D. e vestíbulo (Térreo), DML e jardinagem (Térreo), jardins sobre laje, piscinas, prainha, deck, playground, lounge quadras, saunas, apoio e DML do salão, lobby pilotis e circulações internas do Pilotis. Hall, lobby, antecâmara (eclusa), espaço kids, gourmet, salão, cozinha, I.S., termas, academia, bar e vestiários do Pilotis têm "ACABAMENTOS VER INTERIORES".'),
