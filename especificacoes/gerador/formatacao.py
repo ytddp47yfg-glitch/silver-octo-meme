@@ -14,7 +14,7 @@ import openpyxl
 from openpyxl.utils import get_column_letter as L
 from openpyxl.worksheet.dimensions import ColumnDimension
 from openpyxl.worksheet.pagebreak import Break, ColBreak
-from openpyxl.styles import Alignment
+from openpyxl.styles import Alignment, PatternFill
 
 P = sys.argv[1] if len(sys.argv) > 1 else 'especificacoes/CDJ-GRE-ARQ-AC-R00.xlsx'
 ABAS = ['TÉRREO ', '2° PAVTO', 'PILOTIS', 'APTO TIPO']
@@ -53,6 +53,10 @@ for nome in ABAS:
             x = ws.cell(r, c)
             f = copy.copy(x.font)
             f.name = 'Aptos Narrow'; f.sz = 12 if c == 1 else 11; f.b = (c == 1)
+            # primeira versão (R00): sem marcação de INFO. REVISADA (laranja); conflitos (vermelho) ficam
+            if x.fill is not None and x.fill.fill_type and x.fill.fgColor.type == 'theme' and x.fill.fgColor.theme == 5:
+                x.fill = PatternFill(fill_type=None)
+                f.color = None
             x.font = f
             x.alignment = Alignment(horizontal='center', vertical='center', wrap_text=True)
             if x.value not in (None, ''):
@@ -60,6 +64,12 @@ for nome in ABAS:
         ws.row_dimensions[r].height = min(409, max(MIN_H, n * LINHA + 14))
     # impressão
     ps = ws.page_setup
+    # linhas vazias abaixo dos dados: sem preenchimento laranja herdado
+    for r in range(last + 1, ws.max_row + 1):
+        for c in range(1, 33):
+            x = ws.cell(r, c)
+            if x.fill is not None and x.fill.fill_type and x.fill.fgColor.type == 'theme' and x.fill.fgColor.theme == 5:
+                x.fill = PatternFill(fill_type=None)
     # escala fixa: o "ajustar a N páginas" do Excel ignora as quebras manuais
     ps.paperSize = ws.PAPERSIZE_A3; ps.orientation = 'landscape'; ps.scale = ESCALA
     ps.fitToWidth = None; ps.fitToHeight = None
@@ -83,6 +93,9 @@ for ws in wb.worksheets[1:6]:
         for x in row:
             if x.value == '-' and not any(ws.cell(x.row, c).value not in (None, '', '-') for c in range(1, 33)):
                 print('limpo', ws.title, x.coordinate); x.value = None
+# planilha sem linhas de grade
+for ws in wb.worksheets:
+    ws.sheet_view.showGridLines = False
 # mesmo rodapé (Página X de Y) em todas as abas
 rod = copy.copy(wb['TÉRREO '].oddFooter.left)
 for ws in wb.worksheets:

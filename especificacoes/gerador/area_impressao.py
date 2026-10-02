@@ -19,6 +19,7 @@ CFG = {
     'PILOTIS': ('AF', 11, '$1:$11'),
     'APTO TIPO': ('AF', 11, '$1:$11'),
     'IMAGENS ESPECIFICAÇÕES ': ('U', 26, '$1:$11'),
+    'CONFLITOS': ('H', 4, '$1:$4'),
     'PENDÊNCIAS': ('E', 1, None),
 }
 
@@ -36,7 +37,7 @@ for i, ws in enumerate(wb.worksheets):
     ws.print_area = f'A1:{lc}{max(minr, ultima(ws, lc))}'
     if tit:
         ws.print_title_rows = tit
-    if not tit:  # abas simples: cabem em uma página de largura
+    if not tit or ws.title == 'CONFLITOS':  # abas simples: cabem em uma página de largura
         ws.sheet_properties.pageSetUpPr.fitToPage = True
         ws.page_setup.fitToWidth = 1
         ws.page_setup.fitToHeight = 0
