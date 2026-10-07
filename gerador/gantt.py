@@ -31,10 +31,14 @@ def avaliar(wb):
         if a and isinstance(l,(int,float)): lin[str(a).strip()]=(str(cv.cell(int(l),2).value),str(cv.cell(int(l),3).value))
     cods=[(str(cv.cell(r,2).value),str(cv.cell(r,3).value)) for r in range(4,cv.max_row+1) if cv.cell(r,2).value and cv.cell(r,3).value]
     q={str(vp.cell(r,3).value).strip():str(vp.cell(r,17).value).strip() for r in range(11,49) if vp.cell(r,3).value and vp.cell(r,17).value}
+    desc=dict(cods)
     sub={};nome={}
     for pl,pc in q.items():
-        if pc not in lin: continue
-        e,nm=lin[pc]; nome[pl]=(e,nm)
+        # EAP própria da PL (código do Prevision na coluna Q), mesmo que a curva siga outro item (coluna R / CP RESUMO)
+        if pc in desc: e,nm=pc,desc[pc]
+        elif pc in lin: e,nm=lin[pc]
+        else: continue
+        nome[pl]=(e,nm)
         sub[pl]=[(c,d) for c,d in cods if c==e or c.startswith(e+'.')]
     stems={pl:set(st(t) for c,d in v for t in toks(d)) for pl,v in sub.items()}
     pk={}
