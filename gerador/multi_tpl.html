@@ -278,7 +278,7 @@ html.printmode .pbreak{break-before:page;page-break-before:always}
 html.printmode .dz-card,html.printmode .fcard,html.printmode .dz-kpis,html.printmode .dz-head,html.printmode svg,html.printmode .grow{break-inside:avoid;page-break-inside:avoid}
 html.printmode h2{break-after:avoid}
 html.printmode .gz .gv span{position:static}
-#pdfbtn{font:12px Arial;padding:6px 10px;border-radius:6px;border:1px solid var(--grid);background:var(--panel);color:var(--fg);text-decoration:none;font-weight:700}
+#pdfbtn,#xlsbtn{font:12px Arial;padding:6px 10px;border-radius:6px;border:1px solid var(--grid);background:var(--panel);color:var(--fg);text-decoration:none;font-weight:700}
 </style>
 <style id="obracss"></style>
 <section id="home" aria-label="Escolha da obra"><div class="hin">
@@ -292,7 +292,7 @@ html.printmode .gz .gv span{position:static}
 <main id="main">
 <header><button id="menubtn" type="button" aria-label="Abrir lista de abas">☰ Abas</button><span id="curtab"></span>
 <div class="leg"><b style="color:var(--in)">azul = entrada</b><b style="color:var(--link)">verde = vínculo</b><b>preto = fórmula</b><b>cinza = mês realizado</b></div>
-<button id="gridbtn" type="button" hidden>Ver como planilha</button><button id="presbtn" type="button">▶ Apresentar</button><a id="pdfbtn" href="#" download hidden title="Baixar os painéis deste cenário em PDF">⬇ PDF</a><div id="cell">Toque/clique numa célula para ver a fórmula</div></header>
+<button id="gridbtn" type="button" hidden>Ver como planilha</button><button id="presbtn" type="button">▶ Apresentar</button><a id="xlsbtn" href="#" download hidden title="Baixar a planilha Excel completa deste cenário">⬇ Excel</a><a id="pdfbtn" href="#" download hidden title="Baixar os painéis deste cenário em PDF">⬇ PDF</a><div id="cell">Toque/clique numa célula para ver a fórmula</div></header>
 <div id="note" class="note" hidden></div>
 <div id="wrap"></div>
 </main></div>
@@ -614,15 +614,15 @@ function pstart(){document.body.classList.add('present');const cur=PAINEIS.index
   try{document.documentElement.requestFullscreen?.().catch(()=>{})}catch(e){}}
 function pstop(){document.body.classList.remove('present');try{if(document.fullscreenElement)document.exitFullscreen().catch(()=>{})}catch(e){}}
 document.getElementById('presbtn').onclick=pstart;
-// ⬇ PDF: no claude.ai o arquivo é entregue pelo recurso 'downloads' (o visualizador bloqueia links de download); fora dele, link comum
-document.getElementById('pdfbtn').addEventListener('click',async e=>{
+// ⬇ PDF / ⬇ Excel: no claude.ai o arquivo é entregue pelo recurso 'downloads' (o visualizador bloqueia links de download); fora dele, link comum
+['pdfbtn','xlsbtn'].forEach(bid=>document.getElementById(bid).addEventListener('click',async e=>{
   const a=e.currentTarget;let dl=null;try{dl=window.claude&&claude.use?await claude.use('downloads'):null}catch(_){dl=null}
   if(!dl)return;   // sem o recurso: segue o link normal
-  e.preventDefault();if(a.dataset.busy)return;a.dataset.busy='1';const t=a.textContent;a.textContent='⏳ PDF…';
+  e.preventDefault();if(a.dataset.busy)return;a.dataset.busy='1';const t=a.textContent;const tipo=bid==='xlsbtn'?'Excel':'PDF';a.textContent='⏳ '+tipo+'…';
   try{const r=await fetch(a.getAttribute('href'));if(!r.ok)throw new Error(r.status);
     await dl.save({filename:a.getAttribute('download'),data:await r.blob()})}
-  catch(err){if(!err||!['declined','rate_limited'].includes(err.code))alert('Não foi possível baixar o PDF'+(err&&err.code?` (${err.code})`:'')+'.')}
-  finally{a.textContent=t;delete a.dataset.busy}});document.getElementById('pexit').onclick=pstop;
+  catch(err){if(!err||!['declined','rate_limited'].includes(err.code))alert('Não foi possível baixar o '+tipo+(err&&err.code?` (${err.code})`:'')+'.')}
+  finally{a.textContent=t;delete a.dataset.busy}}));document.getElementById('pexit').onclick=pstop;
 document.getElementById('pprev').onclick=()=>pshow(pi-1);document.getElementById('pnext').onclick=()=>pshow(pi+1);
 document.addEventListener('keydown',e=>{if(!document.body.classList.contains('present'))return;
   if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();pshow(pi+1)}else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();pshow(pi-1)}else if(e.key==='Escape')pstop()});
@@ -659,7 +659,8 @@ async function openObra(id){
   try{if(!cache[id]){const r=await fetch(`obras/${id}.json`);if(!r.ok)throw new Error(r.status);cache[id]=await r.json()}}
   catch(e){loading.hidden=true;alertBox(`Não foi possível carregar os dados da obra ${o.nome} (${e.message}). Tente recarregar a página.`);return}
   const j=cache[id];OBRA=o;D=j.D;DASH=j.DASH;RET=j.RET;FIS=j.FIS||null;GANTT=j.GANTT||null;gOpen.clear();gQ='';gSL=null;gST=0;PAINEIS=[...PAINEIS0,...EXTRA()];document.getElementById('obracss').textContent=j.css;gridMode=false;
-  {const pb=document.getElementById('pdfbtn');pb.href=`pdf/${id}.pdf`;pb.setAttribute('download',('Paineis '+o.nome+' '+(o.cen||'')).normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^A-Za-z0-9]+/g,'_').replace(/_+$/,'')+'.pdf');pb.hidden=!o.pdf}
+  {const pb=document.getElementById('pdfbtn');pb.href=`pdf/${id}.pdf`;pb.setAttribute('download',('Paineis '+o.nome+' '+(o.cen||'')).normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^A-Za-z0-9]+/g,'_').replace(/_+$/,'')+'.pdf');pb.hidden=!o.pdf;
+   const xb=document.getElementById('xlsbtn');xb.href=`xlsx/${id}.xlsx`;xb.setAttribute('download',('Fluxo de caixa '+o.nome+' '+(o.cen||'')).normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^A-Za-z0-9]+/g,'_').replace(/_+$/,'')+'.xlsx');xb.hidden=!o.xlsx}
   buildSide();home.hidden=true;app.hidden=false;loading.hidden=true;document.title='Fluxo de Caixa · '+o.nome+(o.cen?' · '+o.cen:'');
   let start='DASHBOARD';try{const a=localStorage.getItem('aba:'+id);if(a&&(D.find(x=>x.name===a)||EXTRA().includes(a)))start=a}catch(e){}
   show(start);
