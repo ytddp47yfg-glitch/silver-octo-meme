@@ -230,6 +230,36 @@ body.present .pnav{display:flex}
 .fz td:first-child{white-space:normal;min-width:170px}.fz tr.hl td{background:var(--d-hl);font-weight:700}
 .fz th .sw{display:inline-block;width:10px;height:3px;margin-right:5px;vertical-align:middle}
 .fz .pad{padding:14px 18px}
+/* ESQUEMÁTICO (corte por pavimento × PL) */
+.ez{--e-ok:#1f7a52;--e-okt:#fff;--e-and:#c0a062;--e-and2:#e8d9b0;--e-nao:#d9d4c7;--e-sem:#f6f4ee;--e-roof:#1c3b2a;--e-ground:#b9b3a5}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .ez{--e-ok:#2f9a6a;--e-okt:#fff;--e-and:#b8944f;--e-and2:#5e5236;--e-nao:#3a4047;--e-sem:#1f262d;--e-roof:#7fb79a;--e-ground:#4a4f55}}
+:root[data-theme="dark"] .ez{--e-ok:#2f9a6a;--e-okt:#fff;--e-and:#b8944f;--e-and2:#5e5236;--e-nao:#3a4047;--e-sem:#1f262d;--e-roof:#7fb79a;--e-ground:#4a4f55}
+.ez .eleg{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--d-ink2);margin:0 0 12px}
+.ez .eleg span{display:inline-flex;align-items:center;gap:6px}.ez .eleg i{width:14px;height:14px;border-radius:2px;border:1px solid var(--d-line)}
+.ez .eq{display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start}
+.ez .ecard{background:var(--d-card);border:1px solid var(--d-line);border-radius:6px;padding:12px 14px 10px;max-width:100%;overflow-x:auto;flex:0 0 auto;break-inside:avoid}
+.ez .etab th,.ez .etab td{background:none;border:0;box-shadow:none}
+.ez .ecard h2{margin:0 0 2px;font-size:13px;color:var(--d-navy);text-transform:none;letter-spacing:0}
+.ez .ecard .sub{font-size:11.5px;color:var(--d-mut);margin:0 0 8px}
+.ez .ecard .kp{display:flex;gap:14px;font-size:12px;color:var(--d-ink2);margin:0 0 8px;flex-wrap:wrap}.ez .ecard .kp b{color:var(--d-ink);font-size:14px}
+.ez table.etab{border-collapse:separate;border-spacing:1px;font-size:9px;margin:0 auto}
+.ez .etab th.pl{height:104px;width:19px;padding:0 0 3px;vertical-align:bottom;font-weight:700;color:var(--d-navy);font-size:9px}
+.ez .etab th.pl span{writing-mode:vertical-rl;transform:rotate(180deg);white-space:nowrap;display:inline-block}
+.ez .etab th.lb{text-align:right;font-weight:400;color:var(--d-ink2);padding:0 6px 0 0;white-space:nowrap;font-size:10px}
+.ez .etab th.lb.b{font-weight:700;color:var(--d-ink)}
+.ez .etab td.c{width:19px;height:16px;text-align:center;padding:0;color:#3c3a33;background:var(--e-sem);border-radius:1px;cursor:default}
+.ez .etab td.ok{background:var(--e-ok);color:var(--e-okt)}.ez .etab td.a1{background:var(--e-and)}.ez .etab td.a2{background:var(--e-and2)}
+.ez .etab td.nao{background:var(--e-nao);color:transparent}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .ez .etab td.a2{color:#efe6cf}}
+:root[data-theme="dark"] .ez .etab td.a2{color:#efe6cf}
+.ez .etab td.fa{width:22px;font-weight:700;font-size:10px}.ez .etab td.fa span{writing-mode:vertical-rl;transform:rotate(180deg)}
+.ez .etab td.pv{width:74px;padding:0 0 0 6px}.ez .etab td.pv div{position:relative;height:12px;background:var(--d-line);border-radius:2px;overflow:hidden}
+.ez .etab td.pv i{position:absolute;inset:0 auto 0 0;background:var(--e-ok);opacity:.55}.ez .etab td.pv span{position:relative;font-size:9.5px;font-weight:700;color:var(--d-ink);padding-left:4px;line-height:12px}
+.ez .etab tr.roof td{height:4px;background:var(--e-roof);padding:0}
+.ez .etab tr.inf td.c{height:20px;font-weight:700;font-size:10px;width:auto}
+.ez .etab tr.gr td{height:6px;padding:0;background:repeating-linear-gradient(135deg,var(--e-ground) 0 2px,transparent 2px 5px)}
+.ez .etab tr.tot td{font-weight:700;color:var(--d-navy);text-align:center;padding-top:6px;font-size:9.5px}
+.ez .note{font-size:11.5px;color:var(--d-mut);margin:12px 0 0;line-height:1.5}
 /* GANTT (cronograma do Prevision) */
 .gz{--g-pl:#1f4e78;--g-bar:#bcd3ee;--g-bar2:#d9e6f5;--g-real:#2a78d6;--g-late:#d9480f;--g-ok:#2e7d32;--g-inf:#8e44ad;--g-infb:#e3d0ee;--g-inft:#6d2f8a}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .gz{--g-pl:#7fb2e5;--g-bar:#2c4a6b;--g-bar2:#243546;--g-real:#4c9bf0;--g-late:#ff8a50;--g-ok:#6fcf7a;--g-inf:#c38be0;--g-infb:#4a3358;--g-inft:#d7a9ee}}
@@ -352,6 +382,25 @@ function renderFis(){
   const hit=svg.querySelector('.fhit');
   hit.addEventListener('pointermove',e=>{const r=svg.getBoundingClientRect(),sx=(e.clientX-r.left)*C.W/r.width;at(Math.max(0,Math.min(C.n-1,Math.round((sx-C.L)/C.pw*(C.n-1)))),e.clientX,e.clientY)});
   hit.addEventListener('pointerleave',()=>{tip.hidden=true;fx.setAttribute('opacity','0')});
+  wrap.scrollTo(0,0);
+}
+let ESQ=null;
+function renderEsq(){
+  const E=ESQ,cls=v=>v==null?'':v>=99.95?'ok':v>=50?'a1':v>0.05?'a2':'nao',f0=v=>v==null?'':Math.round(v);
+  const pavB=E.pavs.map(p=>/TÉRREO|BARRILETE/.test(p));
+  const quad=q=>{const n=E.pls.length;
+    const head=`<tr><th class="lb"></th>${E.pls.map(p=>`<th class="pl"><span>${esc(p)}</span></th>`).join('')}<th class="pl"><span>FACHADA</span></th><th class="lb" style="text-align:left;vertical-align:bottom;padding-left:6px">Pavimento</th></tr>`;
+    const body=E.pavs.map((p,i)=>`<tr><th class="lb${pavB[i]?' b':''}">${esc(p)}</th>${q.v[i].map((v,j)=>`<td class="c ${cls(v)}" title="${esc(p)} · ${esc(E.pls[j])}: ${v==null?'sem atividade':f0(v)+'%'}">${f0(v)}</td>`).join('')}${i===0?`<td class="c fa ${cls(q.fach)}" rowspan="${E.pavs.length}" title="Fachada: ${f0(q.fach)}%"><span>${q.fach==null?'':f0(q.fach)+'%'}</span></td>`:''}<td class="pv"><div><i style="width:${q.pav[i]||0}%"></i><span>${q.pav[i]==null?'':f0(q.pav[i])+'%'}</span></div></td></tr>`).join('');
+    return `<div class="ecard"><h2>${esc(q.t)}</h2><div class="kp"><span>Pavimentos <b>${f0(q.geral)}%</b></span><span>Infraestrutura <b>${f0(q.infra)}%</b></span><span>Fachada <b>${f0(q.fach)}%</b></span></div>
+     <table class="etab"><thead>${head}</thead><tbody><tr class="roof"><td></td><td colspan="${n+1}"></td><td style="background:none"></td></tr>${body}
+     <tr class="inf"><th class="lb">Infraestrutura</th><td class="c ${cls(q.infra)}" colspan="${n+1}">Contenção, terraplenagem e fundações: ${f0(q.infra)}%</td><td></td></tr>
+     <tr class="gr"><td colspan="${n+3}"></td></tr>
+     <tr class="tot"><th class="lb b">% da PL</th>${q.tot.map(v=>`<td>${f0(v)}</td>`).join('')}<td></td><td style="text-align:left;padding-left:6px">${f0(q.geral)}%</td></tr></tbody></table></div>`};
+  wrap.innerHTML=`<div class="dz ez">
+   <div class="dz-head"><div><h1>${esc(OBRA.nome)} · Esquemático de avanço por pavimento</h1><p>Corte ilustrativo (sem escala): cada célula é o avanço da PL no pavimento, pelas atividades do cronograma do Prevision · passe o mouse numa célula para ver o detalhe</p></div></div>
+   <div class="eleg"><span><i style="background:var(--e-ok)"></i>Concluído</span><span><i style="background:var(--e-and)"></i>Em andamento (50% a 99%)</span><span><i style="background:var(--e-and2)"></i>Em andamento (1% a 49%)</span><span><i style="background:var(--e-nao)"></i>A executar</span><span><i style="background:var(--e-sem)"></i>Sem atividade da PL no pavimento</span></div>
+   <div class="eq">${E.q.map(quad).join('')}</div>
+   <p class="note">${esc(E.nota||'')}</p></div>`;
   wrap.scrollTo(0,0);
 }
 let GANTT=null,gOpen=new Set(),gPx=22,gQ='',gSL=null,gST=0;
@@ -557,6 +606,7 @@ const sel={value:''};
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 function show(name){
   if(name==='GANTT'&&GANTT){gridbtn.hidden=true;markOn(name);sel.value='';note.hidden=true;renderGantt();try{localStorage.setItem('aba:'+(OBRA&&OBRA.id),name)}catch(e){};return}
+  if(name==='ESQUEMÁTICO'&&ESQ){gridbtn.hidden=true;markOn(name);sel.value='';note.hidden=true;renderEsq();try{localStorage.setItem('aba:'+(OBRA&&OBRA.id),name)}catch(e){};return}
   if(name==='CURVA FÍSICA'&&FIS){gridbtn.hidden=true;markOn(name);sel.value='';note.hidden=true;renderFis();try{localStorage.setItem('aba:'+(OBRA&&OBRA.id),name)}catch(e){};return}
   const s=D.find(x=>x.name===name); if(!s) return;
   const isD=name==='DASHBOARD'&&DASH;gridbtn.hidden=!isD;gridbtn.textContent=gridMode?'Ver como painel':'Ver como planilha';
@@ -582,7 +632,7 @@ wrap.addEventListener('click',e=>{const td=e.target.closest('td[data-a]');if(!td
   wrap.querySelectorAll('.sel').forEach(x=>x.classList.remove('sel'));td.classList.add('sel');
   cell.textContent=td.dataset.a+'  '+(td.dataset.f||td.textContent||'(vazia)')});
 const PAINEIS0=["DASHBOARD","RETRATO 2027"];let PAINEIS=PAINEIS0.slice();
-const EXTRA=()=>[...(FIS?['CURVA FÍSICA']:[]),...(GANTT?['GANTT']:[])];
+const EXTRA=()=>[...(FIS?['CURVA FÍSICA']:[]),...(GANTT?['GANTT']:[]),...(ESQ?['ESQUEMÁTICO']:[])];
 const GRUPOS=[["Entradas de dados",["VALOR POR PL","\"INCC-FGV\"","DADOS BRUTOS","CURVA PREVISION","CRONOGRAMA ATIVIDADES"]],
  ["Cálculos",["MODELO PARA BI","AUX. CURVA","CP RESUMO","DADOS HISTORICOS"]]];
 let DISC=[],det=null;
@@ -603,7 +653,7 @@ function buildSide(){
   det.querySelector('#dfilt').addEventListener('input',e=>{const q=e.target.value.toLowerCase();det.querySelectorAll('button').forEach(b=>b.hidden=q&&!b.dataset.n.toLowerCase().includes(q))});
   side.appendChild(grupo('Ajuda',["LEIA-ME"]));
 }
-function markOn(name){document.body.classList.toggle('panel',((name==='DASHBOARD'&&DASH)||(name==='RETRATO 2027'&&RET)||(name==='CURVA FÍSICA'&&FIS)||(name==='GANTT'&&GANTT))&&!gridMode);side.querySelectorAll('button[data-n]').forEach(b=>b.classList.toggle('on',b.dataset.n===name));
+function markOn(name){document.body.classList.toggle('panel',((name==='DASHBOARD'&&DASH)||(name==='RETRATO 2027'&&RET)||(name==='CURVA FÍSICA'&&FIS)||(name==='GANTT'&&GANTT)||(name==='ESQUEMÁTICO'&&ESQ))&&!gridMode);side.querySelectorAll('button[data-n]').forEach(b=>b.classList.toggle('on',b.dataset.n===name));
   curtab.textContent=name.trim();if(det&&DISC.includes(name))det.open=true}
 const gridbtn=document.getElementById('gridbtn');gridbtn.onclick=()=>{gridMode=!gridMode;show(side.querySelector('button.on')?.dataset.n||'DASHBOARD')};
 document.getElementById('menubtn').onclick=()=>document.body.classList.toggle('menu');
@@ -662,7 +712,7 @@ async function openObra(id){
   loading.hidden=false;
   try{if(!cache[id]){const r=await fetch(`obras/${id}.json`);if(!r.ok)throw new Error(r.status);cache[id]=await r.json()}}
   catch(e){loading.hidden=true;alertBox(`Não foi possível carregar os dados da obra ${o.nome} (${e.message}). Tente recarregar a página.`);return}
-  const j=cache[id];OBRA=o;D=j.D;DASH=j.DASH;RET=j.RET;FIS=j.FIS||null;GANTT=j.GANTT||null;gOpen.clear();gQ='';gSL=null;gST=0;PAINEIS=[...PAINEIS0,...EXTRA()];document.getElementById('obracss').textContent=j.css;gridMode=false;
+  const j=cache[id];OBRA=o;D=j.D;DASH=j.DASH;RET=j.RET;FIS=j.FIS||null;GANTT=j.GANTT||null;ESQ=j.ESQ||null;gOpen.clear();gQ='';gSL=null;gST=0;PAINEIS=[...PAINEIS0,...EXTRA()];document.getElementById('obracss').textContent=j.css;gridMode=false;
   {const pb=document.getElementById('pdfbtn');pb.href=`pdf/${id}.pdf`;pb.setAttribute('download',('Paineis '+o.nome+' '+(o.cen||'')).normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^A-Za-z0-9]+/g,'_').replace(/_+$/,'')+'.pdf');pb.hidden=!o.pdf;
    const xb=document.getElementById('xlsbtn');xb.href=`xlsx/${id}.xlsx`;xb.setAttribute('download',('Fluxo de caixa '+o.nome+' '+(o.cen||'')).normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^A-Za-z0-9]+/g,'_').replace(/_+$/,'')+'.xlsx');xb.hidden=!o.xlsx}
   buildSide();home.hidden=true;app.hidden=false;loading.hidden=true;document.title='Fluxo de Caixa · '+o.nome+(o.cen?' · '+o.cen:'');

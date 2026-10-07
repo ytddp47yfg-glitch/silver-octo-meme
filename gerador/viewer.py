@@ -43,7 +43,7 @@ def sid(fc):
            color(fill.fgColor) if fill and fill.fill_type == 'solid' else None)
     if key not in styles: styles[key] = len(styles)
     return styles[key]
-SKIP = {'Tabela', 'PREMISSAS'}
+SKIP = {'Tabela', 'PREMISSAS', 'ESQUEMÁTICO'}   # ESQUEMÁTICO: painel próprio (VW_ESQ); a aba tem 6 mil linhas auxiliares
 LIMIT = {'CURVA PREVISION': (60, 30), 'DADOS BRUTOS': (60, 90), 'CRONOGRAMA ATIVIDADES': (120, 27)}
 out = []
 for ws in Fw.worksheets:
@@ -122,7 +122,9 @@ if JSON_MODE:
     dd = dash_data(); rr = ret_data()
     fis = json.load(open(os.environ['VW_FIS'])) if os.environ.get('VW_FIS') else None   # painel CURVA FÍSICA (gerador/fisico.py)
     gan = json.load(open(os.environ['VW_GANTT'])) if os.environ.get('VW_GANTT') else None   # painel GANTT (gerador/gantt.py)
-    obra = json.dumps(dict(css='\n'.join(css), D=out, DASH=dd, RET=rr, **({'FIS': fis} if fis else {}), **({'GANTT': gan} if gan else {})), ensure_ascii=False, default=str, separators=(',', ':'))
+    esq = json.load(open(os.environ['VW_ESQ'])) if os.environ.get('VW_ESQ') else None   # painel ESQUEMÁTICO (gerador/esquematico.py --json)
+    obra = json.dumps(dict(css='\n'.join(css), D=out, DASH=dd, RET=rr, **({'FIS': fis} if fis else {}), **({'GANTT': gan} if gan else {}),
+                           **({'ESQ': esq} if esq else {})), ensure_ascii=False, default=str, separators=(',', ':'))
     open(OUTF, 'w').write(obra)
     card = dict(nome=os.environ.get('VW_NOME', 'Obra'), id=os.environ.get('VW_ID', 'obra'), corte=dd['corte'], ano=dd['ano'], proj=dd['proj'],
                 real=dd['real'], preal=dd['preal'], ano_v=dd['ano_v'], saldo=dd['saldo'], conf=dd['conf'],

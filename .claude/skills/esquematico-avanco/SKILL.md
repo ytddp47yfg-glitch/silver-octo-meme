@@ -48,6 +48,12 @@ pasta com openpyxl e perde detalhes de gráficos, então prefira o build. Depois
    - o último pavimento concretado bate com o cronograma;
    - a faixa de infraestrutura e a de fachada fazem sentido.
 
+## Painel no site
+
+`python3 gerador/esquematico.py --json <planilha_calc.xlsx> esq.json` e gere o JSON do cenário com `VW_ESQ=esq.json`
+no `viewer.py`: aparece o painel ESQUEMÁTICO (os mesmos quadros, com detalhe ao passar o mouse) e ele entra no PDF.
+Depois publique com a rotina de conferência do `CLAUDE.md`.
+
 ## O que a aba mostra
 
 | Elemento | Regra |

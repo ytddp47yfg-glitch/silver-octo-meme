@@ -45,6 +45,13 @@ Corte ilustrativo do prédio, pavimento × PL, colorido pela situação (conclu�
 cronograma e a previsão para uma data digitável (padrão = data do RETRATO). Só fórmulas sobre a aba CRONOGRAMA ATIVIDADES.
 No build: `ESQ=1` no ambiente de `build_modelo.py` (chama `gerador/esquematico.py`). Detalhes e ajustes na skill
 `.claude/skills/esquematico-avanco/SKILL.md`.
+Painel no site: `python3 gerador/esquematico.py --json planilha_calc.xlsx esq.json` e `VW_ESQ=esq.json` no `viewer.py`
+(a aba em si fica fora da exportação de abas do site, porque tem 6 mil linhas auxiliares).
+
+## Publicação conferida
+
+Depois de regenerar o site, siga a rotina do `CLAUDE.md` (raiz): `gerador/conferir_publicacao.py preparar` → publicar os lotes →
+reler da página publicada → `conferir_publicacao.py conferir <pasta>`. O estado confirmado no ar fica em `site/.publicado.json`.
 
 ## PDF dos painéis
 

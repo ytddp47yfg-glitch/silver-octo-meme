@@ -13,6 +13,7 @@ o pacote/lote não tem tarefas). Base: só pavimentos numerados (coluna N); infr
 
 Uso como módulo (build da ferramenta): import esquematico; esquematico.esquematico(wb, "ED JARDIM")
 Uso avulso: python3 esquematico.py ferramenta.xlsx saida.xlsx   (relê e grava a pasta com openpyxl; prefira o build)
+Painel do site: python3 esquematico.py --json planilha_calc.xlsx esq.json  →  VW_ESQ=esq.json no viewer.py
 """
 import re, sys, unicodedata
 from collections import Counter, defaultdict
@@ -266,7 +267,40 @@ def esquematico(wb, obra, marcos=None):
     return dict(pls=pls, pavs=pavs, infra=infra, fachada=fach)
 
 
+def dados_painel(arq):
+    """Lê a aba ESQUEMÁTICO de uma planilha já recalculada e devolve o JSON do painel do site (VW_ESQ do viewer.py)."""
+    from openpyxl import load_workbook
+    ws = load_workbook(arq, data_only=True)["ESQUEMÁTICO"]
+    num = lambda v: round(float(v), 1) if isinstance(v, (int, float)) else None
+    rows = [r for r in range(12, ws.max_row + 1) if isinstance(ws.cell(r, 1).value, (int, float))]
+    rp0, rpn = rows[0], rows[-1]
+    rinf, rtot = rpn + 1, rpn + 4
+    tit = [c for c in range(2, ws.max_column + 1) if isinstance(ws.cell(9, c).value, str) and ws.cell(9, c).value.strip()]
+    quadros = []
+    for lb in tit:
+        b = lb + 1; fa = b
+        while ws.cell(10, fa).value != "FACHADA": fa += 1
+        ge = fa + 1
+        quadros.append(dict(t=ws.cell(9, lb).value,
+                            v=[[num(ws.cell(r, b + j).value) for j in range(fa - b)] for r in rows],
+                            fach=num(ws.cell(rp0, fa).value), infra=num(ws.cell(rinf, ge).value),
+                            pav=[num(ws.cell(r, ge).value) for r in rows],
+                            tot=[num(ws.cell(rtot, b + j).value) for j in range(fa - b)], geral=num(ws.cell(rtot, ge).value)))
+    b0 = tit[0] + 1
+    pls = []
+    c = b0
+    while ws.cell(10, c).value != "FACHADA": pls.append(ws.cell(10, c).value); c += 1
+    datas = [ws.cell(r, 3).value for r in range(5, 5 + len(quadros))]
+    return dict(pls=pls, pavs=[ws.cell(r, 2).value for r in rows], q=quadros,
+                datas=[d.date().isoformat() if hasattr(d, "date") else str(d) for d in datas],
+                nota=next((ws.cell(r, 2).value for r in range(rtot + 1, rtot + 4) if ws.cell(r, 2).value), ""))
+
+
 if __name__ == "__main__":
+    if sys.argv[1] == "--json":   # python3 esquematico.py --json planilha_calc.xlsx saida.json
+        import json
+        d = dados_painel(sys.argv[2]); json.dump(d, open(sys.argv[3], "w"), ensure_ascii=False, separators=(",", ":"))
+        print(len(d["q"]), "quadros ·", len(d["pavs"]), "pavimentos ·", len(d["pls"]), "PLs ·", d["datas"]); sys.exit()
     from openpyxl import load_workbook
     wb = load_workbook(sys.argv[1])
     if "ESQUEMÁTICO" in wb.sheetnames: del wb["ESQUEMÁTICO"]

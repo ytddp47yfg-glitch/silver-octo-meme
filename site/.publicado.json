@@ -1,0 +1,146 @@
+{
+ "index_artifact.html": {
+  "sha": "de4dad69006353287e7dbd158bf19a1b3851f63109a81e360b169f30be99c42a",
+  "kb": 84
+ },
+ "obras/botanico.json": {
+  "sha": "6260cb0cdc03afe6990840f8183b0c9a6d7f0dc53cba7cba180d4e2bf33d464f",
+  "kb": 6967
+ },
+ "obras/botanico.json.card.json": {
+  "sha": "2e07468f70842df353f6ec0cbeaa97de149d3c14879b1b79b21c84d235e9359b",
+  "kb": 0
+ },
+ "pdf/botanico.pdf": {
+  "sha": "302e19e33d32bb08b09190e188d551fe58d40f6b1e8d149986611cbbc76e05da",
+  "kb": 443
+ },
+ "xlsx/botanico.xlsx.b64.txt": {
+  "sha": "4048005dcbcc605c9f9a23213beff1d428330557749d417ee3cdfc4cd4ad2dd0",
+  "kb": 2927
+ },
+ "obras/botanico-padrao.json": {
+  "sha": "709cff8f560d35735acfd30b0d9b254fb52030c9a5e2018adb988967996e0de7",
+  "kb": 6969
+ },
+ "obras/botanico-padrao.json.card.json": {
+  "sha": "4e0ceac762c5d63906876227e5f962ee85d3c4a5ee8bad210b20976841390e4a",
+  "kb": 0
+ },
+ "pdf/botanico-padrao.pdf": {
+  "sha": "66e78b3e7f60dfffed2bd32a05bd781b82e10eb2a3ee5eee4ba9509e7233fca6",
+  "kb": 443
+ },
+ "xlsx/botanico-padrao.xlsx.b64.txt": {
+  "sha": "493f05b57386366ebe4734d465a0585e39a89cca44fda6cbcef7d2c8668f302f",
+  "kb": 2931
+ },
+ "obras/ed-jardim.json": {
+  "sha": "b368d59122851b05507175f53dd51274885508bf7f00e04b9928d996eea1328e",
+  "kb": 5018
+ },
+ "obras/ed-jardim.json.card.json": {
+  "sha": "b1f440104a8725724d3203bd18fb307b6d046976885c0e13e8a2d6f8e3cae775",
+  "kb": 0
+ },
+ "pdf/ed-jardim.pdf": {
+  "sha": "63f6d44db43fca2178ba65cc3ae33b1ce5c0bc3c8f73ddace4740cddb0dde6a1",
+  "kb": 554
+ },
+ "xlsx/ed-jardim.xlsx.b64.txt": {
+  "sha": "70f43c685b88a3b7b51cf8fe72eb6dccdc6c7aa4ad334bd17a0d66c3125c05ee",
+  "kb": 2706
+ },
+ "obras/ed-jardim-ajustado.json": {
+  "sha": "e065343e79655d39c566f4eaf4a12bd2f8a0ee599ef811d2f1aeef0243b817f3",
+  "kb": 7479
+ },
+ "obras/ed-jardim-ajustado.json.card.json": {
+  "sha": "9e5fc37f99d9f7e7582cd75fb408287ff52533b79fc3483b26ffd58054822241",
+  "kb": 1
+ },
+ "pdf/ed-jardim-ajustado.pdf": {
+  "sha": "8a4911b2422e20e00ace67149244c49b2a15bd2ec16ead712f9e80304a1a06d6",
+  "kb": 824
+ },
+ "xlsx/ed-jardim-ajustado.xlsx.b64.txt": {
+  "sha": "802450959ab861abfce868e3b6916bad77e0a51c48e1a0b4f790aef1c564fdd8",
+  "kb": 3347
+ },
+ "obras/ed-jardim-padrao.json": {
+  "sha": "af2e90a793c0e8e36d7b132bd29e40172a2a6a4c2a21b5d80971c8f976479147",
+  "kb": 5689
+ },
+ "obras/ed-jardim-padrao.json.card.json": {
+  "sha": "cebc6936836f4a7bc602edf68466a2360d779aac4c454ad048bf0e06e24dc851",
+  "kb": 0
+ },
+ "pdf/ed-jardim-padrao.pdf": {
+  "sha": "f2ff1fed9f8671a9129a9dbd30596956b83dd5146c97204c88fc962168249af5",
+  "kb": 554
+ },
+ "xlsx/ed-jardim-padrao.xlsx.b64.txt": {
+  "sha": "f86a10a9ae0b7f15e84c46e67ad9e4eb46985335e67669e43f970929da376bb9",
+  "kb": 2802
+ },
+ "obras/torre-catharina.json": {
+  "sha": "44e3aac0ca3a06aa63422632ce14f395d669b8dabc97418db3868b42dad04b44",
+  "kb": 7351
+ },
+ "obras/torre-catharina.json.card.json": {
+  "sha": "5646ac9d62dc96df8bf70f48df6d08e02c784d9451650079175d6cf2d0c71c52",
+  "kb": 0
+ },
+ "pdf/torre-catharina.pdf": {
+  "sha": "c43251d8033bc4dc7a0a6cbaf2f3b114b43af3d159e49462f9cf9762da9fe9d1",
+  "kb": 474
+ },
+ "xlsx/torre-catharina.xlsx.b64.txt": {
+  "sha": "70161f4079ddb7a60ee75c1a23640df372f35ccb296b876f3e178ef538db6f9c",
+  "kb": 3205
+ },
+ "obras/torre-catharina-padrao.json": {
+  "sha": "1e99b6041177139b513a8ee66b93a511a31515817e7c74e52df38e2bfa23d144",
+  "kb": 7353
+ },
+ "obras/torre-catharina-padrao.json.card.json": {
+  "sha": "00650264bb57e71878143b1f7d4d08c8b538070c44efe847880c59dc9fb44511",
+  "kb": 0
+ },
+ "pdf/torre-catharina-padrao.pdf": {
+  "sha": "fa3bff1451f5a7700a9de45f680ac8b0cc95b2e40276d4c3450ddef2ba3ebdf8",
+  "kb": 473
+ },
+ "xlsx/torre-catharina-padrao.xlsx.b64.txt": {
+  "sha": "746579d16ef07fff9b9dfe8d4742573748e213f9bb74c2e602b7e1e8ef2ab628",
+  "kb": 3204
+ },
+ "_paineis": {
+  "botanico": [
+   "GANTT"
+  ],
+  "botanico-padrao": [
+   "GANTT"
+  ],
+  "ed-jardim": [
+   "FIS",
+   "GANTT"
+  ],
+  "ed-jardim-ajustado": [
+   "ESQ",
+   "FIS",
+   "GANTT"
+  ],
+  "ed-jardim-padrao": [
+   "FIS",
+   "GANTT"
+  ],
+  "torre-catharina": [
+   "GANTT"
+  ],
+  "torre-catharina-padrao": [
+   "GANTT"
+  ]
+ },
+ "_conferido": "2026-10-07T20:30:38"
+}
