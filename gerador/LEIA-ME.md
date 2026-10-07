@@ -39,6 +39,13 @@ Gantt do cronograma de atividades do Prevision (aba CRONOGRAMA ATIVIDADES), em �
 
 Depois gere o JSON de cada cenário com `VW_GANTT=gantt.json` no ambiente do `viewer.py`.
 
+## Aba ESQUEMÁTICO (planilha)
+
+Corte ilustrativo do prédio, pavimento × PL, colorido pela situação (concluído / em andamento / a executar). Mostra a situação do
+cronograma e a previsão para uma data digitável (padrão = data do RETRATO). Só fórmulas sobre a aba CRONOGRAMA ATIVIDADES.
+No build: `ESQ=1` no ambiente de `build_modelo.py` (chama `gerador/esquematico.py`). Detalhes e ajustes na skill
+`.claude/skills/esquematico-avanco/SKILL.md`.
+
 ## PDF dos painéis
 
 Com o site servido localmente (`python3 -m http.server 8766 -d site`), `node gerador/pdfs.js 8766` gera `site/pdf/<cenário>.pdf`
