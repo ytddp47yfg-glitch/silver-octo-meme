@@ -9,10 +9,14 @@ Gera, dentro da planilha da ferramenta, um **corte esquemático** do prédio: um
 térreo), uma coluna por PL, cada célula pintada pela situação da PL naquele pavimento. É a versão em planilha do
 3D colorido dos relatórios mensais (verde = executado, cinza = a executar), mas calculada a partir do cronograma.
 
-São dois cortes lado a lado:
+Os cortes ficam lado a lado (padrão: três quadros):
 1. **Situação em <data de referência do cronograma>**: % realizado do Prevision (coluna K da aba CRONOGRAMA ATIVIDADES).
-2. **Previsão para <data>**: data digitável (célula C6, padrão = data do RETRATO). O saldo de cada tarefa segue linear
-   da data de referência (ou do início planejado, se for depois) até o término planejado.
+2. **Marco(s)**: previsão em datas definidas na configuração da obra (`cfg.json` → `"esq_marcos": [["Marco", "2026-12-31"]]`;
+   sem isso, 31/12 do ano da situação). Uma linha por marco a partir da célula C6, editável.
+3. **Retrato**: previsão para a data do RETRATO (RETRATO 2027!K5), sempre o último quadro.
+
+Nas previsões, o saldo de cada tarefa segue linear da data de referência (ou do início planejado, se for depois)
+até o término planejado.
 
 Tudo é fórmula: colar um export novo do Prevision na aba CRONOGRAMA ATIVIDADES e recalcular atualiza o esquemático.
 
@@ -56,7 +60,7 @@ pasta com openpyxl e perde detalhes de gráficos, então prefira o build. Depois
 | Linha "% da PL nos pavimentos" | a PL em todos os pavimentos numerados |
 | Cores | concluído ≥ 99,95% (verde 1F7A52) · 50–99% (dourado C0A062) · 1–49% (dourado claro E8D9B0) · 0% (cinza D9D4C7) · sem atividade (creme F4F1EA) |
 
-As colunas auxiliares (peso e % na data do 2º corte, uma linha por atividade) ficam ocultas a partir da coluna BH.
+As colunas auxiliares (peso e % em cada marco, uma linha por atividade) ficam ocultas depois do último corte.
 
 ## Ajustes comuns
 
@@ -65,7 +69,8 @@ As colunas auxiliares (peso e % na data do 2º corte, uma linha por atividade) f
   coluna N da aba CRONOGRAMA ATIVIDADES (`build_modelo.py`), sempre os dois juntos.
 - **Mais ou menos PLs no corte**: `MIN_PAV`. Para fixar uma lista, filtre `pls` em `_ler()`.
 - **Rótulo dos pavimentos**: é o lote mais frequente do pavimento sem o prefixo "Nº PAV." (`_rotulo()`).
-- **Datas**: C5 = maior data de referência das atividades. C6 = RETRATO 2027!K5, editável (célula amarela).
+- **Datas**: C5 = maior data de referência das atividades. C6… = marcos e, por último, RETRATO 2027!K5, todas editáveis (células amarelas).
+- **Mais marcos**: acrescente pares em `esq_marcos` (ex.: `[["Marco", "2026-12-31"], ["Marco", "2027-06-30"]]`). Cada marco é mais um quadro.
 
 ## Limites (diga isso ao usuário)
 

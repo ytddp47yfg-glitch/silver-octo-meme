@@ -28,7 +28,7 @@ fill = lambda h: PatternFill("solid", fgColor=h)
 fino = Side(style="thin", color="FCFBF8")
 CA = "'CRONOGRAMA ATIVIDADES'!"
 R0A, R1A = 5, 6004            # linhas de atividades da aba CRONOGRAMA ATIVIDADES
-HC = 60                      # 1ª coluna auxiliar (oculta) nesta aba
+HC0 = 60                     # 1ª coluna auxiliar (oculta) nesta aba, no mínimo
 MIN_PAV = 3                  # PL entra no corte se tiver atividades em pelo menos 3 pavimentos
 
 
@@ -88,27 +88,37 @@ def _curto(n):
     return n.strip()
 
 
-def esquematico(wb, obra):
+def esquematico(wb, obra, marcos=None):
+    """marcos: lista de (rótulo, data 'aaaa-mm-dd' ou fórmula) dos cortes de previsão, em ordem; padrão = 31/12 do ano
+    da situação. O corte da data do RETRATO entra sempre por último."""
     if "CRONOGRAMA ATIVIDADES" not in wb.sheetnames: return None
     pls, pavs, rot, nome_pl, infra, fach = _ler(wb)
+    if marcos is None: marcos = [("Marco", "=DATE(YEAR(C5),12,31)")]
+    marcos = [(r_, f"=DATE({int(v[:4])},{int(v[5:7])},{int(v[8:10])})" if re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(v)) else v)
+              for r_, v in marcos]
+    if "RETRATO 2027" in wb.sheetnames: marcos.append(("Retrato", "='RETRATO 2027'!$K$5"))
     if not pls or not pavs: return None
     pos = max(wb.sheetnames.index(n) for n in ("RETRATO 2027", "CURVA FÍSICA", "GANTT") if n in wb.sheetnames) + 1
     ws = wb.create_sheet("ESQUEMÁTICO", pos)
     ws.sheet_view.showGridLines = False; ws.sheet_properties.tabColor = "1F7A52"
     ws.sheet_view.zoomScale = 90
     NP = len(pls)
-    # colunas: A (nº pav, oculto) | B rótulo | PLs | fachada | geral | espaço | rótulo | PLs | fachada | geral
-    B1 = 3; FA1 = B1 + NP; GE1 = FA1 + 1
-    LB2 = GE1 + 3; B2 = LB2 + 1; FA2 = B2 + NP; GE2 = FA2 + 1
-    LAST = GE2 + 1
+    # colunas: A (nº pav, oculto) | por corte: rótulo | PLs | fachada | geral | 2 de espaço
+    # cortes: 1 = situação do cronograma; 2.. = previsões nas datas de C6, C7 ... (marcos)
+    NB = 1 + len(marcos)
+    BL = {}
+    lb = 2
+    for k in range(1, NB + 1):
+        b = lb + 1; fa = b + NP; ge = fa + 1
+        BL[k] = (lb, b, fa, ge); lb = ge + 3
+    LAST = BL[NB][3] + 1
+    HC = max(HC0, LAST + 3)   # colunas auxiliares sempre depois do último corte
     ws.column_dimensions["A"].width = 3; ws.column_dimensions["A"].hidden = True
-    for c in (2, LB2): ws.column_dimensions[L(c)].width = 24
-    for b in (B1, B2):
-        for k in range(NP): ws.column_dimensions[L(b + k)].width = 3.6
-    for c in (FA1, FA2): ws.column_dimensions[L(c)].width = 4.2
-    for c in (GE1, GE2): ws.column_dimensions[L(c)].width = 11
-    for c in (GE1 + 1, GE1 + 2): ws.column_dimensions[L(c)].width = 3
-    ws.column_dimensions[L(LAST)].width = 3
+    for k, (lb, b, fa, ge) in BL.items():
+        ws.column_dimensions[L(lb)].width = 24
+        for j in range(NP): ws.column_dimensions[L(b + j)].width = 3.6
+        ws.column_dimensions[L(fa)].width = 4.2; ws.column_dimensions[L(ge)].width = 11
+        for c in (ge + 1, ge + 2): ws.column_dimensions[L(c)].width = 3
 
     ws["B2"] = f"{obra}  ·  ESQUEMÁTICO DE AVANÇO POR PAVIMENTO"; ws["B2"].font = Font(name=F_, bold=True, size=20, color=NAVY)
     ws["B3"] = ("Corte ilustrativo (sem escala): cada célula é o avanço da PL no pavimento, pelas atividades da aba "
@@ -116,40 +126,49 @@ def esquematico(wb, obra):
     ws["B3"].font = Font(name=F_, size=10, color=INK2)
     ws.row_dimensions[2].height = 34; ws.row_dimensions[3].height = 20
 
-    # datas
-    ws["B5"] = "Situação do cronograma em"; ws["B6"] = "Previsão para (digite a data)"
-    for r in (5, 6): ws[f"B{r}"].font = Font(name=F_, bold=True, size=10, color=NAVY)
+    # datas: C5 = situação do cronograma; C6, C7 ... = marcos (previsões), editáveis
+    ws["B5"] = "Situação do cronograma em"
+    ws["B5"].font = Font(name=F_, bold=True, size=10, color=NAVY)
     ws["C5"] = f"=MAX({CA}$H${R0A}:$H${R1A})"
-    ws["C6"] = "='RETRATO 2027'!$K$5" if "RETRATO 2027" in wb.sheetnames else "=DATE(YEAR(C5),12,31)"
-    for r, f_ in ((5, Font(name=F_, bold=True, size=11, color=NAVY)), (6, Font(name=F_, bold=True, size=11, color="0000FF"))):
+    DR = {1: "$C$5"}
+    for i, (rot_m, fml) in enumerate(marcos):
+        r = 6 + i; DR[2 + i] = f"$C${r}"
+        ws.cell(r, 2, f"{rot_m} (digite a data)").font = Font(name=F_, bold=True, size=10, color=NAVY)
+        ws.cell(r, 3, fml)
+    for r in range(5, 6 + len(marcos)):
         ws.merge_cells(start_row=r, start_column=3, end_row=r, end_column=3 + 5)
-        c = ws.cell(r, 3); c.font = f_; c.number_format = "dd/mm/yyyy"; c.alignment = Alignment(horizontal="left")
-    ws["C6"].fill = fill("FFF2CC")
-    ws["C6"].comment = Comment("Data do segundo corte. Por padrão é a data do RETRATO (aba RETRATO 2027, K5); pode digitar "
-                               "qualquer data posterior à situação do cronograma. Antes dela vale o realizado.", "Ferramenta")
+        c = ws.cell(r, 3); c.number_format = "dd/mm/yyyy"; c.alignment = Alignment(horizontal="left")
+        c.font = Font(name=F_, bold=True, size=11, color=NAVY if r == 5 else "0000FF")
+        if r > 5:
+            c.fill = fill("FFF2CC")
+            c.comment = Comment("Data deste corte (marco). Pode digitar qualquer data posterior à situação do cronograma; "
+                                "antes dela vale o realizado.", "Ferramenta")
     # legenda
     leg = [(C_OK, "Concluído (100%)"), (C_AND, "Em andamento (50% a 99%)"), (C_AND2, "Em andamento (1% a 49%)"),
            (C_NAO, "A executar (0%)"), (C_SEM, "Sem atividade da PL no pavimento")]
     for i, (cor, t) in enumerate(leg):
-        r = 4 + i; c = B2 + 1
+        r = 4 + i; c = BL[NB][1] + 1
         cl = ws.cell(r, c); cl.fill = fill(cor); cl.border = Border(left=Side(style="thin", color=LINE), right=Side(style="thin", color=LINE),
                                                                     top=Side(style="thin", color=LINE), bottom=Side(style="thin", color=LINE))
         ws.cell(r, c + 1, t).font = Font(name=F_, size=9, color=INK2)
 
-    # colunas auxiliares (ocultas): peso = duração das tarefas; % na data do 2º corte
-    W, P = L(HC), L(HC + 1)
+    # colunas auxiliares (ocultas): peso = duração das tarefas; % de cada tarefa na data de cada marco
+    W = L(HC)
     ws.cell(4, HC, "peso (dias)").font = Font(name=F_, size=8, color=INK2)
-    ws.cell(4, HC + 1, "% na data C6").font = Font(name=F_, size=8, color=INK2)
+    for k in range(2, NB + 1): ws.cell(4, HC + k - 1, f"% em {DR[k].replace('$', '')}").font = Font(name=F_, size=8, color=INK2)
     for r in range(R0A, R1A + 1):
         a = lambda col: f"{CA}{col}{r}"
         ws.cell(r, HC, f'=IF(OR({a("C")}="",NOT(ISNUMBER({a("F")})),NOT(ISNUMBER({a("G")}))),0,'
                        f'IF({a("D")}="-",IF(COUNTIFS({CA}$C${R0A}:$C${R1A},{a("C")},{CA}$E${R0A}:$E${R1A},{a("E")},{CA}$D${R0A}:$D${R1A},"<>-")>0,0,'
                        f'MAX(1,{a("G")}-{a("F")})),MAX(1,{a("G")}-{a("F")})))')
-        ws.cell(r, HC + 1, f'=IF({W}{r}=0,0,IF($C$6<={a("H")},{a("K")},{a("K")}+(100-{a("K")})*MIN(1,MAX(0,($C$6-MAX({a("F")},{a("H")}))'
-                           f'/MAX(1,{a("G")}-MAX({a("F")},{a("H")}))))))')
-    for c in (HC, HC + 1): ws.column_dimensions[L(c)].hidden = True
+        for k in range(2, NB + 1):
+            d = DR[k]
+            ws.cell(r, HC + k - 1, f'=IF({W}{r}=0,0,IF({d}<={a("H")},{a("K")},{a("K")}+(100-{a("K")})*MIN(1,MAX(0,({d}-MAX({a("F")},{a("H")}))'
+                                   f'/MAX(1,{a("G")}-MAX({a("F")},{a("H")}))))))')
+    for c in range(HC, HC + NB): ws.column_dimensions[L(c)].hidden = True
     WR = f"${W}${R0A}:${W}${R1A}"
-    PR = {1: f"{CA}$K${R0A}:$K${R1A}", 2: f"${P}${R0A}:${P}${R1A}"}
+    PR = {1: f"{CA}$K${R0A}:$K${R1A}"}
+    for k in range(2, NB + 1): PR[k] = f"${L(HC + k - 1)}${R0A}:${L(HC + k - 1)}${R1A}"
     MR, NR = f"{CA}$M${R0A}:$M${R1A}", f"{CA}$N${R0A}:$N${R1A}"
 
     def media(k, cond):
@@ -163,9 +182,10 @@ def esquematico(wb, obra):
     ws.row_dimensions[HN].height = 118
     for r in range(RP0, RPN + 1): ws.row_dimensions[r].height = 14
     ws.row_dimensions[RP0 - 1].height = 6; ws.row_dimensions[RINF].height = 20; ws.row_dimensions[RTER].height = 10
-    titulos = {1: ('="SITUAÇÃO EM "&TEXT($C$5,"dd/mm/yyyy")&"  (realizado do cronograma)"'),
-               2: ('="PREVISÃO PARA "&TEXT($C$6,"dd/mm/yyyy")&"  (cronograma planejado)"')}
-    for k, (lb, b, fa, ge) in {1: (2, B1, FA1, GE1), 2: (LB2, B2, FA2, GE2)}.items():
+    titulos = {1: '="SITUAÇÃO EM "&TEXT($C$5,"dd/mm/yyyy")&"  (realizado do cronograma)"'}
+    for k in range(2, NB + 1):
+        titulos[k] = f'="{marcos[k - 2][0].upper()}: PREVISÃO PARA "&TEXT({DR[k]},"dd/mm/yyyy")'
+    for k, (lb, b, fa, ge) in BL.items():
         c = ws.cell(HT, lb, titulos[k]); c.font = Font(name=F_, bold=True, size=12, color=NAVY)
         hd = Font(name=F_, bold=True, size=8, color=NAVY)
         for j, pl in enumerate(pls):
