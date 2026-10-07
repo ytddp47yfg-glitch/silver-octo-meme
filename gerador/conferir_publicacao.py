@@ -29,7 +29,8 @@ ENTREGAVEIS = {   # .xlsx do site → entregável na raiz do repositório
     "botanico": "fluxo_caixa_botanico_modelo.xlsx", "botanico-padrao": "fluxo_caixa_botanico_modelo_PADRAO.xlsx",
     "ed-jardim": "fluxo_caixa_ed_jardim_modelo.xlsx", "ed-jardim-padrao": "fluxo_caixa_ed_jardim_modelo_PADRAO.xlsx",
     "ed-jardim-ajustado": "fluxo_caixa_ed_jardim_modelo_PREVISION_AJUSTADO.xlsx",
-    "torre-catharina": "fluxo_caixa_torre_catharina_modelo.xlsx", "torre-catharina-padrao": "fluxo_caixa_torre_catharina_modelo_PADRAO.xlsx"}
+    "torre-catharina": "fluxo_caixa_torre_catharina_modelo.xlsx", "torre-catharina-padrao": "fluxo_caixa_torre_catharina_modelo_PADRAO.xlsx",
+    "torre-catharina-simulacao": "fluxo_caixa_torre_catharina_modelo_SIMULACAO.xlsx"}
 
 
 def sha(p):
