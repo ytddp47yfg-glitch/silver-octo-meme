@@ -1,6 +1,7 @@
 """Curvas de avanço físico por cenário, a partir das PLs (itens DIRETOS), para o painel CURVA FÍSICA.
 
-Uso: python3 fisico.py saida.json "Padrão=arq_calc.xlsx" "Prevision=arq_calc.xlsx" ...
+Uso: python3 fisico.py saida.json "Padrão=arq_calc.xlsx" "Prevision=arq_calc.xlsx" ... [--base=Nome]
+(--base: cenário de onde vêm o realizado e o previsto do Prevision; padrão = o primeiro)
 
 Por PL (aba de disciplina):
   realizado (até o corte)   = % realizado acumulado do Prevision (coluna O)
@@ -47,11 +48,13 @@ def pond(pls, key, i):
 
 
 def main():
-    out, pares = sys.argv[1], [a.split('=', 1) for a in sys.argv[2:]]
+    out = sys.argv[1]
+    nb = next((a[7:] for a in sys.argv[2:] if a.startswith('--base=')), None)
+    pares = [a.split('=', 1) for a in sys.argv[2:] if not a.startswith('--base=')]
     cens, base = [], None
     for nome, arq in pares:
         corte, meses, pls = ler(arq)
-        if base is None: base = (corte, meses, pls)
+        if base is None and nb in (None, nome): base = (corte, meses, pls)
         cens.append(dict(nome=nome, v=[round(pond(pls, 'cen', i), 6) for i in range(len(meses))],
                          pls=[dict(n=p['n'], w=round(p['w'], 2), fc=round(p['fc'], 4), pdez=[round(p['prev'][i], 4) for i in range(len(meses)) if meses[i].month == 12], dez=[round(p['cen'][i], 4) for i in range(len(meses)) if meses[i].month == 12])
                               for p in pls]))
