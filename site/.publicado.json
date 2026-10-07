@@ -1,39 +1,39 @@
 {
  "index_artifact.html": {
-  "sha": "d43eeabba9460ddbf4aa8a3a5404fd1a9c66b0e1c558d2965fb6f12b74967541",
-  "kb": 84
+  "sha": "e72d39fd0566434f420d20db3cb9837cc438c1b38a4d3fc11ecbb438cd8aed1b",
+  "kb": 85
  },
  "obras/botanico.json": {
-  "sha": "6103a44f6794f1b249022f3e79bb7265270498fc074cd57190ef2f3083eba781",
-  "kb": 5032
+  "sha": "da8a73a1f23d5eac546a070c8d464562644bb90efd50d76d5d668500224f5b3d",
+  "kb": 5644
  },
  "obras/botanico.json.card.json": {
-  "sha": "be589364c42d32480af43523374e8eb08624e9cd13f1349a1a42ecbde44283b1",
+  "sha": "db7bc93eb60389c4e82906c03f66faf572eb30c280cc63c588fa8e8a131300d6",
   "kb": 0
  },
  "pdf/botanico.pdf": {
-  "sha": "948e3614fde209385ea935d9a4a98c975dae1ecc07be23e03202f0cdb2d121ea",
+  "sha": "48c7aa8b38461a5ebb257e64de0113b5f299a4197b61c57105b604f7529e99bb",
   "kb": 443
  },
  "xlsx/botanico.xlsx.b64.txt": {
-  "sha": "ab197b9c1f7f5344d084dd7da8bdaa50e21b0cf3b81e937cc3d50bd3372747bc",
-  "kb": 2531
+  "sha": "f2c47b371e8c57c9fb46d38e73156deba0ccd72d6e39876ead345f8d8ea6e9af",
+  "kb": 2595
  },
  "obras/botanico-padrao.json": {
-  "sha": "1afe4a6042d808e4929fd7b5015c313a510145e4971387b71dd9bfcb2e9ae39f",
-  "kb": 5034
+  "sha": "75f475292c4b16fbb3fb212795c7e7565e92ba9550efd0b354e299752603d531",
+  "kb": 5646
  },
  "obras/botanico-padrao.json.card.json": {
-  "sha": "2d16c2f1b46c21d43d7785688ceecff1b466d19553515f2b7c76f465eab87691",
+  "sha": "6e1890823c00f28580f2667f508d9b0b3f287c7d5d02fc64f1efa26c33af9dc9",
   "kb": 0
  },
  "pdf/botanico-padrao.pdf": {
-  "sha": "2eef3ed9a45c0fd8498f4a450a2f65a8cf7d52e72ca4833d32646fbe7b1563d6",
+  "sha": "fefe685a7c5c70a7e4a7ee9eff96963cd624bd4c87597d23eac5a6265f019864",
   "kb": 443
  },
  "xlsx/botanico-padrao.xlsx.b64.txt": {
-  "sha": "445a8a2aa08781dc29c04516f511a3e1a626746bcc5af67d550b68d3080b24c3",
-  "kb": 2535
+  "sha": "9a3b8281a110b77dc0d05a2fe4ffaaf48baf1b1e49f5b78632e4b628aafabbdd",
+  "kb": 2599
  },
  "obras/ed-jardim.json": {
   "sha": "fd5f2d184b244dc3db2a68fc3c64ae296b79c8580cf9152d5eb378cadf7cd721",
@@ -44,7 +44,7 @@
   "kb": 0
  },
  "pdf/ed-jardim.pdf": {
-  "sha": "455796baba4c66256c532c062e5e90bc9b2a71a3b333e874e0603ad9316c0df7",
+  "sha": "f29c0c932ef7e46dd1791867ad33cfae3c2701ebaf8758c25bbb02c237e70044",
   "kb": 554
  },
  "xlsx/ed-jardim.xlsx.b64.txt": {
@@ -60,7 +60,7 @@
   "kb": 1
  },
  "pdf/ed-jardim-ajustado.pdf": {
-  "sha": "d51d4d2dca8040e9d9a33806d30b6cb9aa234c791b3e82c78bcebda6ac4e9442",
+  "sha": "f7b8228bbb030c20adb7c4f7827fcf94444286010f4639d46d74d347685e3620",
   "kb": 824
  },
  "xlsx/ed-jardim-ajustado.xlsx.b64.txt": {
@@ -76,7 +76,7 @@
   "kb": 0
  },
  "pdf/ed-jardim-padrao.pdf": {
-  "sha": "da54ce2d4d953dc8f134434195a8d230fcebf03057025c9c3d628b177d4d0e03",
+  "sha": "7357d4baeba1312faec2a5c75707f25e84fbf284a1bcacbdbcf206ac0a726639",
   "kb": 554
  },
  "xlsx/ed-jardim-padrao.xlsx.b64.txt": {
@@ -84,36 +84,36 @@
   "kb": 2802
  },
  "obras/torre-catharina.json": {
-  "sha": "cfbcdf9f963c8db6679dfa3ee8ba55fac639e49987f75f8f79338405121b9220",
-  "kb": 5202
+  "sha": "4d036211f0e5698d3a390141c3c1e1704ea1c1740f007b35c02be5c835c6aecb",
+  "kb": 5464
  },
  "obras/torre-catharina.json.card.json": {
-  "sha": "bb00a58b89bd3caf8b128c9dd7a372a2868d6442fe552ef35fba7cb8ae77745c",
+  "sha": "60d08f7b42da3fa03b1c3de2c96ffc22acbefdbe9f9baafc16581a87607fa1f5",
   "kb": 0
  },
  "pdf/torre-catharina.pdf": {
-  "sha": "cd724e6aa786a8c01d3393d0ef12139bdc8628d5c5a760e5459f9b5131bf74cc",
+  "sha": "ef59a5d2cac535f7e0dff72273292c8e4c8f8d3f48b87850365b7a182bc6595d",
   "kb": 474
  },
  "xlsx/torre-catharina.xlsx.b64.txt": {
-  "sha": "1b3a7eb9213080a6ace25f492818755c575065120d7536d0faddeae63e875808",
-  "kb": 2767
+  "sha": "ea2ef5654a1094c2a476d8a7d3954dbb76d8b528924a908e088e9701ce906b13",
+  "kb": 2833
  },
  "obras/torre-catharina-padrao.json": {
-  "sha": "428b059fd4cf3b5467ac218551d21bbb4bd4b9237759d8959d9ce6bdc5b66fc9",
-  "kb": 5204
+  "sha": "17ab3ab89fc7e325a01b1afab452029556136d02546a3cc523acc7a62454ec7b",
+  "kb": 5466
  },
  "obras/torre-catharina-padrao.json.card.json": {
-  "sha": "1346a0d0f60f883310e26f0ec0356591280a4468f72468214493a20d2d79b02a",
+  "sha": "1ab6c21cbe21af3c04bc0d9912bd010164c4d9c53b11a2ecddcf80f6f760b1c2",
   "kb": 0
  },
  "pdf/torre-catharina-padrao.pdf": {
-  "sha": "5f913b1ad28ee044ea9b550fae97d926d7920ac6c1d467c097aedc95da9a548d",
+  "sha": "f6f70a128653474bca0c6ca7167676e3168235c907097a13cf03855327e68d77",
   "kb": 473
  },
  "xlsx/torre-catharina-padrao.xlsx.b64.txt": {
-  "sha": "fe59ef642a6c39bc1e1c245d501da959c9cf1150078aba94b947ed8cbafba217",
-  "kb": 2766
+  "sha": "5574f33bf6598217b99e43cb03ceb7d066d03b38f0795f5a9d30e113e3ebf44d",
+  "kb": 2832
  },
  "_paineis": {
   "botanico": [
@@ -142,5 +142,5 @@
    "GANTT"
   ]
  },
- "_conferido": "2026-10-07T20:47:21"
+ "_conferido": "2026-10-07T21:00:51"
 }
