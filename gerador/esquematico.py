@@ -180,12 +180,12 @@ def esquematico(wb, obra, marcos=None):
     HT, HN, RP0 = 9, 10, 12          # título do bloco, nomes das PLs, 1º pavimento (linha 11 = cobertura)
     RPN = RP0 + len(pavs) - 1
     RINF, RTER, RTOT = RPN + 1, RPN + 2, RPN + 4
-    ws.row_dimensions[HN].height = 118
+    ws.row_dimensions[HN].height = 140
     for r in range(RP0, RPN + 1): ws.row_dimensions[r].height = 14
     ws.row_dimensions[RP0 - 1].height = 6; ws.row_dimensions[RINF].height = 20; ws.row_dimensions[RTER].height = 10
-    titulos = {1: '="SITUAÇÃO EM "&TEXT($C$5,"dd/mm/yyyy")&"  (realizado do cronograma)"'}
+    titulos = {1: '="SITUAÇÃO EM "&TEXT(DAY($C$5),"00")&"/"&TEXT(MONTH($C$5),"00")&"/"&YEAR($C$5)&"  (realizado do cronograma)"'}
     for k in range(2, NB + 1):
-        titulos[k] = f'="{marcos[k - 2][0].upper()}: PREVISÃO PARA "&TEXT({DR[k]},"dd/mm/yyyy")'
+        titulos[k] = f'="{marcos[k - 2][0].upper()}: PREVISÃO PARA "&TEXT(DAY({DR[k]}),"00")&"/"&TEXT(MONTH({DR[k]}),"00")&"/"&YEAR({DR[k]})'
     for k, (lb, b, fa, ge) in BL.items():
         c = ws.cell(HT, lb, titulos[k]); c.font = Font(name=F_, bold=True, size=12, color=NAVY)
         hd = Font(name=F_, bold=True, size=8, color=NAVY)
