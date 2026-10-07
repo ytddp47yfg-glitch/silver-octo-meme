@@ -48,4 +48,5 @@ pacotes inferidos). Rode `python3 gerador/make_site.py` depois, para o botão "�
 ## Excel para download
 
 Copie a planilha recalculada de cada cenário para `site/xlsx/<cenário>.xlsx` (mesmo nome do JSON em `site/obras/`) e rode
-`python3 gerador/make_site.py`: o botão "⬇ Excel" aparece no cabeçalho do cenário.
+`python3 gerador/make_site.py`: o botão "⬇ Excel" aparece no cabeçalho do cenário. Para publicar no claude.ai (que não serve .xlsx),
+gere também `site/xlsx/<cenário>.xlsx.b64.txt` (`base64 -w0 arquivo.xlsx > arquivo.xlsx.b64.txt`): a página monta o .xlsx a partir dele.

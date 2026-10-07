@@ -621,8 +621,12 @@ document.getElementById('presbtn').onclick=pstart;
   const a=e.currentTarget;let dl=null;try{dl=window.claude&&claude.use?await claude.use('downloads'):null}catch(_){dl=null}
   if(!dl)return;   // sem o recurso: segue o link normal
   e.preventDefault();if(a.dataset.busy)return;a.dataset.busy='1';const t=a.textContent;const tipo=bid==='xlsbtn'?'Excel':'PDF';a.textContent='⏳ '+tipo+'…';
-  try{const r=await fetch(a.getAttribute('href'));if(!r.ok)throw new Error(r.status);
-    await dl.save({filename:a.getAttribute('download'),data:await r.blob()})}
+  try{let data;
+    if(bid==='xlsbtn'){   // .xlsx é publicado codificado em base64 (o claude.ai não serve .xlsx); monta o arquivo aqui
+      const r=await fetch(a.getAttribute('href')+'.b64.txt');if(!r.ok)throw new Error(r.status);
+      const bin=atob((await r.text()).trim());data=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)data[i]=bin.charCodeAt(i)}
+    else{const r=await fetch(a.getAttribute('href'));if(!r.ok)throw new Error(r.status);data=await r.blob()}
+    await dl.save({filename:a.getAttribute('download'),data})}
   catch(err){if(!err||!['declined','rate_limited'].includes(err.code))alert('Não foi possível baixar o '+tipo+(err&&err.code?` (${err.code})`:'')+'.')}
   finally{a.textContent=t;delete a.dataset.busy}}));document.getElementById('pexit').onclick=pstop;
 document.getElementById('pprev').onclick=()=>pshow(pi-1);document.getElementById('pnext').onclick=()=>pshow(pi+1);
