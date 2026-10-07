@@ -115,6 +115,8 @@ def _trechos(ws, A, cr, R0, NM, MES, cfg):
         if CI(col) >= CI("AP") and CI(col) <= CI("AU"): ws[k].value = None
     _h(ws, "AW2", "LOTE NO CRONOGRAMA", 22); _h(ws, "AX2", "PACOTE NO CRONOGRAMA", 30)
     _h(ws, "AY2", "TÉRMINO NO CRONOGRAMA", 12); _h(ws, "AZ2", "TÉRMINO USADO", 12)
+    _h(ws, "BA2", "TÉRMINO SIMULADO\n(digite)", 12); ws.column_dimensions["BB"].width = 3
+    sim = {int(k): v for k, v in (cfg.get("simulacao") or {}).items()}
     ws.row_dimensions[2].height = 42
     sem = []
     for r in rows:
@@ -126,10 +128,15 @@ def _trechos(ws, A, cr, R0, NM, MES, cfg):
         if not pac: sem.append(v)
         ws[f"AW{r}"] = lote; ws[f"AX{r}"] = pac or ""
         ws[f"AY{r}"] = f'=IF(AX{r}="",0,{_resumo("G", f"AX{r}", f"AW{r}")})'
-        ws[f"AZ{r}"] = f'=IF(AY{r}>0,AY{r},IF(ISNUMBER(AE{r}),AE{r},0))'
+        ws[f"AZ{r}"] = f'=IF(ISNUMBER(BA{r}),BA{r},IF(AY{r}>0,AY{r},IF(ISNUMBER(AE{r}),AE{r},0)))'
+        bc = ws[f"BA{r}"]; bc.fill = fill("FFF2CC"); bc.number_format = "dd/mm/yyyy"; bc.font = Font(name=F_, size=9, bold=True, color="0000FF")
+        if r in sim:
+            bc.value = dt.datetime.fromisoformat(sim[r]["fim"])
+            bc.comment = Comment(f"Simulação: {sim[r].get('desc', '')}", "Ferramenta")
         for c in ("AY", "AZ"): ws[f"{c}{r}"].number_format = "dd/mm/yyyy"
         for c in ("AW", "AX", "AY", "AZ"): ws[f"{c}{r}"].font = Font(name=F_, size=9, color="1F7A52" if c in ("AY", "AZ") else "0000FF")
-    ws["AW1"] = "Datas: término da linha-resumo do pacote/lote na aba CRONOGRAMA ATIVIDADES; sem par, vale a data da origem (coluna AE)."
+    ws["AW1"] = ("Datas: término simulado (coluna BA, se preenchido); senão o término da linha-resumo do pacote/lote na aba "
+                 "CRONOGRAMA ATIVIDADES; sem par, vale a data da origem (coluna AE).")
     ws["AW1"].font = Font(name=F_, italic=True, size=9, color=INK2)
     # parâmetros de pagamento (aba ESTRUTURA da origem)
     P = cfg.get("pagamento", {"serv_forma": 0.7, "serv_aco": 1, "rt": 0.07, "aco_parc": 0.88, "corte_dobra": 0.12, "defasagem": 1})
@@ -174,7 +181,7 @@ def _trechos(ws, A, cr, R0, NM, MES, cfg):
     ws["BO2"].comment = Comment("A aba ESTRUTURA usa esta coluna como PREVISÃO INFORMADA (peso da distribuição do saldo "
                                 "nos meses futuros). Pagamento = custo do mês deslocado pela defasagem (BR8).", "Ferramenta")
     ws.freeze_panes = "A3"
-    return (lambda k: f"='{NOME}'!BO{3 + k}"), dict(trechos=len(rows), sem_par=sem)
+    return (lambda k: f"='{NOME}'!BO{3 + k}"), dict(trechos=len(rows), sem_par=sem, simulados=sorted(sim))
 
 
 def _pavimentos(ws, A, cr, R0, NM, MES, cfg):
