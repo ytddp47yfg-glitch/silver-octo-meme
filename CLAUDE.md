@@ -26,7 +26,9 @@ Sempre que entrar qualquer modificação (incorrido, cronograma, premissa, esté
    Tem que dar "OK: página publicada = arquivos locais". Só então atualiza `site/.publicado.json`.
 5. Commit inclui `site/.publicado.json`. Ele é o registro do que está confirmado no ar.
 
-Nunca publique só os cartões ou só os `.b64.txt`: os painéis vêm de `obras/<id>.json` e os PDFs de `pdf/<id>.pdf`.
+Nunca publique só os cartões ou só os `.b64.txt`: os painéis vêm de `obras/<id>.json` e os PDFs de `pdf/<id>--<painel>.pdf`
+(um por painel; o botão ⬇ PDF baixa o do painel aberto). Arquivos que deixaram de existir saem da página com `null` no lote 1
+(`preparar` lista em "remover"; confira depois com a listagem `scope: files`).
 O gancho `Stop` em `.claude/settings.json` (`conferir_publicacao.py gancho`) impede encerrar o turno enquanto houver
 arquivo do site diferente do último estado confirmado.
 

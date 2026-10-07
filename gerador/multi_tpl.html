@@ -322,7 +322,7 @@ html.printmode .gz .gv span{position:static}
 <main id="main">
 <header><button id="menubtn" type="button" aria-label="Abrir lista de abas">☰ Abas</button><span id="curtab"></span>
 <div class="leg"><b style="color:var(--in)">azul = entrada</b><b style="color:var(--link)">verde = vínculo</b><b>preto = fórmula</b><b>cinza = mês realizado</b></div>
-<button id="gridbtn" type="button" hidden>Ver como planilha</button><button id="presbtn" type="button">▶ Apresentar</button><a id="xlsbtn" href="#" download hidden title="Baixar a planilha Excel completa deste cenário">⬇ Excel</a><a id="pdfbtn" href="#" download hidden title="Baixar os painéis deste cenário em PDF">⬇ PDF</a><div id="cell">Toque/clique numa célula para ver a fórmula</div></header>
+<button id="gridbtn" type="button" hidden>Ver como planilha</button><button id="presbtn" type="button">▶ Apresentar</button><a id="xlsbtn" href="#" download hidden title="Baixar a planilha Excel completa deste cenário">⬇ Excel</a><a id="pdfbtn" href="#" download hidden title="Baixar este painel em PDF">⬇ PDF</a><div id="cell">Toque/clique numa célula para ver a fórmula</div></header>
 <div id="note" class="note" hidden></div>
 <div id="wrap"></div>
 </main></div>
@@ -456,11 +456,18 @@ function renderGantt(){
   box.addEventListener('scroll',()=>{gSL=box.scrollLeft;gST=box.scrollTop},{passive:true});
 }
 // monta todos os painéis em sequência (uma seção por página) para gerar o PDF
-function printAll(){
+// slug do PDF de cada painel: pdf/<cenário>--<slug>.pdf
+const pdfSlug=n=>n.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+// botão ⬇ PDF: só o painel aberto (some nas abas de planilha)
+function pdfBtn(name){const pb=document.getElementById('pdfbtn');if(!pb||!OBRA)return;
+  const ok=PAINEIS.includes(name)&&!gridMode&&(OBRA.pdfs||[]).includes(pdfSlug(name));pb.hidden=!ok;if(!ok)return;
+  pb.href=`pdf/${OBRA.id}--${pdfSlug(name)}.pdf`;pb.title=`Baixar o painel ${name.trim()} em PDF`;
+  pb.setAttribute('download',(name.trim()+' '+OBRA.nome+' '+(OBRA.cen||'')).normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^A-Za-z0-9]+/g,'_').replace(/_+$/,'')+'.pdf')}
+function printAll(so){
   document.documentElement.classList.add('printmode');document.documentElement.setAttribute('data-theme','light');
   gPx=12;gQ='';gOpen.clear();if(GANTT)GANTT.arv.forEach((n,k)=>gOpen.add('r.'+k));gSL=0;gST=0;fisMode='MENSAL';fisOff.clear();
-  const partes=[];
-  PAINEIS.forEach(n=>{gridMode=false;show(n);
+  const partes=[],lista=so?[so]:PAINEIS;
+  lista.forEach(n=>{gridMode=false;show(n);
     if(n==='GANTT'){   // Gantt: fatia as linhas em páginas, repetindo a régua de meses e as linhas de data em cada uma
       const box=wrap.querySelector('#gbox'),inner=box.firstElementChild,head=inner.querySelector('.ghead').outerHTML,body=inner.children[1];
       const rows=[...body.querySelectorAll('.grow')].map(r=>r.outerHTML),gv=[...body.querySelectorAll('.gv')].map(v=>v.outerHTML).join(''),W=inner.style.width;
@@ -473,7 +480,7 @@ function printAll(){
     }
     partes.push(`<section class="psec">${wrap.innerHTML}</section>`)});
   wrap.innerHTML=partes.join('<div class="pbreak"></div>');
-  return PAINEIS.length;
+  return lista.length;
 }
 let RET=null;
 let _rtSync=null;
@@ -654,7 +661,7 @@ function buildSide(){
   side.appendChild(grupo('Ajuda',["LEIA-ME"]));
 }
 function markOn(name){document.body.classList.toggle('panel',((name==='DASHBOARD'&&DASH)||(name==='RETRATO 2027'&&RET)||(name==='CURVA FÍSICA'&&FIS)||(name==='GANTT'&&GANTT)||(name==='ESQUEMÁTICO'&&ESQ))&&!gridMode);side.querySelectorAll('button[data-n]').forEach(b=>b.classList.toggle('on',b.dataset.n===name));
-  curtab.textContent=name.trim();if(det&&DISC.includes(name))det.open=true}
+  curtab.textContent=name.trim();if(det&&DISC.includes(name))det.open=true;pdfBtn(name)}
 const gridbtn=document.getElementById('gridbtn');gridbtn.onclick=()=>{gridMode=!gridMode;show(side.querySelector('button.on')?.dataset.n||'DASHBOARD')};
 document.getElementById('menubtn').onclick=()=>document.body.classList.toggle('menu');
 // modo apresentação: só os painéis, com setas
@@ -713,7 +720,7 @@ async function openObra(id){
   try{if(!cache[id]){const r=await fetch(`obras/${id}.json`);if(!r.ok)throw new Error(r.status);cache[id]=await r.json()}}
   catch(e){loading.hidden=true;alertBox(`Não foi possível carregar os dados da obra ${o.nome} (${e.message}). Tente recarregar a página.`);return}
   const j=cache[id];OBRA=o;D=j.D;DASH=j.DASH;RET=j.RET;FIS=j.FIS||null;GANTT=j.GANTT||null;ESQ=j.ESQ||null;gOpen.clear();gQ='';gSL=null;gST=0;PAINEIS=[...PAINEIS0,...EXTRA()];document.getElementById('obracss').textContent=j.css;gridMode=false;
-  {const pb=document.getElementById('pdfbtn');pb.href=`pdf/${id}.pdf`;pb.setAttribute('download',('Paineis '+o.nome+' '+(o.cen||'')).normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^A-Za-z0-9]+/g,'_').replace(/_+$/,'')+'.pdf');pb.hidden=!o.pdf;
+  {
    const xb=document.getElementById('xlsbtn');xb.href=`xlsx/${id}.xlsx`;xb.setAttribute('download',('Fluxo de caixa '+o.nome+' '+(o.cen||'')).normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^A-Za-z0-9]+/g,'_').replace(/_+$/,'')+'.xlsx');xb.hidden=!o.xlsx}
   buildSide();home.hidden=true;app.hidden=false;loading.hidden=true;document.title='Fluxo de Caixa · '+o.nome+(o.cen?' · '+o.cen:'');
   let start='DASHBOARD';try{const a=localStorage.getItem('aba:'+id);if(a&&(D.find(x=>x.name===a)||EXTRA().includes(a)))start=a}catch(e){}

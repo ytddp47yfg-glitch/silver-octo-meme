@@ -9,7 +9,8 @@ import glob, json, os
 HERE = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.join(os.path.dirname(HERE), 'site')
 cards = [json.load(open(f)) for f in sorted(glob.glob(os.path.join(SITE, 'obras', '*.json.card.json')))]
-for c in cards: c['pdf'] = os.path.exists(os.path.join(SITE, 'pdf', c['id'] + '.pdf'))   # PDF dos painéis (gerador/pdfs.js)
+for c in cards:   # PDF de cada painel (gerador/pdfs.js): pdf/<id>--<painel>.pdf
+    c['pdfs'] = sorted(os.path.basename(f)[len(c['id']) + 2:-4] for f in glob.glob(os.path.join(SITE, 'pdf', c['id'] + '--*.pdf')))
 for c in cards: c['xlsx'] = os.path.exists(os.path.join(SITE, 'xlsx', c['id'] + '.xlsx'))   # planilha Excel completa do cenário
 # cartões com o mesmo 'obra' são cenários da mesma obra (ex.: padrão × Prevision) e viram um só cartão
 obras = {}

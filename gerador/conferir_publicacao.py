@@ -48,7 +48,8 @@ def arquivos():
     """{caminho publicado: caminho local} de tudo que a página usa (a página em si fica como PAGINA)."""
     m = {PAGINA: os.path.join(SITE, PAGINA)}
     for i in ids():
-        for pub in (f"obras/{i}.json", f"obras/{i}.json.card.json", f"pdf/{i}.pdf", f"xlsx/{i}.xlsx.b64.txt"):
+        pdfs = sorted(f"pdf/{f}" for f in os.listdir(os.path.join(SITE, "pdf")) if f.startswith(i + "--") and f.endswith(".pdf"))
+        for pub in [f"obras/{i}.json", f"obras/{i}.json.card.json", f"xlsx/{i}.xlsx.b64.txt"] + pdfs:
             loc = os.path.join(SITE, pub)
             if os.path.exists(loc): m[pub] = loc
     return m
@@ -79,9 +80,12 @@ def conferencias(man, anterior):
             ent = os.path.join(RAIZ, ENTREGAVEIS.get(i, ""))
             if i in ENTREGAVEIS and os.path.exists(ent) and sha(ent) != sha(x):
                 erros.append(f"{i}: site/xlsx/{i}.xlsx ≠ {ENTREGAVEIS[i]} (entregável da raiz)")
-        if not os.path.exists(os.path.join(SITE, f"pdf/{i}.pdf")): avisos.append(f"{i}: sem PDF")
-        elif os.path.getmtime(os.path.join(SITE, f"pdf/{i}.pdf")) < os.path.getmtime(os.path.join(SITE, f"obras/{i}.json")):
-            erros.append(f"{i}: PDF mais antigo que os dados (rode gerador/pdfs.js)")
+        pdfs = [f for f in os.listdir(os.path.join(SITE, "pdf")) if f.startswith(i + "--") and f.endswith(".pdf")]
+        npain = 2 + len(paineis)   # DASHBOARD, RETRATO + FIS/GANTT/ESQ
+        if len(pdfs) != npain: erros.append(f"{i}: {len(pdfs)} PDF(s) de painel, esperados {npain} (rode gerador/pdfs.js)")
+        for f in pdfs:
+            if os.path.getmtime(os.path.join(SITE, "pdf", f)) < os.path.getmtime(os.path.join(SITE, f"obras/{i}.json")):
+                erros.append(f"{i}: pdf/{f} mais antigo que os dados (rode gerador/pdfs.js)")
     return erros, avisos
 
 
@@ -97,18 +101,20 @@ def preparar():
     pub = carregar(PUB); man = manifesto()
     erros, avisos = conferencias(man, pub)
     dif = diferencas(man, pub)
+    remover = sorted(k for k in pub if not k.startswith("_") and k not in man)
     arq = arquivos()
-    lotes, atual, tam = [], {}, 0
+    lotes, atual, tam = [], {k: None for k in remover}, 0
     for k in [d for d in dif if d != PAGINA]:
         s = os.path.getsize(arq[k])
         if atual and tam + s > LOTE: lotes.append(atual); atual, tam = {}, 0
         atual[k] = arq[k]; tam += s
     if atual or PAGINA in dif or not lotes: lotes.append(atual)
-    json.dump(dict(pagina=arq[PAGINA], lotes=lotes, reler=dif, manifesto=man, gerado=dt.datetime.now().isoformat(timespec="seconds")),
+    json.dump(dict(pagina=arq[PAGINA], lotes=lotes, reler=dif, remover=remover, manifesto=man, gerado=dt.datetime.now().isoformat(timespec="seconds")),
               open(PEND, "w"), ensure_ascii=False, indent=1)
     for a in avisos: print("aviso |", a)
     for e in erros: print("ERRO  |", e)
     print(f"{len(dif)} arquivo(s) diferente(s) do último estado confirmado no ar: {', '.join(dif) or '—'}")
+    if remover: print(f"{len(remover)} arquivo(s) a remover da página (null no lote 1): {', '.join(remover)}")
     print(f"{len(lotes)} lote(s) de publicação em site/.pendente.json")
     sys.exit(1 if erros else 0)
 
@@ -130,6 +136,9 @@ def conferir(pasta):
         if sha(loc) == man[k]["sha"]: ok.append(k)
         else: falhas.append(f"{k}: publicado ≠ local ({os.path.getsize(loc) // 1024} KB × {man[k]['kb']} KB)")
     for k in ok: pub[k] = man[k]
+    for k in pend.get("remover", []):   # removidos: confirmar com a listagem de arquivos da página (scope files)
+        if os.path.exists(os.path.join(pasta, k)): falhas.append(f"{k}: deveria ter sido removido e ainda foi relido")
+        else: pub.pop(k, None)
     pub["_paineis"] = man.get("_paineis", {}); pub["_conferido"] = dt.datetime.now().isoformat(timespec="seconds")
     json.dump(pub, open(PUB, "w"), ensure_ascii=False, indent=1)
     rest = diferencas(manifesto(), pub)
