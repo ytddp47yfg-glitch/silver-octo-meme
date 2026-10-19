@@ -7,12 +7,16 @@ Uso: python3 gerador/impermeabilizacao.py crono.xlsx planta_cor.jpg saida.json  
 import base64, json, sys
 from openpyxl import load_workbook
 
+EXTRA = [(m, 2027) for m in (3, 4, 5, 6)]   # meses além do cronograma (4 semanas cada), para os replanejamentos
 MES = {"JULHO": (7, 2026), "AGOSTO": (8, 2026), "SETEMBRO": (9, 2026), "OUTUBRO": (10, 2026), "NOVEMBRO": (11, 2026),
        "DEZEMBRO": (12, 2026), "JANEIRO / 27": (1, 2027), "FEVEREIRO": (2, 2027)}
 ABR = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"]
 # períodos (cor da planta) → linhas do cronograma; cada linha = ambiente (aplicação da manta nas semanas marcadas)
 PERIODOS = [
+    # sistema A replanejado (19/10/2026): começa depois do fim da atividade de fevereiro (quadra de tênis, sistema B);
+    # mantém as durações do cronograma (regularização 5 sem., manta 6 sem., proteção 3 sem.) deslocadas em bloco
     dict(k=1, cor="#2166ac", sis="Sistema A · manta asfáltica simples (4 mm)", sist=[(10, "Regularização"), (11, "Aplicação da manta"), (12, "Proteção mecânica")], fb=11,
+         apos=5, replan="Replanejado: começa após a quadra de tênis (fev/27)",
          itens=[(6, "Quadra de tênis"), (7, "Piso de apoio das quadras"), (8, "Circulação externa e varanda do espaço kids e gourmet")]),
     dict(k=2, cor="#4daf4a", sis="Sistema B · dupla manta asfáltica (3 + 4 mm)",
          itens=[(15, "Bar da piscina"), (19, "Deck da piscina descoberta"), (14, "Terraço do salão de festas"),
@@ -37,19 +41,31 @@ def ler(arq):
         return (sem[cs[0]], sem[cs[-1]]) if cs else None
     area = lambda r: ws.cell(r, 4).value if isinstance(ws.cell(r, 4).value, (int, float)) else None
     rot = lambda s: f"{s[1]}ª sem. {ABR[s[0][0] - 1]}/{str(s[0][1])[2:]}"
-    semanas = [dict(m=f"{ABR[v[0][0] - 1]}/{str(v[0][1])[2:]}", n=v[1]) for c, v in sorted(sem.items())]
-    idx = {v: i for i, v in enumerate(v for c, v in sorted(sem.items()))}
+    lista = [v for c, v in sorted(sem.items())] + [(m, n) for m in EXTRA for n in range(1, 5)]
+    idx = {v: i for i, v in enumerate(lista)}
     per = []
-    for P in PERIODOS:
+    def novo(P, i0, i1):   # janela deslocada pelo replanejamento do período
+        return (lista[i0 + P["_d"]], lista[i1 + P["_d"]]) if P.get("_d") else (lista[i0], lista[i1])
+    for P in sorted(PERIODOS, key=lambda P: bool(P.get("apos"))):   # os replanejados por último (dependem dos outros)
+        if P.get("apos"):
+            fim_ref = next(p for p in per if p["k"] == P["apos"])["i1"]
+            P["_d"] = fim_ref + 1 - min(idx[janela(r)[0]] for r, _ in P["sist"])
         its = []
         for r, nome in P["itens"]:
             j = janela(r) or janela(P["fb"])   # ambientes do sistema A: semanas do sistema (linha "Aplicação da manta")
+            j = novo(P, idx[j[0]], idx[j[1]])
             its.append(dict(n=nome, m2=round(area(r) or 0, 1), de=rot(j[0]), ate=rot(j[1]), i0=idx[j[0]], i1=idx[j[1]]))
-        sist = [dict(n=n, de=rot(janela(r)[0]), ate=rot(janela(r)[1]), i0=idx[janela(r)[0]], i1=idx[janela(r)[1]]) for r, n in P.get("sist", [])]
+        sist = []
+        for r, n in P.get("sist", []):
+            j = novo(P, idx[janela(r)[0]], idx[janela(r)[1]])
+            sist.append(dict(n=n, de=rot(j[0]), ate=rot(j[1]), i0=idx[j[0]], i1=idx[j[1]]))
         i0, i1 = min(x["i0"] for x in its), max(x["i1"] for x in its)
         per.append(dict(k=P["k"], cor=P["cor"], sis=P["sis"], itens=its, sist=sist, i0=i0, i1=i1,
                         de=min(its, key=lambda x: x["i0"])["de"],
-                        ate=max(its, key=lambda x: x["i1"])["ate"], m2=round(sum(x["m2"] for x in its), 1)))
+                        ate=max(its, key=lambda x: x["i1"])["ate"], m2=round(sum(x["m2"] for x in its), 1), replan=P.get("replan", "")))
+    per.sort(key=lambda p: (p["i0"], p["k"]))
+    fim = max(max(p["i1"] for p in per), max((x["i1"] for p in per for x in p["sist"]), default=0))
+    semanas = [dict(m=f"{ABR[m[0] - 1]}/{str(m[1])[2:]}", n=n) for m, n in lista[:fim + 1]]
     return per, semanas
 
 
@@ -60,6 +76,7 @@ if __name__ == "__main__":
                fora="Argamassa flexível (áreas molhadas) e tratamentos com resina/cristalizante: fora deste cronograma",
                nota="Datas = semanas de aplicação da manta em cada ambiente, pelo cronograma de impermeabilização (Crono_Imper_Ed_Jardim). "
                     "Cores da planta pelos sistemas do projeto de impermeabilização; no sistema B a planta mostra o período do conjunto "
-                    "(set–nov/26) e a legenda traz a semana de cada ambiente. Não considera ralos, rodapés e detalhes.")
+                    "(set–nov/26) e a legenda traz a semana de cada ambiente. Sistema A replanejado em 19/10/2026: começa depois da quadra de "
+                    "tênis (fev/27), com as mesmas durações do cronograma. Não considera ralos, rodapés e detalhes.")
     json.dump(out, open(sys.argv[3], "w"), ensure_ascii=False, separators=(",", ":"))
     for p in per: print(p["k"], p["de"], "→", p["ate"], p["m2"], "m²", [(i["n"][:25], i["de"], i["ate"]) for i in p["itens"]])

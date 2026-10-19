@@ -245,6 +245,7 @@ html.a3 .ez>.note{break-before:avoid}
 .iz .ip ul{list-style:none;margin:5px 0 0 32px;padding:0;font-size:12px}
 .iz .ip li{display:flex;justify-content:space-between;gap:10px;padding:1px 0;border-bottom:1px dotted var(--d-line)}.iz .ip li em{font-style:normal;color:var(--d-ink2);white-space:nowrap}
 .iz .ips{margin:4px 0 0 32px;font-size:10.5px;color:var(--d-mut)}
+.iz .ipr{color:var(--d-navy);font-weight:700}
 .iz .itl{display:grid;gap:3px;font-size:10.5px}
 .iz .itm,.iz .itb,.iz .itg{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:0 2px}
 .iz .itm span{text-align:center;font-weight:700;color:var(--d-navy);border-bottom:2px solid var(--d-line);padding-bottom:2px;text-transform:uppercase;font-size:10px}
@@ -504,12 +505,12 @@ function acabCard(A){
 // painel IMPERMEABILIZAÇÃO: planta pintada por período + legenda com as semanas de cada ambiente + linha do tempo
 let IMP=null;
 function renderImp(){
-  const I=IMP,S=I.semanas,n=S.length,meses=[];S.forEach((s,i)=>{if(!meses.length||meses[meses.length-1].m!==s.m)meses.push({m:s.m,i0:i,k:0});meses[meses.length-1].k++});
+  const I=IMP,o=Math.min(...I.per.map(p=>p.i0)),S=I.semanas.slice(o),n=S.length,meses=[];S.forEach((s,i)=>{if(!meses.length||meses[meses.length-1].m!==s.m)meses.push({m:s.m,i0:i,k:0});meses[meses.length-1].k++});   // linha do tempo a partir da 1ª atividade
   const leg=I.per.map(p=>`<div class="ip"><div class="iph"><i style="background:${p.cor}"></i><div><b>${esc(p.de)} → ${esc(p.ate)}</b><span>${esc(p.sis)} · ${p.m2.toLocaleString('pt-BR',{maximumFractionDigits:0})} m²</span></div></div>
      <ul>${p.itens.map(x=>`<li><span>${esc(x.n)}</span><em>${x.de===x.ate?esc(x.de):esc(x.de)+' a '+esc(x.ate)}</em></li>`).join('')}</ul>
-     ${p.sist.length?`<p class="ips">${p.sist.map(x=>`${esc(x.n)}: ${esc(x.de)} a ${esc(x.ate)}`).join(' · ')}</p>`:''}</div>`).join('');
+     ${p.sist.length?`<p class="ips">${p.sist.map(x=>`${esc(x.n)}: ${esc(x.de)} a ${esc(x.ate)}`).join(' · ')}</p>`:''}${p.replan?`<p class="ips ipr">${esc(p.replan)}</p>`:''}</div>`).join('');
   const tl=`<div class="itl" style="--n:${n}"><div class="itm">${meses.map(m=>`<span style="grid-column:${m.i0+1}/span ${m.k}">${esc(m.m)}</span>`).join('')}</div>
-     ${I.per.map(p=>`<div class="itr"><div class="itb">${p.itens.map(x=>`<i style="grid-column:${x.i0+1}/${x.i1+2};background:${p.cor}" title="${esc(x.n)}: ${esc(x.de)} a ${esc(x.ate)}"></i>`).join('')}</div></div>`).join('')}
+     ${I.per.map(p=>`<div class="itr"><div class="itb">${p.itens.map(x=>`<i style="grid-column:${x.i0-o+1}/${x.i1-o+2};background:${p.cor}" title="${esc(x.n)}: ${esc(x.de)} a ${esc(x.ate)}"></i>`).join('')}</div></div>`).join('')}
      <div class="itg">${S.map((s,i)=>`<span style="grid-column:${i+1}">${s.n}</span>`).join('')}</div></div>`;
   wrap.innerHTML=`<div class="dz iz">
    <div class="dz-head"><div><h1>${esc(OBRA.nome)} · ${esc(I.tit)}</h1><p>Cronograma de execução da impermeabilização: cada cor da planta é um período; a legenda traz a semana de cada ambiente</p></div></div>
