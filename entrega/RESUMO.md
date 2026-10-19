@@ -12,7 +12,7 @@ https://claude.ai/artifact/9TpDGLVKmKfKstM6MiEAvy (dashboard, retrato 2027, curv
 | Botânico | Padrão | ago/26 | R$ 160,42 mi | R$ 21,28 mi | R$ 47,60 mi |
 | Botânico | Prevision | ago/26 | R$ 160,42 mi | R$ 21,28 mi | R$ 56,06 mi |
 | Ed Jardim | Padrão | set/26 | R$ 154,71 mi | R$ 45,87 mi | R$ 56,01 mi (fixado) |
-| Ed Jardim | Prevision Atual (CFF de 17/10/2026, versão Replan Aptos 27-29; atividades pelo cronograma de 19/10/2026; estrutura, esquadrias e elevadores iguais ao ajustado) | set/26 | R$ 154,71 mi | R$ 45,87 mi | R$ 55,75 mi |
+| Ed Jardim | Prevision Atual (CFF de 17–19/10/2026, versão Replan Aptos 27-29, com o previsto ajustado às datas do cronograma de atividades de 19/10/2026; estrutura, esquadrias e elevadores iguais ao ajustado) | set/26 | R$ 154,71 mi | R$ 45,87 mi | R$ 55,75 mi |
 | Ed Jardim | Prevision ajustado | set/26 | R$ 154,71 mi | R$ 45,87 mi | R$ 53,46 mi (fixado) |
 | Torre Catharina | Visão Set/26 (antigo Padrão) | set/26 | R$ 183,96 mi | R$ 47,47 mi | R$ 62,18 mi |
 | Torre Catharina | Prevision | set/26 | R$ 183,96 mi | R$ 47,47 mi | R$ 67,83 mi |
