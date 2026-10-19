@@ -28,11 +28,13 @@ const fs = require('fs'), path = require('path');
       const a3 = slug === 'esquematico';   // esquemático: A3 paisagem (cortes lado a lado; um quadro de PLs por folha)
       if (a3) { await p.setViewportSize({ width: 1512, height: 1000 }); await p.evaluate(() => document.documentElement.classList.add('a3')); }
       await p.evaluate(n => printAll(n), nome); await p.waitForTimeout(400);
+      // data da versão no rodapé: geração dos dados do cenário (cartão da obra)
+      const versao = await p.evaluate(() => { const g = (OBRA && OBRA.gerado) || new Date().toISOString().slice(0, 10); return g.slice(8, 10) + '/' + g.slice(5, 7) + '/' + g.slice(0, 4) });
       const f = path.join(out, `${id}--${slug}.pdf`);
       await p.pdf({ path: f, format: a3 ? 'A3' : 'A4', landscape: true, printBackground: true, scale: a3 ? 1 : 0.72,
         margin: a3 ? { top: '8mm', bottom: '10mm', left: '10mm', right: '10mm' } : { top: '8mm', bottom: '10mm', left: '8mm', right: '8mm' },
         displayHeaderFooter: true, headerTemplate: '<span></span>',
-        footerTemplate: '<div style="font:8px Arial;width:100%;padding:0 8mm;display:flex;justify-content:space-between;color:#666"><span class="title"></span><span>página <span class="pageNumber"></span> de <span class="totalPages"></span></span></div>' });
+        footerTemplate: `<div style="font:8px Arial;width:100%;padding:0 ${a3 ? 10 : 8}mm;display:flex;justify-content:space-between;color:#666"><span class="title"></span><span>Versão de ${versao}</span><span>página <span class="pageNumber"></span> de <span class="totalPages"></span></span></div>` });
       feitos.push(`${slug} ${Math.round(fs.statSync(f).size / 1024)} KB${errs.length ? ' ERRO ' + errs.join('; ') : ''}`);
       await p.close();
     }
