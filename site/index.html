@@ -204,7 +204,7 @@ html.a3 .iz .a3h::after,html.a3 .ez .a3h::after{content:"";position:absolute;lef
 html.a3 .iz .a3h h1,html.a3 .ez .a3h h1{margin:0;font-size:30px;line-height:1.1;color:var(--d-navy);font-weight:700}
 html.a3 .iz .a3h p,html.a3 .ez .a3h p{margin:4px 0 0;font-size:13px;color:var(--d-ink2)}
 html.a3 .iz .a3h .epo-logo,html.a3 .ez .a3h .epo-logo{width:62px;height:76px;border-radius:0;background-color:transparent}
-html.a3 .ez .a3h.pg{break-before:page;page-break-before:always}
+html.a3 .iz .a3h.pg,html.a3 .ez .a3h.pg{break-before:page;page-break-before:always}
 
 html.a3 .ez .acq{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
 html.a3 .ez .acq .ecard{max-width:none!important;flex:none;padding:10px 12px;overflow:visible}
@@ -259,6 +259,16 @@ html.a3 .ez>.note{break-before:avoid}
 .iz .itb i.ite{display:flex;align-items:center;justify-content:center;overflow:hidden}.iz .itb i.ite span{font:600 9.5px/1 Arial;color:#fff;font-style:normal;white-space:nowrap}
 .iz .itg span{text-align:center;color:var(--d-mut);font-size:9.5px}
 html.a3 .iz .izg{grid-template-columns:minmax(0,1.7fr) minmax(0,1fr)}
+html.a3 .iz{display:block}html.a3 .iz>*+*{margin-top:12px}
+html.a3 .iz .iz1{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:16px;align-items:start}
+html.a3 .iz .iz1 .izp img{max-height:880px;width:auto;max-width:100%;margin:0 auto}
+html.a3 .iz .izk h2{margin-bottom:8px}
+html.a3 .iz .izc{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-top:1px solid var(--d-line)}html.a3 .iz .izc:first-of-type{border-top:0}
+html.a3 .iz .izc i{width:34px;height:26px;border-radius:4px;flex:none}
+html.a3 .iz .izc b{display:block;font-size:15px;color:var(--d-ink)}html.a3 .iz .izc span{display:block;font-size:11.5px;color:var(--d-ink2)}html.a3 .iz .izc em{font-style:normal;font-size:11px;color:var(--d-mut)}
+html.a3 .iz .izn{font-size:11px;color:var(--d-mut);margin:10px 0 0}
+html.a3 .iz .iz2 .izl{columns:2;column-gap:28px}html.a3 .iz .iz2 .izl h2{column-span:all}html.a3 .iz .iz2 .ip{break-inside:avoid}
+
 html.a3 .iz .ip li{font-size:11px}
 /* ---- página inicial: escolha da obra ---- */
 #home{position:fixed;inset:0;overflow-y:auto;background:var(--bg);z-index:50;padding:32px 16px calc(32px + env(safe-area-inset-bottom,0px))}
@@ -627,9 +637,13 @@ function printAll(so){
       const inf=[];GANTT.arv.forEach(pl=>(pl.c||[]).forEach(pk=>{if(pk.x)inf.push([pl.n,pk.n,pk.nt])}));
       if(inf.length)ult.insertAdjacentHTML('afterend',`<div class="pbreak"></div><div class="dz-card" style="break-inside:auto;page-break-inside:auto"><h2>Pacotes não descritos de forma expressa na curva do Prevision (${inf.length})</h2><div class="dz-tw"><table><thead><tr class="hd"><th style="text-align:left">PL</th><th style="text-align:left">Pacote</th><th style="text-align:left">Nota</th></tr></thead><tbody>${inf.map(r=>`<tr><td style="text-align:left;white-space:normal">${esc(r[0])}</td><td style="text-align:left;white-space:normal;color:var(--g-inft);font-weight:600">${esc(r[1])}</td><td style="text-align:left;white-space:normal">${esc(r[2]||'')}</td></tr>`).join('')}</tbody></table></div></div>`);
     }
-    if(n==='MAPA IMPERMEABILIZAÇÃO'&&document.documentElement.classList.contains('a3')){   // A3: uma folha, cabeçalho Ed. Jardim + logo
-      const iz=wrap.querySelector('.iz');iz.querySelector('.dz-head').outerHTML=`<div class="a3h"><div><h1>${esc(OBRA.nome)}</h1><p>${esc(IMP.tit)} · cronograma de execução: cada cor da planta é um período; a legenda traz a semana de cada ambiente</p></div><span class="epo-logo" role="img" aria-label="EPO"></span></div>`;
-      iz.style.zoom=Math.min(1,1030/iz.offsetHeight).toFixed(3)}
+    if(n==='MAPA IMPERMEABILIZAÇÃO'&&document.documentElement.classList.contains('a3')){   // A3 em 2 folhas: planta + chave de cores | datas + linha do tempo
+      const iz=wrap.querySelector('.iz'),cab=(t,pg)=>`<div class="a3h${pg?' pg':''}"><div><h1>${esc(OBRA.nome)}</h1><p>${esc(IMP.tit)} · ${t}</p></div><span class="epo-logo" role="img" aria-label="EPO"></span></div>`;
+      const img=iz.querySelector('.izp').innerHTML,leg=iz.querySelector('.izl').innerHTML,tl=iz.querySelector('.dz-card:not(.izp):not(.izl)').innerHTML,nota=iz.querySelector('.note').outerHTML;
+      const chave=IMP.per.map(p=>`<div class="izc"><i style="background:${p.cor}"></i><div><b>${esc(p.de)} → ${esc(p.ate)}</b><span>${esc(p.sis)}</span><em>${p.itens.length} ambiente${p.itens.length>1?'s':''} · ${p.m2.toLocaleString('pt-BR',{maximumFractionDigits:0})} m²</em></div></div>`).join('');
+      iz.innerHTML=cab('planta por período de execução')+`<div class="iz1"><div class="dz-card izp">${img}</div><div class="dz-card izk"><h2>Períodos de execução</h2>${chave}<p class="izn">Período = da regularização à proteção mecânica. Datas de cada ambiente na folha 2.</p></div></div>`
+        +cab('datas de execução por ambiente e linha do tempo',1)+`<div class="iz2"><div class="dz-card izl">${leg}</div><div class="dz-card">${tl}</div>${nota}</div>`;
+      const f2=iz.querySelector('.iz2');f2.style.zoom=Math.min(1.12,930/f2.offsetHeight).toFixed(3)}
     if(n==='ESQUEMÁTICO'&&document.documentElement.classList.contains('a3'))   // A3: cada quadro de PLs ocupa a folha
     {const ez=wrap.querySelector('.ez'),cab=t=>`<div class="a3h"><div><h1>${esc(OBRA.nome)}</h1><p>${t}</p></div><span class="epo-logo" role="img" aria-label="EPO"></span></div>`,
        sub='Esquemático de avanço por pavimento'+(OBRA.cen?' · '+esc(OBRA.cen):'');
