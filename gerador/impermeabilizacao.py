@@ -13,10 +13,10 @@ MES = {"JULHO": (7, 2026), "AGOSTO": (8, 2026), "SETEMBRO": (9, 2026), "OUTUBRO"
 ABR = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"]
 # períodos (cor da planta) → linhas do cronograma; cada linha = ambiente (aplicação da manta nas semanas marcadas)
 PERIODOS = [
-    # sistema A replanejado (19/10/2026): começa depois do fim da atividade de fevereiro (quadra de tênis, sistema B);
-    # mantém as durações do cronograma (regularização 5 sem., manta 6 sem., proteção 3 sem.) deslocadas em bloco
+    # sistema A replanejado (19/10/2026): começa no 1º dia útil de março/27 (seg 01/03/2027), depois das atividades de
+    # fevereiro; mantém as durações do cronograma (regularização 5 sem., manta 6 sem., proteção 3 sem.) deslocadas em bloco
     dict(k=1, cor="#2166ac", sis="Sistema A · manta asfáltica simples (4 mm)", sist=[(10, "Regularização"), (11, "Aplicação da manta"), (12, "Proteção mecânica")], fb=11,
-         apos=5, replan="Replanejado: começa após a quadra de tênis (fev/27)",
+         inicio=((3, 2027), 1), replan="Replanejado: começa no 1º dia útil de março/27 (01/03/2027)",
          itens=[(6, "Quadra de tênis"), (7, "Piso de apoio das quadras"), (8, "Circulação externa e varanda do espaço kids e gourmet")]),
     dict(k=2, cor="#4daf4a", sis="Sistema B · dupla manta asfáltica (3 + 4 mm)",
          itens=[(15, "Bar da piscina"), (19, "Deck da piscina descoberta"), (14, "Terraço do salão de festas"),
@@ -46,10 +46,9 @@ def ler(arq):
     per = []
     def novo(P, i0, i1):   # janela deslocada pelo replanejamento do período
         return (lista[i0 + P["_d"]], lista[i1 + P["_d"]]) if P.get("_d") else (lista[i0], lista[i1])
-    for P in sorted(PERIODOS, key=lambda P: bool(P.get("apos"))):   # os replanejados por último (dependem dos outros)
-        if P.get("apos"):
-            fim_ref = next(p for p in per if p["k"] == P["apos"])["i1"]
-            P["_d"] = fim_ref + 1 - min(idx[janela(r)[0]] for r, _ in P["sist"])
+    for P in PERIODOS:
+        if P.get("inicio"):   # replanejado: a 1ª etapa do sistema começa na semana indicada
+            P["_d"] = idx[P["inicio"]] - min(idx[janela(r)[0]] for r, _ in P["sist"])
         its = []
         for r, nome in P["itens"]:
             j = janela(r) or janela(P["fb"])   # ambientes do sistema A: semanas do sistema (linha "Aplicação da manta")
@@ -76,7 +75,7 @@ if __name__ == "__main__":
                fora="Argamassa flexível (áreas molhadas) e tratamentos com resina/cristalizante: fora deste cronograma",
                nota="Datas = semanas de aplicação da manta em cada ambiente, pelo cronograma de impermeabilização (Crono_Imper_Ed_Jardim). "
                     "Cores da planta pelos sistemas do projeto de impermeabilização; no sistema B a planta mostra o período do conjunto "
-                    "(set–nov/26) e a legenda traz a semana de cada ambiente. Sistema A replanejado em 19/10/2026: começa depois da quadra de "
-                    "tênis (fev/27), com as mesmas durações do cronograma. Não considera ralos, rodapés e detalhes.")
+                    "(set–nov/26) e a legenda traz a semana de cada ambiente. Sistema A replanejado em 19/10/2026: começa no 1º dia útil de "
+                    "março/27 (01/03/2027), com as mesmas durações do cronograma. Não considera ralos, rodapés e detalhes.")
     json.dump(out, open(sys.argv[3], "w"), ensure_ascii=False, separators=(",", ":"))
     for p in per: print(p["k"], p["de"], "→", p["ate"], p["m2"], "m²", [(i["n"][:25], i["de"], i["ate"]) for i in p["itens"]])
