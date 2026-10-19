@@ -109,3 +109,8 @@ amarelo = em execução na data, cinza = depois (com o mês). Ed Jardim, Previsi
 
 Outros cortes no mesmo layout: `--cortes gerador/cortes/ed-jardim.json` (lista de {pacotes, ate, desde, rot, tit, res,
 feito, leg}). Ed Jardim: check list em 2028 e em 2029 (`desde` = 1º/jan do ano; o que concluiu antes aparece em verde-claro).
+
+## PDF em A3
+
+O PDF do painel ESQUEMÁTICO (gerador/pdfs.js) sai em A3 paisagem: folha 1 = cabeçalho + cortes por apartamento lado a
+lado; depois um quadro de PLs por folha, ampliado (zoom calculado para caber em 1480 × 1000 px). CSS em `html.a3`.

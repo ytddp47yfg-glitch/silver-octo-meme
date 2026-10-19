@@ -194,6 +194,26 @@ header .epo-logo{order:-1}
 .ez .acs ul{margin:6px 0 14px;padding-left:18px;font-size:12px;color:var(--d-ink)}
 .ez .acs li{margin:2px 0}
 
+/* impressão do ESQUEMÁTICO em A3 paisagem (gerador/pdfs.js): 1ª folha = cortes por apartamento lado a lado;
+   depois um quadro de PLs por folha, ampliado para ocupar a página */
+html.a3 .ez{padding:0 4px}
+html.a3 .ez .acq{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+html.a3 .ez .acq .ecard{max-width:none!important;flex:none;padding:10px 12px;overflow:visible}
+html.a3 .ez .acq .acab{grid-template-columns:minmax(0,1fr);gap:8px}
+html.a3 .ez .acq .ar{grid-template-columns:40px minmax(0,1fr) 138px;min-height:17px;font-size:10px}
+html.a3 .ez .acq .ar.dup{min-height:36px}
+html.a3 .ez .acq .ar .dt{font-size:10px;padding-left:8px}
+html.a3 .ez .acq .dep{display:none}
+html.a3 .ez .acq .acs .big{font-size:26px}
+html.a3 .ez .acq .acs ul{columns:3;column-gap:12px;margin:4px 0 6px;font-size:10px;padding-left:14px}
+html.a3 .ez .acq .kp{font-size:11px}
+html.a3 .ez{display:block}
+html.a3 .ez>*+*{margin-top:12px}
+html.a3 .ez .eq:not(.acq){display:block;break-before:page;page-break-before:always}
+html.a3 .ez .eq:not(.acq) .ecard{width:fit-content;max-width:none;overflow:visible;margin:0 auto}
+html.a3 .ez .eq:not(.acq) .ecard+.ecard{break-before:page;page-break-before:always}
+html.a3 .ez>.note{break-before:avoid}
+
 /* ---- página inicial: escolha da obra ---- */
 #home{position:fixed;inset:0;overflow-y:auto;background:var(--bg);z-index:50;padding:32px 16px calc(32px + env(safe-area-inset-bottom,0px))}
 #home .hin{max-width:1120px;margin:0 auto;display:grid;gap:22px;font-family:"IBM Plex Sans",Arial,Helvetica,sans-serif}
@@ -440,7 +460,7 @@ function acabCard(A){
    <div class="acab"><div class="bld"><div class="roof"></div>${rows.map(r=>`<div class="ar ${st(r)}${r.dup?' dup':''}" title="${esc(r.ap)}${r.fim?': revestimentos '+fD(r.ini)+' a '+fD(r.fim):''}"><span class="pv">${r.lb}</span><span class="ap">${esc(r.ap)}</span><span class="dt">${txt(r)}</span></div>`).join('')}<div class="gnd"></div></div>
    <div class="acs"><div class="big">${ok.length} <span style="font-size:15px;font-weight:600">de ${ap.length} apartamentos</span></div><h3 style="margin-top:4px">${esc(A.res||'com acabamento finalizado em '+ano)}</h3>${(()=>{const an=ap.filter(r=>st(r)==='ant');return an.length?`<p style="margin:2px 0 0;font-size:12px;color:var(--d-ink2)">+ ${an.length} já concluídos antes de ${fD(A.desde)}</p>`:''})()}
     <ul>${ok.map(r=>`<li><b>${esc(r.ap)}</b> · ${fD(r.fim)}</li>`).join('')}</ul>
-    ${Object.keys(dep).sort().map(y=>`<h3>Em ${y}: ${dep[y].length}</h3><ul>${dep[y].sort((a,b)=>a.fim<b.fim?-1:1).map(r=>`<li>${esc(r.ap)} · ${fD(r.fim)}${st(r)==='and'?' (em execução em '+fD(A.ate)+')':''}</li>`).join('')}</ul>`).join('')}
+    ${Object.keys(dep).sort().map(y=>`<div class="dep"><h3>Em ${y}: ${dep[y].length}</h3><ul>${dep[y].sort((a,b)=>a.fim<b.fim?-1:1).map(r=>`<li>${esc(r.ap)} · ${fD(r.fim)}${st(r)==='and'?' (em execução em '+fD(A.ate)+')':''}</li>`).join('')}</ul></div>`).join('')}
     <div class="eleg" style="margin-top:4px">${A.desde?`<span><i style="background:var(--e-ant)"></i>Concluído antes de ${fD(A.desde)}</span>`:''}<span><i style="background:var(--e-ok)"></i>${esc(A.leg||'Acabamento finalizado')}</span><span><i style="background:var(--e-and2)"></i>Em execução na data</span><span><i style="background:var(--e-nao)"></i>A executar</span></div></div></div></div>`;
 }
 let ESQ=null;
@@ -458,7 +478,7 @@ function renderEsq(){
   wrap.innerHTML=`<div class="dz ez">
    <div class="dz-head"><div><h1>${esc(OBRA.nome)} · Esquemático de avanço por pavimento</h1><p>Corte ilustrativo (sem escala): cada célula é o avanço da PL no pavimento, pelas atividades do cronograma do Prevision · passe o mouse numa célula para ver o detalhe</p></div></div>
    <div class="eleg"><span><i style="background:var(--e-ok)"></i>Concluído</span><span><i style="background:var(--e-and)"></i>Em andamento (50% a 99%)</span><span><i style="background:var(--e-and2)"></i>Em andamento (1% a 49%)</span><span><i style="background:var(--e-nao)"></i>A executar</span><span><i style="background:var(--e-sem)"></i>Sem atividade da PL no pavimento</span></div>
-   ${E.acab?`<div class="eq">${[].concat(E.acab).map(acabCard).join('')}</div>`:''}
+   ${E.acab?`<div class="eq acq">${[].concat(E.acab).map(acabCard).join('')}</div>`:''}
    <div class="eq">${E.q.map(quad).join('')}</div>
    <p class="note">${esc(E.nota||'')}</p></div>`;
   wrap.scrollTo(0,0);
@@ -538,6 +558,8 @@ function printAll(so){
       const inf=[];GANTT.arv.forEach(pl=>(pl.c||[]).forEach(pk=>{if(pk.x)inf.push([pl.n,pk.n,pk.nt])}));
       if(inf.length)ult.insertAdjacentHTML('afterend',`<div class="pbreak"></div><div class="dz-card" style="break-inside:auto;page-break-inside:auto"><h2>Pacotes não descritos de forma expressa na curva do Prevision (${inf.length})</h2><div class="dz-tw"><table><thead><tr class="hd"><th style="text-align:left">PL</th><th style="text-align:left">Pacote</th><th style="text-align:left">Nota</th></tr></thead><tbody>${inf.map(r=>`<tr><td style="text-align:left;white-space:normal">${esc(r[0])}</td><td style="text-align:left;white-space:normal;color:var(--g-inft);font-weight:600">${esc(r[1])}</td><td style="text-align:left;white-space:normal">${esc(r[2]||'')}</td></tr>`).join('')}</tbody></table></div></div>`);
     }
+    if(n==='ESQUEMÁTICO'&&document.documentElement.classList.contains('a3'))   // A3: cada quadro de PLs ocupa a folha
+      wrap.querySelectorAll('.eq:not(.acq) .ecard').forEach(c=>{c.style.zoom=Math.min(1480/c.offsetWidth,1000/c.offsetHeight).toFixed(3)});
     partes.push(`<section class="psec">${wrap.innerHTML}</section>`)});
   wrap.innerHTML=partes.join('<div class="pbreak"></div>');
   return lista.length;

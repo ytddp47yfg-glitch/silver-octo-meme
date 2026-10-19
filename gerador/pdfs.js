@@ -1,5 +1,5 @@
 // Gera site/pdf/<id>--<painel>.pdf: um PDF por painel de cada cenário (Dashboard, Retrato, Curva física, Gantt, Esquemático).
-// O botão ⬇ PDF da página baixa o PDF do painel aberto.
+// O botão ⬇ PDF da página baixa o PDF do painel aberto. Esquemático em A3 paisagem; os demais em A4 paisagem.
 // Uso: sirva a pasta site/ (python3 -m http.server 8766 -d site) e rode: node gerador/pdfs.js [porta]
 const { chromium } = require(process.env.PW || '/opt/node22/lib/node_modules/playwright');
 const fs = require('fs'), path = require('path');
@@ -25,9 +25,12 @@ const fs = require('fs'), path = require('path');
     const feitos = [];
     for (const [nome, slug] of nomes) {
       const { p, errs } = await abre(id);
+      const a3 = slug === 'esquematico';   // esquemático: A3 paisagem (cortes lado a lado; um quadro de PLs por folha)
+      if (a3) { await p.setViewportSize({ width: 1512, height: 1000 }); await p.evaluate(() => document.documentElement.classList.add('a3')); }
       await p.evaluate(n => printAll(n), nome); await p.waitForTimeout(400);
       const f = path.join(out, `${id}--${slug}.pdf`);
-      await p.pdf({ path: f, format: 'A4', landscape: true, printBackground: true, scale: 0.72, margin: { top: '8mm', bottom: '10mm', left: '8mm', right: '8mm' },
+      await p.pdf({ path: f, format: a3 ? 'A3' : 'A4', landscape: true, printBackground: true, scale: a3 ? 1 : 0.72,
+        margin: a3 ? { top: '8mm', bottom: '10mm', left: '10mm', right: '10mm' } : { top: '8mm', bottom: '10mm', left: '8mm', right: '8mm' },
         displayHeaderFooter: true, headerTemplate: '<span></span>',
         footerTemplate: '<div style="font:8px Arial;width:100%;padding:0 8mm;display:flex;justify-content:space-between;color:#666"><span class="title"></span><span>página <span class="pageNumber"></span> de <span class="totalPages"></span></span></div>' });
       feitos.push(`${slug} ${Math.round(fs.statSync(f).size / 1024)} KB${errs.length ? ' ERRO ' + errs.join('; ') : ''}`);
