@@ -322,10 +322,34 @@ def dados_painel(arq):
                 nota=next((ws.cell(r, 2).value for r in range(rtot + 1, rtot + 4) if ws.cell(r, 2).value), ""))
 
 
+def acabamento(arq, pacotes, ate):
+    """Corte "acabamento finalizado até <ate>": para cada pavimento de apartamento (lote TIPO, GARDEN ou DUPLEX), início e
+    fim dos pacotes indicados (ex.: revestimento de parede e de piso) na aba CRONOGRAMA ATIVIDADES."""
+    from openpyxl import load_workbook
+    ws = load_workbook(arq, data_only=True, read_only=True)["CRONOGRAMA ATIVIDADES"]
+    alvo = {_norm(x).strip() for x in pacotes}
+    pv = {}
+    for r in ws.iter_rows(min_row=R0A, values_only=True):
+        pac, lote, ini, fim = r[2], r[4], r[5], r[6]
+        n = _pav(lote)
+        if n is None or not pac or not hasattr(fim, "date"): continue
+        apto = bool(re.search(r"TIPO|GARDEN|DUPLEX", _norm(lote)))
+        x = pv.setdefault(n, dict(n=n, lote=str(lote), apto=apto, ini=None, fim=None))
+        x["apto"] = x["apto"] or apto
+        if _norm(pac).strip() in alvo:
+            x["ini"] = min(filter(None, [x["ini"], ini.date().isoformat()]))
+            x["fim"] = max(filter(None, [x["fim"], fim.date().isoformat()]))
+    return dict(ate=ate, pacotes=list(pacotes), pav=[pv[k] for k in sorted(pv, reverse=True)])
+
+
 if __name__ == "__main__":
-    if sys.argv[1] == "--json":   # python3 esquematico.py --json planilha_calc.xlsx saida.json
+    if sys.argv[1] == "--json":   # python3 esquematico.py --json planilha_calc.xlsx saida.json [--acab "PAC1|PAC2" AAAA-MM-DD "critério"]
         import json
-        d = dados_painel(sys.argv[2]); json.dump(d, open(sys.argv[3], "w"), ensure_ascii=False, separators=(",", ":"))
+        d = dados_painel(sys.argv[2])
+        if "--acab" in sys.argv:
+            i = sys.argv.index("--acab"); d["acab"] = acabamento(sys.argv[2], sys.argv[i + 1].split("|"), sys.argv[i + 2])
+            if len(sys.argv) > i + 3: d["acab"]["rot"] = sys.argv[i + 3]   # texto do critério no painel
+        json.dump(d, open(sys.argv[3], "w"), ensure_ascii=False, separators=(",", ":"))
         print(len(d["q"]), "quadros ·", len(d["pavs"]), "pavimentos ·", len(d["pls"]), "PLs ·", d["datas"]); sys.exit()
     from openpyxl import load_workbook
     wb = load_workbook(sys.argv[1])

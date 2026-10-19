@@ -98,3 +98,11 @@ REV. PEDRAS/BANCADAS (rev. parede, piso, porcelanatos, bancadas, piso elevado/ex
 
 `[["CHECK LIST", ["CHECKLIST"], "2028-01-01"]]` acrescenta a coluna (pacotes sem PL) só nos cortes de previsão com data
 digitada a partir de 01/01/2028. O JSON do painel traz as colunas de cada quadro em `q.pls`.
+
+## Corte "acabamento finalizado até a data" (painel)
+
+`python3 gerador/esquematico.py --json calc.xlsx esq.json --acab "REVESTIMENTO PAREDE|REVESTIMENTOS PISO|REVESTIMENTO PORCELANATO PAREDE|REVESTIMENTOS PORCELANATO PISO" 2027-12-31 "do revestimento de parede e de piso (cerâmica/porcelanato)"`
+grava `acab` no JSON e o painel ESQUEMÁTICO mostra, antes dos quadros, o corte por apartamento (pavimentos TIPO, GARDEN
+e DUPLEX; o duplex 26º/27º é um apartamento; nº do apto = pavimento × 100): verde = término dos pacotes até a data,
+amarelo = em execução na data, cinza = depois (com o mês). Ed Jardim, Prevision Atual: 700, 900, 1000, 1100, 1200,
+1400, 1600 e 1800 (confere com as anotações do usuário de 19/10/2026).
