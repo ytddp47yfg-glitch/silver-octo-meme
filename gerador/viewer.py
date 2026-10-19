@@ -123,8 +123,9 @@ if JSON_MODE:
     fis = json.load(open(os.environ['VW_FIS'])) if os.environ.get('VW_FIS') else None   # painel CURVA FÍSICA (gerador/fisico.py)
     gan = json.load(open(os.environ['VW_GANTT'])) if os.environ.get('VW_GANTT') else None   # painel GANTT (gerador/gantt.py)
     esq = json.load(open(os.environ['VW_ESQ'])) if os.environ.get('VW_ESQ') else None   # painel ESQUEMÁTICO (gerador/esquematico.py --json)
+    imp = json.load(open(os.environ['VW_IMP'])) if os.environ.get('VW_IMP') else None   # painel IMPERMEABILIZAÇÃO (gerador/impermeabilizacao.py)
     obra = json.dumps(dict(css='\n'.join(css), D=out, DASH=dd, RET=rr, **({'FIS': fis} if fis else {}), **({'GANTT': gan} if gan else {}),
-                           **({'ESQ': esq} if esq else {})), ensure_ascii=False, default=str, separators=(',', ':'))
+                           **({'ESQ': esq} if esq else {}), **({'IMP': imp} if imp else {})), ensure_ascii=False, default=str, separators=(',', ':'))
     open(OUTF, 'w').write(obra)
     card = dict(nome=os.environ.get('VW_NOME', 'Obra'), id=os.environ.get('VW_ID', 'obra'), corte=dd['corte'], ano=dd['ano'], proj=dd['proj'],
                 real=dd['real'], preal=dd['preal'], ano_v=dd['ano_v'], saldo=dd['saldo'], conf=dd['conf'],

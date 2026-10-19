@@ -68,7 +68,7 @@ def conferencias(man, anterior):
         if dados.get("DASH", {}).get("corte") != card.get("corte"):
             erros.append(f"{i}: corte do cartão ({card.get('corte')}) ≠ corte dos dados ({dados.get('DASH', {}).get('corte')})")
         if card.get("gerado") != hoje: avisos.append(f"{i}: dados gerados em {card.get('gerado')} (não hoje)")
-        paineis = sorted(k for k in ("FIS", "GANTT", "ESQ") if k in dados)
+        paineis = sorted(k for k in ("FIS", "GANTT", "ESQ", "IMP") if k in dados)
         antes = (anterior.get("_paineis") or {}).get(i)
         if antes is not None and set(antes) - set(paineis):
             erros.append(f"{i}: painel sumiu em relação ao publicado: {sorted(set(antes) - set(paineis))}")
@@ -81,7 +81,7 @@ def conferencias(man, anterior):
             if i in ENTREGAVEIS and os.path.exists(ent) and sha(ent) != sha(x):
                 erros.append(f"{i}: site/xlsx/{i}.xlsx ≠ {ENTREGAVEIS[i]} (entregável da raiz)")
         pdfs = [f for f in os.listdir(os.path.join(SITE, "pdf")) if f.startswith(i + "--") and f.endswith(".pdf")]
-        npain = 2 + len(paineis)   # DASHBOARD, RETRATO + FIS/GANTT/ESQ
+        npain = 2 + len(paineis)   # DASHBOARD, RETRATO + FIS/GANTT/ESQ/IMP
         if len(pdfs) != npain: erros.append(f"{i}: {len(pdfs)} PDF(s) de painel, esperados {npain} (rode gerador/pdfs.js)")
         for f in pdfs:
             if os.path.getmtime(os.path.join(SITE, "pdf", f)) < os.path.getmtime(os.path.join(SITE, f"obras/{i}.json")):
