@@ -250,6 +250,7 @@ html.a3 .ez>.note{break-before:avoid}
 .iz .itm,.iz .itb,.iz .itg{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:0 2px}
 .iz .itm span{text-align:center;font-weight:700;color:var(--d-navy);border-bottom:2px solid var(--d-line);padding-bottom:2px;text-transform:uppercase;font-size:10px}
 .iz .itb{height:16px}.iz .itb i{display:block;border-radius:3px;height:16px;grid-row:1}
+.iz .itb i.ite{display:flex;align-items:center;justify-content:center;overflow:hidden}.iz .itb i.ite span{font:600 9.5px/1 Arial;color:#fff;font-style:normal;white-space:nowrap}
 .iz .itg span{text-align:center;color:var(--d-mut);font-size:9.5px}
 html.a3 .iz .izg{grid-template-columns:minmax(0,1.7fr) minmax(0,1fr)}
 html.a3 .iz .ip li{font-size:11px}
@@ -510,7 +511,9 @@ function renderImp(){
      <ul>${p.itens.map(x=>`<li><span>${esc(x.n)}</span><em>${x.de===x.ate?esc(x.de):esc(x.de)+' a '+esc(x.ate)}</em></li>`).join('')}</ul>
      ${p.sist.length?`<p class="ips">${p.sist.map(x=>`${esc(x.n)}: ${esc(x.de)} a ${esc(x.ate)}`).join(' · ')}</p>`:''}${p.replan?`<p class="ips ipr">${esc(p.replan)}</p>`:''}</div>`).join('');
   const tl=`<div class="itl" style="--n:${n}"><div class="itm">${meses.map(m=>`<span style="grid-column:${m.i0+1}/span ${m.k}">${esc(m.m)}</span>`).join('')}</div>
-     ${I.per.map(p=>`<div class="itr"><div class="itb">${p.itens.map(x=>`<i style="grid-column:${x.i0-o+1}/${x.i1-o+2};background:${p.cor}" title="${esc(x.n)}: ${esc(x.de)} a ${esc(x.ate)}"></i>`).join('')}</div></div>`).join('')}
+     ${I.per.map(p=>`<div class="itr"><div class="itb">${p.sist.length   // sistema com etapas: regularização (clara), manta (cheia), proteção (média)
+        ?p.sist.map((x,j)=>`<i class="ite" style="grid-column:${x.i0-o+1}/${x.i1-o+2};background:${p.cor};opacity:${[.45,1,.7][j]??1}" title="${esc(x.n)}: ${esc(x.de)} a ${esc(x.ate)}"><span>${esc(x.n.split(' ')[0].toLowerCase()==='aplicação'?'manta':x.n.split(' ')[0].toLowerCase())}</span></i>`).join('')
+        :p.itens.map(x=>`<i style="grid-column:${x.i0-o+1}/${x.i1-o+2};background:${p.cor}" title="${esc(x.n)}: ${esc(x.de)} a ${esc(x.ate)}"></i>`).join('')}</div></div>`).join('')}
      <div class="itg">${S.map((s,i)=>`<span style="grid-column:${i+1}">${s.n}</span>`).join('')}</div></div>`;
   wrap.innerHTML=`<div class="dz iz">
    <div class="dz-head"><div><h1>${esc(OBRA.nome)} · ${esc(I.tit)}</h1><p>Cronograma de execução da impermeabilização: cada cor da planta é um período; a legenda traz a semana de cada ambiente</p></div></div>

@@ -58,10 +58,11 @@ def ler(arq):
         for r, n in P.get("sist", []):
             j = novo(P, idx[janela(r)[0]], idx[janela(r)[1]])
             sist.append(dict(n=n, de=rot(j[0]), ate=rot(j[1]), i0=idx[j[0]], i1=idx[j[1]]))
-        i0, i1 = min(x["i0"] for x in its), max(x["i1"] for x in its)
-        per.append(dict(k=P["k"], cor=P["cor"], sis=P["sis"], itens=its, sist=sist, i0=i0, i1=i1,
-                        de=min(its, key=lambda x: x["i0"])["de"],
-                        ate=max(its, key=lambda x: x["i1"])["ate"], m2=round(sum(x["m2"] for x in its), 1), replan=P.get("replan", "")))
+        # período = execução completa: com etapas do sistema (regularização → proteção), da 1ª à última; senão, a manta dos ambientes
+        ref = sist or its
+        a0, a1 = min(ref, key=lambda x: x["i0"]), max(ref, key=lambda x: x["i1"])
+        per.append(dict(k=P["k"], cor=P["cor"], sis=P["sis"], itens=its, sist=sist, i0=a0["i0"], i1=a1["i1"], de=a0["de"], ate=a1["ate"],
+                        m2=round(sum(x["m2"] for x in its), 1), replan=P.get("replan", "")))
     per.sort(key=lambda p: (p["i0"], p["k"]))
     fim = max(max(p["i1"] for p in per), max((x["i1"] for p in per for x in p["sist"]), default=0))
     semanas = [dict(m=f"{ABR[m[0] - 1]}/{str(m[1])[2:]}", n=n) for m, n in lista[:fim + 1]]
@@ -73,7 +74,7 @@ if __name__ == "__main__":
     img = "data:image/jpeg;base64," + base64.b64encode(open(sys.argv[2], "rb").read()).decode()
     out = dict(tit="Impermeabilização · 3º pavimento (lazer)", per=per, semanas=semanas, img=img,
                fora="Argamassa flexível (áreas molhadas) e tratamentos com resina/cristalizante: fora deste cronograma",
-               nota="Datas = semanas de aplicação da manta em cada ambiente, pelo cronograma de impermeabilização (Crono_Imper_Ed_Jardim). "
+               nota="Datas = semanas de aplicação da manta em cada ambiente (no sistema A, também regularização e proteção mecânica), pelo cronograma de impermeabilização (Crono_Imper_Ed_Jardim). "
                     "Cores da planta pelos sistemas do projeto de impermeabilização; no sistema B a planta mostra o período do conjunto "
                     "(set–nov/26) e a legenda traz a semana de cada ambiente. Sistema A replanejado em 19/10/2026: começa no 1º dia útil de "
                     "março/27 (01/03/2027), com as mesmas durações do cronograma. Não considera ralos, rodapés e detalhes.")
