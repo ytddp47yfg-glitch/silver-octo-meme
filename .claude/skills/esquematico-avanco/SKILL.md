@@ -106,3 +106,6 @@ grava `acab` no JSON e o painel ESQUEMÁTICO mostra, antes dos quadros, o corte 
 e DUPLEX; o duplex 26º/27º é um apartamento; nº do apto = pavimento × 100): verde = término dos pacotes até a data,
 amarelo = em execução na data, cinza = depois (com o mês). Ed Jardim, Prevision Atual: 700, 900, 1000, 1100, 1200,
 1400, 1600 e 1800 (confere com as anotações do usuário de 19/10/2026).
+
+Outros cortes no mesmo layout: `--cortes gerador/cortes/ed-jardim.json` (lista de {pacotes, ate, desde, rot, tit, res,
+feito, leg}). Ed Jardim: check list em 2028 e em 2029 (`desde` = 1º/jan do ano; o que concluiu antes aparece em verde-claro).

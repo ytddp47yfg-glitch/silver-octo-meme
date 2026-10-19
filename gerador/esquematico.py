@@ -343,12 +343,16 @@ def acabamento(arq, pacotes, ate):
 
 
 if __name__ == "__main__":
-    if sys.argv[1] == "--json":   # python3 esquematico.py --json planilha_calc.xlsx saida.json [--acab "PAC1|PAC2" AAAA-MM-DD "critério"]
+    if sys.argv[1] == "--json":   # python3 esquematico.py --json planilha_calc.xlsx saida.json [--acab "PAC1|PAC2" AAAA-MM-DD "critério"] [--cortes cortes.json]
         import json
         d = dados_painel(sys.argv[2])
         if "--acab" in sys.argv:
-            i = sys.argv.index("--acab"); d["acab"] = acabamento(sys.argv[2], sys.argv[i + 1].split("|"), sys.argv[i + 2])
-            if len(sys.argv) > i + 3: d["acab"]["rot"] = sys.argv[i + 3]   # texto do critério no painel
+            i = sys.argv.index("--acab"); d["acab"] = [acabamento(sys.argv[2], sys.argv[i + 1].split("|"), sys.argv[i + 2])]
+            if len(sys.argv) > i + 3: d["acab"][0]["rot"] = sys.argv[i + 3]   # texto do critério no painel
+        if "--cortes" in sys.argv:   # lista JSON: [{"pacotes": [...], "ate": "aaaa-mm-dd", "desde"?, "rot"?, "tit"?, "res"?, "feito"?, "leg"?}]
+            for c in json.load(open(sys.argv[sys.argv.index("--cortes") + 1])):
+                a = acabamento(sys.argv[2], c["pacotes"], c["ate"]); a.update({k: v for k, v in c.items() if k not in ("pacotes", "ate")})
+                d.setdefault("acab", []).append(a)
         json.dump(d, open(sys.argv[3], "w"), ensure_ascii=False, separators=(",", ":"))
         print(len(d["q"]), "quadros ·", len(d["pavs"]), "pavimentos ·", len(d["pls"]), "PLs ·", d["datas"]); sys.exit()
     from openpyxl import load_workbook
