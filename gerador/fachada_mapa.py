@@ -54,10 +54,11 @@ def montar(resumo, bal, larg, m2bal, l_cr):
 
 def svg(regs, larg, m2bal, l_cr):
     # elevação planificada: D | C (com a faixa da cremalheira à direita) | B | A; pavimentos 4º (baixo) ao 28º (topo)
-    H, Y0, X0, ESC, GAP = 30, 30, 46, 3.4, 14
+    H, Y0, X0, ESC, GAP = 30, 70, 46, 3.4, 14
     reg = {(g["face"], g["et"]): g for g in regs}
     out, x = [], X0
     tot_h = (P2[1] - P1[0] + 1) * H
+    yg = Y0 + tot_h + 3 * H   # nível do térreo: embasamento (térreo, 2º e 3º) abaixo do 4º
     yp = lambda p: Y0 + (P2[1] - p) * H     # topo do pavimento p
     def caixa(x, w, p0, p1, g, txt, sub="", fs=17):
         y, h = yp(p1), (p1 - p0 + 1) * H
@@ -78,8 +79,19 @@ def svg(regs, larg, m2bal, l_cr):
             else:
                 caixa(x, w - wc, p0, p1, g, f"{f}{et[1]}", f'{ABR[g["ini"].month - 1]}/{str(g["ini"].year)[2:]} – {ABR[g["fim"].month - 1]}/{str(g["fim"].year)[2:]}')
         if wc: caixa(x + w - wc, wc, P1[0], P2[1], reg[("C", "CR")], "CR", "", 14)
-        out.append(f'<text x="{x + w / 2:.1f}" y="{Y0 + tot_h + 22}" text-anchor="middle" font-size="16" font-weight="700" fill="#0b6938">FACE {f}</text>')
-        out.append(f'<text x="{x + w / 2:.1f}" y="{Y0 + tot_h + 39}" text-anchor="middle" font-size="13" fill="#555">{nm}</text>')
+        # perfil do prédio: lajes de cada pavimento, contorno da torre, barrilete (29º) em cima e embasamento embaixo
+        for p in range(P1[0] + 1, P2[1] + 1):
+            out.append(f'<line x1="{x:.1f}" x2="{x + w:.1f}" y1="{yp(p) + H}" y2="{yp(p) + H}" stroke="#fff" stroke-opacity=".45" stroke-width="1"/>')
+        out.append(f'<rect x="{x:.1f}" y="{yp(P2[1])}" width="{w:.1f}" height="{tot_h}" fill="none" stroke="#333" stroke-width="2"/>')
+        wb = w * 0.42
+        out.append(f'<rect x="{x + (w - wb) / 2:.1f}" y="{yp(P2[1]) - H}" width="{wb:.1f}" height="{H}" fill="#d9d9d9" stroke="#333" stroke-width="1.5"/>')
+        out.append(f'<text x="{x + w / 2:.1f}" y="{yp(P2[1]) - H / 2 + 4}" text-anchor="middle" font-size="11" fill="#555">barrilete</text>')
+        out.append(f'<rect x="{x - 5:.1f}" y="{Y0 + tot_h}" width="{w + 10:.1f}" height="{3 * H}" fill="#e6e6e6" stroke="#333" stroke-width="1.5"/>')
+        for k in (1, 2):
+            out.append(f'<line x1="{x - 5:.1f}" x2="{x + w + 5:.1f}" y1="{Y0 + tot_h + k * H}" y2="{Y0 + tot_h + k * H}" stroke="#bbb" stroke-width="1"/>')
+        out.append(f'<text x="{x + w / 2:.1f}" y="{Y0 + tot_h + 1.5 * H + 4}" text-anchor="middle" font-size="12" fill="#777">embasamento</text>')
+        out.append(f'<text x="{x + w / 2:.1f}" y="{yg + 22}" text-anchor="middle" font-size="16" font-weight="700" fill="#0b6938">FACE {f}</text>')
+        out.append(f'<text x="{x + w / 2:.1f}" y="{yg + 39}" text-anchor="middle" font-size="13" fill="#555">{nm}</text>')
         x += w + GAP
     W = WE = x - GAP + 10
     # planta baixa do pavimento tipo (à direita): contorno da "Planta de distribuição" do Estudo de Fachada (R12),
@@ -88,7 +100,7 @@ def svg(regs, larg, m2bal, l_cr):
             "C": [(612, 397.3), (370, 399), (271, 451), (100, 451)], "CR": [(724, 393), (612, 397.3)],
             "D": [(100, 451), (93, 376), (143, 366), (169, 175)]}
     POLI = CONT["A"] + CONT["B"][1:] + CONT["CR"][1:] + CONT["C"][1:] + CONT["D"][1:-1]
-    PW = 420; k = PW / (724 - 93); PX, PY = X0 + 300, Y0 + tot_h + 185
+    PW = 420; k = PW / (724 - 93); PX, PY = X0 + 300, yg + 185
     PH = (451 - 175) * k; T = 11
     pt = lambda q: f"{PX + (q[0] - 93) * k:.1f},{PY + (q[1] - 175) * k:.1f}"
     pol = " ".join(pt(q) for q in POLI)
@@ -118,13 +130,20 @@ def svg(regs, larg, m2bal, l_cr):
     out.append(f'<text x="{PX + 34}" y="{yk + 23}" font-size="13" fill="#555">faixa interna = etapa 2 (14º ao 28º)</text>')
     out.append(f'<text x="{PX}" y="{yk + 46}" font-size="13" fill="#555">Elevação acima: faces na ordem D → C → B → A,</text>')
     out.append(f'<text x="{PX}" y="{yk + 61}" font-size="13" fill="#555">contornando a torre a partir da lateral esquerda.</text>')
-    W = WE; HT = PY + PH + 70
+    W = WE + 120; HT = PY + PH + 70
     for p in range(P1[0], P2[1] + 1):
-        out.append(f'<text x="{X0 - 6}" y="{yp(p) + H / 2 + 4}" text-anchor="end" font-size="12" fill="#666">{p}º</text>')
+        out.append(f'<text x="{X0 - 10}" y="{yp(p) + H / 2 + 4}" text-anchor="end" font-size="12" fill="#666">{p}º</text>')
     for p in (P1[1], ):   # divisa das etapas
         out.append(f'<line x1="{X0 - 30}" x2="{WE}" y1="{yp(p)}" y2="{yp(p)}" stroke="#333" stroke-dasharray="5 4" stroke-width="1.2"/>')
     out.append(f'<text x="{WE}" y="{yp(P1[1]) - 5}" text-anchor="end" font-size="12" fill="#333">etapa 2 (14º ao 28º) ↑ · etapa 1 (4º ao 13º) ↓</text>')
-    out.append(f'<rect x="{X0}" y="{Y0 + tot_h}" width="{WE - X0 - 10}" height="4" fill="#999"/>')
+    for t, yy in (("29º", yp(P2[1]) - H / 2), ("3º", Y0 + tot_h + H / 2), ("2º", Y0 + tot_h + 1.5 * H), ("térreo", Y0 + tot_h + 2.5 * H)):
+        out.append(f'<text x="{X0 - 10}" y="{yy + 4}" text-anchor="end" font-size="12" fill="#999">{t}</text>')
+    out.append(f'<rect x="{X0 - 30}" y="{yg}" width="{WE - X0 + 30}" height="4" fill="#666"/>')
+    nt = [("29º barrilete", P2[1] + 1), ("28º laje técnica", 28), ("26º–27º duplex", 26.5), ("4º–25º tipo", 14.5)]
+    for t, pp in nt:
+        out.append(f'<text x="{WE + 6}" y="{yp(pp) + H / 2 + 4:.1f}" font-size="12" fill="#777">{t}</text>')
+    for t, yy in (("3º pilotis / lazer", Y0 + tot_h + H / 2), ("2º garagem", Y0 + tot_h + 1.5 * H), ("térreo garagens", Y0 + tot_h + 2.5 * H)):
+        out.append(f'<text x="{WE + 6}" y="{yy + 4}" font-size="12" fill="#777">{t}</text>')
     # o CSS do painel (.dz svg text) sobrepõe atributos de apresentação: tamanho e cor dos textos vão em style
     def estilo(m):
         t = m.group(0); fs = re.search(r'font-size="([\d.]+)"', t); fl = re.search(r'(?:style="fill:|fill=")(#[0-9a-fA-F]+)"', t)
