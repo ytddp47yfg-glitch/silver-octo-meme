@@ -643,6 +643,7 @@ function printAll(so){
       const chave=IMP.per.map(p=>`<div class="izc"><i style="background:${p.cor}"></i><div><b>${esc(p.de)} → ${esc(p.ate)}</b><span>${esc(p.sis)}</span><em>${IMP.svg?(p.itens.length>1?p.itens.length+' balancins':''):`${p.itens.length} ambiente${p.itens.length>1?'s':''} · ${p.m2.toLocaleString('pt-BR',{maximumFractionDigits:0})} m²`}</em></div></div>`).join('');
       iz.innerHTML=cab(IMP.svg?'elevação por período de execução':'planta por período de execução')+`<div class="iz1"><div class="dz-card izp">${img}</div><div class="dz-card izk"><h2>Períodos de execução</h2>${chave}<p class="izn">${IMP.svg?'Datas de cada trecho e balancim na folha 2.':'Período = da regularização à proteção mecânica. Datas de cada ambiente na folha 2.'}</p></div></div>`
         +cab(IMP.svg?'datas de execução por trecho e linha do tempo':'datas de execução por ambiente e linha do tempo',1)+`<div class="iz2"><div class="dz-card izl">${leg}</div><div class="dz-card">${tl}</div>${nota}</div>`;
+      const f1=iz.querySelector('.iz1');if(f1.offsetHeight>905)f1.style.zoom=(905/f1.offsetHeight).toFixed(3);
       const f2=iz.querySelector('.iz2');f2.style.zoom=Math.min(1.12,905/f2.offsetHeight).toFixed(3)}
     if(n==='ESQUEMÁTICO'&&document.documentElement.classList.contains('a3'))   // A3: cada quadro de PLs ocupa a folha
     {const ez=wrap.querySelector('.ez'),cab=t=>`<div class="a3h"><div><h1>${esc(OBRA.nome)}</h1><p>${t}</p></div><span class="epo-logo" role="img" aria-label="EPO"></span></div>`,

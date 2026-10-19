@@ -81,20 +81,57 @@ def svg(regs, larg, m2bal, l_cr):
         out.append(f'<text x="{x + w / 2:.1f}" y="{Y0 + tot_h + 22}" text-anchor="middle" font-size="16" font-weight="700" fill="#0b6938">FACE {f}</text>')
         out.append(f'<text x="{x + w / 2:.1f}" y="{Y0 + tot_h + 39}" text-anchor="middle" font-size="13" fill="#555">{nm}</text>')
         x += w + GAP
-    W = x - GAP + 10
+    W = WE = x - GAP + 10
+    # planta baixa do pavimento tipo (à direita): contorno da "Planta de distribuição" do Estudo de Fachada (R12),
+    # em coordenadas do PDF; cada face é a sequência de vértices do contorno. Faixa externa = etapa 1, interna = etapa 2
+    CONT = {"A": [(169, 175), (695, 175)], "B": [(695, 175), (699, 307), (724, 393)],
+            "C": [(612, 397.3), (370, 399), (271, 451), (100, 451)], "CR": [(724, 393), (612, 397.3)],
+            "D": [(100, 451), (93, 376), (143, 366), (169, 175)]}
+    POLI = CONT["A"] + CONT["B"][1:] + CONT["CR"][1:] + CONT["C"][1:] + CONT["D"][1:-1]
+    PW = 420; k = PW / (724 - 93); PX, PY = X0 + 300, Y0 + tot_h + 185
+    PH = (451 - 175) * k; T = 11
+    pt = lambda q: f"{PX + (q[0] - 93) * k:.1f},{PY + (q[1] - 175) * k:.1f}"
+    pol = " ".join(pt(q) for q in POLI)
+    out.append(f'<text x="{PX + PW / 2}" y="{PY - 98}" text-anchor="middle" font-size="16" font-weight="700" fill="#0b6938">PLANTA BAIXA · PAVIMENTO TIPO</text>')
+    out.append(f'<text x="{PX + PW / 2}" y="{PY - 80}" text-anchor="middle" font-size="12" fill="#555">contorno do Estudo de Fachada (R12) · sem escala</text>')
+    out.append(f'<defs><clipPath id="pdentro"><polygon points="{pol}"/></clipPath>'
+               f'<clipPath id="pfora"><path clip-rule="evenodd" d="M{PX - 60},{PY - 60}h{PW + 120}v{PH + 120}h-{PW + 120}z M{pol.replace(" ", " L")}z"/></clipPath></defs>')
+    out.append(f'<polygon points="{pol}" fill="#f4f4f4"/>')
+    for f, lin in CONT.items():
+        cores = [("pfora", reg[("C", "CR")]["cor"]), ("pdentro", reg[("C", "CR")]["cor"])] if f == "CR" else \
+                [("pfora", reg[(f, "F1")]["cor"]), ("pdentro", reg[(f, "F2")]["cor"])]
+        for cp, cor in cores:
+            out.append(f'<polyline points="{" ".join(pt(q) for q in lin)}" fill="none" stroke="{cor}" stroke-width="{2 * T}" '
+                       f'stroke-linejoin="miter" clip-path="url(#{cp})"/>')
+    out.append(f'<polygon points="{pol}" fill="none" stroke="#333" stroke-width="1.2"/>')
+    cx, cy = PX + ((668 - 93) * k), PY + (395 - 175) * k
+    out.append(f'<text x="{cx:.1f}" y="{cy + 30:.1f}" text-anchor="middle" font-size="11" font-weight="700" fill="#555">CR (cremalheira)</text>')
+    out.append(f'<text x="{PX + PW / 2}" y="{PY + PH / 2:.1f}" text-anchor="middle" font-size="13" fill="#888">torre</text>')
+    lab = [("A", PX + (432 - 93) * k, PY - 30, "middle", "Posterior"), ("C", PX + (330 - 93) * k, PY + PH + 30, "middle", "Frontal"),
+           ("D", PX - 14, PY + PH / 2, "end", "Lat. esquerda (Baltazar)"), ("B", PX + PW + 14, PY + PH / 2 - 20, "start", "Lat. direita (Jairo)")]
+    for f, lx, ly, anc, nm in lab:
+        out.append(f'<text x="{lx:.1f}" y="{ly:.1f}" text-anchor="{anc}" font-size="17" font-weight="700" fill="#0b6938">FACE {f}</text>')
+        out.append(f'<text x="{lx:.1f}" y="{ly + 17:.1f}" text-anchor="{anc}" font-size="13" fill="#555">{nm}</text>')
+    yk = PY + 20; PX = PX + PW + 260
+    out.append(f'<rect x="{PX}" y="{yk}" width="26" height="10" fill="#bbb"/><rect x="{PX}" y="{yk + 14}" width="26" height="10" fill="#777"/>')
+    out.append(f'<text x="{PX + 34}" y="{yk + 9}" font-size="13" fill="#555">faixa externa = etapa 1 (4º ao 13º)</text>')
+    out.append(f'<text x="{PX + 34}" y="{yk + 23}" font-size="13" fill="#555">faixa interna = etapa 2 (14º ao 28º)</text>')
+    out.append(f'<text x="{PX}" y="{yk + 46}" font-size="13" fill="#555">Elevação acima: faces na ordem D → C → B → A,</text>')
+    out.append(f'<text x="{PX}" y="{yk + 61}" font-size="13" fill="#555">contornando a torre a partir da lateral esquerda.</text>')
+    W = WE; HT = PY + PH + 70
     for p in range(P1[0], P2[1] + 1):
         out.append(f'<text x="{X0 - 6}" y="{yp(p) + H / 2 + 4}" text-anchor="end" font-size="12" fill="#666">{p}º</text>')
     for p in (P1[1], ):   # divisa das etapas
-        out.append(f'<line x1="{X0 - 30}" x2="{W}" y1="{yp(p)}" y2="{yp(p)}" stroke="#333" stroke-dasharray="5 4" stroke-width="1.2"/>')
-    out.append(f'<text x="{W}" y="{yp(P1[1]) - 5}" text-anchor="end" font-size="12" fill="#333">etapa 2 (14º ao 28º) ↑ · etapa 1 (4º ao 13º) ↓</text>')
-    out.append(f'<rect x="{X0}" y="{Y0 + tot_h}" width="{W - X0 - 10}" height="4" fill="#999"/>')
+        out.append(f'<line x1="{X0 - 30}" x2="{WE}" y1="{yp(p)}" y2="{yp(p)}" stroke="#333" stroke-dasharray="5 4" stroke-width="1.2"/>')
+    out.append(f'<text x="{WE}" y="{yp(P1[1]) - 5}" text-anchor="end" font-size="12" fill="#333">etapa 2 (14º ao 28º) ↑ · etapa 1 (4º ao 13º) ↓</text>')
+    out.append(f'<rect x="{X0}" y="{Y0 + tot_h}" width="{WE - X0 - 10}" height="4" fill="#999"/>')
     # o CSS do painel (.dz svg text) sobrepõe atributos de apresentação: tamanho e cor dos textos vão em style
     def estilo(m):
         t = m.group(0); fs = re.search(r'font-size="([\d.]+)"', t); fl = re.search(r'(?:style="fill:|fill=")(#[0-9a-fA-F]+)"', t)
         t = re.sub(r'\s(font-size|fill)="[^"]*"', "", t); t = re.sub(r'\sstyle="[^"]*"', "", t)
         return t[:-1] + f' style="font-size:{fs.group(1) if fs else 12}px;fill:{fl.group(1) if fl else "#333"}">'
     out = [re.sub(r"<text [^>]*>", estilo, o) for o in out]
-    return f'<svg viewBox="0 0 {W:.0f} {Y0 + tot_h + 50}" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif" role="img" aria-label="Elevação planificada da fachada por período">{"".join(out)}</svg>'
+    return f'<svg viewBox="0 0 {W:.0f} {HT:.0f}" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif" role="img" aria-label="Elevação planificada da fachada por período">{"".join(out)}</svg>'
 
 
 if __name__ == "__main__":
@@ -119,6 +156,7 @@ if __name__ == "__main__":
                fora="Embasamento (até o 3º pavimento) fora deste cronograma; limpeza final em todas as faces",
                nota="Datas pelo cronograma de atividades do Prevision (lote FACHADA, cenário Prevision Atual de 19/10/2026): cada face em duas etapas "
                     "(4º ao 13º e 14º ao 28º) e a faixa da cremalheira; a face A etapa 1 é detalhada por balancim (fixação de granito). "
-                    "Larguras das faces proporcionais ao m² por pavimento do estudo de balancins; desenho esquemático, sem escala.")
+                    "Larguras das faces proporcionais ao m² por pavimento do estudo de balancins; desenho esquemático, sem escala. Planta baixa: contorno do pavimento tipo da Planta de distribuição do Estudo de Fachada (R12); "
+                    "a cremalheira fica no trecho direito da frontal (balancim 20 do estudo).")
     json.dump(out, open(sys.argv[3], "w"), ensure_ascii=False, separators=(",", ":"))
     for p in per: print(p["k"], p["de"], "→", p["ate"], p["sis"], len(p["itens"]))
