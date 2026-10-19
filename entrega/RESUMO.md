@@ -68,13 +68,14 @@ Todos os cenários: auditoria 19/19 OK.
 
 - Curva física por cenário (Ed Jardim), Gantt do cronograma com pacotes "não descritos de forma expressa" na curva do
   Prevision marcados.
-- Esquemático por pavimento (Ed Jardim, Prevision ajustado), com três quadros: situação atual, marco de 31/12/2026 e
-  retrato de 31/12/2027.
+- Esquemático por pavimento (Ed Jardim, Prevision Atual e Prevision ajustado), com cinco quadros em ordem de data: situação
+  atual, 31/12/2026, retrato de 31/12/2027, 31/12/2028 e 31/12/2029 (cfg `esq_marcos`; `["Retrato","RETRATO"]` posiciona o retrato).
 - Visual da planilha no padrão EPO (verdes), sem linhas de grade, gráficos com linhas suavizadas.
+- Painel publicado com o logo e as cores da EPO (verde #0b6938, sálvia #a1c1aa); logo em `gerador/marca/epo_logo.png`.
 
 ## Pendências e próximos passos sugeridos
 
 1. Botânico: levar o corte para set/26 (incorrido de setembro já está nos dados brutos).
 2. Confirmar o 1,09 com o Sérgio (Catharina).
 3. Conferir o INCC-DI de set/2026 no FGV.
-4. Esquemático e painel ESQUEMÁTICO nas demais obras/cenários (só existe no Ed Jardim ajustado).
+4. Esquemático e painel ESQUEMÁTICO nas demais obras/cenários (só existe no Ed Jardim, Prevision Atual e ajustado).

@@ -97,7 +97,11 @@ def esquematico(wb, obra, marcos=None):
     if marcos is None: marcos = [("Marco", "=DATE(YEAR(C5),12,31)")]
     marcos = [(r_, f"=DATE({int(v[:4])},{int(v[5:7])},{int(v[8:10])})" if re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(v)) else v)
               for r_, v in marcos]
-    if "RETRATO 2027" in wb.sheetnames: marcos.append(("Retrato", "='RETRATO 2027'!$K$5"))
+    # o corte do RETRATO entra no fim, ou onde a lista tiver ["Retrato", "RETRATO"] (ordem cronológica)
+    ret = "='RETRATO 2027'!$K$5" if "RETRATO 2027" in wb.sheetnames else None
+    if any(v == "RETRATO" for _, v in marcos):
+        marcos = [(r_, ret) if v == "RETRATO" else (r_, v) for r_, v in marcos if v != "RETRATO" or ret]
+    elif ret: marcos.append(("Retrato", ret))
     if not pls or not pavs: return None
     pos = max(wb.sheetnames.index(n) for n in ("RETRATO 2027", "CURVA FÍSICA", "GANTT") if n in wb.sheetnames) + 1
     ws = wb.create_sheet("ESQUEMÁTICO", pos)

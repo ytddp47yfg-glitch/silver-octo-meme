@@ -76,7 +76,7 @@ As colunas auxiliares (peso e % em cada marco, uma linha por atividade) ficam oc
 - **Mais ou menos PLs no corte**: `MIN_PAV`. Para fixar uma lista, filtre `pls` em `_ler()`.
 - **Rótulo dos pavimentos**: é o lote mais frequente do pavimento sem o prefixo "Nº PAV." (`_rotulo()`).
 - **Datas**: C5 = maior data de referência das atividades. C6… = marcos e, por último, RETRATO 2027!K5, todas editáveis (células amarelas).
-- **Mais marcos**: acrescente pares em `esq_marcos` (ex.: `[["Marco", "2026-12-31"], ["Marco", "2027-06-30"]]`). Cada marco é mais um quadro.
+- **Mais marcos**: acrescente pares em `esq_marcos` (ex.: `[["Marco", "2026-12-31"], ["Marco", "2027-06-30"]]`). Cada marco é mais um quadro. Para pôr o retrato no meio (ordem cronológica), inclua `["Retrato", "RETRATO"]` na posição desejada (ex.: `[["Marco","2026-12-31"],["Retrato","RETRATO"],["Marco","2028-12-31"],["Marco","2029-12-31"]]`).
 
 ## Limites (diga isso ao usuário)
 
