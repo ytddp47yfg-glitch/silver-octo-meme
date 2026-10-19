@@ -1,4 +1,4 @@
-# Fluxo de caixa das obras EPO: resumo do trabalho (situação em 08/10/2026)
+# Fluxo de caixa das obras EPO: resumo do trabalho (situação em 19/10/2026)
 
 Controle de fluxo de caixa de três obras (Botânico, Ed Jardim, Torre Catharina). Cada obra tem uma planilha-ferramenta
 gerada em Python a partir da planilha original ("MODELO 05") e um painel web publicado no claude.ai:
@@ -12,7 +12,7 @@ https://claude.ai/artifact/9TpDGLVKmKfKstM6MiEAvy (dashboard, retrato 2027, curv
 | Botânico | Padrão | ago/26 | R$ 160,42 mi | R$ 21,28 mi | R$ 47,60 mi |
 | Botânico | Prevision | ago/26 | R$ 160,42 mi | R$ 21,28 mi | R$ 56,06 mi |
 | Ed Jardim | Padrão | set/26 | R$ 154,71 mi | R$ 45,87 mi | R$ 56,01 mi (fixado) |
-| Ed Jardim | Prevision | set/26 | R$ 154,71 mi | R$ 45,87 mi | R$ 65,54 mi |
+| Ed Jardim | Prevision Atual (cronogramas de 17/10/2026, versão Replan Aptos 27-29; estrutura, esquadrias e elevadores iguais ao ajustado) | set/26 | R$ 154,71 mi | R$ 45,87 mi | R$ 55,75 mi |
 | Ed Jardim | Prevision ajustado | set/26 | R$ 154,71 mi | R$ 45,87 mi | R$ 53,46 mi (fixado) |
 | Torre Catharina | Visão Set/26 (antigo Padrão) | set/26 | R$ 183,96 mi | R$ 47,47 mi | R$ 62,18 mi |
 | Torre Catharina | Prevision | set/26 | R$ 183,96 mi | R$ 47,47 mi | R$ 67,83 mi |
