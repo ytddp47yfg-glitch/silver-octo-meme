@@ -1,6 +1,6 @@
 {
  "index_artifact.html": {
-  "sha": "a9d6b8f4ce56710b0d547ff26be32bbc45a6f1eba732ecf95e57215fa1453009",
+  "sha": "b4d9f137d915d296f46356acedb103f13f97043f11ede43a039b84655eb09de5",
   "kb": 104
  },
  "obras/botanico.json": {
@@ -118,7 +118,7 @@
    "GANTT"
   ]
  },
- "_conferido": "2026-10-19T18:14:25",
+ "_conferido": "2026-10-19T18:29:39",
  "obras/torre-catharina-simulacao.json": {
   "sha": "f694bad02eaebabf260e1a0815b5c046fddd93089fbaba3c5ebba2b2796fa863",
   "kb": 5466
