@@ -68,7 +68,7 @@ def conferencias(man, anterior):
         if dados.get("DASH", {}).get("corte") != card.get("corte"):
             erros.append(f"{i}: corte do cartão ({card.get('corte')}) ≠ corte dos dados ({dados.get('DASH', {}).get('corte')})")
         if card.get("gerado") != hoje: avisos.append(f"{i}: dados gerados em {card.get('gerado')} (não hoje)")
-        paineis = sorted(k for k in ("FIS", "GANTT", "ESQ", "IMP") if k in dados)
+        paineis = sorted(k for k in ("FIS", "GANTT", "ESQ", "IMP", "FAC") if k in dados)
         antes = (anterior.get("_paineis") or {}).get(i)
         if antes is not None and set(antes) - set(paineis):
             erros.append(f"{i}: painel sumiu em relação ao publicado: {sorted(set(antes) - set(paineis))}")

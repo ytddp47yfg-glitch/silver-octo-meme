@@ -25,7 +25,7 @@ const fs = require('fs'), path = require('path');
     const feitos = [];
     for (const [nome, slug] of nomes) {
       const { p, errs } = await abre(id);
-      const a3 = slug === 'esquematico' || slug === 'mapa-impermeabilizacao';   // A3 paisagem (esquemático: cortes lado a lado e um quadro de PLs por folha)
+      const a3 = ['esquematico', 'mapa-impermeabilizacao', 'mapa-fachada'].includes(slug);   // A3 paisagem (esquemático: cortes lado a lado e um quadro de PLs por folha)
       if (a3) { await p.setViewportSize({ width: 1512, height: 1000 }); await p.evaluate(() => document.documentElement.classList.add('a3')); }
       await p.evaluate(n => printAll(n), nome); await p.waitForTimeout(400);
       // data da versão no rodapé: geração dos dados do cenário (cartão da obra)
