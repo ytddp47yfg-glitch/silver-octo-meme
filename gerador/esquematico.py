@@ -89,11 +89,13 @@ def _curto(n):
     return n.strip()
 
 
-def esquematico(wb, obra, marcos=None, subdiv=None):
+def esquematico(wb, obra, marcos=None, subdiv=None, extra=None):
     """marcos: lista de (rótulo, data 'aaaa-mm-dd' ou fórmula) dos cortes de previsão, em ordem; padrão = 31/12 do ano
     da situação. O corte da data do RETRATO entra sempre por último.
     subdiv: {código do PL: [[rótulo da coluna, [pacotes do Prevision]], ...]} quebra o PL em colunas por pacote
-    (cfg esq_subdiv), ex.: revestimentos de acabamento em pedras/bancadas, piso de madeira/rodapé e tratamento de pedras."""
+    (cfg esq_subdiv), ex.: revestimentos de acabamento em pedras/bancadas, piso de madeira/rodapé e tratamento de pedras.
+    extra: [[rótulo, [pacotes], 'aaaa-mm-dd'], ...] colunas por pacote (sem PL, ex.: CHECKLIST), só nos cortes de
+    previsão com data digitada a partir da data indicada (cfg esq_extra)."""
     if "CRONOGRAMA ATIVIDADES" not in wb.sheetnames: return None
     pls, pavs, rot, nome_pl, infra, fach = _ler(wb)
     # coluna = (código do PL, rótulo, pacotes ou None = PL inteiro)
@@ -103,11 +105,13 @@ def esquematico(wb, obra, marcos=None, subdiv=None):
         if grupos: cols += [(pl, g[0], list(g[1])) for g in grupos]
         else: cols.append((pl, _curto(nome_pl.get(pl, pl)), None))
     if marcos is None: marcos = [("Marco", "=DATE(YEAR(C5),12,31)")]
+    dt_m = {i: str(v) for i, (_, v) in enumerate(marcos) if re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(v))}
     marcos = [(r_, f"=DATE({int(v[:4])},{int(v[5:7])},{int(v[8:10])})" if re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(v)) else v)
               for r_, v in marcos]
     # o corte do RETRATO entra no fim, ou onde a lista tiver ["Retrato", "RETRATO"] (ordem cronológica)
     ret = "='RETRATO 2027'!$K$5" if "RETRATO 2027" in wb.sheetnames else None
     if any(v == "RETRATO" for _, v in marcos):
+        dt_m = {i: d for i, d in dt_m.items() if marcos[i][1] != "RETRATO" or ret}
         marcos = [(r_, ret) if v == "RETRATO" else (r_, v) for r_, v in marcos if v != "RETRATO" or ret]
     elif ret: marcos.append(("Retrato", ret))
     if not pls or not pavs: return None
@@ -115,21 +119,25 @@ def esquematico(wb, obra, marcos=None, subdiv=None):
     ws = wb.create_sheet("ESQUEMÁTICO", pos)
     ws.sheet_view.showGridLines = False; ws.sheet_properties.tabColor = "1F7A52"
     ws.sheet_view.zoomScale = 90
-    NP = len(cols)
     # colunas: A (nº pav, oculto) | por corte: rótulo | PLs | fachada | geral | 2 de espaço
     # cortes: 1 = situação do cronograma; 2.. = previsões nas datas de C6, C7 ... (marcos)
     NB = 1 + len(marcos)
+    # colunas extras por pacote (sem PL) só nos cortes com data >= a data mínima de cada uma
+    CK = {1: cols}
+    for k in range(2, NB + 1):
+        d = dt_m.get(k - 2)
+        CK[k] = cols + [(None, e[0], list(e[1])) for e in (extra or []) if d and d >= e[2]]
     BL = {}
     lb = 2
     for k in range(1, NB + 1):
-        b = lb + 1; fa = b + NP; ge = fa + 1
+        b = lb + 1; fa = b + len(CK[k]); ge = fa + 1
         BL[k] = (lb, b, fa, ge); lb = ge + 3
     LAST = BL[NB][3] + 1
     HC = max(HC0, LAST + 3)   # colunas auxiliares sempre depois do último corte
     ws.column_dimensions["A"].width = 3; ws.column_dimensions["A"].hidden = True
     for k, (lb, b, fa, ge) in BL.items():
         ws.column_dimensions[L(lb)].width = 24
-        for j in range(NP): ws.column_dimensions[L(b + j)].width = 3.6
+        for j in range(fa - b): ws.column_dimensions[L(b + j)].width = 3.6
         ws.column_dimensions[L(fa)].width = 4.2; ws.column_dimensions[L(ge)].width = 11
         for c in (ge + 1, ge + 2): ws.column_dimensions[L(c)].width = 3
 
@@ -187,7 +195,8 @@ def esquematico(wb, obra, marcos=None, subdiv=None):
     def da_col(col):
         pl, _, pacs = col
         if not pacs: return f'({MR}="{pl}")'
-        return f'({MR}="{pl}")*((' + "+".join(f'({CR}="{p}")' for p in pacs) + ")>0)"
+        cp = "((" + "+".join(f'({CR}="{p}")' for p in pacs) + ")>0)"
+        return cp + "*1" if pl is None else f'({MR}="{pl}")*{cp}'
 
     def media(k, cond):
         return f"=IFERROR(SUMPRODUCT({WR},{PR[k]},{cond})/SUMPRODUCT({WR},{cond}),\"\")"
@@ -206,7 +215,7 @@ def esquematico(wb, obra, marcos=None, subdiv=None):
     for k, (lb, b, fa, ge) in BL.items():
         c = ws.cell(HT, lb, titulos[k]); c.font = Font(name=F_, bold=True, size=12, color=NAVY)
         hd = Font(name=F_, bold=True, size=8, color=NAVY)
-        for j, col in enumerate(cols):
+        for j, col in enumerate(CK[k]):
             c = ws.cell(HN, b + j, col[1]); c.font = hd
             c.alignment = Alignment(text_rotation=90, horizontal="center", vertical="bottom")
         for col, t in ((fa, "FACHADA"), (ge, "PAVIMENTO (todas as PLs)")):
@@ -220,7 +229,7 @@ def esquematico(wb, obra, marcos=None, subdiv=None):
             ws.cell(r, 1, pv).font = Font(name=F_, size=8, color=INK2)
             c = ws.cell(r, lb, rot[pv]); c.font = Font(name=F_, size=8, bold=pv in (0, max(pavs)), color=NAVY)
             c.alignment = Alignment(horizontal="right", vertical="center", indent=1)
-            for j, col in enumerate(cols):
+            for j, col in enumerate(CK[k]):
                 c = ws.cell(r, b + j, media(k, f'{da_col(col)}*({NR}=$A{r})'))
                 c.number_format = '0;-0;0;@'; c.font = Font(name=F_, size=7, color="3C3A33")
                 c.alignment = Alignment(horizontal="center", vertical="center")
@@ -245,7 +254,7 @@ def esquematico(wb, obra, marcos=None, subdiv=None):
         # % de cada PL em todos os pavimentos
         c = ws.cell(RTOT, lb, "% da PL nos pavimentos"); c.font = Font(name=F_, bold=True, size=8, color=NAVY)
         c.alignment = Alignment(horizontal="right", indent=1)
-        for j, col in enumerate(cols):
+        for j, col in enumerate(CK[k]):
             c = ws.cell(RTOT, b + j, media(k, f'{da_col(col)}*ISNUMBER({NR})')); c.number_format = '0'
             c.font = Font(name=F_, size=7, bold=True, color=NAVY); c.alignment = Alignment(horizontal="center")
         g = ws.cell(RTOT, ge, media(k, f'({MR}<>"")*ISNUMBER({NR})')); g.number_format = '0"%"'
@@ -298,7 +307,7 @@ def dados_painel(arq):
         b = lb + 1; fa = b
         while ws.cell(10, fa).value != "FACHADA": fa += 1
         ge = fa + 1
-        quadros.append(dict(t=ws.cell(9, lb).value,
+        quadros.append(dict(t=ws.cell(9, lb).value, pls=[ws.cell(10, c).value for c in range(b, fa)],
                             v=[[num(ws.cell(r, b + j).value) for j in range(fa - b)] for r in rows],
                             fach=num(ws.cell(rp0, fa).value), infra=num(ws.cell(rinf, ge).value),
                             pav=[num(ws.cell(r, ge).value) for r in rows],

@@ -93,3 +93,8 @@ pacotes do Prevision (só no esquemático; curvas e valores não mudam). Confira
 CRONOGRAMA ATIVIDADES (de-para R:S) caiu em algum grupo. Ed Jardim: PL 30 (revestimentos de acabamento) em
 REV. PEDRAS/BANCADAS (rev. parede, piso, porcelanatos, bancadas, piso elevado/externo), PISO MAD./RODAPÉ
 (piso madeira/laminado/vinílico, rodapé, deck) e TRAT. PEDRAS (tratamento de granito/mármore, polimento).
+
+## Coluna por pacote só em alguns cortes (cfg `esq_extra`)
+
+`[["CHECK LIST", ["CHECKLIST"], "2028-01-01"]]` acrescenta a coluna (pacotes sem PL) só nos cortes de previsão com data
+digitada a partir de 01/01/2028. O JSON do painel traz as colunas de cada quadro em `q.pls`.
