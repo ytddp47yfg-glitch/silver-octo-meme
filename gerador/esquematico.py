@@ -89,11 +89,19 @@ def _curto(n):
     return n.strip()
 
 
-def esquematico(wb, obra, marcos=None):
+def esquematico(wb, obra, marcos=None, subdiv=None):
     """marcos: lista de (rótulo, data 'aaaa-mm-dd' ou fórmula) dos cortes de previsão, em ordem; padrão = 31/12 do ano
-    da situação. O corte da data do RETRATO entra sempre por último."""
+    da situação. O corte da data do RETRATO entra sempre por último.
+    subdiv: {código do PL: [[rótulo da coluna, [pacotes do Prevision]], ...]} quebra o PL em colunas por pacote
+    (cfg esq_subdiv), ex.: revestimentos de acabamento em pedras/bancadas, piso de madeira/rodapé e tratamento de pedras."""
     if "CRONOGRAMA ATIVIDADES" not in wb.sheetnames: return None
     pls, pavs, rot, nome_pl, infra, fach = _ler(wb)
+    # coluna = (código do PL, rótulo, pacotes ou None = PL inteiro)
+    cols = []
+    for pl in pls:
+        grupos = (subdiv or {}).get(pl)
+        if grupos: cols += [(pl, g[0], list(g[1])) for g in grupos]
+        else: cols.append((pl, _curto(nome_pl.get(pl, pl)), None))
     if marcos is None: marcos = [("Marco", "=DATE(YEAR(C5),12,31)")]
     marcos = [(r_, f"=DATE({int(v[:4])},{int(v[5:7])},{int(v[8:10])})" if re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(v)) else v)
               for r_, v in marcos]
@@ -107,7 +115,7 @@ def esquematico(wb, obra, marcos=None):
     ws = wb.create_sheet("ESQUEMÁTICO", pos)
     ws.sheet_view.showGridLines = False; ws.sheet_properties.tabColor = "1F7A52"
     ws.sheet_view.zoomScale = 90
-    NP = len(pls)
+    NP = len(cols)
     # colunas: A (nº pav, oculto) | por corte: rótulo | PLs | fachada | geral | 2 de espaço
     # cortes: 1 = situação do cronograma; 2.. = previsões nas datas de C6, C7 ... (marcos)
     NB = 1 + len(marcos)
@@ -174,7 +182,12 @@ def esquematico(wb, obra, marcos=None):
     WR = f"${W}${R0A}:${W}${R1A}"
     PR = {1: f"{CA}$K${R0A}:$K${R1A}"}
     for k in range(2, NB + 1): PR[k] = f"${L(HC + k - 1)}${R0A}:${L(HC + k - 1)}${R1A}"
-    MR, NR = f"{CA}$M${R0A}:$M${R1A}", f"{CA}$N${R0A}:$N${R1A}"
+    MR, NR, CR = f"{CA}$M${R0A}:$M${R1A}", f"{CA}$N${R0A}:$N${R1A}", f"{CA}$C${R0A}:$C${R1A}"
+
+    def da_col(col):
+        pl, _, pacs = col
+        if not pacs: return f'({MR}="{pl}")'
+        return f'({MR}="{pl}")*((' + "+".join(f'({CR}="{p}")' for p in pacs) + ")>0)"
 
     def media(k, cond):
         return f"=IFERROR(SUMPRODUCT({WR},{PR[k]},{cond})/SUMPRODUCT({WR},{cond}),\"\")"
@@ -193,8 +206,8 @@ def esquematico(wb, obra, marcos=None):
     for k, (lb, b, fa, ge) in BL.items():
         c = ws.cell(HT, lb, titulos[k]); c.font = Font(name=F_, bold=True, size=12, color=NAVY)
         hd = Font(name=F_, bold=True, size=8, color=NAVY)
-        for j, pl in enumerate(pls):
-            c = ws.cell(HN, b + j, _curto(nome_pl.get(pl, pl))); c.font = hd
+        for j, col in enumerate(cols):
+            c = ws.cell(HN, b + j, col[1]); c.font = hd
             c.alignment = Alignment(text_rotation=90, horizontal="center", vertical="bottom")
         for col, t in ((fa, "FACHADA"), (ge, "PAVIMENTO (todas as PLs)")):
             c = ws.cell(HN, col, t); c.font = hd
@@ -207,8 +220,8 @@ def esquematico(wb, obra, marcos=None):
             ws.cell(r, 1, pv).font = Font(name=F_, size=8, color=INK2)
             c = ws.cell(r, lb, rot[pv]); c.font = Font(name=F_, size=8, bold=pv in (0, max(pavs)), color=NAVY)
             c.alignment = Alignment(horizontal="right", vertical="center", indent=1)
-            for j, pl in enumerate(pls):
-                c = ws.cell(r, b + j, media(k, f'({MR}="{pl}")*({NR}=$A{r})'))
+            for j, col in enumerate(cols):
+                c = ws.cell(r, b + j, media(k, f'{da_col(col)}*({NR}=$A{r})'))
                 c.number_format = '0;-0;0;@'; c.font = Font(name=F_, size=7, color="3C3A33")
                 c.alignment = Alignment(horizontal="center", vertical="center")
                 c.fill = fill(C_SEM); c.border = Border(left=fino, right=fino, top=fino, bottom=fino)
@@ -232,8 +245,8 @@ def esquematico(wb, obra, marcos=None):
         # % de cada PL em todos os pavimentos
         c = ws.cell(RTOT, lb, "% da PL nos pavimentos"); c.font = Font(name=F_, bold=True, size=8, color=NAVY)
         c.alignment = Alignment(horizontal="right", indent=1)
-        for j, pl in enumerate(pls):
-            c = ws.cell(RTOT, b + j, media(k, f'({MR}="{pl}")*ISNUMBER({NR})')); c.number_format = '0'
+        for j, col in enumerate(cols):
+            c = ws.cell(RTOT, b + j, media(k, f'{da_col(col)}*ISNUMBER({NR})')); c.number_format = '0'
             c.font = Font(name=F_, size=7, bold=True, color=NAVY); c.alignment = Alignment(horizontal="center")
         g = ws.cell(RTOT, ge, media(k, f'({MR}<>"")*ISNUMBER({NR})')); g.number_format = '0"%"'
         g.font = Font(name=F_, size=9, bold=True, color=NAVY)

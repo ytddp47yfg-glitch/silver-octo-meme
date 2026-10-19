@@ -85,3 +85,11 @@ As colunas auxiliares (peso e % em cada marco, uma linha por atividade) ficam oc
   setores marcados. Os pacotes já trazem SETOR A/B/C, TRECHO A/B/C e QUADRANTES; dá para montar blocos por setor
   com a mesma lógica (filtro pelo nome do pacote/lote), posicionados conforme a planta.
 - A previsão é linear entre as datas do cronograma; não considera a curva de alocação de cada tarefa.
+
+## Quebrar um PL em colunas (cfg `esq_subdiv`)
+
+`{"<código do PL>": [["RÓTULO", ["PACOTE 1", "PACOTE 2"]], ...]}` troca a coluna do PL por uma coluna por grupo de
+pacotes do Prevision (só no esquemático; curvas e valores não mudam). Confira que todo pacote do PL na aba
+CRONOGRAMA ATIVIDADES (de-para R:S) caiu em algum grupo. Ed Jardim: PL 30 (revestimentos de acabamento) em
+REV. PEDRAS/BANCADAS (rev. parede, piso, porcelanatos, bancadas, piso elevado/externo), PISO MAD./RODAPÉ
+(piso madeira/laminado/vinílico, rodapé, deck) e TRAT. PEDRAS (tratamento de granito/mármore, polimento).
