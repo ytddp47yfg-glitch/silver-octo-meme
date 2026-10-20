@@ -87,3 +87,4 @@ Cenários com `"fixar_2027"` no registro (Ed. Jardim Padrão = 56.009.788,87; Pr
 
 Atualizações recorrentes: incorrido do ERP → skill `incorrido-erp`; esquemático → `esquematico-avanco`;
 mapas → `mapas-obra`.
+Cronograma de atividades do Prevision → `gerador/prevision/crono.py`; CFF → `gerador/prevision/cff.py` (ver `entrega/PROCEDIMENTO.md`, seção 6.2).

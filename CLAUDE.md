@@ -38,6 +38,7 @@ arquivo do site diferente do último estado confirmado.
 - **Todas as obras iguais**: mesmo conjunto de planilhas, painéis e PDFs (skill `padrao-obras`). Dados e cfg de cada cenário
   em `ferramenta/obras/<obra>/<pasta>/`, registro em `ferramenta/obras.json`; diferença entre obras só por falta de insumo.
 - Incorrido do ERP: skill `incorrido-erp`. Mapas de impermeabilização/fachada: skill `mapas-obra`.
+- Passo a passo completo do projeto (modelo Ed. Jardim, para quem assume com outro login): `entrega/PROCEDIMENTO.md`.
 - Controle em INCC. Detalhes do gerador em `gerador/LEIA-ME.md`.
 - Aba/painel ESQUEMÁTICO: skill `.claude/skills/esquematico-avanco`.
 - Mudanças só estéticas não podem alterar números. Confira o 2027 de cada cenário e a auditoria (19 OK) a cada build.

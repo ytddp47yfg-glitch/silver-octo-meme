@@ -1,3 +1,6 @@
+> **Desatualizado (pacote .zip de 08/10/2026).** O procedimento atual está em `entrega/PROCEDIMENTO.md`; o gerador e os dados
+> agora ficam no próprio repositório (`ferramenta/`).
+
 # Pacote do fluxo de caixa EPO (Botânico, Ed Jardim, Torre Catharina): 08/10/2026
 
 Tudo o que é preciso para regerar as planilhas e o painel. Comece pelo `RESUMO.md`, que traz o estado atual e as regras.
