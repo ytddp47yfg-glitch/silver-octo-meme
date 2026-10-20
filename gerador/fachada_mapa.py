@@ -20,6 +20,7 @@ _IMG = os.path.join(os.path.dirname(os.path.abspath(__file__)), "imper", "ed-jar
 ELEV = {"A": ("A_B", (150, 478), (162, 465), 26, 808, 904), "B": ("A_B", (765, 913), (775, 912), 26, 808, 904),
         "C": ("C_D", (262, 646), (287, 627), 37, 818, 915), "D": ("C_D", (985, 1140), (997, 1137), 37, 818, 915)}
 CR_PX = (608, 627)
+SUAVE = bytes(255 - (255 - v) * 42 // 100 for v in range(256))   # preto → cinza claro (42% do contraste)
 
 
 def recorte(img, x0, x1, y0, y1):
@@ -27,6 +28,7 @@ def recorte(img, x0, x1, y0, y1):
     pm = pymupdf.Pixmap(_IMG.format(img)); doc = pymupdf.open(); pg = doc.new_page(width=pm.width, height=pm.height)
     pg.insert_image(pg.rect, pixmap=pm)
     px = pg.get_pixmap(matrix=pymupdf.Matrix(1.5, 1.5), clip=pymupdf.Rect(x0, y0, x1, y1), colorspace=pymupdf.csGRAY)
+    px = pymupdf.Pixmap(pymupdf.csGRAY, px.width, px.height, bytes(SUAVE[v] for v in px.samples), 0)   # linhas mais claras
     return "data:image/jpeg;base64," + base64.b64encode(px.tobytes("jpeg", jpg_quality=82)).decode()
 d = lambda s: dt.date.fromisoformat(str(s)[:10])
 fd = lambda x: x.strftime("%d/%m/%y")
@@ -73,7 +75,7 @@ def svg(regs, larg, m2bal, l_cr):
     yp = lambda p: Y0 + (P2[1] - p) * H     # topo do pavimento p
     def tinta(x, w, p0, p1, g):
         y, h = yp(p1), (p1 - p0 + 1) * H
-        out.append(f'<rect x="{x:.1f}" y="{y}" width="{w:.1f}" height="{h}" fill="{g["cor"]}" fill-opacity=".62" style="mix-blend-mode:multiply">'
+        out.append(f'<rect x="{x:.1f}" y="{y}" width="{w:.1f}" height="{h}" fill="{g["cor"]}" fill-opacity=".72" style="mix-blend-mode:multiply">'
                    f'<title>{g["nome"]}: {fd(g["ini"])} a {fd(g["fim"])}</title></rect>')
     def rot(cx, p0, p1, txt, sub="", fs=18):
         cy = yp(p1) + (p1 - p0 + 1) * H / 2
@@ -110,12 +112,12 @@ def svg(regs, larg, m2bal, l_cr):
             "D": [(100, 451), (93, 376), (143, 366), (169, 175)]}
     POLI = CONT["A"] + CONT["B"][1:] + CONT["CR"][1:] + CONT["C"][1:] + CONT["D"][1:-1]
     op = []
-    PW = 420; k = PW / (724 - 93); PX, PY = 250, 130
+    PW = 600; k = PW / (724 - 93); PX, PY = 72, 112
     PH = (451 - 175) * k; T = 11
     pt = lambda q: f"{PX + (q[0] - 93) * k:.1f},{PY + (q[1] - 175) * k:.1f}"
     pol = " ".join(pt(q) for q in POLI)
-    op.append(f'<text x="{PX + PW / 2}" y="{PY - 98}" text-anchor="middle" font-size="16" font-weight="700" fill="#0b6938">PLANTA BAIXA · PAVIMENTO TIPO</text>')
-    op.append(f'<text x="{PX + PW / 2}" y="{PY - 80}" text-anchor="middle" font-size="12" fill="#555">contorno do Estudo de Fachada (R12) · sem escala</text>')
+    op.append(f'<text x="{PX + PW / 2}" y="{PY - 88}" text-anchor="middle" font-size="18" font-weight="700" fill="#0b6938">PLANTA BAIXA · PAVIMENTO TIPO</text>')
+    op.append(f'<text x="{PX + PW / 2}" y="{PY - 68}" text-anchor="middle" font-size="13" fill="#555">contorno do Estudo de Fachada (R12) · sem escala</text>')
     op.append(f'<defs><clipPath id="pdentro"><polygon points="{pol}"/></clipPath>'
                f'<clipPath id="pfora"><path clip-rule="evenodd" d="M{PX - 60},{PY - 60}h{PW + 120}v{PH + 120}h-{PW + 120}z M{pol.replace(" ", " L")}z"/></clipPath></defs>')
     op.append(f'<polygon points="{pol}" fill="#f4f4f4"/>')
@@ -127,20 +129,22 @@ def svg(regs, larg, m2bal, l_cr):
                        f'stroke-linejoin="miter" clip-path="url(#{cp})"/>')
     op.append(f'<polygon points="{pol}" fill="none" stroke="#333" stroke-width="1.2"/>')
     cx, cy = PX + ((668 - 93) * k), PY + (395 - 175) * k
-    op.append(f'<text x="{cx:.1f}" y="{cy + 30:.1f}" text-anchor="middle" font-size="11" font-weight="700" fill="#555">CR (cremalheira)</text>')
+    op.append(f'<text x="{cx:.1f}" y="{cy + 30:.1f}" text-anchor="middle" font-size="13" font-weight="700" fill="#555">CR (cremalheira)</text>')
     op.append(f'<text x="{PX + PW / 2}" y="{PY + PH / 2:.1f}" text-anchor="middle" font-size="13" fill="#888">torre</text>')
-    lab = [("A", PX + (432 - 93) * k, PY - 30, "middle", "Posterior"), ("C", PX + (330 - 93) * k, PY + PH + 30, "middle", "Frontal"),
-           ("D", PX - 14, PY + PH / 2, "end", "Lat. esquerda (Baltazar)"), ("B", PX + PW + 14, PY + PH / 2 - 20, "start", "Lat. direita (Jairo)")]
-    for f, lx, ly, anc, nm in lab:
-        op.append(f'<text x="{lx:.1f}" y="{ly:.1f}" text-anchor="{anc}" font-size="17" font-weight="700" fill="#0b6938">FACE {f}</text>')
-        op.append(f'<text x="{lx:.1f}" y="{ly + 17:.1f}" text-anchor="{anc}" font-size="13" fill="#555">{nm}</text>')
-    yk = PY + PH + 60; PX = PX - 120
+    cy = PY + PH / 2   # faces A e C em cima e embaixo; D e B com o texto girado nas laterais, para a planta ocupar a largura
+    lab = [("A", PX + (432 - 93) * k, PY - 38, "", "Posterior"), ("C", PX + (330 - 93) * k, PY + PH + 30, "", "Frontal")]
+    for f, lx, ly, _, nm in lab:
+        op.append(f'<text x="{lx:.1f}" y="{ly:.1f}" text-anchor="middle" font-size="20" font-weight="700" fill="#0b6938">FACE {f}</text>')
+        op.append(f'<text x="{lx:.1f}" y="{ly + 19:.1f}" text-anchor="middle" font-size="15" fill="#555">{nm}</text>')
+    for f, nm, xt, xn, r in (("D", "Lat. esquerda (Baltazar)", PX - 46, PX - 24, -90), ("B", "Lat. direita (Jairo)", PX + PW + 48, PX + PW + 26, 90)):
+        op.append(f'<text x="{xt:.1f}" y="{cy:.1f}" transform="rotate({r} {xt:.1f} {cy:.1f})" text-anchor="middle" font-size="20" font-weight="700" fill="#0b6938">FACE {f}</text>')
+        op.append(f'<text x="{xn:.1f}" y="{cy:.1f}" transform="rotate({r} {xn:.1f} {cy:.1f})" text-anchor="middle" font-size="15" fill="#555">{nm}</text>')
+    yk = PY + PH + 66
     op.append(f'<rect x="{PX}" y="{yk}" width="26" height="10" fill="#bbb"/><rect x="{PX}" y="{yk + 14}" width="26" height="10" fill="#777"/>')
-    op.append(f'<text x="{PX + 34}" y="{yk + 9}" font-size="13" fill="#555">faixa externa = etapa 1 (4º ao 13º)</text>')
-    op.append(f'<text x="{PX + 34}" y="{yk + 23}" font-size="13" fill="#555">faixa interna = etapa 2 (14º ao 28º)</text>')
-    op.append(f'<text x="{PX}" y="{yk + 46}" font-size="13" fill="#555">Elevação acima: faces na ordem D → C → B → A,</text>')
-    op.append(f'<text x="{PX}" y="{yk + 61}" font-size="13" fill="#555">contornando a torre a partir da lateral esquerda.</text>')
-    WP, HP = PX + 120 + PW + 200, yk + 80   # PX já recuado 120 para a legenda
+    op.append(f'<text x="{PX + 34}" y="{yk + 9}" font-size="14" fill="#555">faixa externa = etapa 1 (4º ao 13º)</text>')
+    op.append(f'<text x="{PX + 34}" y="{yk + 23}" font-size="14" fill="#555">faixa interna = etapa 2 (14º ao 28º)</text>')
+    op.append(f'<text x="{PX}" y="{yk + 47}" font-size="14" fill="#555">Elevação: faces na ordem D → C → B → A, contornando a torre a partir da lateral esquerda.</text>')
+    WP, HP = PX + PW + 72, yk + 60
     W, HT = WE + 130, yg + 50
     for p in range(P1[0], P2[1] + 1):
         out.append(f'<text x="{X0 - 10}" y="{yp(p) + H / 2 + 4}" text-anchor="end" font-size="12" fill="#666">{p}º</text>')

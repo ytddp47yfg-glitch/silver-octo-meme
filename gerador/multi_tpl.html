@@ -237,7 +237,7 @@ html.a3 .ez>.note{break-before:avoid}
 /* painel IMPERMEABILIZAÇÃO */
 .iz .izg{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(300px,1fr);gap:18px;align-items:start}
 @media (max-width:1000px){.iz .izg{grid-template-columns:minmax(0,1fr)}}
-.iz .izp{padding:10px;display:flex;flex-direction:column}.iz .izp .izpl{order:2;max-width:760px;margin:6px auto 0;width:100%}.iz .izk .izpl{margin:10px 0 4px}.iz .izp img,.iz .izp svg{display:block;width:100%;height:auto;border-radius:4px}
+.iz .izp{padding:10px;display:flex;flex-direction:column}.iz .izp .izpl{order:2;max-width:880px;margin:10px auto 0;width:100%}.iz .izk .izpl{margin:10px 0 4px}.iz .izp img,.iz .izp svg{display:block;width:100%;height:auto;border-radius:4px}
 .iz .izv{grid-template-columns:minmax(0,1fr)}.iz .izv .izl{columns:2 340px;column-gap:28px}.iz .izv .izl h2{column-span:all}.iz .izv .ip{break-inside:avoid}
 .iz .izf{display:flex;gap:8px;align-items:center;font-size:11px;color:var(--d-ink2);margin-top:6px}.iz .izf i{width:14px;height:10px;background:#d4d4d4;border-radius:2px;flex:none}
 .iz .ip{padding:8px 0;border-top:1px solid var(--d-line)}.iz .ip:first-of-type{border-top:0}
@@ -261,7 +261,7 @@ html.a3 .iz .izg{grid-template-columns:minmax(0,1.7fr) minmax(0,1fr)}
 html.a3 .iz{display:block}html.a3 .iz>*+*{margin-top:12px}
 html.a3 .iz .iz1{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:16px;align-items:start}
 html.a3 .iz .iz1 .izp img,html.a3 .iz .iz1 .izp svg{max-height:880px;width:auto;max-width:100%;margin:0 auto}
-html.a3 .iz .izk h2{margin-bottom:8px}
+html.a3 .iz .izk h2{margin-bottom:8px}html.a3 .iz .iz1.izf{grid-template-columns:minmax(0,1fr) 440px}html.a3 .iz .izf .izc{padding:4px 0}html.a3 .iz .izf .izc i{height:20px}html.a3 .iz .izf .izc b{font-size:13.5px}html.a3 .iz .izk .izpl{margin:0 0 10px}
 html.a3 .iz .izc{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-top:1px solid var(--d-line)}html.a3 .iz .izc:first-of-type{border-top:0}
 html.a3 .iz .izc i{width:34px;height:26px;border-radius:4px;flex:none}
 html.a3 .iz .izc b{display:block;font-size:15px;color:var(--d-ink)}html.a3 .iz .izc span{display:block;font-size:11.5px;color:var(--d-ink2)}html.a3 .iz .izc em{font-style:normal;font-size:11px;color:var(--d-mut)}
@@ -642,7 +642,7 @@ function printAll(so){
       const pl=iz.querySelector('.izpl'),plh=pl?`<div class="izpl">${pl.innerHTML}</div>`:'';if(pl)pl.remove();
       const img=iz.querySelector('.izp').innerHTML,leg=iz.querySelector('.izl').innerHTML,tl=iz.querySelector('.dz-card:not(.izp):not(.izl)').innerHTML,nota=iz.querySelector('.note').outerHTML;
       const chave=IMP.per.map(p=>`<div class="izc"><i style="background:${p.cor}"></i><div><b>${esc(p.de)} → ${esc(p.ate)}</b><span>${esc(p.sis)}</span><em>${IMP.svg?(p.itens.length>1?p.itens.length+' balancins':''):`${p.itens.length} ambiente${p.itens.length>1?'s':''} · ${p.m2.toLocaleString('pt-BR',{maximumFractionDigits:0})} m²`}</em></div></div>`).join('');
-      iz.innerHTML=cab(IMP.svg?'elevação por período de execução':'planta por período de execução')+`<div class="iz1"><div class="dz-card izp">${img}</div><div class="dz-card izk"><h2>Períodos de execução</h2>${chave}${plh}<p class="izn">${IMP.svg?'Datas de cada face e etapa na folha 2.':'Período = da regularização à proteção mecânica. Datas de cada ambiente na folha 2.'}</p></div></div>`
+      iz.innerHTML=cab(IMP.svg?'elevação por período de execução':'planta por período de execução')+`<div class="iz1${plh?' izf':''}"><div class="dz-card izp">${img}</div><div class="dz-card izk">${plh}<h2>Períodos de execução</h2>${chave}<p class="izn">${IMP.svg?'Datas de cada face e etapa na folha 2.':'Período = da regularização à proteção mecânica. Datas de cada ambiente na folha 2.'}</p></div></div>`
         +cab(IMP.svg?'datas de execução por trecho e linha do tempo':'datas de execução por ambiente e linha do tempo',1)+`<div class="iz2"><div class="dz-card izl">${leg}</div><div class="dz-card">${tl}</div>${nota}</div>`;
       const f1=iz.querySelector('.iz1');if(f1.offsetHeight>905)f1.style.zoom=(905/f1.offsetHeight).toFixed(3);
       const f2=iz.querySelector('.iz2');f2.style.zoom=Math.min(1.12,905/f2.offsetHeight).toFixed(3)}

@@ -1,6 +1,6 @@
 {
  "index_artifact.html": {
-  "sha": "4196037b50a1f5d2f27e8978ff4080b7241f31fa387fd202552a3b41cb0d0cef",
+  "sha": "82cbbf5c0e764f5981f2600c5767ab34a57dc7df0cc9b515bf2fd9f9876c8e15",
   "kb": 116
  },
  "obras/botanico.json": {
@@ -28,11 +28,11 @@
   "kb": 2599
  },
  "obras/ed-jardim.json": {
-  "sha": "df0cbd7ff82414b34b9068f5bba2ed4f6a8f52b736cc4e061debbb3f036414b4",
-  "kb": 7819
+  "sha": "35b67110f46cf5c99e76ac29cdc0ecc7adac10068f192af44619bb2e8fbb9b4c",
+  "kb": 7644
  },
  "obras/ed-jardim.json.card.json": {
-  "sha": "a2451f6af8bf8352bf1fbf047015ddbb7240c5cebf768ec096c094e418dab696",
+  "sha": "7caa757031f470389741657e0a12b2df8940d830198a1bcdc53fe1000d61c0d2",
   "kb": 1
  },
  "xlsx/ed-jardim.xlsx.b64.txt": {
@@ -40,11 +40,11 @@
   "kb": 3363
  },
  "obras/ed-jardim-ajustado.json": {
-  "sha": "3c6d10f7beab508701c0d8bab633af854ed72a62a52a98d2cdc3fd020a13d619",
-  "kb": 8432
+  "sha": "e134bab21c9e961a4712ce9a7206bef6f24e2a5f0765b2282841098ea04acb61",
+  "kb": 8257
  },
  "obras/ed-jardim-ajustado.json.card.json": {
-  "sha": "92767b3355b7c5d5ac89dfb1e8aaad48034120af08c04506bb3320ce2ab1929b",
+  "sha": "bd995e2c6f569477db724e4c78b58a8ab1ee7791ca86d737815b6e0e51936631",
   "kb": 1
  },
  "xlsx/ed-jardim-ajustado.xlsx.b64.txt": {
@@ -52,11 +52,11 @@
   "kb": 3427
  },
  "obras/ed-jardim-padrao.json": {
-  "sha": "89c1865b49ccab4c0262d4d81c1850a401994f6a5e1c573499954129979c95ec",
-  "kb": 6626
+  "sha": "cfe9c03cf6a59c797af7e4bfffb2b088e36c530c4f4beeaabcf65de855d262d1",
+  "kb": 6451
  },
  "obras/ed-jardim-padrao.json.card.json": {
-  "sha": "532b8a427ebbb018670f0f552dca23cab4c48929b286ec426403774fb31cb47e",
+  "sha": "9772dd4fad09ead5f781806600b1a42f6718a3bdaec1c56b0761fcc9f3767297",
   "kb": 0
  },
  "xlsx/ed-jardim-padrao.xlsx.b64.txt": {
@@ -124,7 +124,7 @@
    "GANTT"
   ]
  },
- "_conferido": "2026-10-19T22:58:27",
+ "_conferido": "2026-10-20T12:13:55",
  "obras/torre-catharina-simulacao.json": {
   "sha": "f694bad02eaebabf260e1a0815b5c046fddd93089fbaba3c5ebba2b2796fa863",
   "kb": 5466
@@ -138,143 +138,143 @@
   "kb": 2836
  },
  "pdf/botanico--dashboard.pdf": {
-  "sha": "c9bc9d5990fe75fedf50616b87c87efb677640af4a97accfd2ebdc3584fb6674",
+  "sha": "a4a7cf440156a60988e91355e61ac6310cf47fe9571a9c6e5f4ced7aef31fd20",
   "kb": 127
  },
  "pdf/botanico--gantt.pdf": {
-  "sha": "d7f12455be4deb4dec8f8214565815952a182a6efce7b459b7eb1cdd03cb5954",
+  "sha": "48736ff7e07b4a66d5d48de3bfdab1900da7fc52d846c97634f8d950a26c5107",
   "kb": 315
  },
  "pdf/botanico--retrato-2027.pdf": {
-  "sha": "e5e4c5f6800525809965a03d50261307f1e09a4246202906dafa572f7e91f8c3",
+  "sha": "251099bf260032d0af8c458a8242f553ebaac6b82501e412a1f6bb0bf1ff703f",
   "kb": 184
  },
  "pdf/botanico-padrao--dashboard.pdf": {
-  "sha": "0573a38a1df47dcc4498163490937e55918bd88d20c9fad5fc692dd8b9991bcb",
+  "sha": "58880e5a5c0d90aedf088a1f69ad4ae0cc2ceb21c477311443819f540b1c4809",
   "kb": 127
  },
  "pdf/botanico-padrao--gantt.pdf": {
-  "sha": "ae5369fba10cbb98bfec0c4bd54e71953677a0e878212f15c24d745ae5d2dfbc",
+  "sha": "fb39aade7c092d5d6e72987d0374fa14f1203477e7d667a65c480f30eea9b213",
   "kb": 315
  },
  "pdf/botanico-padrao--retrato-2027.pdf": {
-  "sha": "2600b36cf0fab7e5cfc7c6af27dbbeb9bbe823e41b970da2fba4002a39d30a4a",
+  "sha": "02a77a3b0a8982515ba518b7103729437ec178f1f48a307bbb6626acbadd7039",
   "kb": 184
  },
  "pdf/ed-jardim--curva-fisica.pdf": {
-  "sha": "bca25c86b764a93df5c78c8d6693bd601dd800e8c7aeacb9ff42f93331a863e1",
-  "kb": 187
+  "sha": "8914de1a75df64a01b824230e202537337ca1337eae0a9f010b4b9676f511845",
+  "kb": 186
  },
  "pdf/ed-jardim--dashboard.pdf": {
-  "sha": "9965855c5eaf0e91c1627f06b9ad88b4755206ea60a6ae410538ec478addf2b6",
-  "kb": 127
+  "sha": "c273ad6e95a7e86678327fd5140c10628a83f689be67a212e362dc638a02eda0",
+  "kb": 126
  },
  "pdf/ed-jardim--gantt.pdf": {
-  "sha": "0f6febff9278ea907baaf31a03526997c25164df9a9314868dfb7adee3a2aef7",
+  "sha": "31a12f0d7352f65c56ca91e2681e89cd4fe42063e51e2c48a17d15f92b46e7f4",
   "kb": 323
  },
  "pdf/ed-jardim--retrato-2027.pdf": {
-  "sha": "45d1c9b98cfef6be01da97081bc7aebb62b8e2702a16c7380660a544af7d8623",
+  "sha": "b215f427b44f315e4242a56dd7d31b0147a53429531b450f0e1d23e1c7933ab3",
   "kb": 182
  },
  "pdf/ed-jardim-ajustado--curva-fisica.pdf": {
-  "sha": "3cd28077ea1be609ec1491d870f6d95cc121ab4ecd7d5bb49560f99b91907238",
-  "kb": 187
+  "sha": "c4c507859fb09b7f909abb1ae98086f4a60f5a8170fabb96b3a633e037b8ed7b",
+  "kb": 186
  },
  "pdf/ed-jardim-ajustado--dashboard.pdf": {
-  "sha": "9026bebf1013ddbfef44f13eaa32dcd35c474165594f2127cc93545fbb6ad250",
+  "sha": "3645e571b6eab57293447fbb158069c526095d8013a7f11741d1688acb1c6029",
   "kb": 127
  },
  "pdf/ed-jardim-ajustado--esquematico.pdf": {
-  "sha": "dddb86d07c2ccc521d8ae5fccb9637dacd7f28484bcc0d7192a9e9a3f31a1296",
+  "sha": "7cfe1d8efc58991e6c586627f96bfc5db78cef04243ca6b389ae3482a2ef2727",
   "kb": 606
  },
  "pdf/ed-jardim-ajustado--gantt.pdf": {
-  "sha": "7d040e5c754594308213bc2bf32ac5e8fd7b4fac5084598886dec689a0b76bbd",
+  "sha": "cd75f59bacc20b7defd28920e9ec78037a461643b500d726e4645e478d28cf34",
   "kb": 322
  },
  "pdf/ed-jardim-ajustado--retrato-2027.pdf": {
-  "sha": "45731c47a7441045c94339e9188297209930684096bb63f9112fe487847a966b",
+  "sha": "bcfdb9cb1a023e01763de87ff71bba820b2ed1ae299f07047a1be655834c9db9",
   "kb": 183
  },
  "pdf/ed-jardim-padrao--curva-fisica.pdf": {
-  "sha": "c25f2783ebdd3128d064185fde1a3091b92206fd19205df7a87f5a866cefa7fa",
+  "sha": "e1dbe4576a664a8f009d0f7c3ee16e7613208a8becf2b0a3eacbd26ae4968895",
   "kb": 186
  },
  "pdf/ed-jardim-padrao--dashboard.pdf": {
-  "sha": "01c83ca2e4dd26bc1b2ad0ddbfa981192437594ef0f16eb1ff79cf0be53fdf10",
-  "kb": 127
+  "sha": "7aea02318fa980f5a299f97400c803dd0433c8050ee54635a9016cb6bd40b05f",
+  "kb": 126
  },
  "pdf/ed-jardim-padrao--gantt.pdf": {
-  "sha": "06994494cb4aeef0afaf93674cd535a651165fde66743fc9269dc259e966bbb3",
+  "sha": "2668a676da377df13654f19a80d1b36dae7f52ac3372b377ad106d4f88dfc0db",
   "kb": 323
  },
  "pdf/ed-jardim-padrao--retrato-2027.pdf": {
-  "sha": "dc620d1edf402dffcf0720987c2afee95072f1ed97a72fe7a81b831f7a458895",
+  "sha": "fd5e845bcae3bc84eb5d3f299d17398f960132a76761144e81aaf145edd93542",
   "kb": 182
  },
  "pdf/torre-catharina--dashboard.pdf": {
-  "sha": "da0e8826a7d8c387dbbaec99b6551ee8f4cdf91c336444796a650fce489fffe6",
+  "sha": "1d7b9ca2389a996ef66849a5a5029d38c577687414fd7a0255b36aef99fa1051",
   "kb": 127
  },
  "pdf/torre-catharina--gantt.pdf": {
-  "sha": "1b6b99b701eefc13766eeacd177e40cfb2d19c0cc360d008bdf8983cc6bc879f",
+  "sha": "7e61a76654ea94c7146a5867f0b68c021587efb1c193ed050990588960975757",
   "kb": 343
  },
  "pdf/torre-catharina--retrato-2027.pdf": {
-  "sha": "691da98dce4bf0a0d9915537823eca1d953fd65690eb59eaa82d3f44befc83ea",
+  "sha": "054a1d1b334efd81ffa8872b16f86e03153daf9486d484afe9687820d7b1a650",
   "kb": 184
  },
  "pdf/torre-catharina-padrao--dashboard.pdf": {
-  "sha": "7ab9283d29cf9cc097a9ba499eecf955dcd83a337eed76701f88da5bd0664fee",
+  "sha": "45563380384022bd8eb0709572b15286883e163d902e66063579bd9aa481ba29",
   "kb": 127
  },
  "pdf/torre-catharina-padrao--gantt.pdf": {
-  "sha": "df5c673765c1d6ed619c95ee2e8575efd358f13e4bbc2efeca2772a37882c514",
+  "sha": "fa5b51f4a0fc3128da3f7199df06cec7b6423194d28ee8e83a59246790182b63",
   "kb": 344
  },
  "pdf/torre-catharina-padrao--retrato-2027.pdf": {
-  "sha": "c008fdcf711862852ecacc7835b9fb1e078dccfa02ad1e9b04abff88b15c7742",
+  "sha": "7ffdaedcea01a462f860d2cf36daed074f9cae820158dc337851610daccbc32a",
   "kb": 183
  },
  "pdf/torre-catharina-simulacao--dashboard.pdf": {
-  "sha": "c2845b3125da8f4c6500e50eb4475555c468c317ef635ba5f042fa61993baefc",
+  "sha": "c52c124a53e4b770c79b1f7c0a33321f8b6e34de3c624ac49c0cf878941c31e2",
   "kb": 127
  },
  "pdf/torre-catharina-simulacao--gantt.pdf": {
-  "sha": "4b6fbf7dff491c6862f6db280238a8cc2b131055276e284f35183908313ca007",
+  "sha": "cdbdf47615408223d3811eb3a2731ed57035c925aad3524a2af0b35cb41a2131",
   "kb": 344
  },
  "pdf/torre-catharina-simulacao--retrato-2027.pdf": {
-  "sha": "775df021be7744b896ef9d8e62a96ee8807f12b27993b153bfb3ef645dad015c",
+  "sha": "619db560df40284adbc15e184af457b190ebcdc79adef26bc99d0fd3754ec091",
   "kb": 184
  },
  "pdf/ed-jardim--esquematico.pdf": {
-  "sha": "5b076f3a7a7af0f6b3fbe27b3eae728f029945861e5fdb3598e9b013c4f50e39",
+  "sha": "952b94d1d6a3a4f68c691289dce80f7f93ce10fa289e36dd8e705f1380fd55ec",
   "kb": 605
  },
  "pdf/ed-jardim--mapa-impermeabilizacao.pdf": {
-  "sha": "b01d239bfba1f9cd342fee2af82ef194e22b6ca0a52431ded0ea6f13dcdc2fc1",
+  "sha": "036f80c8ce43347e4a5c0ecbb47e176e0513f9e9afc9c332582e9990ebac4455",
   "kb": 358
  },
  "pdf/ed-jardim-ajustado--mapa-impermeabilizacao.pdf": {
-  "sha": "ce94eb75aaebbde425f78e9576549a3bb16fe5ab2b94e0e747e29c565c012e35",
+  "sha": "88eb8c9023bf293ce854056671be4f9896b86a9b758f2be519c981cbfbb56573",
   "kb": 358
  },
  "pdf/ed-jardim-padrao--mapa-impermeabilizacao.pdf": {
-  "sha": "5f7549ee1ded6a74fa9c574c7f839e4b73da33728a95ce94a54f8dcf3ea874d4",
+  "sha": "f1a964ccb51f1e2b0abfebc79fd6414132d4e8e71ec765863e983d9f625e1540",
   "kb": 358
  },
  "pdf/ed-jardim--mapa-fachada.pdf": {
-  "sha": "834fc6b98de9566400cd0f66caa48a0c31a4e5e0c017feefea1d2aebd9530091",
-  "kb": 700
+  "sha": "2d1b544d4766ce57a15ae14620b87cb64c44b1f2ce61b240ef9cc6f2a199e050",
+  "kb": 569
  },
  "pdf/ed-jardim-ajustado--mapa-fachada.pdf": {
-  "sha": "e2fb930b49e061f4fc2f6cc8deaf5e24848e9f4614adb687250e74ca43f6f4ed",
-  "kb": 712
+  "sha": "1a97991c461157bd2d68e9314ced7a4ef09bda45d1ce954f563cf8ad42939467",
+  "kb": 581
  },
  "pdf/ed-jardim-padrao--mapa-fachada.pdf": {
-  "sha": "88e942bada2552340a058c2388ac3e16c53b3f366fa01d76bfd1a2a46f9376bc",
-  "kb": 712
+  "sha": "2deee70fc96f79f5aea13931ecb7bb737d238c63413ab5c5205d7b3de5c48547",
+  "kb": 580
  }
 }
