@@ -1,12 +1,12 @@
-import json, datetime as dt, re, html, sys
-TPL, OUTF = (sys.argv[1], sys.argv[2]) if len(sys.argv) > 2 else ('viewer_tpl.html', '/home/user/silver-octo-meme/visualizar_ferramenta.html')
+import json, datetime as dt, re, html, os, sys
+TPL, OUTF = (sys.argv[1], sys.argv[2]) if len(sys.argv) > 2 else ('viewer_tpl.html', os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'visualizar_ferramenta.html'))
 TOK = {'0000FF':'var(--in)','008000':'var(--link)','C00000':'var(--neg)','FFFFFF':'var(--hdrfg)','595959':'var(--mut)','FFFF00':'var(--yel)','D9E1F2':'var(--tot)','FFF2CC':'var(--inbg)','FCE4D6':'var(--red)','E2EFDA':'var(--ok)','1F4E78':'var(--hdr)','C65911':'var(--org)','FFC000':'var(--yel)'}
 tk = lambda h: TOK.get(h.upper(), '#' + h)
 from openpyxl import load_workbook
 from openpyxl.utils import get_column_letter as L
 import os
 V = load_workbook(os.environ.get('VW_VALUES', 'm.xlsx'), data_only=True)          # valores recalculados
-Fw = load_workbook(os.environ.get('VW_FORMULAS', '/home/user/silver-octo-meme/fluxo_caixa_botanico_modelo.xlsx'))  # fórmulas e formatos
+Fw = load_workbook(os.environ.get('VW_FORMULAS', os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'fluxo_caixa_botanico_modelo.xlsx')))  # fórmulas e formatos
 JSON_MODE = TPL == '--json'
 MES = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez']
 def br(x, dec):

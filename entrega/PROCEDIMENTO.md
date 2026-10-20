@@ -3,26 +3,65 @@
 Guia para quem assume o projeto com outro login do Claude. Usa o Ed. Jardim como exemplo porque ele tem todas as peças;
 Botânico e Torre Catharina seguem exatamente o mesmo caminho (só mudam os dados e os insumos que a obra tem).
 
-Situação em 20/10/2026. Repositório `ytddp47yfg-glitch/silver-octo-meme`, branch `claude/planilha-fluxo-financeiro-d5b771`.
-Painel publicado: https://claude.ai/artifact/9TpDGLVKmKfKstM6MiEAvy
+Situação em 20/10/2026. Origem: repositório `ytddp47yfg-glitch/silver-octo-meme`, branch
+`claude/planilha-fluxo-financeiro-d5b771`; painel https://claude.ai/artifact/9TpDGLVKmKfKstM6MiEAvy. No login novo, o projeto
+passa para um **repositório novo** e um **painel novo** (seção 1).
 
 ---
 
-## 1. Antes de começar: acessos do novo login
+## 1. Migração para um novo login e um novo repositório
 
-| O quê | Como passar | Observação |
-|---|---|---|
-| Repositório GitHub | adicionar o novo usuário como colaborador do repo (Settings → Collaborators) e instalar/autorizar o app Claude no GitHub da conta nova | Todo o projeto mora no repo: gerador, dados, skills, `CLAUDE.md` |
-| Painel publicado | o dono da página abre o painel → **Compartilhar** → dar acesso de **edição** ao novo login | Sem acesso de edição, o novo login só consegue publicar uma página nova; aí troque o link no `CLAUDE.md` e em `site/.publicado.json` (o `conferir_publicacao.py` usa a página do `CLAUDE.md`) |
-| Sessão de trabalho | Claude Code na web (claude.ai/code) com este repositório e esta branch | O ambiente já tem LibreOffice, Node/Playwright e o script de recálculo da skill xlsx |
-| Skills da conta antiga | não vão junto | As do **projeto** (`.claude/skills/`) vão com o repo. Skills pessoais da conta (ex.: medição financeira, reorçamento, histograma) precisam ser recriadas na conta nova se forem usadas |
-| Instruções de Projeto no claude.ai (opcional) | colar `entrega/PROJETO_INSTRUCOES.md` nas instruções do Projeto | Para conversas fora do Claude Code |
+O projeto inteiro (gerador, dados dos 8 cenários, planilhas, site, skills, `CLAUDE.md`) cabe no repositório: 177 arquivos,
+~178 MB, nenhum acima de 9 MB. O histórico do git antigo (~740 MB) não precisa ir junto.
 
-Primeira mensagem sugerida na sessão nova: *"Leia o CLAUDE.md e entrega/PROCEDIMENTO.md e confirme que consegue regerar o
-Ed. Jardim sem mudar números."* O Claude deve rodar `python3 ferramenta/regerar.py ed-jardim`, comparar os 2027 com a
-tabela da seção 3 e publicar com a rotina da seção 7.
+**1.1 Preparar a conta nova**
 
-Se o Python da sessão não tiver `openpyxl`: `pip install openpyxl` (ou `PYTHONPATH` apontando para uma pasta com ele).
+1. Criar o repositório (privado) na conta GitHub do novo login, ex. `fluxo-caixa-epo`, com a branch `main`.
+2. No claude.ai do novo login: conectar o GitHub (Configurações → Conectores) e instalar o app **Claude** no repositório novo.
+3. Abrir uma sessão do Claude Code na web (claude.ai/code) apontando para o repositório novo.
+
+**1.2 Copiar o projeto** (escolha um caminho)
+
+- **A. Pacote .zip (sem dar acesso ao repositório antigo).** O dono atual baixa o pacote de transferência
+  (`fluxo_caixa_EPO_transferencia_<data>.zip`, gerado com `git archive` da branch) ou, no GitHub antigo, *Code → Download ZIP*
+  da branch, e entrega ao novo login. Na sessão nova, anexar o .zip e pedir: *"Descompacte este pacote na raiz do repositório,
+  faça um commit único 'Projeto fluxo de caixa EPO (transferência)' na main e dê push."*
+- **B. Clonar direto (com acesso temporário).** O dono atual adiciona o usuário GitHub novo como colaborador (leitura) do
+  repositório antigo. Na sessão nova, pedir para adicionar o repositório antigo à sessão e rodar:
+  ```bash
+  git clone --depth 1 --branch claude/planilha-fluxo-financeiro-d5b771 https://github.com/ytddp47yfg-glitch/silver-octo-meme /tmp/origem
+  rsync -a --exclude .git /tmp/origem/ ./ && git add -A && git commit -m "Projeto fluxo de caixa EPO (transferência)" && git push origin main
+  ```
+  Depois o acesso ao repositório antigo pode ser retirado.
+
+**1.3 Primeira publicação (painel novo)**
+
+O login novo não publica na página antiga (ela é de outra conta); cria a dele.
+
+1. Conferir que tudo regera igual: `python3 ferramenta/regerar.py` (todas as obras, ~40 min) e comparar os 2027 com a tabela da
+   seção 3. Se o Python não tiver `openpyxl`: `pip install openpyxl`.
+2. Zerar o registro do que está no ar: `rm site/.publicado.json` (era da página antiga).
+3. `python3 gerador/conferir_publicacao.py preparar` → todos os arquivos vão para os lotes do `site/.pendente.json`.
+4. Publicar o **lote 1 sem `url`** (cria a página nova), com `capabilities: {"downloads": {}}` (sem isso o botão ⬇ Excel não
+   funciona; o Claude carrega a skill de capacidades antes). Anotar o link devolvido.
+5. Publicar os demais lotes com `url` = link novo; reler todos os caminhos de `reler` (até ~64 MB por leitura) e
+   `conferir_publicacao.py conferir <pasta>` → "OK: página publicada = arquivos locais".
+6. Trocar o link antigo pelo novo em `CLAUDE.md`, `entrega/PROCEDIMENTO.md` e `entrega/PROJETO_INSTRUCOES.md`; commit e push
+   (inclui `site/.publicado.json`).
+
+Até a primeira publicação conferida, o gancho `Stop` vai lembrar que o site não está no ar; é esperado.
+
+**1.4 O que não vai junto com o repositório**
+
+| Item | O que fazer |
+|---|---|
+| Skills pessoais da conta antiga (medição financeira, reorçamento, histograma de equipamentos) | Recriar na conta nova (Configurações → Skills) se forem usadas. As do projeto (`.claude/skills/`) já vão no repo |
+| Instruções de Projeto no claude.ai | Colar `entrega/PROJETO_INSTRUCOES.md` num Projeto da conta nova (opcional, para conversas fora do Claude Code) |
+| Conectores (ex.: Microsoft 365/OneDrive das medições) | Conectar na conta nova se o fluxo de trabalho usar |
+| Painel antigo | Continua no ar na conta antiga; avise quem usa o link antigo |
+
+Primeira mensagem sugerida na sessão nova, depois da cópia: *"Leia o CLAUDE.md e entrega/PROCEDIMENTO.md, regere todas as
+obras sem mudar números e faça a primeira publicação do painel novo (seção 1.3)."*
 
 ---
 
