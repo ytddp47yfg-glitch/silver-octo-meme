@@ -5,63 +5,67 @@ Botânico e Torre Catharina seguem exatamente o mesmo caminho (só mudam os dado
 
 Situação em 20/10/2026. Origem: repositório `ytddp47yfg-glitch/silver-octo-meme`, branch
 `claude/planilha-fluxo-financeiro-d5b771`; painel https://claude.ai/artifact/9TpDGLVKmKfKstM6MiEAvy. No login novo, o projeto
-passa para um **repositório novo** e um **painel novo** (seção 1).
+passa a rodar **no computador**, numa **pasta da rede da empresa**, e ganha um **painel novo** (seção 1).
 
 ---
 
-## 1. Migração para um novo login e um novo repositório
+## 1. Migração: novo login, Claude Code no computador, projeto numa pasta de rede
 
-O projeto inteiro (gerador, dados dos 8 cenários, planilhas, site, skills, `CLAUDE.md`) cabe no repositório: 177 arquivos,
-~178 MB, nenhum acima de 9 MB. O histórico do git antigo (~740 MB) não precisa ir junto.
+O projeto inteiro (gerador, dados dos 8 cenários, planilhas, site, skills, `CLAUDE.md`) vem no pacote
+`fluxo_caixa_EPO_transferencia_<data>.zip` (~67 MB; 177 arquivos). Nada depende do GitHub nem da nuvem: o recálculo das
+planilhas usa o LibreOffice do computador (`ferramenta/recalc.py`) e os PDFs usam o Playwright instalado na pasta.
 
-**1.1 Preparar a conta nova**
+**1.1 Instalar no computador (uma vez; Windows)**
 
-1. Criar o repositório (privado) na conta GitHub do novo login, ex. `fluxo-caixa-epo`, com a branch `main`.
-2. No claude.ai do novo login: conectar o GitHub (Configurações → Conectores) e instalar o app **Claude** no repositório novo.
-3. Abrir uma sessão do Claude Code na web (claude.ai/code) apontando para o repositório novo.
+| Programa | Onde | Para quê | Conferir no terminal |
+|---|---|---|---|
+| Git for Windows | git-scm.com | exigido pelo Claude Code no Windows; histórico local (opcional) | `git --version` |
+| Claude Code | app desktop do Claude (aba Code) ou `npm install -g @anthropic-ai/claude-code`, logado no **novo login** | o assistente que roda os comandos | `claude --version` |
+| Python 3.12+ | python.org (marque **Add python.exe to PATH**) | gerador, auditoria, site | `python --version` |
+| openpyxl | `python -m pip install openpyxl` | ler/gravar planilhas | `python -c "import openpyxl"` |
+| LibreOffice | libreoffice.org | recalcular as fórmulas | `ferramenta/recalc.py` acha sozinho em `C:\Program Files\LibreOffice`; senão, defina `SOFFICE` |
+| Node.js LTS | nodejs.org | PDFs dos painéis | `node --version` |
 
-**1.2 Copiar o projeto** (escolha um caminho)
+No Windows o comando é `python` (não `python3`). Se o gancho de publicação acusar "python3 não encontrado", troque
+`python3` por `python` em `.claude/settings.json`.
 
-- **A. Pacote .zip (sem dar acesso ao repositório antigo).** O dono atual baixa o pacote de transferência
-  (`fluxo_caixa_EPO_transferencia_<data>.zip`, gerado com `git archive` da branch) ou, no GitHub antigo, *Code → Download ZIP*
-  da branch, e entrega ao novo login. Na sessão nova, anexar o .zip e pedir: *"Descompacte este pacote na raiz do repositório,
-  faça um commit único 'Projeto fluxo de caixa EPO (transferência)' na main e dê push."*
-- **B. Clonar direto (com acesso temporário).** O dono atual adiciona o usuário GitHub novo como colaborador (leitura) do
-  repositório antigo. Na sessão nova, pedir para adicionar o repositório antigo à sessão e rodar:
-  ```bash
-  git clone --depth 1 --branch claude/planilha-fluxo-financeiro-d5b771 https://github.com/ytddp47yfg-glitch/silver-octo-meme /tmp/origem
-  rsync -a --exclude .git /tmp/origem/ ./ && git add -A && git commit -m "Projeto fluxo de caixa EPO (transferência)" && git push origin main
-  ```
-  Depois o acesso ao repositório antigo pode ser retirado.
+**1.2 Montar a pasta do projeto**
 
-**1.3 Primeira publicação (painel novo)**
+1. Extrair o .zip na pasta de rede, ex. `S:\Financeiro\fluxo-caixa-epo` (unidade mapeada; evite caminho `\\servidor\...`
+   direto, que alguns programas não aceitam).
+2. Nessa pasta, num terminal: `npm install` e depois `npx playwright install chromium` (uma vez).
+3. Recomendado: `git init` e um primeiro commit, para ter histórico das alterações (fica só na pasta; não precisa de GitHub).
+4. Pasta de rede é lenta para o LibreOffice: aponte as saídas intermediárias para o disco local com
+   `setx FLUXO_SAIDA C:\fluxo_saida` (abra um terminal novo depois). As entregas (planilhas, site) continuam na pasta de rede.
+5. Uma pessoa por vez: duas sessões regerando ao mesmo tempo na mesma pasta se atrapalham.
 
-O login novo não publica na página antiga (ela é de outra conta); cria a dele.
+**1.3 Primeira sessão e primeira publicação (painel novo)**
 
-1. Conferir que tudo regera igual: `python3 ferramenta/regerar.py` (todas as obras, ~40 min) e comparar os 2027 com a tabela da
-   seção 3. Se o Python não tiver `openpyxl`: `pip install openpyxl`.
-2. Zerar o registro do que está no ar: `rm site/.publicado.json` (era da página antiga).
-3. `python3 gerador/conferir_publicacao.py preparar` → todos os arquivos vão para os lotes do `site/.pendente.json`.
-4. Publicar o **lote 1 sem `url`** (cria a página nova), com `capabilities: {"downloads": {}}` (sem isso o botão ⬇ Excel não
-   funciona; o Claude carrega a skill de capacidades antes). Anotar o link devolvido.
-5. Publicar os demais lotes com `url` = link novo; reler todos os caminhos de `reler` (até ~64 MB por leitura) e
-   `conferir_publicacao.py conferir <pasta>` → "OK: página publicada = arquivos locais".
-6. Trocar o link antigo pelo novo em `CLAUDE.md`, `entrega/PROCEDIMENTO.md` e `entrega/PROJETO_INSTRUCOES.md`; commit e push
-   (inclui `site/.publicado.json`).
+Abra a pasta no Claude Code (app: *Open folder*; terminal: `cd S:\Financeiro\fluxo-caixa-epo` e `claude`) e envie:
+*"Leia o CLAUDE.md e entrega/PROCEDIMENTO.md, regere todas as obras sem mudar números e faça a primeira publicação do painel
+novo (seção 1.3)."* O Claude deve:
+
+1. `python ferramenta/regerar.py` (todas as obras; no computador leva de 40 min a 1 h) e comparar os 2027 com a seção 3.
+2. Apagar `site/.publicado.json` (registro da página antiga) e rodar `python gerador/conferir_publicacao.py preparar`.
+3. Publicar o **lote 1 sem `url`** (cria a página nova, que pertence ao novo login), com `capabilities: {"downloads": {}}`
+   (sem isso o botão ⬇ Excel não funciona); anotar o link.
+4. Publicar os demais lotes com `url` = link novo, reler todos os caminhos de `reler` (até ~64 MB por leitura) e
+   `python gerador/conferir_publicacao.py conferir <pasta>` → "OK: página publicada = arquivos locais".
+5. Trocar o link antigo pelo novo em `CLAUDE.md`, `entrega/PROCEDIMENTO.md` e `entrega/PROJETO_INSTRUCOES.md` (e commit, se usar git).
 
 Até a primeira publicação conferida, o gancho `Stop` vai lembrar que o site não está no ar; é esperado.
 
-**1.4 O que não vai junto com o repositório**
+**1.4 O que não vai junto**
 
 | Item | O que fazer |
 |---|---|
-| Skills pessoais da conta antiga (medição financeira, reorçamento, histograma de equipamentos) | Recriar na conta nova (Configurações → Skills) se forem usadas. As do projeto (`.claude/skills/`) já vão no repo |
+| Skills pessoais da conta antiga (medição financeira, reorçamento, histograma de equipamentos) | Recriar na conta nova se forem usadas. As do projeto (`.claude/skills/`) já vêm na pasta |
 | Instruções de Projeto no claude.ai | Colar `entrega/PROJETO_INSTRUCOES.md` num Projeto da conta nova (opcional, para conversas fora do Claude Code) |
-| Conectores (ex.: Microsoft 365/OneDrive das medições) | Conectar na conta nova se o fluxo de trabalho usar |
+| Conectores (ex.: Microsoft 365/OneDrive das medições) | Conectar na conta nova se o fluxo usar |
 | Painel antigo | Continua no ar na conta antiga; avise quem usa o link antigo |
 
-Primeira mensagem sugerida na sessão nova, depois da cópia: *"Leia o CLAUDE.md e entrega/PROCEDIMENTO.md, regere todas as
-obras sem mudar números e faça a primeira publicação do painel novo (seção 1.3)."*
+Alternativa sem instalar nada: Claude Code na web com um repositório GitHub da conta nova (descompactar o .zip no repositório e
+seguir o mesmo 1.3). Nesse caso a pasta de rede guarda só as entregas copiadas.
 
 ---
 

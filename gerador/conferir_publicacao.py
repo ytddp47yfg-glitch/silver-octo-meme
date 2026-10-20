@@ -19,6 +19,8 @@ Status: python3 gerador/conferir_publicacao.py status   (o que está diferente d
 Gancho: python3 gerador/conferir_publicacao.py gancho   (Stop hook: código 2 enquanto houver pendência de publicação)
 """
 import base64, datetime as dt, hashlib, json, os, sys
+if not sys.flags.utf8_mode:   # Windows: força UTF-8 (acentos nos nomes e JSON)
+    import subprocess; os.environ["PYTHONUTF8"] = "1"; sys.exit(subprocess.run([sys.executable, "-X", "utf8", *sys.argv]).returncode)
 
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = os.path.join(RAIZ, "site")

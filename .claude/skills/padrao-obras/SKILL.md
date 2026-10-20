@@ -21,8 +21,9 @@ obra para outra são só os dados (pasta do cenário) e os insumos opcionais dec
 | Site, painéis, PDFs | `gerador/` (`viewer.py`, `make_site.py`, `multi_tpl.html`, `pdfs.js`) → `site/` |
 | Planilhas entregues | raiz do repo (`fluxo_caixa_<obra>_modelo[_CENÁRIO].xlsx`) e `site/xlsx/<id>.xlsx` + `.b64.txt` |
 
-Requisitos: Python 3 com `openpyxl`, LibreOffice (recálculo via `/mnt/skills/public/xlsx/scripts/recalc.py`), Node com
-Playwright (PDFs). Se o Python do sistema não tiver openpyxl, exporte `PYTHONPATH` para uma pasta com ele.
+Requisitos: Python 3 com `openpyxl`, LibreOffice (recálculo por `ferramenta/recalc.py`, que acha o `soffice` sozinho ou pela
+variável `SOFFICE`), Node com Playwright (`npm install` na raiz + `npx playwright install chromium`, para os PDFs). Roda em
+Windows (use `python`), macOS e Linux; numa pasta de rede, ponha as saídas intermediárias em disco local com `FLUXO_SAIDA`.
 
 ## O que TODA obra tem
 

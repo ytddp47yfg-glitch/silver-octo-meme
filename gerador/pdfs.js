@@ -1,7 +1,8 @@
 // Gera site/pdf/<id>--<painel>.pdf: um PDF por painel de cada cenário (Dashboard, Retrato, Curva física, Gantt, Esquemático).
 // O botão ⬇ PDF da página baixa o PDF do painel aberto. Esquemático em A3 paisagem; os demais em A4 paisagem.
 // Uso: sirva a pasta site/ (python3 -m http.server 8766 -d site) e rode: node gerador/pdfs.js [porta]
-const { chromium } = require(process.env.PW || '/opt/node22/lib/node_modules/playwright');
+// Playwright: do projeto (npm install na raiz), da variável PW ou da instalação global do ambiente na nuvem
+const { chromium } = (() => { try { return require('playwright'); } catch (e) { return require(process.env.PW || '/opt/node22/lib/node_modules/playwright'); } })();
 const fs = require('fs'), path = require('path');
 (async () => {
   const port = process.argv[2] || 8766, site = path.join(__dirname, '..', 'site'), out = path.join(site, 'pdf');

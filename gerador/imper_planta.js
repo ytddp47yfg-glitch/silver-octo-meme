@@ -1,7 +1,7 @@
 // Pinta a planta de impermeabilização por período de execução (gerador/impermeabilizacao.py): classes pelas cores das
 // hachuras do projeto (A vermelho, B magenta, C azul, D verde, ciano/amarelo fora do cronograma) + fechamento morfológico.
 // Uso: node gerador/imper_planta.js planta.png planta_cor.jpg
-const { chromium } = require('/opt/node22/lib/node_modules/playwright');const fs=require('fs');
+const { chromium } = (() => { try { return require('playwright'); } catch (e) { return require(process.env.PW || '/opt/node22/lib/node_modules/playwright'); } })();const fs=require('fs');
 (async()=>{const b=await chromium.launch();const p=await b.newPage();
  const data='data:image/png;base64,'+fs.readFileSync(process.argv[2]).toString('base64');
  const out=await p.evaluate(async ([d,cores])=>{const im=new Image();im.src=d;await im.decode();const W=im.width,H=im.height;

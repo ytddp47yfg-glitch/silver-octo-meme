@@ -3,3 +3,4 @@ __pycache__/
 entrega/*.zip
 ferramenta/saida/
 ferramenta/obras/*/*/data2_antes_*.json
+node_modules/

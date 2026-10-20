@@ -1,0 +1,8 @@
+{
+  "name": "fluxo-caixa-epo",
+  "private": true,
+  "description": "Dependência Node para gerar os PDFs dos painéis (gerador/pdfs.js). Instale com: npm install && npx playwright install chromium",
+  "devDependencies": {
+    "playwright": "1.56.1"
+  }
+}

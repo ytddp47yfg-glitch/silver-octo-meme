@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """Regera as obras com a MESMA sequência para todas (registro em ferramenta/obras.json).
 
-Uso:  python3 ferramenta/regerar.py [obra ...] [--sem-site]
+Uso:  python3 ferramenta/regerar.py [obra ...] [--sem-site]      (Windows: python ferramenta\\regerar.py ...)
       (sem obra = todas; obra = botanico | ed-jardim | torre-catharina)
 
 Para cada obra:
-  1. 1ª passada: gera, recalcula e audita a planilha de cada cenário (ferramenta/rebuild.sh).
+  1. 1ª passada: gera, recalcula (ferramenta/recalc.py, LibreOffice) e audita a planilha de cada cenário.
   2. Gantt (gerador/gantt.py) e curva física (gerador/fisico.py) a partir das planilhas da 1ª passada.
   3. 2ª passada com as abas CURVA FÍSICA, GANTT e ESQUEMÁTICO; cenários com "fixar_2027" recalibram
      cfg.desloc.fator até 2027 bater no valor fixado (diferença vai para o ano seguinte).
@@ -16,8 +16,11 @@ A publicação em si segue a rotina do CLAUDE.md (lotes do .pendente.json → re
 """
 import base64, json, os, re, shutil, subprocess, sys
 
+if not sys.flags.utf8_mode:   # Windows: força UTF-8 (acentos nos JSON e nomes) também nos processos filhos
+    os.environ["PYTHONUTF8"] = "1"; sys.exit(subprocess.run([sys.executable, "-X", "utf8", *sys.argv]).returncode)
 F = os.path.dirname(os.path.abspath(__file__)); R = os.path.dirname(F); G = os.path.join(R, "gerador")
-OUT = os.path.join(F, "saida"); REG = json.load(open(os.path.join(F, "obras.json")))
+# saídas intermediárias: FLUXO_SAIDA permite pô-las num disco local quando o projeto está numa pasta de rede
+OUT = os.environ.get("FLUXO_SAIDA") or os.path.join(F, "saida"); REG = json.load(open(os.path.join(F, "obras.json")))
 
 
 def sh(args, env=None, cwd=R):
@@ -32,11 +35,17 @@ def py(*a, env=None):
 
 
 def build(o, c, env):
-    pasta = os.path.join(F, "obras", o["obra"], c["pasta"])
-    e = dict(env, **({"CENARIO": c["CENARIO"]} if c.get("CENARIO") else {}))
-    txt = sh(["bash", os.path.join(F, "rebuild.sh"), pasta, os.path.join(OUT, c["id"])], e)
-    if "RESUMO: 19 OK de 19" not in txt or '"total_errors": 0' not in txt:
-        sys.exit(f"ERRO: auditoria/recálculo de {c['id']}:\n{txt}")
+    """Gera, recalcula (LibreOffice) e audita a planilha de um cenário; devolve o desembolso de 2027."""
+    saida = os.path.join(OUT, c["id"]); calc = saida + "_calc.xlsx"
+    e = dict(env, DATA_DIR=os.path.join(F, "obras", o["obra"], c["pasta"]), GERADOR=G, **({"CENARIO": c["CENARIO"]} if c.get("CENARIO") else {}))
+    py(os.path.join(F, "build_modelo.py"), saida + ".xlsx", env=e)
+    shutil.copy(saida + ".xlsx", calc)
+    r = json.loads(py(os.path.join(F, "recalc.py"), calc))
+    if r.get("total_errors"): sys.exit(f"ERRO: {c['id']} tem {r['total_errors']} células com erro: {r['exemplos']}")
+    py(os.path.join(G, "cantos.py"), calc)
+    txt = py(os.path.join(F, "audit.py"), calc)
+    if "RESUMO: 19 OK de 19" not in txt:
+        sys.exit(f"ERRO: auditoria de {c['id']}:\n" + "\n".join(l for l in txt.splitlines() if "FALHA" in l or "RESUMO" in l))
     m = re.search(r"Desembolso 2027.*\|\s*([\d,.]+)\s*/", txt)
     return float(m.group(1).replace(",", "")) if m else None
 
