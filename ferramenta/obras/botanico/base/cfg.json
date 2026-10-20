@@ -1,0 +1,54 @@
+{
+ "erp_update": {
+  "ESTRUTURA": "ESTRUTURA EM CONCRETO ARMADO"
+ },
+ "erp2": {
+  "ESTRUTURA": "ESTRUTURA EM CONTRETO ARMADO",
+  "REV. FACHADA": "REVESTIMENTO DIVERSOS - FACHADA",
+  "DIVERSOS": "SERVIÇOS TERCEIRIZADOS"
+ },
+ "ignore": [
+  "APORTES",
+  "CUSTOS COM OBRAS",
+  "MATERIAIS E SERVIÇOS PRESTADOS",
+  "Total Geral",
+  "REEMBOLSO MATERIAIS E SERVIÇOS",
+  "DEDUÇÕES DA RECEITA",
+  "MAIS COPY GRAFICA RAPIDA E COPIADORA LTDA",
+  "EMPRESARIAL TRANSPORTES E LOGISTICA ES LTDA"
+ ],
+ "limite": 1.0,
+ "fator_proj": {
+  "PROJETO": 1.03786211,
+  "SEGUROS": 0.95674951,
+  "BARRACÃO DE OBRA": 1.26644317,
+  "LIG. PROVISÓRIAS": 1.68848185,
+  "CONSUMOS": 1.04468596,
+  "DIVERSOS": 1.171028,
+  "TRANSPORTES": 1.00921062,
+  "CONSULTORIAS": 0.98533299,
+  "EQUIP E FER": 0.99703491,
+  "SERV. INICIAIS": 0.94870607,
+  "CONTENÇÃO": 0.84684312,
+  "TERRAPLENAGEM": 0.96743828,
+  "FUND. PROF": 1.06257434,
+  "FUND. SUP": 1.01074288,
+  "ESTRUTURA": 0.99428727,
+  "INST. ELÉTRICA": 0.97146252
+ },
+ "meta_min_incorrido": true,
+ "contingencia": "2030-06-01",
+ "conciliacao": {
+  "rs": 21284340.810013007,
+  "incc": 17165,
+  "fonte": "Ed. Botânico - Medição Financeira - Prep Set.26 (PAINEL D95/D97)"
+ },
+ "notes": {
+  "INST. ELÉTRICA": "Reorçamento: projeção da ANÁLISE IEC (coluna X) digitada = R$ 11.720.096 − 125.000; o fator da coluna W estava 1 (não atualizado). Usado X ÷ I = 0,9715.",
+  "LIG. PROVISÓRIAS": "Saldo até a projeção lançado em 3 parcelas iguais em jan, fev e mar/2027 (decisão do usuário)."
+ },
+ "force": {
+  "LIG. PROVISÓRIAS": "PREVISÃO INFORMADA"
+ },
+ "aux_estrutura": "aux_estrutura.json"
+}

@@ -1,0 +1,219 @@
+{
+ "obra": "ED JARDIM",
+ "corte": "2026-09-01",
+ "inicio": "2024-12-01",
+ "tabs": {
+  "30": "EST. METÁLICA"
+ },
+ "erp": {
+  "PROJETO": "PROJETOS",
+  "SEGUROS": "SEGUROS",
+  "TAX. DIVERSAS": "TAXAS DIVERSAS",
+  "BARRACÃO DE OBRA": "BARRACAO DE OBRA",
+  "LIG. PROVISÓRIAS": "LIGAÇÕES PROVISÓRIAS AGUA, ENERGIA,TELEFONIA, ESGOTO",
+  "CONSUMOS": "CONSUMO DE ÁGUA, ENERGIA, ETC.",
+  "DIVERSOS": "DIVERSOS",
+  "TRANSPORTES": "TRANSPORTES",
+  "CONSULTORIAS": "CONSULTORIAS (OBRAS)",
+  "MDO": "MÃO DE OBRA PRÓPRIA",
+  "EQUIP E FER": "EQUIPAMENTOS E FERRAMENTAS",
+  "SERV. INICIAIS": "SERVIÇOS INICIAIS",
+  "CONTENÇÃO": "CONTENÇÃO",
+  "TERRAPLENAGEM": "TERRAPLENAGEM",
+  "FUND. PROF": "FUNDAÇÃO PROFUNDA",
+  "FUND. SUP": "FUNDAÇÃO SUPERFICIAL",
+  "ESTRUTURA": "ESTRUTURA EM CONCRETO ARMADO",
+  "ALVENARIA": "ALVENARIA",
+  "IMPERMEABILIZAÇÃO": "IMPERMEABILIZAÇÃO",
+  "INST. ELÉTRICA": "INSTALAÇÕES ELÉTRICAS",
+  "INST. HIDRO": "INSTALAÇÕES HIDROSANITÁRIAS",
+  "INST. INC": "INSTALAÇÕES COMBATE INCÊNDIO",
+  "INST. ESP": "INSTALAÇÕES ESPECIAIS",
+  "ELEVADORES ": "ELEVADORES",
+  "ESQUADRIAS": "ESQUADRIAS",
+  "SERRALHERIA": "SERRALHERIA",
+  "MARCENARIA": "MARCENARIA",
+  "REV. PISOS": "REVESTIMENTOS DE MASSA EM PISOS",
+  "REV. PAREDE": "REVESTIMENTOS DE MASSAS EM PAREDES",
+  "REV. ACAB": "REVESTIMENTOS",
+  "EST. METÁLICA": "ESTRUTURA METÁLICA",
+  "REV. FACHADA": "REVESTIMENTO DIVERSOS - FACHADA",
+  "FORRO": "FORRO",
+  "LOUÇAS": "LOUÇAS SANITÁRIAS",
+  "PINTURA": "PINTURA",
+  "PAISAGISMO": "PAISAGISMO",
+  "LIMPEZA": "LIMPEZA FINAL DE OBRA",
+  "TAX. ADM": "TAXA DE ADMINISTRAÇÃO"
+ },
+ "erp2": {
+  "DIVERSOS": "SERVIÇOS TERCEIRIZADOS",
+  "REV. ACAB": "REVESTIMENTOS DE ACABAMENTO",
+  "PAISAGISMO": "PAVIMENTAÇÃO"
+ },
+ "ignore": [
+  "APORTES",
+  "CUSTOS COM OBRAS",
+  "MATERIAIS E SERVIÇOS PRESTADOS",
+  "Total Geral",
+  "REEMBOLSO MATERIAIS E SERVIÇOS",
+  "CONTINGÊNCIAS",
+  "CUSTO INCORRIDO",
+  "PROJEÇÃO"
+ ],
+ "cp_code": {
+  "PROJETO": "01",
+  "SEGUROS": "02",
+  "TAX. DIVERSAS": "03",
+  "BARRACÃO DE OBRA": "04",
+  "LIG. PROVISÓRIAS": "05",
+  "CONSUMOS": "06",
+  "DIVERSOS": "07",
+  "TRANSPORTES": "08",
+  "CONSULTORIAS": "09",
+  "MDO": "10",
+  "EQUIP E FER": "11",
+  "SERV. INICIAIS": "12",
+  "CONTENÇÃO": "13",
+  "TERRAPLENAGEM": "14",
+  "FUND. PROF": "15",
+  "FUND. SUP": "16",
+  "ESTRUTURA": "17",
+  "ALVENARIA": "19",
+  "IMPERMEABILIZAÇÃO": "20",
+  "INST. ELÉTRICA": "21",
+  "INST. HIDRO": "22",
+  "INST. INC": "23",
+  "INST. ESP": "24",
+  "ELEVADORES ": "25",
+  "ESQUADRIAS": "26",
+  "SERRALHERIA": "27",
+  "MARCENARIA": "28",
+  "REV. PISOS": "29",
+  "REV. PAREDE": "30",
+  "REV. ACAB": "31",
+  "EST. METÁLICA": "18",
+  "REV. FACHADA": "32",
+  "FORRO": "33",
+  "LOUÇAS": "34",
+  "PINTURA": "35",
+  "PAISAGISMO": "36",
+  "LIMPEZA": "37",
+  "TAX. ADM": "00"
+ },
+ "bi_extra": {
+  "ESTRUTURA METÁLICA": "EST. METÁLICA",
+  "JARDINEIRAS E PAISAGISMO": "PAISAGISMO",
+  "REVESTIMENTO DIVERSOS   FACHADA": "REV. FACHADA"
+ },
+ "notes": {
+  "SEGUROS": "Sem aba no arquivo original: projeção = orçamento reajustado pelo INCC do corte; saldo em curva linear até dez/2028 (premissa dos indiretos). Confirmar.",
+  "LIG. PROVISÓRIAS": "Sem aba no arquivo original: projeção = orçamento reajustado pelo INCC do corte; saldo em curva linear até dez/2028 (premissa dos indiretos). Confirmar.",
+  "EST. METÁLICA": "PL 31 do Ed Jardim (no Botânico é PAVIMENTAÇÃO). No Prevision é o item 18.",
+  "REV. PISOS": "No original, REV. PISOS e REV. PAREDE liam a mesma linha do ERP (R$ 380.967 contado duas vezes). Corrigido: o ERP tem esse valor só em PAREDES.",
+  "DIVERSOS": "O ERP já tinha R$ 45.630 lançados para set-out/26, o que passava a projeção. Por decisão do usuário, vale só o realizado até o corte e o saldo até a projeção é distribuído pela curva digitada (K22 = NÃO).",
+  "ESTRUTURA": "Curva digitada mantida no cenário Prevision (decisão do usuário: estrutura, elevadores, esquadrias e indiretos não seguem o Prevision).",
+  "EQUIP E FER": "Reorçamento: fator 1 (a projeção da ANÁLISE IEC tinha erro de fórmula; confirmado pelo usuário)."
+ },
+ "limite": 1.0,
+ "erp_futuro_nao": [
+  "DIVERSOS"
+ ],
+ "force": {
+  "ESTRUTURA": "PREVISÃO INFORMADA"
+ },
+ "fator_proj": {
+  "PROJETO": 0.98527105,
+  "SEGUROS": 0.92468838,
+  "BARRACÃO DE OBRA": 1.14967706,
+  "CONSUMOS": 1.37539931,
+  "DIVERSOS": 1.91291433,
+  "TRANSPORTES": 0.99358932,
+  "CONSULTORIAS": 1.05101587,
+  "MDO": 1.07173555,
+  "SERV. INICIAIS": 0.94977267,
+  "CONTENÇÃO": 0.86030236,
+  "TERRAPLENAGEM": 0.80785731,
+  "FUND. PROF": 0.75648018,
+  "FUND. SUP": 0.79334164,
+  "ESTRUTURA": 0.97528193,
+  "ALVENARIA": 1.10361789,
+  "IMPERMEABILIZAÇÃO": 0.79244915,
+  "INST. ELÉTRICA": 1.00144773,
+  "INST. HIDRO": 0.99181691,
+  "INST. INC": 1.0975986,
+  "ELEVADORES ": 0.83615249
+ },
+ "meta_min_incorrido": true,
+ "contingencia": "2030-06-01",
+ "conciliacao": {
+  "rs": 42586104.68,
+  "incc": 35062,
+  "fonte": "Ed. Jardim - Medição Financeira - Prévia de Setembro-26 (PAINEL D94/D96)",
+  "mes": "2026-08-01"
+ },
+ "desloc": {
+  "de": 2027,
+  "para": 2028,
+  "fator": {
+   "PADRÃO": 0.9763025059641263
+  }
+ },
+ "esq_marcos": [
+  [
+   "Marco",
+   "2026-12-31"
+  ],
+  [
+   "Retrato",
+   "RETRATO"
+  ],
+  [
+   "Marco",
+   "2028-12-31"
+  ],
+  [
+   "Marco",
+   "2029-04-30"
+  ]
+ ],
+ "esq_subdiv": {
+  "30": [
+   [
+    "REV. PEDRAS/BANCADAS",
+    [
+     "REVESTIMENTO PAREDE",
+     "REVESTIMENTOS PISO",
+     "REVESTIMENTO PORCELANATO PAREDE",
+     "REVESTIMENTOS PORCELANATO PISO",
+     "BANCADAS",
+     "PISO ELEVADO / EXTERNO"
+    ]
+   ],
+   [
+    "PISO MAD./RODAPÉ",
+    [
+     "PISO MADEIRA / LAMINADO",
+     "PISO VINÍLICO / LAMINADO",
+     "RODAPÉ MADEIRA / PVC",
+     "DECK"
+    ]
+   ],
+   [
+    "TRAT. PEDRAS",
+    [
+     "TRATAMENTO DE GRANITO/MÁRMORE",
+     "POLIMENTO PISO"
+    ]
+   ]
+  ]
+ },
+ "esq_extra": [
+  [
+   "CHECK LIST",
+   [
+    "CHECKLIST"
+   ],
+   "2028-01-01"
+  ]
+ ]
+}

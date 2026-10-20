@@ -3,8 +3,9 @@
 ## Regra: toda modificação tem de chegar à página publicada, conferida
 
 Página: https://claude.ai/artifact/9TpDGLVKmKfKstM6MiEAvy (montada a partir de `site/`).
-Sempre que entrar qualquer modificação (incorrido, cronograma, premissa, estética, painel novo), depois de regenerar o site
-(`viewer.py` → `make_site.py` → `pdfs.js` → `make_site.py`, xlsx + `.b64.txt`) faça a rotina de publicação, sem exceção:
+Regere sempre com `python3 ferramenta/regerar.py [obra …]` (mesma sequência para todas as obras: planilhas, painéis, PDFs,
+xlsx + `.b64.txt`; padrão na skill `padrao-obras`). Sempre que entrar qualquer modificação (incorrido, cronograma, premissa,
+estética, painel novo), depois de regenerar faça a rotina de publicação, sem exceção:
 
 1. `python3 gerador/conferir_publicacao.py preparar`
    Tem que sair sem ERRO. Ele confere localmente:
@@ -34,6 +35,9 @@ arquivo do site diferente do último estado confirmado.
 
 ## Outras convenções
 
+- **Todas as obras iguais**: mesmo conjunto de planilhas, painéis e PDFs (skill `padrao-obras`). Dados e cfg de cada cenário
+  em `ferramenta/obras/<obra>/<pasta>/`, registro em `ferramenta/obras.json`; diferença entre obras só por falta de insumo.
+- Incorrido do ERP: skill `incorrido-erp`. Mapas de impermeabilização/fachada: skill `mapas-obra`.
 - Controle em INCC. Detalhes do gerador em `gerador/LEIA-ME.md`.
 - Aba/painel ESQUEMÁTICO: skill `.claude/skills/esquematico-avanco`.
 - Mudanças só estéticas não podem alterar números. Confira o 2027 de cada cenário e a auditoria (19 OK) a cada build.

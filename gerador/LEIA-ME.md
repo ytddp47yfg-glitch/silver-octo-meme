@@ -4,7 +4,14 @@ A página (`site/index.html`) mostra uma tela inicial com uma lista de obras. Ca
 painéis DASHBOARD e RETRATO e todas as abas da planilha. Os dados de cada obra ficam num
 arquivo separado em `site/obras/<id>.json`, que só é carregado quando a obra é escolhida.
 
-## Incluir ou atualizar uma obra
+## Regerar (padrão para todas as obras)
+
+`python3 ferramenta/regerar.py [obra …]` regera planilhas, painéis, PDFs e downloads de todas as obras (ou das indicadas)
+com a mesma sequência; o registro de obras e cenários fica em `ferramenta/obras.json` e os dados de cada cenário em
+`ferramenta/obras/<obra>/<pasta>/`. Detalhes na skill `.claude/skills/padrao-obras`. As seções abaixo descrevem as peças
+que o `regerar.py` chama.
+
+## Incluir ou atualizar uma obra (manual, sem o regerar.py)
 
 1. Parta de `fluxo_caixa_MODELO_EM_BRANCO.xlsx` (mesma estrutura, sem dados; a aba LEIA-ME explica cada
    entrada) e preencha as abas de entrada da nova obra: VALOR POR PL, "INCC-FGV", DADOS BRUTOS, CURVA PREVISION e
@@ -23,7 +30,7 @@ arquivo separado em `site/obras/<id>.json`, que só é carregado quando a obra �
 
 Dependências: Python 3 com `openpyxl` e LibreOffice (para o passo 2).
 
-## Painel CURVA FÍSICA (Ed Jardim)
+## Painel CURVA FÍSICA (todas as obras)
 
 Curvas de avanço físico por cenário, calculadas a partir das PLs (itens diretos, ponderados pela projeção):
 

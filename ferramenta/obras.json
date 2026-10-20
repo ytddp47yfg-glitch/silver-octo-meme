@@ -1,0 +1,122 @@
+{
+ "_LEIA": "Registro das obras e cenários. Cada cenário passa pela MESMA sequência em ferramenta/regerar.py. pasta = dados do cenário em ferramenta/obras/<obra>/<pasta> (data.json, data2.json, cfg.json, ret_lens.json [, aux_estrutura.json]); CENARIO=PADRÃO usa as curvas digitadas; gantt_de = cenário cujo cronograma alimenta o Gantt; fixar_2027 = valor de 2027 a manter (recalibra cfg.desloc.fator); extras = insumos opcionais da obra (só entram os que existem).",
+ "obras": [
+  {
+   "obra": "botanico",
+   "nome": "Botânico",
+   "fis_base": "Prevision",
+   "esquematico": {},
+   "cenarios": [
+    {
+     "id": "botanico-padrao",
+     "cenario": "Padrão",
+     "descricao": "Curvas digitadas na versão original; estrutura pela aba AUX.ESTRUTURA (quantitativos × cronograma)",
+     "ordem": 1,
+     "pasta": "base",
+     "planilha_raiz": "fluxo_caixa_botanico_modelo_PADRAO",
+     "gantt_de": "botanico",
+     "CENARIO": "PADRÃO"
+    },
+    {
+     "id": "botanico",
+     "cenario": "Prevision",
+     "descricao": "Curvas de andamento do Prevision; estrutura pela aba AUX.ESTRUTURA (quantitativos × cronograma)",
+     "ordem": 2,
+     "pasta": "base",
+     "planilha_raiz": "fluxo_caixa_botanico_modelo",
+     "gantt_de": "botanico"
+    }
+   ],
+   "nome_site": "Botânico"
+  },
+  {
+   "obra": "ed-jardim",
+   "nome": "Ed. Jardim",
+   "fis_base": "Prevision Atual",
+   "esquematico": {
+    "acab": [
+     [
+      "REVESTIMENTO PAREDE|REVESTIMENTOS PISO|REVESTIMENTO PORCELANATO PAREDE|REVESTIMENTOS PORCELANATO PISO",
+      "2027-12-31",
+      "do revestimento de parede e de piso (cerâmica/porcelanato)"
+     ]
+    ],
+    "cortes": "gerador/cortes/ed-jardim.json"
+   },
+   "extras": {
+    "impermeabilizacao": "ferramenta/obras/ed-jardim/extras/imp.json",
+    "fachada_tasks": "ferramenta/obras/ed-jardim/extras/fachada_tasks.json"
+   },
+   "cenarios": [
+    {
+     "id": "ed-jardim-padrao",
+     "cenario": "Padrão",
+     "descricao": "Curvas digitadas na versão original; 2027 reduzido para o valor da revisão anterior (diferença em 2028)",
+     "ordem": 1,
+     "pasta": "padrao",
+     "planilha_raiz": "fluxo_caixa_ed_jardim_modelo_PADRAO",
+     "gantt_de": "ed-jardim",
+     "CENARIO": "PADRÃO",
+     "fixar_2027": 56009788.8655176
+    },
+    {
+     "id": "ed-jardim",
+     "cenario": "Prevision Atual",
+     "descricao": "Prevision com os cronogramas de 19/10/2026 (versão Replan Aptos 27-29): curva financeira do CFF ajustada às datas do cronograma de atividades de 19/10; estrutura, esquadrias e elevadores iguais ao Prevision ajustado",
+     "ordem": 2,
+     "pasta": "atual",
+     "planilha_raiz": "fluxo_caixa_ed_jardim_modelo",
+     "gantt_de": "ed-jardim"
+    },
+    {
+     "id": "ed-jardim-ajustado",
+     "cenario": "Prevision ajustado",
+     "descricao": "Prevision (cronogramas de 07/10/2026) com: rev. de acabamento em 11 de 28 pavimentos em 2027; fachada pelo estudo de balancins (R12); inst. especiais e fundação superficial na curva digitada; hidráulica com o andamento da elétrica; 2027 reduzido para o valor da revisão anterior (diferença em 2028)",
+     "ordem": 3,
+     "pasta": "ajustado",
+     "planilha_raiz": "fluxo_caixa_ed_jardim_modelo_PREVISION_AJUSTADO",
+     "gantt_de": "ed-jardim-ajustado",
+     "fixar_2027": 53460558.958548
+    }
+   ],
+   "nome_site": "Ed. Jardim"
+  },
+  {
+   "obra": "torre-catharina",
+   "nome": "Torre Catharina",
+   "fis_base": "Prevision",
+   "esquematico": {},
+   "cenarios": [
+    {
+     "id": "torre-catharina-padrao",
+     "cenario": "Visão Set/26",
+     "descricao": "Curvas digitadas da planilha de fluxo REV SÉRGIO 02 (set/26); projeções pela medição financeira (fator IEC); incorrido do ERP até set/26, conciliação com a medição, contingência; estrutura pela aba AUX.ESTRUTURA (quantitativos × cronograma)",
+     "ordem": 1,
+     "pasta": "base",
+     "planilha_raiz": "fluxo_caixa_torre_catharina_modelo_PADRAO",
+     "gantt_de": "torre-catharina",
+     "CENARIO": "PADRÃO"
+    },
+    {
+     "id": "torre-catharina",
+     "cenario": "Prevision",
+     "descricao": "Curvas de andamento do Prevision; estrutura pela aba AUX.ESTRUTURA (quantitativos × cronograma)",
+     "ordem": 2,
+     "pasta": "base",
+     "planilha_raiz": "fluxo_caixa_torre_catharina_modelo",
+     "gantt_de": "torre-catharina"
+    },
+    {
+     "id": "torre-catharina-simulacao",
+     "cenario": "Simulação",
+     "descricao": "Prevision com a Versão 1: novas datas de término dos trechos de estrutura (equipes Zálem, Jhony e equipe única); coluna BA da aba AUX.ESTRUTURA",
+     "ordem": 3,
+     "pasta": "simulacao",
+     "planilha_raiz": "fluxo_caixa_torre_catharina_modelo_SIMULACAO",
+     "gantt_de": "torre-catharina"
+    }
+   ],
+   "nome_site": "Torre Catharina"
+  }
+ ]
+}

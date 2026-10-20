@@ -1,6 +1,6 @@
 """Lê a tabela dinâmica do ERP (grupos × meses), pega os grupos de CUSTOS COM OBRAS, inverte o sinal e
 compara com a aba DADOS BRUTOS atual da ferramenta. Uso: novo_db.py arquivo.xlsx aba data2.json saida.json"""
-import sys; sys.path.insert(0, '/tmp/claude-0/-home-user-silver-octo-meme/252de686-5b3c-58a7-a16e-5b6ca412b5a3/scratchpad/pylib')
+import sys
 import openpyxl, json, re, datetime as dt, collections
 from openpyxl.utils import get_column_letter as L
 arq, aba, d2p, out = sys.argv[1:5]

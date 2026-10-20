@@ -28,31 +28,30 @@ Tudo é fórmula: colar um export novo do Prevision na aba CRONOGRAMA ATIVIDADES
 - O **nº do pavimento** sai do nome do lote (coluna N): "13º PAV. TIPO" → 13, "TÉRREO …" → 0, "1º SUBSOLO" → −1.
   Lotes sem número (GERAL, FACHADA, ELEVADORES) ficam fora do corte.
 
-## Como gerar
+## Como gerar (todas as obras, mesmo caminho)
 
-No build da ferramenta (gera a aba junto com as outras):
+O esquemático faz parte do padrão de **todas** as obras e de **todos** os cenários (skill `padrao-obras`). Não gere à mão:
 
 ```bash
-ESQ=1 FIS_JSON=… GANTT_JSON=… bash rebuild.sh <pasta de dados> <saída>
+python3 ferramenta/regerar.py <obra>        # botanico | ed-jardim | torre-catharina (sem argumento = todas)
 ```
 
-`build_modelo.py` chama `gerador/esquematico.py` → `esquematico(wb, obra)` depois das abas CURVA FÍSICA e GANTT.
-Avulso, numa planilha já gerada: `python3 gerador/esquematico.py ferramenta.xlsx saida.xlsx`. Esse modo relê e regrava a
-pasta com openpyxl e perde detalhes de gráficos, então prefira o build. Depois de gerar:
+O `regerar.py` faz a 2ª passada de cada cenário com `ESQ=1` (aba ESQUEMÁTICO na planilha, via `gerador/esquematico.py`)
+e grava o JSON do painel com `esquematico.py --json`, usando o que a obra tiver em `ferramenta/obras.json` → `"esquematico"`:
+`acab` (cortes "acabamento finalizado até…") e `cortes` (arquivo em `gerador/cortes/<obra>.json`). Obra sem essas chaves
+mostra só os quadros de PLs.
 
-1. Recalcule (LibreOffice: `recalc.py`) e reaplique os cantos arredondados (`cantos.py`).
-2. Rode a auditoria. A aba ESQUEMÁTICO já está na lista de exclusões de `audit.py`; tem que dar 19 OK.
-3. Confira visualmente: converta só a aba para PDF/PNG (copie a planilha com `data_only=True`, apague as outras abas,
-   `soffice --convert-to pdf`) e verifique:
-   - a estrutura sobe de baixo para cima;
-   - o último pavimento concretado bate com o cronograma;
-   - a faixa de infraestrutura e a de fachada fazem sentido.
+Configuração dos quadros: `cfg.json` do cenário em `ferramenta/obras/<obra>/<pasta>/` (`esq_marcos`, `esq_subdiv`,
+`esq_extra`). Para uniformizar, use as mesmas chaves em todos os cenários da obra.
 
-## Painel no site
+Conferência depois de gerar (o `regerar.py` já aborta se a auditoria não der 19 OK):
+- a estrutura sobe de baixo para cima;
+- o último pavimento concretado bate com o cronograma;
+- a faixa de infraestrutura e a de fachada fazem sentido;
+- o último quadro termina na data final do Prevision (Ed. Jardim: 30/04/2029).
 
-`python3 gerador/esquematico.py --json <planilha_calc.xlsx> esq.json` e gere o JSON do cenário com `VW_ESQ=esq.json`
-no `viewer.py`: aparece o painel ESQUEMÁTICO (os mesmos quadros, com detalhe ao passar o mouse) e ele entra no PDF.
-Depois publique com a rotina de conferência do `CLAUDE.md`.
+Avulso, numa planilha já gerada: `python3 gerador/esquematico.py planilha.xlsx saida.xlsx` (relê e regrava com openpyxl e
+perde detalhes de gráficos; prefira o `regerar.py`).
 
 ## O que a aba mostra
 
@@ -76,6 +75,7 @@ As colunas auxiliares (peso e % em cada marco, uma linha por atividade) ficam oc
 - **Mais ou menos PLs no corte**: `MIN_PAV`. Para fixar uma lista, filtre `pls` em `_ler()`.
 - **Rótulo dos pavimentos**: é o lote mais frequente do pavimento sem o prefixo "Nº PAV." (`_rotulo()`).
 - **Datas**: C5 = maior data de referência das atividades. C6… = marcos e, por último, RETRATO 2027!K5, todas editáveis (células amarelas).
+- **Último quadro**: a data final do Prevision da obra (Ed. Jardim: `["Marco", "2029-04-30"]`), não 31/12.
 - **Mais marcos**: acrescente pares em `esq_marcos` (ex.: `[["Marco", "2026-12-31"], ["Marco", "2027-06-30"]]`). Cada marco é mais um quadro. Para pôr o retrato no meio (ordem cronológica), inclua `["Retrato", "RETRATO"]` na posição desejada (ex.: `[["Marco","2026-12-31"],["Retrato","RETRATO"],["Marco","2028-12-31"],["Marco","2029-12-31"]]`).
 
 ## Limites (diga isso ao usuário)
@@ -107,8 +107,9 @@ e DUPLEX; o duplex 26º/27º é um apartamento; nº do apto = pavimento × 100):
 amarelo = em execução na data, cinza = depois (com o mês). Ed Jardim, Prevision Atual: 700, 900, 1000, 1100, 1200,
 1400, 1600 e 1800 (confere com as anotações do usuário de 19/10/2026).
 
-Outros cortes no mesmo layout: `--cortes gerador/cortes/ed-jardim.json` (lista de {pacotes, ate, desde, rot, tit, res,
-feito, leg}). Ed Jardim: check list em 2028 e em 2029 (`desde` = 1º/jan do ano; o que concluiu antes aparece em verde-claro).
+Outros cortes no mesmo layout: `--cortes gerador/cortes/<obra>.json` (lista de {pacotes, ate, desde, rot, tit, res,
+feito, leg}). Ed Jardim: check list em 2028 e em 2029 até 30/04/2029, fim do Prevision (`desde` = 1º/jan do ano; o que
+concluiu antes aparece em verde-claro). Para outra obra, crie `gerador/cortes/<obra>.json` e aponte em `ferramenta/obras.json`.
 
 ## PDF em A3
 

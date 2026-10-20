@@ -1,7 +1,7 @@
 """Monta DADOS BRUTOS (grupos de CUSTOS COM OBRAS × meses, custos positivos) a partir da aba DADOS (lançamentos).
 Uso: db_bruto.py arquivo.xlsx 'GRUPO 1[;...]' '[VALOR REAL]|[VLR MOVIMENTO]' data2_atual.json saida.json
 Exclui as projeções carregadas no ERP (A PAGAR sem origem no extrato)."""
-import sys; sys.path.insert(0, '/tmp/claude-0/-home-user-silver-octo-meme/252de686-5b3c-58a7-a16e-5b6ca412b5a3/scratchpad/pylib')
+import sys
 import openpyxl, collections, json, re, datetime as dt
 from openpyxl.utils import get_column_letter as L
 arq, g1, val, d2p, out = sys.argv[1:6]
