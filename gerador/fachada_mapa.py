@@ -19,7 +19,7 @@ P1, P2 = (4, 13), (14, 28)   # pavimentos das etapas F1 e F2
 _IMG = os.path.join(os.path.dirname(os.path.abspath(__file__)), "imper", "ed-jardim_elevacoes_{}.png")
 ELEV = {"A": ("A_B", (150, 478), (162, 465), 26, 808, 904), "B": ("A_B", (765, 913), (775, 912), 26, 808, 904),
         "C": ("C_D", (262, 646), (287, 627), 37, 818, 915), "D": ("C_D", (985, 1140), (997, 1137), 37, 818, 915)}
-CR_PX = (608, 627)
+CR_PX = (565, 627)   # torre do elevador de obra + 3 vãos de vidro à esquerda
 SUAVE = bytes(255 - (255 - v) * 42 // 100 for v in range(256))   # preto → cinza claro (42% do contraste)
 
 

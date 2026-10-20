@@ -196,6 +196,7 @@ header .epo-logo{order:-1}
 
 /* impressão do ESQUEMÁTICO em A3 paisagem (gerador/pdfs.js): 1ª folha = cortes por apartamento lado a lado;
    depois um quadro de PLs por folha, ampliado para ocupar a página */
+html.a3,html.a3 body{--bg:#fff;background:#fff!important}html.a3 .dz{--d-bg:#fff;background:#fff}   /* impressão A3 sem fundo cinza */
 html.a3 .ez{padding:0 4px}
 html.a3 .iz .a3h,html.a3 .ez .a3h{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:0 2px 10px;margin-bottom:12px;border-bottom:3px solid var(--d-navy);position:relative}
 html.a3 .iz .a3h::after,html.a3 .ez .a3h::after{content:"";position:absolute;left:0;bottom:-3px;width:120px;height:3px;background:#a1c1aa}
@@ -259,7 +260,7 @@ html.a3 .ez>.note{break-before:avoid}
 .iz .itg span{text-align:center;color:var(--d-mut);font-size:9.5px}
 html.a3 .iz .izg{grid-template-columns:minmax(0,1.7fr) minmax(0,1fr)}
 html.a3 .iz{display:block}html.a3 .iz>*+*{margin-top:12px}
-html.a3 .iz .iz1{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:16px;align-items:start}
+html.a3 .iz .iz1{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:16px;align-items:stretch}
 html.a3 .iz .iz1 .izp img,html.a3 .iz .iz1 .izp svg{max-height:880px;width:auto;max-width:100%;margin:0 auto}
 html.a3 .iz .izk h2{margin-bottom:8px}html.a3 .iz .iz1.izf{grid-template-columns:minmax(0,1fr) 440px}html.a3 .iz .izf .izc{padding:4px 0}html.a3 .iz .izf .izc i{height:20px}html.a3 .iz .izf .izc b{font-size:13.5px}html.a3 .iz .izk .izpl{margin:0 0 10px}
 html.a3 .iz .izc{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-top:1px solid var(--d-line)}html.a3 .iz .izc:first-of-type{border-top:0}
