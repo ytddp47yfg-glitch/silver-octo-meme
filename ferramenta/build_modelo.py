@@ -1281,7 +1281,7 @@ ws.sheet_properties.pageSetUpPr.fitToPage = True
 painel_fundo(ws, 30, S0 + 20)
 painel_fundo(wb["RETRATO 2027"], 13, RT_TOT + 40)
 # painéis extras (Curva física e Gantt), quando o gerador recebe os dados
-import paineis_extra
+sys.path.insert(0, os.environ.get("GERADOR", os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "gerador"))); import paineis_extra
 if os.environ.get("FIS_JSON"): paineis_extra.curva_fisica(wb, json.load(open(os.environ["FIS_JSON"])), CFG.get("obra", ""))
 if os.environ.get("GANTT_JSON"): paineis_extra.gantt(wb, json.load(open(os.environ["GANTT_JSON"])), CFG.get("obra", ""))
 if os.environ.get("ESQ"):   # aba ESQUEMÁTICO (corte por pavimento), gerador/esquematico.py

@@ -52,7 +52,7 @@ def _rotulo(pav, lotes):
     nome = Counter(lotes).most_common(1)[0][0]
     nome = re.sub(r"^\s*\d+\s*[º°]\s*(PAV\.?)?\s*[-–]?\s*", "", str(nome)).strip(" .-")
     nome = re.sub(r"\s+", " ", nome)
-    return f"{pav}º  {nome[:22]}" if pav > 0 else f"{-pav}º SUBSOLO"
+    return f"{pav}º  {nome[:22] or 'PAV.'}" if pav > 0 else f"{-pav}º SUBSOLO"   # lote só "7º PAV." → "7º  PAV."
 
 
 def _ler(wb):
