@@ -1,0 +1,571 @@
+[
+ {
+  "amb": "Escada de incêndio",
+  "PISO": [
+   "03 - Piso em concreto mecanizado com acabamento antiderrapante - Escadarias"
+  ],
+  "RODAPÉ": [
+   "-"
+  ],
+  "PAREDE": [
+   "09 - Textura acrílica rolada fosca branca. Ref.: Branco neve suvinil"
+  ],
+  "TETO": [
+   "02 - Laje em concreto aparente com tratamento a ser indicado pelo projeto estrutural"
+  ],
+  "LOUÇAS E METAIS": [
+   "-"
+  ],
+  "PEDRAS": [
+   "-"
+  ],
+  "DIVERSOS": []
+ },
+ {
+  "amb": "Antecâmara",
+  "PISO": [
+   "07 - Piso de granito cinza santa rosa, acabamento serrado, espessura: 2cm, dimensões e paginação conforme detalhamento, assentado com argamassa colante em pó ACIII. Obs.: Resina hidrofugante ou outros acabamentos aplicados no granito devem ser foscos e não podem alterar ou escurecer a cor original do material"
+  ],
+  "RODAPÉ": [
+   "21 - Rodapé em granito cinza santa rosa, acabamento serrado, h=15cm, espessura 2cm, assentado com argamassa colante em pó ACIII"
+  ],
+  "PAREDE": [
+   "01| 21 - Pintura acrílica, cor branco neve, acabamento acetinado. Ref.: Suvinil, sobre paredes - Reboco (1 demão selador + 3 demãos Latex acrílico)"
+  ],
+  "TETO": [
+   "02 - Laje em concreto aparente com tratamento a ser indicado pelo projeto estrutural"
+  ],
+  "LOUÇAS E METAIS": [
+   "-"
+  ],
+  "PEDRAS": [
+   "-"
+  ],
+  "DIVERSOS": []
+ },
+ {
+  "amb": "Circulação",
+  "PISO": [
+   "07 - Piso de granito cinza santa rosa, acabamento serrado, espessura: 2cm, dimensões e paginação conforme detalhamento, assentado com argamassa colante em pó ACIII. Obs.: Resina hidrofugante ou outros acabamentos aplicados no granito devem ser foscos e não podem alterar ou escurecer a cor original do material"
+  ],
+  "RODAPÉ": [
+   "21 - Rodapé em granito cinza santa rosa, acabamento serrado, h=15cm, espessura 2cm, assentado com argamassa colante em pó ACIII"
+  ],
+  "PAREDE": [
+   "01| 21 - Pintura acrílica, cor branco neve, acabamento acetinado. Ref.: Suvinil, sobre paredes - Reboco (1 demão selador + 3 demãos Latex acrílico)"
+  ],
+  "TETO": [
+   "01| T1| T8 - Forro de gesso acartonado liso| 01|07| 08 - Pintura acrílica, cor branca neve, acabamento fosco, Ref.: Suvinil sob tetos (2 demãos Latex acrílico)"
+  ],
+  "LOUÇAS E METAIS": [
+   "-"
+  ],
+  "PEDRAS": [
+   "-"
+  ],
+  "DIVERSOS": []
+ },
+ {
+  "amb": "Lobby",
+  "PISO": [
+   "P7 - Piso de granito cinza Santa Rosa, acabamento escovado, espessura: 2cm. Dimensões e paginação conforme detalhamento. Rejunte em massa plástica a ser tonalizado de acordo com a cor da pedra, assentado com argamassa colante em pó ACIII. Obs.: Resina, hidrofugante ou outros acabamentos aplicados no granito devem ser foscos e não podem alterar ou escurecer a cor original do material"
+  ],
+  "RODAPÉ": [
+   "PA20 - Rodapé de embutir em alvenaria em cantoneira metálica 50x15mm em alumínio anodizado pintado no tom da parede"
+  ],
+  "PAREDE": [
+   "PA53 - Revestimento em pedra natural basaltina, dimensões e paginação conforme detalhamento, rejunte em massa plástica a ser tonalizada de acordo com a cor da pedra, assentado com argamassa colante em pó ACIII",
+   "PA44 - Textura acrílica cimento queimado, cor 107. Ref.: Terracor CQ",
+   "D75 - Fechamento decorativo piso teto com quadro fixado no piso e no teto através de espaçadores e fechamento desenho conforme base para corte de molde em CNC - peças em madeira maciça engenheirada, tonalizada, acabamento escovado, calandrados conforme molde. Ref.: Demuner. Atenção: a madeira deve possuir certificação FSC ou CERFLOR"
+  ],
+  "TETO": [
+   "01| T1| T8 - Forro de gesso acartonado liso| 01|07| 08 - Pintura acrílica, cor branca neve, acabamento fosco, Ref.: Suvinil sob tetos (2 demãos Latex acrílico)"
+  ],
+  "LOUÇAS E METAIS": [
+   "-"
+  ],
+  "PEDRAS": [
+   "-"
+  ],
+  "DIVERSOS": []
+ },
+ {
+  "amb": "IS| IS PCD - Lobby",
+  "PISO": [
+   "P7 - Piso de granito cinza Santa Rosa, acabamento escovado, espessura: 2cm. Dimensões e paginação conforme detalhamento. Rejunte em massa plástica a ser tonalizado de acordo com a cor da pedra, assentado com argamassa colante em pó ACIII. Obs.: Resina, hidrofugante ou outros acabamentos aplicados no granito devem ser foscos e não podem alterar ou escurecer a cor original do material"
+  ],
+  "RODAPÉ": [
+   "PA20 - Rodapé de embutir em alvenaria em cantoneira metálica 50x15mm em alumínio anodizado pintado no tom da parede"
+  ],
+  "PAREDE": [
+   "D38 - Espelho liso incolor polimento cristal 4mm colado sobre armário em MDF cru 6mm aparafusado na alvenaria",
+   "PA32 - Revestimento em mdf cru para regularização da superfície e acabamento em folha de madeia natural carvalho tonalizado",
+   "PA52 - Revestimento de granito cinza Santa Rosa, acabamento ecovado, espessura : 2cm, assentado com argamassa colante em pó ACIII. Obs.: Resina ou outros acabamentos aplicados no granito devem ser foscos e não podem alterar ou escurecer a cor original do material",
+   "Perfil cantoneira em alumínio para transição de materiais"
+  ],
+  "TETO": [
+   "01| T1| T8 - Forro de gesso acartonado liso| 01|07| 08 - Pintura acrílica, cor branca neve, acabamento fosco, Ref.: Suvinil sob tetos (2 demãos Latex acrílico)"
+  ],
+  "LOUÇAS E METAIS": [
+   "D22 - Bacia sanitária com caixa acoplada, linha Carrara, acabamento branco, cód.: P606.17. Ref.: Deca ou Bacia sanitária com caixa acoplada, linha Panache, acabamento branco, cód.: K-18395BR-0 D23 - Monocomando de mesa para lavatório, linha Mix&Match, bica baixa, acabamento cromado, cód.: 90017398006. Ref.: Docol. Obs.: Se necessário instalar cardal para aquecimento de água"
+  ],
+  "PEDRAS": [
+   "D30 - Bancada e cuba esculpida com bandeja removível em granito cinza Santa Rosa, acabamento escovado, esp. 2cm"
+  ],
+  "DIVERSOS": [
+   "D26 - Saboneteira de pressão em aço inox, instalação na parede, modelo Prime Press espuma, cód.: 70.032. Ref.: Draco| D27 - Porta papel higiênico duplo em aço inox, modelo cai cai, cód.: 70.100. Ref.: Draco | D28 - Papeleira em aço inox para papel interfolhado, modelo Basic, cód.: 74.103 ref.: Draco"
+  ]
+ },
+ {
+  "amb": "Espaço Kids",
+  "PISO": [
+   "P24 - Piso vinílico em manta, 2,20m, linha Polysafe verona PUR, acabamento Rock Salt - cód.: LRV-43."
+  ],
+  "RODAPÉ": [
+   "PA20 - Rodapé de embutir em alvenaria em cantoneira metálica 50x15mm em alumínio anodizado pintado no tom da parede"
+  ],
+  "PAREDE": [
+   "PA34 - Revestimento de granito cinza Santa Rosa, acabamento serrado, espessura : 2cm, assentado com argamassa colante em pó ACIII. Obs.: Resina ou outros acabamentos aplicados no granito devem ser foscos e não podem alterar ou escurecer a cor original do material",
+   "(Reboco) PA37 - Papel de parede degradê laranja 114-branco casa. Cód.: Ref.: BR0114-B10099- PDP_TM",
+   "PA35 - Revestimento em MDF cru 8mm para regularização da superfície e acabamento em chapa metálica - #16 (aço carbono) colada sobre MDF ou fixada através de fita dupla face 3M - finalização com mkicropintura cor S081 - Sayerlack.",
+   "PA36 - Revestimento em MDF cru 8mm + chapa de 4mm com acabamento em micropintura em cor N081 - Sayerlack colada sobre MDF cru.",
+   "PA38 - Painel de marcenaria MDF Nude-linha VEL- Berneck."
+  ],
+  "TETO": [
+   "01| T1| T8 - Forro de gesso acartonado liso| 01|07| 08 - Pintura acrílica, cor branca neve, acabamento fosco, Ref.: Suvinil sob tetos (2 demãos Latex acrílico)"
+  ],
+  "LOUÇAS E METAIS": [],
+  "PEDRAS": [],
+  "DIVERSOS": []
+ },
+ {
+  "amb": "Espaço Gourmet",
+  "PISO": [
+   "P7 - Piso de granito cinza Santa Rosa, acabamento escovado, espessura: 2cm. Dimensões e paginação conforme detalhamento. Rejunte em massa plástica a ser tonalizado de acordo com a cor da pedra, assentado com argamassa colante em pó ACIII. Obs.: Resina, hidrofugante ou outros acabamentos aplicados no granito devem ser foscos e não podem alterar ou escurecer a cor original do material"
+  ],
+  "RODAPÉ": [
+   "PA20 - Rodapé de embutir em alvenaria em cantoneira metálica 50x15mm em alumínio anodizado pintado no tom da parede"
+  ],
+  "PAREDE": [
+   "D14 - Fechamento cego em mdf cru com acabamento em folha madeira natural carvalho tonalizado.",
+   "PA32 - Revestimento em mdf cru para regularização da superfície e acabamento em folha de madeia natural carvalho tonalizado",
+   "PA44 - Textura acrílica cimento queimado, cor 107. Ref.: Terracor CQ"
+  ],
+  "TETO": [
+   "01| T1| T8 - Forro de gesso acartonado liso| 01|07| 08 - Pintura acrílica, cor branca neve, acabamento fosco, Ref.: Suvinil sob tetos (2 demãos Latex acrílico)"
+  ],
+  "LOUÇAS E METAIS": [
+   "D10 - Cuba design collection Quadrum 70 em aço inox com acabamento Scotch Brite. Cód ref.: REF 94007103. Ref.: Tramontina | D9 - Misturador monocomando Monde Filter Plus em aço inox com saída adiconal para água filtrada + Filtro 3m. Cód ref.: REF 94520025. Ref.: Tramontina. Atenção vazão máxima de 9 l/min, instalar redutor de vazão se necessário"
+  ],
+  "PEDRAS": [
+   "D8 - Bancada em pedra natural, quartzito mont blanc acabamento escovado. Espessura: 2cm"
+  ],
+  "DIVERSOS": []
+ },
+ {
+  "amb": "Dml",
+  "PISO": [
+   "P7 - Piso de granito cinza Santa Rosa, acabamento escovado, espessura: 2cm. Dimensões e paginação conforme detalhamento. Rejunte em massa plástica a ser tonalizado de acordo com a cor da pedra, assentado com argamassa colante em pó ACIII. Obs.: Resina, hidrofugante ou outros acabamentos aplicados no granito devem ser foscos e não podem alterar ou escurecer a cor original do material"
+  ],
+  "RODAPÉ": [
+   "21 - Rodapé em granito cinza santa rosa, acabamento serrado, h=15cm, espessura 2cm, assentado com argamassa colante em pó ACIII"
+  ],
+  "PAREDE": [
+   "PA47 - Pintura com tinta mineral, cor 930, acabamento CQ. Ref.: Terracor"
+  ],
+  "TETO": [
+   "01| T1| T8 - Forro de gesso acartonado liso| 01|07| 08 - Pintura acrílica, cor branca neve, acabamento fosco, Ref.: Suvinil sob tetos (2 demãos Latex acrílico)"
+  ],
+  "LOUÇAS E METAIS": [
+   "D68 - Tanque em cerâmica 18L cor branco fosco. Cód.: TQ.01.17, Ref.: Deca| D67 - Torneira de parede com arejador, para jardim e tanque, linha Izy, acabamento cromado. Cód.: 1154 C37; Ref.: Deca"
+  ],
+  "PEDRAS": [],
+  "DIVERSOS": []
+ },
+ {
+  "amb": "Cozinha salão de festas",
+  "PISO": [
+   "P7 - Piso de granito cinza Santa Rosa, acabamento escovado, espessura: 2cm. Dimensões e paginação conforme detalhamento. Rejunte em massa plástica a ser tonalizado de acordo com a cor da pedra, assentado com argamassa colante em pó ACIII. Obs.: Resina, hidrofugante ou outros acabamentos aplicados no granito devem ser foscos e não podem alterar ou escurecer a cor original do material"
+  ],
+  "RODAPÉ": [
+   "PA20 - Rodapé de embutir em alvenaria em cantoneira metálica 50x15mm em alumínio anodizado pintado no tom da parede"
+  ],
+  "PAREDE": [
+   "PA52 - Revestimento de granito cinza Santa Rosa, acabamento ecovado, espessura : 2cm, assentado com argamassa colante em pó ACIII. Obs.: Resina ou outros acabamentos aplicados no granito devem ser foscos e não podem alterar ou escurecer a cor original do material",
+   "PA43 - Revestimento em fórmica cor Almond L112, acabamento mate.: Ref.: Fórmica"
+  ],
+  "TETO": [
+   "01| T1| T8 - Forro de gesso acartonado liso| 01|07| 08 - Pintura acrílica, cor branca neve, acabamento fosco, Ref.: Suvinil sob tetos (2 demãos Latex acrílico)"
+  ],
+  "LOUÇAS E METAIS": [
+   "D80 - Cuba de embutir, Dora 70 em aço inox, 70x40c, acabamento acetinado, cód.: BL R6 Ref.: Tramontina| D81 - Monocomando de mesa, modelo Angolare, acabamento Scoth Brite, cód.: 94520022. Ref.: Tramontina"
+  ],
+  "PEDRAS": [
+   "D36 - Bancadas e cuba esculpidas em granito cinza Santa Rosa, acabamento escovado. Rejunte em massa plástica a ser tonalizada de acordo com a cor da pedra"
+  ],
+  "DIVERSOS": []
+ },
+ {
+  "amb": "Salão de Festas",
+  "PISO": [
+   "P7 - Piso de granito cinza Santa Rosa, acabamento escovado, espessura: 2cm. Dimensões e paginação conforme detalhamento. Rejunte em massa plástica a ser tonalizado de acordo com a cor da pedra, assentado com argamassa colante em pó ACIII. Obs.: Resina, hidrofugante ou outros acabamentos aplicados no granito devem ser foscos e não podem alterar ou escurecer a cor original do material"
+  ],
+  "RODAPÉ": [
+   "PA20 - Rodapé de embutir em alvenaria em cantoneira metálica 50x15mm em alumínio anodizado pintado no tom da parede"
+  ],
+  "PAREDE": [
+   "PA40 - Revestimento em madeira maciça engenheirada reflorestada, tonalizada. Acabamento superfície escovada. Painel Bark. Ref.: Demuner.",
+   "PA41 - Revestimento de mármore Dedalus, acabamento escovado, espessura 2cm, rejunte em massa plastica a ser tonalizada de acordo com a cor da pedra, assentado com argamassa colante em pó ACIII",
+   "PA31 - Pintura com tinta mineral, cor 107, acabamento CQ Ref: Terracor"
+  ],
+  "TETO": [
+   "01| T1| T8 - Forro de gesso acartonado liso| 01|07| 08 - Pintura acrílica, cor branca neve, acabamento fosco, Ref.: Suvinil sob tetos (2 demãos Latex acrílico)"
+  ],
+  "LOUÇAS E METAIS": [],
+  "PEDRAS": [
+   "D24 - Bancada em pedra natural, mármore Dedalus, acabamento escovado, espessura 2cm"
+  ],
+  "DIVERSOS": []
+ },
+ {
+  "amb": "IS Fem| Masc - Salão de Festas",
+  "PISO": [
+   "P7 - Piso de granito cinza Santa Rosa, acabamento escovado, espessura: 2cm. Dimensões e paginação conforme detalhamento. Rejunte em massa plástica a ser tonalizado de acordo com a cor da pedra, assentado com argamassa colante em pó ACIII. Obs.: Resina, hidrofugante ou outros acabamentos aplicados no granito devem ser foscos e não podem alterar ou escurecer a cor original do material"
+  ],
+  "RODAPÉ": [
+   "PA20 - Rodapé de embutir em alvenaria em cantoneira metálica 50x15mm em alumínio anodizado pintado no tom da parede"
+  ],
+  "PAREDE": [
+   "D37 - Espelho liso incolor polimento cristal 4mm colado sobre armário em MDF cru 6mm aparafusado na alvenaria",
+   "PA39 - Revestimento de mármore Barrocci Honed, acabamento levigado, espessura 2cm. Ref.: Brasigran, rejunte em massa plastica a ser tonalizada de acordo com a cor da pedra, assentado com argamassa colante em pó ACIII"
+  ],
+  "TETO": [
+   "01| T1| T8 - Forro de gesso acartonado liso| 01|07| 08 - Pintura acrílica, cor branca neve, acabamento fosco, Ref.: Suvinil sob tetos (2 demãos Latex acrílico)"
+  ],
+  "LOUÇAS E METAIS": [
+   "D22 - Bacia sanitária com caixa acoplada, linha Carrara, acabamento branco, cód.: P606.17. Ref.: Deca ou Bacia sanitária com caixa acoplada, linha Panache, acabamento branco, cód.: K-18395BR-0 D23 - Monocomando de mesa para lavatório, linha Mix&Match, bica baixa, acabamento cromado, cód.: 90017398006. Ref.: Docol. Obs.: Se necessário instalar cardal para aquecimento de água"
+  ],
+  "PEDRAS": [
+   "D25 - Bancada e cuba esculpida com ba mn ád re mja r re em Bo av rí rv oe cl e m p ne ed dr a o c i Ho acabamento levigado, espessura 2cm. Ref.: Basigran"
+  ],
+  "DIVERSOS": [
+   "D26 - Saboneteira de pressão em aço inox, instalação na parede, modelo Prime Press espuma, cód.: 70.032. Ref.: Draco| D27 - Porta papel higiênico duplo em aço inox, modelo cai cai, cód.: 70.100. Ref.: Draco | D28 - Papeleira em aço inox para papel interfolhado, modelo Basic, cód.: 74.103 ref.: Draco"
+  ]
+ },
+ {
+  "amb": "Academia",
+  "PISO": [
+   "PA22 - Piso emborrachado isolanete e antiderrapante, acabamento preto, placas 100x100cm esp.: 8mm, Ref.: Rubberkap ou similar"
+  ],
+  "RODAPÉ": [
+   "PA20 - Rodapé de embutir em alvenaria em cantoneira metálica 50x15mm em alumínio anodizado pintado no tom da parede"
+  ],
+  "PAREDE": [
+   "PA26 - Espelho liso incolor 4mm colado sobre MDF cru 6mm aparafusado ma alvenaria",
+   "PA27 - Espelho liso fumê 4mm colado sobre MDF cru 6mm aparafusado ma alvenaria",
+   "PA28 - Revestimento em painel de MDF Nero Rust. Ref.: Berneck"
+  ],
+  "TETO": [
+   "FO1 - Forro de absorção acústica composto por 1 manta de de lã de pet com 35kg/m3 de densidade e 50mm de espessura, fixado perfis próprios metálicos, Ref.: Trisoft ou similar | 01|07| 08 - Pintura acrílica, cor branca neve, acabamento fosco, Ref.: Suvinil sob tetos (2 demãos Latex acrílico)"
+  ],
+  "LOUÇAS E METAIS": [],
+  "PEDRAS": [],
+  "DIVERSOS": []
+ },
+ {
+  "amb": "Espaço da beleza",
+  "PISO": [
+   "P10 - Piso elevado em mármore branco selecionado, acabamento levigado, espessura 3cm, com argamassa colante em pó ACIII"
+  ],
+  "RODAPÉ": [
+   "PA23 - Rodapé em mármore branco selecionado embutido na alvenaria, arremate do topo em perfil \"U\" em aço inox 10x10mm, assentado com argamassa colante em pó ACIII"
+  ],
+  "PAREDE": [
+   "PA26 - Espelho liso incolor 4mm colado sobre MDF cru 6mm aparafusado ma alvenaria",
+   "PA47 - Pintura com tinta mineral, cor 930, acabamento CQ. Ref.: Terracor"
+  ],
+  "TETO": [
+   "01| T1| T8 - Forro de gesso acartonado liso| 01|07| 08 - Pintura acrílica, cor branca neve, acabamento fosco, Ref.: Suvinil sob tetos (2 demãos Latex acrílico)"
+  ],
+  "LOUÇAS E METAIS": [
+   "D51 - Torneira de mesa, linha Mix@Match Presence, cor sensor, acabamento grafite escovado. Cód.: 90015460070 Ref.: Socol"
+  ],
+  "PEDRAS": [
+   "D59| D60|D61 - Bancada em mármore branco selecionado, acabamento abaulado"
+  ],
+  "DIVERSOS": []
+ },
+ {
+  "amb": "Massagem",
+  "PISO": [
+   "P10 - Piso elevado em mármore branco selecionado, acabamento levigado, espessura 3cm, com argamassa colante em pó ACIII"
+  ],
+  "RODAPÉ": [
+   "PA23 - Rodapé em mármore branco selecionado embutido na alvenaria, arremate do topo em perfil \"U\" em aço inox 10x10mm, assentado com argamassa colante em pó ACIII"
+  ],
+  "PAREDE": [
+   "P28 (D43) - Painel e porta estruturados em alumínio com fechamento interno em vidro, cor Prada acabamento acidado. Dimensões conforme detalhamento ref.: Cinex. 271x324cm",
+   "PA47 - Pintura com tinta mineral, cor 930, acabamento CQ. Ref.: Terracor"
+  ],
+  "TETO": [
+   "01| T1| T8 - Forro de gesso acartonado liso| 01|07| 08 - Pintura acrílica, cor branca neve, acabamento fosco, Ref.: Suvinil sob tetos (2 demãos Latex acrílico)"
+  ],
+  "LOUÇAS E METAIS": [
+   "D55 - Cuba de apoio, modelo Ametista 26, cor branco, cód.: 121003002, Ref. Sabbia | D53 - Torneira de mesa, linha Mix&Match Presence, com sensor, acabamento grafite escovado. Cód.: 90015460070 Ref.: Socol"
+  ],
+  "PEDRAS": [
+   "D59| D60|D61 - Bancada em mármore branco selecionado, acabamento abaulado"
+  ],
+  "DIVERSOS": []
+ },
+ {
+  "amb": "Sauna a vapor",
+  "PISO": [
+   "P10 - Piso elevado em mármore branco selecionado, acabamento levigado, espessura 3cm, com argamassa colante em pó ACIII"
+  ],
+  "RODAPÉ": [
+   "-"
+  ],
+  "PAREDE": [
+   "PA46 - Revestimento de mármore branco selecionado, espessura 2cm, assentado com argamassa de cimento e areia"
+  ],
+  "TETO": [
+   "T10 - Revestimento em mámore selecionado"
+  ],
+  "LOUÇAS E METAIS": [],
+  "PEDRAS": [],
+  "DIVERSOS": []
+ },
+ {
+  "amb": "Sauna seca",
+  "PISO": [
+   "P19 - Piso Porcelanato padrão, coberto com piso tipo deck, assentado com argamassa colante em pó ACIII| ***P19 - Piso tipo deck de madeira Cedro, réguas 70mmx25mm comprimento variável"
+  ],
+  "RODAPÉ": [
+   "-"
+  ],
+  "PAREDE": [
+   "PA50 - Revestimento em madeira 2,5x2,5cm a cada 30-40cm, lã de vidro 2,5cm de espessura e fechamento em réguas de madeira Cedro. Réguas 70mmx25mm comprimento variável"
+  ],
+  "TETO": [
+   "T11 - Forro em sarrafo de madeira 2,5x2,5cm a cada 30-40cm lã de vidro 2,5cm de espessura e fechamento em réguas de madeira Cedro"
+  ],
+  "LOUÇAS E METAIS": [],
+  "PEDRAS": [],
+  "DIVERSOS": []
+ },
+ {
+  "amb": "Vestiário Fem| masc. - Thermas",
+  "PISO": [
+   "P10 - Piso elevado em mármore branco selecionado, acabamento levigado, espessura 3cm, com argamassa colante em pó ACIII"
+  ],
+  "RODAPÉ": [
+   "-"
+  ],
+  "PAREDE": [
+   "D38 - Espelho liso incolor polimento cristal 4mm colado sobre armário em MDF cru 6mm aparafusado na alvenaria",
+   "PA46 - Revestimento de mármore branco selecionado, espessura 2cm, assentado com argamassa de cimento e areia",
+   "PA47 - Pintura com tinta mineral, cor 930, acabamento CQ. Ref.: Terracor"
+  ],
+  "TETO": [
+   "01| T1| T8 - Forro de gesso acartonado liso| 01|07| 08 - Pintura acrílica, cor branca neve, acabamento fosco, Ref.: Suvinil sob tetos (2 demãos Latex acrílico)"
+  ],
+  "LOUÇAS E METAIS": [
+   "D22 - Bacia sanitária com caixa acoplada, linha Carrara, acabamento branco, cód.: P606.17. Ref.: Deca ou Bacia sanitária com caixa acoplada, linha Panache, acabamento branco, cód.: K-18395BR-0| D72 - Cuba de semi-encaixe, linha slim, cor branco, có.: L.61040.M.17. Ref.: Deca| D69 - Torneira de mesa com sensor bivolt e bateria, linha Decalux, acabamento cromado, cód.: 1188.C.N Ref.: Deca| D70 - Chuveiro 200 de parede, com tubo reto, linha Docol Eden, acabamento cromado, cód.: 90008879006 Ref.: Docol. |D33 - Monocomando para chuveiro, linha Mix&Match, acabamento cromado, cód.: 90009312006. Ref.: Docol"
+  ],
+  "PEDRAS": [
+   "D73 - Bancada em pedra natural, mármore branco selecionado, acabamento levigado, espessura 2cm"
+  ],
+  "DIVERSOS": [
+   "D26 - Saboneteira de pressão em aço inox, instalação na parede, modelo Prime Press espuma, cód.: 70.032. Ref.: Draco| D27 - Porta papel higiênico duplo em aço inox, modelo cai cai, cód.: 70.100. Ref.: Draco | D28 - Papeleira em aço inox para papel interfolhado, modelo Basic, cód.: 74.103 ref.: Draco"
+  ]
+ },
+ {
+  "amb": "Thermas",
+  "PISO": [
+   "P10 - Piso elevado em mármore branco selecionado, acabamento levigado, espessura 3cm, com argamassa colante em pó ACIII"
+  ],
+  "RODAPÉ": [],
+  "PAREDE": [
+   "PA49 - Revestimento em Mosaico Bisazza 20x20cm, assentado com argamassa colante em pó ACIII",
+   "PA46 - Revestimento de mármore branco selecionado, espessura 2cm, assentado com argamassa de cimento e areia",
+   "PA48 - Revestimento de mármore branco selecionado, acabamento frisado com ranhuras de 4x4mm espassada a cada 12mm, assentado com argamassa de cimento e areia"
+  ],
+  "TETO": [
+   "T7 - Forro com resistência à umidade, especificação a ser definida | 01|07| 08 - Pintura acrílica, cor branca neve, acabamento fosco, Ref.: Suvinil sob tetos (2 demãos Latex acrílico)"
+  ],
+  "LOUÇAS E METAIS": [
+   "D54 - Chuveiro de embutir no teto Raindream, Roca, acabamento cromado, cód.: A5B3250C0C. Ref.: Roca"
+  ],
+  "PEDRAS": [],
+  "DIVERSOS": []
+ },
+ {
+  "amb": "Spa| Piscina Raia",
+  "PISO": [
+   "P18 - Revestimento em pastilhas de mármore branco selecionado, acabamento levigado 3x3cm, assentado com argamassa colante em pó ACIII"
+  ],
+  "RODAPÉ": [],
+  "PAREDE": [
+   "P18 - Revestimento em pastilhas de mármore branco selecionado, acabamento levigado 3x3cm, assentado com argamassa colante em pó ACIII"
+  ],
+  "TETO": [],
+  "LOUÇAS E METAIS": [],
+  "PEDRAS": [],
+  "DIVERSOS": []
+ },
+ {
+  "amb": "Vestiário Fem| masc. - Thermas",
+  "PISO": [
+   "P7 - Piso de granito cinza Santa Rosa, acabamento escovado, espessura: 2cm. Dimensões e paginação conforme detalhamento. Rejunte em massa plástica a ser tonalizado de acordo com a cor da pedra, assentado com argamassa colante em pó ACIII. Obs.: Resina, hidrofugante ou outros acabamentos aplicados no granito devem ser foscos e não podem alterar ou escurecer a cor original do material"
+  ],
+  "RODAPÉ": [],
+  "PAREDE": [
+   "D37 - Espelho liso incolor polimento cristal 4mm colado sobre armário em MDF cru 6mm aparafusado na alvenaria",
+   "PA52 - Revestimento de granito cinza Santa Rosa, acabamento ecovado, espessura : 2cm, assentado com argamassa colante em pó ACIII. Obs.: Resina ou outros acabamentos aplicados no granito devem ser foscos e não podem alterar ou escurecer a cor original do material",
+   "PA46 - Revestimento de mármore branco selecionado, espessura 2cm, assentado com argamassa de cimento e areia"
+  ],
+  "TETO": [
+   "01| T1| T8 - Forro de gesso acartonado liso| 01|07| 08 - Pintura acrílica, cor branca neve, acabamento fosco, Ref.: Suvinil sob tetos (2 demãos Latex acrílico)"
+  ],
+  "LOUÇAS E METAIS": [
+   "D22 - Bacia sanitária com caixa acoplada, linha Carrara, acabamento branco, cód.: P606.17. Ref.: Deca ou Bacia sanitária com caixa acoplada, linha Panache, acabamento branco, cód.: K-18395BR-0| D29 - Torneira de mesa com sensor bivolt e baterail Decalux, acabamento cromado, cód.: 1188.C.N. Ref.: Deca | D31 - Chuveiro 200 de parede, com tubo reto, linha Docol Eden, acabamento cromado, cód.: 90009312006 Ref. Docol| D33 - Monocomando para chuveiro, linha Mix&Match, acabamento cromado, cód.: 90009312006. Ref.: Docol"
+  ],
+  "PEDRAS": [
+   "D73 - Bancada em pedra natural, mármore branco selecionado, acabamento levigado, espessura 2cm"
+  ],
+  "DIVERSOS": [
+   "D26 - Saboneteira de pressão em aço inox, instalação na parede, modelo Prime Press espuma, cód.: 70.032. Ref.: Draco| D27 - Porta papel higiênico duplo em aço inox, modelo cai cai, cód.: 70.100. Ref.: Draco | D28 - Papeleira em aço inox para papel interfolhado, modelo Basic, cód.: 74.103 ref.: Draco| D34 - Ralo 15x15cm com tampa lisa em aço inox, linha Square. Ref.: Elleve | D35 - Ralo linear com tampa lisa em aço inox, linha Square, Ref.: Elleve"
+  ]
+ },
+ {
+  "amb": "Depósito| Depósito jardim",
+  "PISO": [
+   "05 - Piso Porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado, ref.: Khali off white AC linha Khali; Eliane, assentado com argamassa colante em pó ACIII"
+  ],
+  "RODAPÉ": [
+   "19 - Rodapé para Piso Porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado, ref.: Khali off white AC linha Khali; Eliane, assentado com argamassa colante em pó ACIII"
+  ],
+  "PAREDE": [
+   "12 - Revestimento Porcelanato off white 60x60cm, espessura 1cm, com acabamento acetinado, Ref.: Khali pff white AC, linha Khali; Eliane, assentado com argamassa colante em pó ACIII",
+   "01| 21 - Pintura acrílica, cor branco neve, acabamento acetinado. Ref.: Suvinil, sobre paredes - Reboco (1 demão selador + 3 demãos Latex acrílico)"
+  ],
+  "TETO": [
+   "01| T1| T8 - Forro de gesso acartonado liso| 01|07| 08 - Pintura acrílica, cor branca neve, acabamento fosco, Ref.: Suvinil sob tetos (2 demãos Latex acrílico)"
+  ],
+  "LOUÇAS E METAIS": [
+   "26 - Tanque de embutir CT-50, Mekal, escovado cód.: 90010195016| 27 - Torneira de parede com arejador, para jardim e tanque, cromado. Ref.: cód.:1154.C37; linha Izy; Deca"
+  ],
+  "PEDRAS": [
+   "68 - Bancada de granito Santa Rosa escovado",
+   "69 - Prateleira de granito Santa Rosa escovado, espessura 2cm, com acabamento serrado; junta seca"
+  ],
+  "DIVERSOS": []
+ },
+ {
+  "amb": "Quadra Infantil",
+  "PISO": [
+   "17 - Piso em concreto com acabamento em pintura epóxi nas cores verde e cinza, tons a definir. Faixa de pintura epóxi na cor branca, para a marcação do desenho da miniquadra infantil."
+  ],
+  "RODAPÉ": [],
+  "PAREDE": [
+   "06 - Pintura acrílica fosca cinza tom a definir| Meia parede pintada com tinha acrílica fosca na cor verde, tom a definir - Reboco (2 demãos Latex acrílico)"
+  ],
+  "TETO": [],
+  "LOUÇAS E METAIS": [],
+  "PEDRAS": [],
+  "DIVERSOS": []
+ },
+ {
+  "amb": "Escada externa",
+  "PISO": [
+   "07| P28 - Piso de granito Santa rosa, acabamento serrado. Espessura de 2cm. Obs.: Resina hidrofugante ou outros acabamentos aplicados no granito devem ser foscos e não podem alterar ou escurecer a cor original do material"
+  ],
+  "RODAPÉ": [],
+  "PAREDE": [],
+  "TETO": [],
+  "LOUÇAS E METAIS": [],
+  "PEDRAS": [],
+  "DIVERSOS": []
+ },
+ {
+  "amb": "Quadra de tênis",
+  "PISO": [
+   "16 - Piso em pó de saibro com faixa na cor branca para marcação de quadra de tênis fixada com pregos especiais"
+  ],
+  "RODAPÉ": [],
+  "PAREDE": [
+   "03 - Pintura acrílica fosca cinza tom a definir - Reboco (2 demãos Latex acrílico)"
+  ],
+  "TETO": [],
+  "LOUÇAS E METAIS": [],
+  "PEDRAS": [],
+  "DIVERSOS": []
+ },
+ {
+  "amb": "Apoio quadras",
+  "PISO": [
+   "P27 - Piso em deck de madeira, modelo Tauari Teak encaixe macho e fêmea, acabamento com cavilha, réguas 200mmx100mmx2000m-acima. Ref.: Indusparquet."
+  ],
+  "RODAPÉ": [],
+  "PAREDE": [],
+  "TETO": [],
+  "LOUÇAS E METAIS": [],
+  "PEDRAS": [],
+  "DIVERSOS": []
+ },
+ {
+  "amb": "Piso - Circ. Externa coberta| descoberta e Varanda Espaço kids",
+  "PISO": [
+   "P8| 8 - Piso elevado em granito cinza Santa rosa, acabamento serrado, espessura de 2cm. Obs.: Resina hidrofugante ou outros acabamentos aplicados no granito devem ser foscos e não podem alterar ou escurecer a cor original do material"
+  ],
+  "RODAPÉ": [],
+  "PAREDE": [],
+  "TETO": [],
+  "LOUÇAS E METAIS": [],
+  "PEDRAS": [],
+  "DIVERSOS": []
+ },
+ {
+  "amb": "Deck piscina",
+  "PISO": [
+   "P26 - Piso em deck de madeira Cumaru com técnica de carbonização Shugi Ban, réguas 20mmx100mmx2000mm acima. Ref. Madeira carbonizada"
+  ],
+  "RODAPÉ": [],
+  "PAREDE": [],
+  "TETO": [],
+  "LOUÇAS E METAIS": [],
+  "PEDRAS": [],
+  "DIVERSOS": []
+ },
+ {
+  "amb": "Estar Piscina| Circulação",
+  "PISO": [
+   "07| P28 - Piso de granito Santa rosa, acabamento serrado. Espessura de 2cm. Obs.: Resina hidrofugante ou outros acabamentos aplicados no granito devem ser foscos e não podem alterar ou escurecer a cor original do material"
+  ],
+  "RODAPÉ": [],
+  "PAREDE": [],
+  "TETO": [],
+  "LOUÇAS E METAIS": [],
+  "PEDRAS": [],
+  "DIVERSOS": [
+   "D78 - Ralo linear oculto para encaixe de granito. Dimensões conforme detalhamento. Ref. Elleve"
+  ]
+ },
+ {
+  "amb": "Piscina descoberta",
+  "PISO": [
+   "P18 - Revestimento em pastilhas de mármore branco selecionado, acabamento levigado 3x3cm, assentado com argamassa colante em pó ACIII"
+  ],
+  "RODAPÉ": [],
+  "PAREDE": [
+   "P18 - Revestimento em pastilhas de mármore branco selecionado, acabamento levigado 3x3cm, assentado com argamassa colante em pó ACIII"
+  ],
+  "TETO": [],
+  "LOUÇAS E METAIS": [],
+  "PEDRAS": [
+   "INT - DET.05 - Testeira em granito acabamento meia esquadria H=7cm"
+  ],
+  "DIVERSOS": []
+ }
+]
